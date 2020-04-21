@@ -2,7 +2,7 @@
 $metahttpequiv = "<meta http-equiv=\"x-ua-compatible\" content='ie=edge'>";
 $metaCharset = "<meta charset='utf-8'>";
 $metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-$headTitle = "<title>Veiling Foundation site</title>";
+$headTitle = "<title>$title</title>";
 ?>
 
 <!doctype html>
@@ -20,7 +20,7 @@ $headTitle = "<title>Veiling Foundation site</title>";
   </head>
   <body>
   <header>
-      <?php echo'<h1>'.'Veiling Foundation site'.'</h1>'?>
+      <?php echo'<h1>'.$title.'</h1>'?>
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a href="index.php">Home</a></li>
           <li><a href="">Projecten</a>
