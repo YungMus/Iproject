@@ -12,7 +12,7 @@ $headTitle = "<title>$title</title>";
       echo $metahttpequiv,
       $metaCharset,
       $metaViewport,
-      $headTitle
+      $headTitle;
       ?>
 
     <link rel="stylesheet" href="css/foundation.css">
