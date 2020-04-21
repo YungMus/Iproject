@@ -10,5 +10,5 @@ $string = '<!doctype html>
     <link rel="stylesheet" href="css/app.css">
   </head>';
 
-print($string);
+echo $string
 ?>
