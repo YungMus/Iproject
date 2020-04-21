@@ -24,7 +24,7 @@ $headTitle = "<title>$title</title>";
       <ul class="dropdown menu" data-dropdown-menu>
           <li><a href="index.php">Home</a></li>
           <li><a href="">Projecten</a>
-              <ul>
+              <ul class="menu">
                   <li><a href="">Reizen in Finland</a></li>
                   <li><a>Profielwerkstuk</a></li>
                   <li><a>Klussen thuis</a></li>
