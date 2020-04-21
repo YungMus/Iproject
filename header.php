@@ -21,6 +21,7 @@ $headTitle = "<title>$title</title>";
   <body>
   <header>
       <?php echo'<h1>'.$title.'</h1>'?>
+      <nav>
       <ul class="dropdown menu" data-dropdown-menu>
           <li class=is-dropdown-submenu-parent"><a href="index.php">Home</a></li>
           <li><a href="">Projecten</a>
@@ -46,4 +47,5 @@ $headTitle = "<title>$title</title>";
 //          }
 //          ?>
       </ul>
+      </nav>
   </header>

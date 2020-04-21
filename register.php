@@ -1,10 +1,9 @@
 <?
-require_once("php sjablonen/header.php");
+$title = 'Registeren';
+include_once("header.php");
 ?>
-<body>
+
 <?
-require_once("php sjablonen/footer.php");
-require_once("php sjablonen/foundation_script.php");
+include_once("footer.html");
+include_once("foundation_script.php");
 ?>
-</body>
-</html>

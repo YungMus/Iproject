@@ -1,5 +1,5 @@
 <?php
-$title = 'Homepagina';
+$title = 'Veiling Overzicht';
 include_once("header.php");
 ?>
 

@@ -1,5 +1,5 @@
 <?
-$title = 'Inlogpagina';
+$title = 'Persoonlijke Pagina';
 include_once("header.php");
 ?>
 
