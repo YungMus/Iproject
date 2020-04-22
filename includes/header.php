@@ -7,45 +7,57 @@ $headTitle = "<title>$title</title>";
 
 <!doctype html>
 <html class="no-js" lang="nl" dir="ltr">
-  <head>
-      <?php
-      echo $metahttpequiv,
-      $metaCharset,
-      $metaViewport,
-      $headTitle;
-      ?>
+<head>
+    <?php
+    echo $metahttpequiv,
+    $metaCharset,
+    $metaViewport,
+    $headTitle;
+    ?>
 
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
-  </head>
-  <body>
-  <header>
-      <?php echo'<h1>'.$title.'</h1>'?>
-      <nav>
-      <ul class="dropdown menu" data-dropdown-menu>
-          <li class=is-dropdown-submenu-parent"><a href="index.php">Home</a></li>
-          <li><a href="">Projecten</a>
-              <ul class="menu">
-                  <li><a href="">Reizen in Finland</a></li>
-                  <li><a>Profielwerkstuk</a></li>
-                  <li><a>Klussen thuis</a></li>
-                  <li><a>Hobbyprojecten</a></li>
-                  <li><a>Vakken op school</a></li>
-                  <li><a>Op reis naar Thailand</a></li>
-                  <li><a>Op reis naar Tsjechië</a></li>
-                  <li><a>Vakken op de middelbare school</a></li>
-              </ul>
-          </li>
-          <li><a href="">Werkplaats</a></li>
-          <li><a href="">Mijn Verhaal</a></li>
-          <li><a href="">Personalia</a></li>
-          <li><a href="">Blog</a></li>
-          <li><a href="">Contact</a></li>
-<!--          --><?php
-//          if(isset($_SESSION['IDgebruiker'])) {
-//              echo '<li><a href="ingelogd.php">Admin</a></li>';
-//          }
-//          ?>
-      </ul>
-      </nav>
-  </header>
+</head>
+<body>
+<header>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text"><?php echo $title ?></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="">veiling</a>
+                    <ul class="menu">
+                        <li><a href="veiling.php">veiling</a></li>
+                        <li><a href="veilingCategorieOverzicht.php">veilingCategorie Overzicht</a></li>
+                        <li><a href="veilingOverzicht.php">veiling Overzicht</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.php">Contact</a>
+                    <ul class="menu">
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="voorwaardenCondities.php">Voorwaarden & condities</a></li>
+                    </ul>
+                </li>
+                <li><a href="persoonlijkePagina.php">persoonlijke Pagina</a>
+                    <ul class="menu">
+                        <li><a href="inlog.php">inloggen</a></li>
+                        <li><a href="register.php">registreren</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><input type="Search" placeholder="Search"></li>
+                <li><button type="button" class="button">Search</button></li>
+            </ul>
+        </div>
+    </div>
+    <!--          --><?php
+    //          if(isset($_SESSION['IDgebruiker'])) {
+    //              echo '<li><a href="ingelogd.php">Admin</a></li>';
+    //          }
+    //          ?>
+</header>
+
