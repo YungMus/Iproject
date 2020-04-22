@@ -1,5 +1,6 @@
 <?php
-$title = 'Veiling Overzicht';
+$title = 'Homepage';
+
 require_once("includes/header.php");
 ?>
 
