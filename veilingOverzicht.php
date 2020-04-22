@@ -1,10 +1,9 @@
 <?
 $title = 'Veiling overzicht';
-require_once("header.php");
+require_once("includes/header.php");
 ?>
-    test
-<?
 
-require_once("foundation_script.php");
-require_once("footer.html");
+<?
+require_once("includes/foundation_script.php");
+require_once("includes/footer.html");
 ?>
