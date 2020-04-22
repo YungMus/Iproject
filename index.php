@@ -1,10 +1,10 @@
 <?php
 $title = 'Veiling Overzicht';
-include_once("header.php");
+require_once("header.php");
 ?>
-test
+    test
 <?
-include_once("footer.html");
-include_once("foundation_script.php");
-?>
 
+require_once("foundation_script.php");
+require_once("footer.html");
+?>
