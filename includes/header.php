@@ -23,7 +23,7 @@ $headTitle = "<title>$title</title>";
       <?php echo'<h1>'.$title.'</h1>'?>
       <nav>
       <ul class="dropdown menu" data-dropdown-menu>
-          <li class=is-dropdown-submenu-parent"><a href="../index.php">Home</a></li>
+          <li class=is-dropdown-submenu-parent"><a href="index.php">Home</a></li>
           <li><a href="">Projecten</a>
               <ul class="menu">
                   <li><a href="">Reizen in Finland</a></li>
