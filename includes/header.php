@@ -15,8 +15,8 @@ $headTitle = "<title>$title</title>";
       $headTitle;
       ?>
 
-    <link rel="stylesheet" href="../css/foundation.css">
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
   <header>
