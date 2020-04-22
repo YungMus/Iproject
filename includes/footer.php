@@ -1,4 +1,5 @@
-<footer>
+<?
+$html = '<footer>
     <hr>
     <nav>
         <ul>
@@ -12,4 +13,7 @@
     <p> &copy; 2020 Yoran Koppes 638657 1E</p>
 </footer>
 </body>
-</html>
+</html>';
+
+echo $html;
+?>
