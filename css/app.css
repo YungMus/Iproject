@@ -17,3 +17,8 @@ footer {
 .callout cell small-4 align-self-top{
     max-width: 10%;
 }
+
+.callout primary flex-child-auto-veiling{
+    border: #0a0a0a 5px;
+    min-height: 20%;
+}
