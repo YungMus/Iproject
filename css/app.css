@@ -14,11 +14,7 @@ footer {
     text-align: center;
 }
 
-.callout cell small-4 align-self-top{
+.align-self-top-veiling{
     max-width: 10%;
-}
-
-.callout primary flex-child-auto-veiling{
-    border: #0a0a0a 5px;
-    min-height: 20%;
+    min-height: 30%;
 }
