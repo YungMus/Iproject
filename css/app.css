@@ -1,8 +1,8 @@
 footer {
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
-    height: 1px;
+    height: 1%;
 }
 
 .navigatiebalk {
@@ -12,4 +12,8 @@ footer {
 
 .registratieText{
     text-align: center;
+}
+
+.callout cell small-4 align-self-top{
+    max-width: 10%;
 }
