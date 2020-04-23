@@ -1,9 +1,7 @@
 <?php
 $title = 'Inlogpagina';
 require_once("includes/header.php");
-?>
 
-<?php
 $html = '<div class="row flex-container align-center">
           <div class="callout text-center">
                 <p>Email:</p>
@@ -35,13 +33,11 @@ $html = '<div class="row flex-container align-center">
                 
         <div class="row flex-container align-center">
           <div class="callout text-center">
-                <p>maak een account</p>
+                <p>Log in</p>
                 </div>
         </div>';
 echo $html;
-?>
 
-<?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>
