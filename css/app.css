@@ -4,3 +4,8 @@ footer {
     width: 100%;
     height: 2.5rem;
 }
+
+.navigatiebalk {
+    width: 25%;
+    background-color: lime;
+}
