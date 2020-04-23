@@ -2,7 +2,7 @@
 $title = 'Inlogpagina';
 require_once("includes/header.php");
 
-$html = '<div class="row flex-container align-center">
+$html = '<div class="row flex-container align-center padding-y">
           <div class="callout text-center">
                 <p>Email:</p>
                 </div>

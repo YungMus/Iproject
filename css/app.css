@@ -14,7 +14,7 @@ footer {
     text-align: center;
 }
 
-.align-self-top-veiling{
-    max-width: 10%;
-    min-height: 30%;
+.padding-y{
+    margin-top: 0.9375rem;
+    margin-bottom: 0.9375rem;
 }
