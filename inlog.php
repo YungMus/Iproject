@@ -35,6 +35,12 @@ $html = '<div class="row flex-container align-center">
           <div class="callout text-center">
                 <p>Log in</p>
                 </div>
+        </div>
+        
+            <div class="row flex-container align-center">
+      <div class="callout text-center">
+             <p><a href="register.php">Maak account</a></p>
+             </div>
         </div>';
 echo $html;
 

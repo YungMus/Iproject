@@ -52,7 +52,7 @@ $html = ' <div class="registratieText">Accountgegevens:</div>
                 <p>lorem ipsum</p>
                 </div>
          </div>
-         <div class="registratieText">Contactgegevens</div>
+         <div class="registratieText">Contactgegevens:</div>
          <div class="row flex-container align-center">
           <div class="callout text-center">
                 <p>Plaats:</p>
@@ -84,7 +84,23 @@ $html = ' <div class="registratieText">Accountgegevens:</div>
             <div class="callout text-center">
                 <p>lorem ipsum</p>
                 </div>
-         </div>';
+         </div>
+                 <div class="row flex-container align-center">
+          <div class="callout text-center">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Vestibulum a libero hendrerit, laoreet eros vitae, accumsan eros. 
+                Donec dui urna, tempus non elit a, tincidunt pulvinar lectus. 
+                Maecenas non risus auctor tellus convallis volutpat. 
+                Mauris aliquam feugiat tortor id blandit. Donec laoreet lobortis turpis vitae semper. 
+                Quisque gravida ornare euismod.</p>
+          </div>
+        </div>
+                
+        <div class="row flex-container align-center">
+          <div class="callout text-center">
+                <p>Maak account</p>
+                </div>
+        </div>';
 echo $html;
 
 require_once("includes/foundation_script.php");

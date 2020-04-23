@@ -2,12 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="03ba0e1a-560f-4d5b-9a2c-c1b7c36f9eaa" name="localhost" url="http://localhost/Iproject">
-<<<<<<< HEAD
+      <webServer id="a515fc90-bf5f-44a5-b8e1-24d97d7a1837" name="localhost" url="http://localhost/Iproject">
         <fileTransfer mountedRoot="C:\xampp\htdocs\Iproject" accessType="MOUNT" port="0" />
-=======
-        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\php" accessType="MOUNT" />
->>>>>>> 199450428255abfe411cb60a5d423ce2da570af2
       </webServer>
     </option>
   </component>
