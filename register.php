@@ -2,7 +2,7 @@
 $title = 'Registeren';
 require_once("includes/header.php");
 
-$html = ' <div class="registratieText">Accountgegevens</div>
+$html = ' <div class="registratieText">Accountgegevens:</div>
         <div class="row flex-container align-center">
           <div class="callout text-center">
                 <p>Gebruiksnaam:</p>
