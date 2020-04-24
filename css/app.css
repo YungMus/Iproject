@@ -7,7 +7,6 @@ footer {
 
 .navigatiebalk {
     width: 25%;
-    background-color: lime;
 }
 
 .registratieText{
@@ -17,6 +16,15 @@ footer {
 .padding-y{
     margin-top: 0.9375rem;
     margin-bottom: 0.9375rem;
+}
+
+.padding-x{
+    margin-left: 0.9375rem;
+    margin-right: 0.9375rem;
+}
+
+.padding-r{
+    margin-right: 0.9375rem;
 }
 
 .hero-section {
