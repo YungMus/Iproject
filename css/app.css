@@ -82,6 +82,13 @@ footer {
     transition: all 0.5s ease;
 }
 
+.product-cards{
+    display: flex;
+    margin-left: 4%;
+    margin-bottom: 25%;
+    margin-top: 15%;
+ }
+
 
 .product-card {
     background-color: #fefefe;
