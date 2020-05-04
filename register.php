@@ -18,99 +18,31 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 }
 
 require_once("includes/header.php");
-require_once("connectingDatabase.php");
+//require_once("connectingDatabase.php");
 ?>
+    <form>
+        <div class="form">
+            <h4 class="text-center">Registreer hier!</h4>
+            <label for="form-username">Gebruikersnaam
+                <input type="text" class="form-username" name="username" id="username">
+            </label>
+            <label for="form-email">Email
+                <input type="text" class="form-email" name="email" id="email">
+            </label>
+            <label for="form-password">Wachtwoord
+                <input type="text" class="form-password" name="password" id="password">
+            </label>
+            <label for="form-password">Herhaal wachtwoord
+                <input type="text" class="form-password" name="password-repeat" id="password-repeat">
+            </label>
+            <label for="form-gender">Geslacht
+                <input type="" class="form-password" name="password-repeat" id="password-repeat">
+            </label>
+            <button type="submit" class="form-button">Registreren</button>
+            <p class="text-center"><a href="inlog.php">Toch inloggen?</a></p>
+        </div>
+    </form>
 
-<form method="POST" action="register.php">
-          <div class="row flex-container align-center padding-y">
-                  <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="username">Gebruiksnaam</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="username" name="username">
-          </div>
-        </div>
-        </div>
-        
-        <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="email">Email</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="email" name="email">
-          </div>
-        </div>
-
-        <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="password">Wachtwoord</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="password" name="password">
-          </div>
-        </div>
-        
-        <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="gender">Geslacht</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="gender" name="gender">
-          </div>
-        </div>
-        
-                <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="birthdate">Geboortedatum</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="birthdate" name="birthdate">
-          </div>
-        </div>
-        
-                <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="place">Plaats</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="place" name="place">
-          </div>
-        </div>
-        
-                <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="postalCode">Postcode</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="postalCode" name="postalCode">
-          </div>
-        </div>
-        
-                <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="houseNumber">Huisnummer</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="houseNumber" name="houseNumber">
-          </div>
-        </div>
-        
-                <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="celphoneNumber">Telefoonnummer</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="celphoneNumber" name="celphoneNumber">
-          </div>
-        </div>
-                
-        <div class="row flex-container align-center">
-          <div class="callout text-center">
-                        <input type="submit" id="send" name="send" value="maak account">
-                </div>
-        </div>
-        </form>
 
 <?php
 require_once("includes/foundation_script.php");

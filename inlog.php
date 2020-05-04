@@ -22,17 +22,17 @@ if(isset($_GET['error'])){
 ?>
 
 <main>
-    <form class="log-in-form" method="post" action="inlog.inc.php">
+    <form class="form" method="post" action="inlog.inc.php">
         <h4 class="text-center">Log in met je account</h4>
-        <label>Email
-            <input type="email" placeholder="iemand@voorbeeld.com">
+        <label for="form-email">Gebruikersnaam/Email
+            <input type="email" class="form-email" name="email" id="email">
         </label>
-        <label>Wachtwoord
-            <input type="password" placeholder="Wachtwoord">
+        <label for="form-password">Wachtwoord
+            <input type="password" class="form-password" name="password" id="password">
         </label>
         <input id="show-password" type="checkbox"><label for="show-password">Laat wachtwoord zien</label>
-        <p><input type="submit" class="button expanded" name="login" value="Log in"></input></p>
-        <p class="text-center"><a href="wachtwoordVergeten.php">Wachtwoord vergeten?</a></p>
+        <p><input type="submit" class="form-button" name="login"  value="Log in"></input></p>
+        <p><a class="space" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a> <a href="register.php">Geen inloggegevens?</a></p>
     </form>
 </main>
 
