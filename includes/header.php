@@ -3,6 +3,13 @@ $metahttpequiv = "<meta http-equiv=\"x-ua-compatible\" content='ie=edge'>";
 $metaCharset = "<meta charset='utf-8'>";
 $metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
 $headTitle = "<title>$title</title>";
+
+if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
+    if (isset($_POST['search'])){
+        $search = htmlspecialchars(trim($_POST['search']));
+        echo $search;
+    }
+}
 ?>
 
 <!doctype html>
@@ -13,6 +20,14 @@ $headTitle = "<title>$title</title>";
     $metaCharset,
     $metaViewport,
     $headTitle;
+
+    if (isset($_POST['sendHeader'])) {
+        $sql = "select * from item WHERE title LIKE :searchA OR description like :searchB";
+//        $data = $dbh->prepare($sql);
+//        $data->execute(array(':searchA' => '%' . $search . '%', ':searchA' => '%' . $search . '%'));
+        }
+
+
     ?>
 
     <link rel="stylesheet" href="css/foundation.css">
@@ -47,8 +62,10 @@ $headTitle = "<title>$title</title>";
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><input type="Search" placeholder="Search"></li>
-                <li><button type="button" class="button">Search</button></li>
+                <form method="POST" action=<?php echo $link;?>>
+                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Search"></li>
+                <li><input type="submit" id="sendHeader" name="sendHeader" value="Search"></li>
+                </form>
             </ul>
         </div>
     </div>

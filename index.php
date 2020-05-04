@@ -1,5 +1,6 @@
 <?php
 $title = 'Homepage';
+$link = 'index.php';
 
 require_once("includes/header.php");
 ?>

@@ -1,5 +1,7 @@
 <?php
 $title = 'Voorwaarden & Condities';
+$link = 'voorwaardenCondities.php';
+
 require_once("includes/header.php");
 ?>
 

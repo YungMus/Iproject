@@ -1,5 +1,7 @@
 <?php
 $title = 'Contact';
+$link = 'contact.php';
+
 require_once("includes/header.php");
 ?>
     <section class="contact-us-section">

@@ -1,5 +1,7 @@
 <?php
 $title = 'Persoonlijke Pagina';
+$link = 'persoonlijkePagina.php';
+
 require_once("includes/header.php");
 ?>
 

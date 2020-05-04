@@ -1,5 +1,7 @@
 <?php
 $title = 'Inlogpagina';
+$link = 'veilingCategorieOverzicht.php';
+
 require_once("includes/header.php");
 
 $html = '<div class="grid-x grid-padding-y grid-padding-x">

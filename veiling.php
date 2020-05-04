@@ -1,5 +1,6 @@
 <?php
 $title = 'Veiling';
+$link = 'veiling.php';
 require_once("includes/header.php");
 
 $html = '<div class="grid-x grid-padding-y grid-padding-y">

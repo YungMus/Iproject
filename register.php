@@ -1,5 +1,6 @@
 <?php
 $title = 'Registeren';
+$link = 'register.php';
 require_once("includes/header.php");
 
 $html = ' <div class="registratieText">Accountgegevens:</div>

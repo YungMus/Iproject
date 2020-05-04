@@ -1,5 +1,7 @@
 <?php
 $title = 'Veiling overzicht';
+$link = 'veilingOverzicht.php';
+
 require_once("includes/header.php");
 ?>
 
