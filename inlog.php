@@ -2,15 +2,8 @@
 $title = 'Inlogpagina';
 $link = 'inlog.php';
 
-if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
-    if (isset($_POST['logIn'])){
-        $email = htmlspecialchars(trim($_POST['email']));
-        $wachtwoord = htmlspecialchars(trim($_POST['password']));
-        print_r($_POST);
-    }
-}
-
 require_once("includes/header.php");
+require_once("connectingDatabase.php");
 ?>
 
 <form method="POST" action="inlog.php">

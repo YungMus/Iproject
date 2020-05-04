@@ -3,6 +3,7 @@ $title = 'Contact';
 $link = 'contact.php';
 
 require_once("includes/header.php");
+require_once("connectingDatabase.php");
 ?>
     <section class="contact-us-section">
         <div class="row medium-unstack">

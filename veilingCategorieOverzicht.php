@@ -3,6 +3,7 @@ $title = 'Inlogpagina';
 $link = 'veilingCategorieOverzicht.php';
 
 require_once("includes/header.php");
+require_once("connectingDatabase.php");
 ?>
 
 <div class="grid-x grid-padding-y grid-padding-x">
