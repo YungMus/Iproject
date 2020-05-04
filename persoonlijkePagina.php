@@ -5,8 +5,7 @@ $link = 'persoonlijkePagina.php';
 require_once("includes/header.php");
 ?>
 
-<?php
-    $html = '<div class="row flex-container">
+<div class="row flex-container">
     <div class="product-card-thumbnail padding-r">
         <a href="#"><img src="https://placehold.it/180x180"/></a>
     </div>
@@ -40,9 +39,7 @@ require_once("includes/header.php");
                 Mauris aliquam feugiat tortor id blandit. Donec laoreet lobortis turpis vitae semper.
                 Quisque gravida ornare euismod.</p>
         </div>
-    </div>';
-    echo $html;
-?>
+    </div>
 
 <?php
 require_once("includes/foundation_script.php");

@@ -12,7 +12,9 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 }
 
 require_once("includes/header.php");
-$html = '<form method="POST" action="wachtwoordVergeten.php">
+?>
+
+<form method="POST" action="wachtwoordVergeten.php">
           <div class="row flex-container align-center padding-y">
           <div class="callout text-center">
                  <label for="email">email</label>
@@ -45,9 +47,9 @@ $html = '<form method="POST" action="wachtwoordVergeten.php">
                         <input type="submit" id="send" name="send" value="Nieuw wachtwoord">
                 </div>
         </div>
-        </form>';
-echo $html;
+        </form>
 
+<?php
 if (isset($_POST['send'])) {
     $sql = "select replace(:oldPassword, :oldPassword, :newPassword) from user WHERE e-mail = :email";
 //    $data = $dbh->prepare($sql);

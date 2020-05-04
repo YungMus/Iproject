@@ -11,7 +11,9 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 }
 
 require_once("includes/header.php");
-$html = '<form method="POST" action="inlog.php">
+?>
+
+<form method="POST" action="inlog.php">
           <div class="row flex-container align-center padding-y">
           <div class="callout text-center">
                  <label for="email">email</label>
@@ -47,9 +49,9 @@ $html = '<form method="POST" action="inlog.php">
       <div class="callout text-center">
              <p><a href="wachtwoordVergeten.php">Nieuw wachtwoord</a></p>
              </div>
-        </div>';
-echo $html;
+        </div>
 
+<?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>

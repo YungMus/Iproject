@@ -18,8 +18,9 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 }
 
 require_once("includes/header.php");
+?>
 
-$html = '<form method="POST" action="register.php">
+<form method="POST" action="register.php">
           <div class="row flex-container align-center padding-y">
                   <div class="row flex-container align-center">
            <div class="callout text-center">
@@ -108,9 +109,9 @@ $html = '<form method="POST" action="register.php">
                         <input type="submit" id="send" name="send" value="maak account">
                 </div>
         </div>
-        </form>';
-echo $html;
+        </form>
 
+<?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>

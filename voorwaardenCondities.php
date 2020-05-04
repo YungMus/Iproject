@@ -5,8 +5,7 @@ $link = 'voorwaardenCondities.php';
 require_once("includes/header.php");
 ?>
 
-<?php
-$html = '<div class="flex-container align-spaced">
+<div class="flex-container align-spaced">
             <div class="navigatiebalk callout">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Vestibulum a libero hendrerit, laoreet eros vitae, accumsan eros.
@@ -23,10 +22,7 @@ $html = '<div class="flex-container align-spaced">
                 Mauris aliquam feugiat tortor id blandit. Donec laoreet lobortis turpis vitae semper.
                 Quisque gravida ornare euismod.</p>
             </div>
-</div>';
-
-echo $html;
-?>
+</div>
 
 <?php
 require_once("includes/foundation_script.php");
