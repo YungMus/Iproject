@@ -2,41 +2,40 @@
 $title = 'Inlogpagina';
 $link = 'inlog.php';
 
+if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
+    if (isset($_POST['logIn'])){
+        $email = htmlspecialchars(trim($_POST['email']));
+        $wachtwoord = htmlspecialchars(trim($_POST['password']));
+        print_r($_POST);
+    }
+}
+
 require_once("includes/header.php");
-$html = '<div class="row flex-container align-center padding-y">
+$html = '<form method="POST" action="inlog.php">
+          <div class="row flex-container align-center padding-y">
           <div class="callout text-center">
-                <p>Email:</p>
+                 <label for="email">email</label>
                 </div>
             <div class="callout text-center">
-                <p>lorem ipsum</p>
+                <input type="email" id="email" name="email">
                 </div>
          </div>
 
         <div class="row flex-container align-center">
            <div class="callout text-center">
-                <p>Wachtwoord:</p>
+                  <label for="password">Wachtwoord</label>
            </div>
           <div class="callout text-center">
-                <p>lorem ipsum 2</p>
-          </div>
-        </div>
-
-        <div class="row flex-container align-center">
-          <div class="callout text-center">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Vestibulum a libero hendrerit, laoreet eros vitae, accumsan eros. 
-                Donec dui urna, tempus non elit a, tincidunt pulvinar lectus. 
-                Maecenas non risus auctor tellus convallis volutpat. 
-                Mauris aliquam feugiat tortor id blandit. Donec laoreet lobortis turpis vitae semper. 
-                Quisque gravida ornare euismod.</p>
+                <input type="text" id="password" name="password">
           </div>
         </div>
                 
         <div class="row flex-container align-center">
           <div class="callout text-center">
-                <p>Log in</p>
+                        <input type="submit" id="logIn" name="logIn" value="log in">
                 </div>
         </div>
+        </form>
         
             <div class="row flex-container align-center">
       <div class="callout text-center">

@@ -1,107 +1,114 @@
 <?php
 $title = 'Registeren';
 $link = 'register.php';
+
+if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
+    if (isset($_POST['send'])){
+        $username = htmlspecialchars(trim($_POST['username']));
+        $email = htmlspecialchars(trim($_POST['email']));
+        $password = htmlspecialchars(trim($_POST['password']));
+        $gender = htmlspecialchars(trim($_POST['gender']));
+        $birthdate = htmlspecialchars(trim($_POST['birthdate']));
+        $place = htmlspecialchars(trim($_POST['place']));
+        $postalCode = htmlspecialchars(trim($_POST['postalCode']));
+        $houseNumber = htmlspecialchars(trim($_POST['houseNumber']));
+        $celphoneNumber = htmlspecialchars(trim($_POST['celphoneNumber']));
+        print_r($_POST);
+    }
+}
+
 require_once("includes/header.php");
 
-$html = ' <div class="registratieText">Accountgegevens:</div>
-        <div class="row flex-container align-center">
+$html = '<form method="POST" action="register.php">
+          <div class="row flex-container align-center padding-y">
+                  <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="username">Gebruiksnaam</label>
+           </div>
           <div class="callout text-center">
-                <p>Gebruiksnaam:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
+                <input type="text" id="username" name="username">
+          </div>
+        </div>
+        </div>
+        
+        <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="email">Email</label>
+           </div>
+          <div class="callout text-center">
+                <input type="text" id="email" name="email">
+          </div>
+        </div>
 
         <div class="row flex-container align-center">
            <div class="callout text-center">
-                <p>Email:</p>
+                  <label for="password">Wachtwoord</label>
            </div>
           <div class="callout text-center">
-                <p>lorem ipsum 2</p>
+                <input type="text" id="password" name="password">
           </div>
         </div>
+        
         <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="gender">Geslacht</label>
+           </div>
           <div class="callout text-center">
-                <p>Wachtwoord:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
+                <input type="text" id="gender" name="gender">
+          </div>
+        </div>
+        
+                <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="birthdate">Geboortedatum</label>
+           </div>
           <div class="callout text-center">
-                <p>Herhaal wachtwoord:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
+                <input type="text" id="birthdate" name="birthdate">
+          </div>
+        </div>
+        
+                <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="place">Plaats</label>
+           </div>
           <div class="callout text-center">
-                <p>Geslacht:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
+                <input type="text" id="place" name="place">
+          </div>
+        </div>
+        
+                <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="postalCode">Postcode</label>
+           </div>
           <div class="callout text-center">
-                <p>Geboortedatum:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="registratieText">Contactgegevens:</div>
-         <div class="row flex-container align-center">
+                <input type="text" id="postalCode" name="postalCode">
+          </div>
+        </div>
+        
+                <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="houseNumber">Huisnummer</label>
+           </div>
           <div class="callout text-center">
-                <p>Plaats:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
+                <input type="text" id="houseNumber" name="houseNumber">
+          </div>
+        </div>
+        
+                <div class="row flex-container align-center">
+           <div class="callout text-center">
+                  <label for="celphoneNumber">Telefoonnummer</label>
+           </div>
           <div class="callout text-center">
-                <p>Postcode:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
-          <div class="callout text-center">
-                <p>Huisnummer:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-         <div class="row flex-container align-center">
-          <div class="callout text-center">
-                <p>Telefoonnummer:</p>
-                </div>
-            <div class="callout text-center">
-                <p>lorem ipsum</p>
-                </div>
-         </div>
-                 <div class="row flex-container align-center">
-          <div class="callout text-center">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Vestibulum a libero hendrerit, laoreet eros vitae, accumsan eros. 
-                Donec dui urna, tempus non elit a, tincidunt pulvinar lectus. 
-                Maecenas non risus auctor tellus convallis volutpat. 
-                Mauris aliquam feugiat tortor id blandit. Donec laoreet lobortis turpis vitae semper. 
-                Quisque gravida ornare euismod.</p>
+                <input type="text" id="celphoneNumber" name="celphoneNumber">
           </div>
         </div>
                 
         <div class="row flex-container align-center">
           <div class="callout text-center">
-                <p>Maak account</p>
+                        <input type="submit" id="send" name="send" value="maak account">
                 </div>
-        </div>';
+        </div>
+        </form>';
 echo $html;
 
 require_once("includes/foundation_script.php");

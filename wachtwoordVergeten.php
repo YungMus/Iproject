@@ -7,14 +7,12 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
         $oldPassword = htmlspecialchars(trim($_POST['oldPassword']));
         $newPassword = htmlspecialchars(trim($_POST['newPassword']));
         $email = htmlspecialchars(trim($_POST['email']));
-        echo $email;
-        echo $oldPassword;
-        echo $newPassword;
+        print_r($_POST);
     }
 }
 
 require_once("includes/header.php");
-$html = ' <form method="POST" action="wachtwoordVergeten.php">
+$html = '<form method="POST" action="wachtwoordVergeten.php">
           <div class="row flex-container align-center padding-y">
           <div class="callout text-center">
                  <label for="email">email</label>
