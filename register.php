@@ -36,7 +36,12 @@ require_once("includes/header.php");
                 <input type="text" class="form-password" name="password-repeat" id="password-repeat">
             </label>
             <label for="form-gender">Geslacht
-                <input type="" class="form-password" name="password-repeat" id="password-repeat">
+                <label for="radio-button">Man
+                    <input type="radio" class="form-gender" name="male" id="male">
+                </label>
+                <label for="radio-button">Vrouw
+                    <input type="radio" class="form-gender" name="female" id="female">
+                </label>
             </label>
             <button type="submit" class="form-button">Registreren</button>
             <p class="text-center"><a href="inlog.php">Toch inloggen?</a></p>
