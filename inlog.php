@@ -42,6 +42,12 @@ $html = '<div class="row flex-container align-center padding-y">
       <div class="callout text-center">
              <p><a href="register.php">Maak account</a></p>
              </div>
+        </div>
+        
+        <div class="row flex-container align-center">
+      <div class="callout text-center">
+             <p><a href="wachtwoordVergeten.php">Nieuw wachtwoord</a></p>
+             </div>
         </div>';
 echo $html;
 
