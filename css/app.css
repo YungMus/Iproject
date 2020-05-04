@@ -259,3 +259,14 @@ footer {
 .row medium-unstack{
     display: flex;
 }
+
+
+.log-in-form {
+    border: 1px solid #cacaca;
+    padding: 1rem;
+    border-radius: 0;
+    width:35%;
+    margin-left: 33%;
+    margin-top: 5%;
+}
+

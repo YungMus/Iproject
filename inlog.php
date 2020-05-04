@@ -3,46 +3,38 @@ $title = 'Inlogpagina';
 $link = 'inlog.php';
 
 require_once("includes/header.php");
-require_once("connectingDatabase.php");
+//require_once("connectingDatabase.php");
+
+if(isset($_GET['error'])){
+    if($_GET['error'] == "emptyfields"){
+        echo '<p class="error"> Vul al het velden in!</p>';
+    }
+    else if($_GET['error'] == "wrongpassword"){
+        echo '<p class="error"> Jouw wachtwoord klopt niet!</p>';
+    }
+    else if($_GET['error'] == "sqlerror"){
+        echo '<p class="error">Er bevindt zich een sqlerror!</p>';
+    }
+    else if($_GET['error'] == "noAuthorisation"){
+        echo '<p class="error">Je hebt geen autorisatie!</p>';
+    }
+}
 ?>
 
-<form method="POST" action="inlog.php">
-          <div class="row flex-container align-center padding-y">
-          <div class="callout text-center">
-                 <label for="email">email</label>
-                </div>
-            <div class="callout text-center">
-                <input type="email" id="email" name="email">
-                </div>
-         </div>
-
-        <div class="row flex-container align-center">
-           <div class="callout text-center">
-                  <label for="password">Wachtwoord</label>
-           </div>
-          <div class="callout text-center">
-                <input type="text" id="password" name="password">
-          </div>
-        </div>
-                
-        <div class="row flex-container align-center">
-          <div class="callout text-center">
-                        <input type="submit" id="logIn" name="logIn" value="log in">
-                </div>
-        </div>
-        </form>
-        
-            <div class="row flex-container align-center">
-      <div class="callout text-center">
-             <p><a href="register.php">Maak account</a></p>
-             </div>
-        </div>
-        
-        <div class="row flex-container align-center">
-      <div class="callout text-center">
-             <p><a href="wachtwoordVergeten.php">Nieuw wachtwoord</a></p>
-             </div>
-        </div>
+<main>
+    <form class="log-in-form" method="post" action="inlog.inc.php">
+        <h4 class="text-center">Log in met je account</h4>
+        <label>Email
+            <input type="email" placeholder="iemand@voorbeeld.com">
+        </label>
+        <label>Wachtwoord
+            <input type="password" placeholder="Wachtwoord">
+        </label>
+        <input id="show-password" type="checkbox"><label for="show-password">Laat wachtwoord zien</label>
+        <p><input type="submit" class="button expanded" name="login" value="Log in"></input></p>
+        <p class="text-center"><a href="wachtwoordVergeten.php">Wachtwoord vergeten?</a></p>
+    </form>
+</main>
 
 <?php
 require_once("includes/foundation_script.php");
