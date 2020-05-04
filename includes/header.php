@@ -24,7 +24,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
     if (isset($_POST['sendHeader'])) {
         $sql = "select * from item WHERE title LIKE :searchA OR description like :searchB";
 //        $data = $dbh->prepare($sql);
-//        $data->execute(array(':searchA' => '%' . $search . '%', ':searchA' => '%' . $search . '%'));
+//        $data->execute(array(':searchA' => '%' . $search . '%', ':searchB' => '%' . $search . '%'));
         }
 
 
