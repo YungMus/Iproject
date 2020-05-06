@@ -27,7 +27,6 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 //        $data->execute(array(':searchA' => '%' . $search . '%', ':searchB' => '%' . $search . '%'));
         }
 
-
     ?>
 
     <link rel="stylesheet" href="css/foundation.css">
@@ -42,7 +41,6 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
             <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text"><?php echo $title ?></li>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="veiling.php">veiling</a>
                 <li><a href="veilingCategorieOverzicht.php">veiling categorie overzicht</a></li>
                 </li>
                 <li><a href="contact.php">Contact</a>
@@ -57,7 +55,6 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
                         <li><a href="register.php">registreren</a></li>
                     </ul>
                 </li>
-
             </ul>
         </div>
         <div class="top-bar-right">
