@@ -176,7 +176,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #fefefe;
+  background: #5f4b8b;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: 1.5;
@@ -2259,11 +2259,11 @@ h6, .h6 {
 
 a {
   line-height: inherit;
-  color: #1779ba;
+  color: white;
   text-decoration: none;
   cursor: pointer; }
   a:hover, a:focus {
-    color: #1468a0; }
+    color: gray; }
   a img {
     border: 0; }
 
@@ -3381,8 +3381,8 @@ select {
   padding: 1rem;
   border: 1px solid rgba(10, 10, 10, 0.25);
   border-radius: 0;
-  background-color: white;
-  color: #0a0a0a; }
+  background-color: #856bbf;
+  color: white; }
   .callout > :first-child {
     margin-top: 0; }
   .callout > :last-child {
@@ -5399,7 +5399,7 @@ a.thumbnail {
           flex-wrap: wrap; }
   .top-bar,
   .top-bar ul {
-    background-color: #e6e6e6; }
+    background-color: #3c3057; }
   .top-bar input {
     max-width: 200px;
     margin-right: 1rem; }

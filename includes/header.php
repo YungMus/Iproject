@@ -40,6 +40,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
+<!--                <li class="dropdown-menu"><a href="index.php"><img src="../images/logoiconcepts.png" alt="Icon" /></image></a></li>-->
                 <li class="menu-text"><?php echo $title ?></li>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="veiling.php">veiling</a>

@@ -20,6 +20,16 @@ require_once("includes/header.php");
     </ul>
 </nav>
 <br>
+<div class="grid-x grid-padding-y grid-padding-x">
+    <div class="cell small-4 align-self-top"></div>
+    <div class="cell small-4 flex-container flex-dir-column">
+    <div class="callout primary flex-child-auto">
+    Dit is de site van Iconcepts. Op deze site kunt u gemakkelijk veilingen zetten en op veilingen bieden. Als u wilt bieden moet u eerst een account aanmaken.
+    Dit kan op <a href="register.php">register</a>. Als u dit eenmaal heeft gedaan kunt u vol gebruik van onze maken.
+</div>
+</div>
+</div>
+
 <article class="product-cards">
 <div class="product-card">
     <div class="product-card-thumbnail">

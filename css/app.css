@@ -91,8 +91,8 @@ footer {
 
 
 .product-card {
-    background-color: #fefefe;
-    border: 1px solid #e6e6e6;
+    background-color: #3c3057;
+    border: 1px solid black;
     padding: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -119,7 +119,7 @@ footer {
 }
 
 .product-card-price {
-    color: #3e3e3e;
+    color: white;
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 600;
@@ -127,7 +127,7 @@ footer {
 }
 
 .product-card-sale {
-    color: #cacaca;
+    color: gray;
     display: inline-block;
     font-size: 0.85rem;
     margin-left: 0.3rem;
