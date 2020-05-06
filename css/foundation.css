@@ -3381,8 +3381,8 @@ select {
   padding: 1rem;
   border: 1px solid rgba(10, 10, 10, 0.25);
   border-radius: 0;
-  background-color: white;
-  color: #0a0a0a; }
+  background-color: #856bbf;
+  color: white; }
   .callout > :first-child {
     margin-top: 0; }
   .callout > :last-child {
