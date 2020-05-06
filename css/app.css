@@ -260,6 +260,10 @@ footer {
     display: flex;
 }
 
+.registerpage{
+display: flex;
+}
+
 .form {
     padding: 1rem 1.5em;
     border-radius: .5rem;
@@ -269,14 +273,25 @@ footer {
     margin-left: 33%;
 }
 
-.form h4{
+.register-form{
+    padding: 1rem 1.5em;
+    border-radius: .5rem;
+    background-color: #3d454f;
+    width: 100%;
+    margin-top: 18%;
+    margin-left: 100%;
+}
+
+.form h4,
+.register-form h4{
     color: white;
     margin-bottom: 1rem;
     font-weight: 600;
     text-transform: uppercase;
 }
 
-.form label{
+.form label,
+.register-form label{
     text-transform: uppercase;
     color: #adadad;
     letter-spacing: 1px;
@@ -284,7 +299,8 @@ footer {
     margin-bottom: 1rem;
 }
 
-.form input:focus{
+.form input:focus,
+.register-form input:focus{
     opacity: .9;
 }
 
@@ -318,3 +334,85 @@ footer {
 .space{
     margin-right: 10.9%;
 }
+
+
+.marketing-site-content-section {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 40%;
+    margin-left: 6%;
+    margin-top: 3%;
+}
+
+.marketing-site-content-section .button.round {
+    border-radius: 5000px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.marketing-site-content-section .marketing-site-content-section-img {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    -webkit-flex: 1 0 100%;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%;
+}
+
+.marketing-site-content-section .marketing-site-content-section-img img {
+    width: 100%;
+}
+
+@media screen and (min-width: 40em) {
+    .marketing-site-content-section .marketing-site-content-section-img {
+        -webkit-flex: 1 0 50%;
+        -ms-flex: 1 0 50%;
+        flex: 1 0 50%;
+    }
+}
+
+.marketing-site-content-section .marketing-site-content-section-block {
+    padding: 1rem;
+    -webkit-flex: 1 0 100%;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    background: #e6e6e6;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+@media screen and (min-width: 40em) {
+    .marketing-site-content-section .marketing-site-content-section-block {
+        -webkit-flex: 1 0 50%;
+        -ms-flex: 1 0 50%;
+        flex: 1 0 50%;
+        padding: 2rem;
+    }
+}
+
+.marketing-site-content-section-block-header {
+    font-size: 24px;
+}
+
+.marketing-site-content-section-block-subheader {
+    font-size: 13px;
+}
+

@@ -20,8 +20,29 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 require_once("includes/header.php");
 //require_once("connectingDatabase.php");
 ?>
+<main class="registerpage">
+    <div class="marketing-site-content-section">
+        <div class="marketing-site-content-section-img">
+            <img src="https://images.pexels.com/photos/256046/pexels-photo-256046.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
+        </div>
+        <div class="marketing-site-content-section-block">
+            <h3 class="marketing-site-content-section-block-header">Yeti Snowcone Agency</h3>
+            <p class="marketing-site-content-section-block-subheader subheader">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!</p>
+            <a href="#" class="round button small">learn more</a>
+        </div>
+        <div class="marketing-site-content-section-block small-order-2 medium-order-1">
+            <h3 class="marketing-site-content-section-block-header">Yeti Snowcone Agency</h3>
+            <p class="marketing-site-content-section-block-subheader subheader">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!</p>
+            <a href="#" class="round button small">learn more</a>
+        </div>
+        <div class="marketing-site-content-section-img small-order-1 medium-order-2">
+            <img src="https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
+        </div>
+    </div>
+
+
     <form>
-        <div class="form">
+        <div class="register-form">
             <h4 class="text-center">Registreer hier!</h4>
             <label for="form-username">Gebruikersnaam
                 <input type="text" class="form-username" name="username" id="username">
@@ -47,7 +68,7 @@ require_once("includes/header.php");
             <p class="text-center"><a href="inlog.php">Toch inloggen?</a></p>
         </div>
     </form>
-
+</main>
 
 <?php
 require_once("includes/foundation_script.php");
