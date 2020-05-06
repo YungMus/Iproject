@@ -1,7 +1,7 @@
 <?php
 
 $serverName = "(local)";
-$databaseName = "I-Project";
+$databaseName = "IProject";
 
 try {
     $conn = new PDO("sqlsrv:server=$serverName;Database=$databaseName", "", "");
@@ -9,13 +9,13 @@ try {
 
     echo "Connected...<br><br>";
 
-    $data = $conn->query("SELECT DISTINCT TOP(10) Firstname, Lastname FROM Person");
+    $data = $conn->query("SELECT DISTINCT TOP(10) rubric_id, order_nr FROM Rubric");
     $results = $data->fetchAll(PDO::FETCH_ASSOC);
 
     print_r($results);
 
     foreach($results as $row){
-        echo "<p>{$row['Firstname']} {$row['Lastname']}</p>";
+        echo "<p>{$row['rubric_id']} {$row['order_nr']}</p>";
     }
 
 }
