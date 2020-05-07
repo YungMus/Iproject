@@ -49,26 +49,31 @@ if (isset($_POST['Register'])){
                 exit();
             }
             else{
-                $sql = "INSERT INTO User (username, \"e-mail\", password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql1 = "INSERT INTO User (username, \"e-mail\", password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql2 = "INSERT INTO Userphone (phone) VALUES (?)";
                 $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql)) {
+                if(!mysqli_stmt_prepare($stmt, $sql1)) {
                     header("Location: register.php?error=sqlerror");
                     exit();
                 }
-                else{
+                else {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
                     mysqli_stmt_bind_param($stmt, "sssssssssssss", $username, $email, $hashedPassword, $firstname, $lastname, $birthday, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country);
+                    mysqli_stmt_execute($stmt);
+                } if(!mysqli_stmt_prepare($stmt, $sql2)) {
+                    header("Location: register.php?error=sqlerror");
+                    exit();
+                } else {
+                    mysqli_stmt_bind_param($stmt, "s", $phonenumber);
                     mysqli_stmt_execute($stmt);
                     header("Location: register.php?register=success");
                     exit();
+                    }
                 }
             }
         }
-
-    }
     mysqli_stmt_close($stmt);
-    mysqli_close($dbh);
+    mysqli_close($conn);
 }
 
 else{
