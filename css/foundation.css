@@ -180,7 +180,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: 1.5;
-  color: #0a0a0a;
+  color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -3388,8 +3388,8 @@ select {
   .callout > :last-child {
     margin-bottom: 0; }
   .callout.primary {
-    background-color: #d7ecfa;
-    color: #0a0a0a; }
+    /*background-color: #856bbf;*/
+    color: white; }
   .callout.secondary {
     background-color: #eaeaea;
     color: #0a0a0a; }
