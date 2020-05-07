@@ -329,6 +329,10 @@ footer {
     border-color: #44c8ed;
 }
 
+.form-gender input[type=radio]{
+    margin-bottom: -10%;
+}
+
 .space{
     margin-right: 10.9%;
 }
