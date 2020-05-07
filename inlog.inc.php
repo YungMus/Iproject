@@ -30,13 +30,18 @@ if(isset($_POST['login']) || $_POST['login-sending']){
                     exit();
                 }
                 else if ($passwordcheck == true) {
-                    if ($row['is_seller'] === 0) {
+                    if ($row['is_seller'] === 1) {
                         session_start();
-                        $_SESSION['IDUser'] = $row['user_id'];
+                        $_SESSION['IDSeller'] = $row['user_id'];
+
                     }
-                    else {
+                    else if($row['is_admin'] === 1) {
+                        session_start();
+                        $_SESSION['IDAdmin'] = $row['user_id'];
+                    }
+                    else{
                     session_start();
-                    $_SESSION['IDSeller'] = $row['user_id'];
+                    $_SESSION['IDUser'] = $row['user_id'];
                     }
                     header("Location: persoonlijkepagina.php?login=success");
                     exit();
