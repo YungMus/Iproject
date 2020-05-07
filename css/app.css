@@ -527,7 +527,7 @@ footer {
     padding-right: 0.8rem;
 }
 
-.multi-step-checkout-process .accordion-item:first-child() {
+.multi-step-checkout-process .accordion-item:first-child {
     border-top: 1px solid #e6e6e6;
 }
 

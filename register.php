@@ -68,151 +68,62 @@ require_once("includes/header.php");
         <!-- your content goes here -->
         <div class="multi-step-checkout-process">
             <div class="multi-step-checkout-process-step">
-                <ul class="accordion" data-accordion>
+                <div class="accordion" data-accordion>
                     <li class="accordion-item is-active" data-accordion-item>
-                        <a href="#" class="accordion-title">1. Shipping <span class="multi-step-checkout-step-title-subheader">Step 1 of 3</span></a>
+                        <a href="#" class="accordion-title">1. Account info <span class="multi-step-checkout-step-title-subheader">Stap 1 van 3</span></a>
                         <div class="accordion-content" data-tab-content>
                             <form class="multi-step-checkout-form">
                                 <div class="row">
                                     <div class="small-12 medium-9 column">
                                         <div class="shipping-address multi-step-checkout-step-section">
-                                            <h6 class="multi-step-checkout-step-subheader">Shipping Address</h6>
-                                            <p class="multi-step-checkout-step-subdesc">Please enter your shipping address. Only USPS ships to APO, FPO, or PO Boxes. <a href="#" class="text-link">Shipping Rates and Delivery Times</a></p>
+                                            <h6 class="multi-step-checkout-step-subheader">Account</h6>
+                                            <p class="multi-step-checkout-step-subdesc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
 
                                             <label>
-                                                <input type="text" placeholder="First Name" required >
-                                                <input type="text" placeholder="Last Name" required >
-                                                <input type="text" placeholder="Address" required >
-                                                <div class="row">
-                                                    <div class="small-12 medium-7 column">
-                                                        <input type="text" placeholder="City" required >
-                                                    </div>
-                                                    <div class="small-6 medium-2 column">
-                                                        <select required >
-                                                            <option value="state1">AL</option>
-                                                            <option value="state2">AK</option>
-                                                            <option value="state3">AZ</option>
-                                                            <option value="state4">AR</option>
-                                                            <option value="state5">CA</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="small-6 medium-3 column">
-                                                        <input type="text" placeholder="ZIP" required >
-                                                    </div>
-                                                </div>
-
-                                                <div><hr class="multi-step-checkout-form-divider"></div>
-                                                <input type="text" placeholder="Email" required >
-                                                <input type="text" placeholder="Phone" required >
+                                                <input type="text" placeholder="Gebruikersnaam" required >
+                                                <input type="email" placeholder="Email" required >
+                                                <input type="password" placeholder="Wachtwoord" required >
+                                                <input type="password" placeholder="Herhaling Wachtwoord" required >
                                             </label>
                                         </div>
-                                        <div class="multi-step-checkout-shipping-options multi-step-checkout-step-section">
-                                            <h6 class="multi-step-checkout-step-subheader">Shipping Options</h6>
-
-                                            <div class="row multi-step-checkout-shipping-option">
-                                                <label>
-                                                    <div class="small-10 column">
-                                                        <input type="radio" name="multi-step-checkout-shipping-option" value="ups-ground-shipping" class="multi-step-checkout-shipping-option-selection" checked="checked"> <span class="multi-step-checkout-shipping-option-title">UPS Ground (4–5 business days) - Recommended</span>
-                                                        <div class="multi-step-checkout-shipping-option-desc">Same-day shipping of in-stock items for orders placed before 3pm EST. Realtime tracking included.</div>
-                                                    </div>
-                                                    <div class="small-2 column multi-step-checkout-shipping-cost">
-                                                        $25.00
-                                                    </div>
-                                                </label>
-                                            </div>
-
-                                            <div class="row multi-step-checkout-shipping-option">
-                                                <label>
-                                                    <div class="small-10 column">
-                                                        <input type="radio" name="multi-step-checkout-shipping-option" value="usps-shipping" class="multi-step-checkout-shipping-option-selection"><span class="multi-step-checkout-shipping-option-title">USPS  (6–12 business days)</span>
-                                                        <div class="multi-step-checkout-shipping-option-desc">Tracking is available after 48 hours.</div>
-                                                    </div>
-                                                    <div class="small-2 column multi-step-checkout-shipping-cost">
-                                                        $15.00
-                                                    </div>
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                        <div class="multi-step-checkout-enews-sign-up">
-                                            <fieldset>
-                                                <input class="multi-step-checkout-enews-sign-up-checkbox" id="multi-step-checkout-enews-sign-up-checkbox" type="checkbox">
-                                                <label for="#multi-step-checkout-enews-sign-up-checkbox">Please add me to your eNewsletter list so I can receive special promotions and product updates.</label>
-                                            </fieldset>
-                                        </div>
-                                        <button class="primary button expanded">Continue to Payment</button>
+                                        <button class="primary button expanded">Ga door naar persoonlijke informatie</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </li>
 
-                    <li class="accordion-item" data-accordion-item>
-                        <a href="#" class="accordion-title">2. Payment <span class="multi-step-checkout-step-title-subheader">Step 2 of 3</span></a>
+                    <div class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">2. Persoonlijke informatie <span class="multi-step-checkout-step-title-subheader">Stap 2 van 3</span></a>
                         <div class="accordion-content" data-tab-content>
                             <form class="multi-step-checkout-form">
                                 <div class="row">
                                     <div class="small-12 medium-9 column">
-                                        <div class="multi-step-checkout-billing-address">
-                                            <fieldset>
-                                                <input class="multi-step-checkout-billing-address-checkbox" id="multi-step-checkout-billing-address-checkbox" type="checkbox" checked><label for="multi-step-checkout-billing-address-checkbox">My Billing Address is the same as my Shipping Address.</label>
-                                            </fieldset>
-                                            <ul class="multi-step-checkout-billing-address-list">
-                                                <li class="multi-step-checkout-billing-name">John Smith</li>
-                                                <li class="multi-step-checkout-billing-street">123 Market St.</li>
-                                                <li class="multi-step-checkout-billing-city-state">San Francisco, CA 94134</li>
-                                            </ul>
-                                        </div>
-                                        <div><hr class="multi-step-checkout-form-divider"></div>
-
-                                        <div class="multi-step-checkout-credit-card-info">
-                                            <h6 class="multi-step-checkout-step-subheader">Credit Card</h6>
-                                            <ul class="multi-step-checkout-payment-icons">
-                                                <li><img class="multi-step-checkout-payment-icon" src="https://placehold.it/50x50"/></li>
-                                                <li><img class="multi-step-checkout-payment-icon" src="https://placehold.it/50x50"/></li>
-                                                <li><img class="multi-step-checkout-payment-icon" src="https://placehold.it/50x50"/></li>
-                                                <li><img class="multi-step-checkout-payment-icon" src="https://placehold.it/50x50"/></li>
-                                            </ul>
-
-                                            <input type="text" placeholder="Card Name" required >
-                                            <input type="text" placeholder="Card Number" required >
+                                        <label>
                                             <div class="row">
-                                                <div class="small-4 column">
-                                                    <select required >
-                                                        <option value="january">01</option>
-                                                        <option value="february">02</option>
-                                                        <option value="march">03</option>
-                                                        <option value="april">04</option>
-                                                    </select>
+                                                <div class="small-12 medium-7 column">
+                                                    <input type="text" placeholder="Voornaam" required >
                                                 </div>
-                                                <div class="small-4 column">
-                                                    <select required >
-                                                        <option value="year1">2019</option>
-                                                        <option value="year2">2018</option>
-                                                        <option value="year3">2017</option>
-                                                        <option value="year4">2016</option>
-                                                    </select>
+                                                <div class="small-12 medium-7 column">
+                                                    <input type="text" placeholder="Achternaam" required >
                                                 </div>
-                                                <div class="small-4 column">
-                                                    <input type="text" placeholder="CVV" required >
+                                                <div class="small-12 medium-7 column">
+                                                    <input type="date" placeholder="Geboortedatum" required >
+                                                </div>
+                                                <div class="small-12 medium-7 column">
+                                                    <input type="number" placeholder="Telefoonnummer" required >
+                                                </div>
+                                                <div class="small-12 medium-7 column">
+                                                    <label for="radio-button">Man
+                                                        <input type="radio" class="form-gender" name="male" id="male">
+                                                    </label>
+                                                    <label for="radio-button">Vrouw
+                                                        <input type="radio" class="form-gender" name="female" id="female">
+                                                    </label>
                                                 </div>
                                             </div>
-
-                                            <div><hr class="multi-step-checkout-form-divider"></div>
-
-                                            <label for="apply-gift-card-code"> Gift Card <span>(optional)</span>
-                                                <div class="input-group gift-card">
-                                                    <input class="input-group-field" type="text" placeholder="Code">
-                                                    <div class="input-group-button" placeholder="$">
-
-                                                        <input type="submit" class="button primary" value="Apply" id="apply-gift-card-code">
-                                                    </div>
-                                                </div>
-                                            </label>
-
-                                            <div><hr class="multi-step-checkout-form-divider"></div>
-
-                                            <button class="primary button expanded">Continue to Review Order</button>
+                                        </label>
+                                            <button class="primary button expanded">Ga door naar address</button>
                                         </div>
                                     </div>
                                 </div>
@@ -221,114 +132,272 @@ require_once("includes/header.php");
                     </li>
 
                     <li class="accordion-item" data-accordion-item>
-                        <a href="#" class="accordion-title">3. Review Order <span class="multi-step-checkout-step-title-subheader">Step 3 of 3</span></a>
+                        <a href="#" class="accordion-title">3. Address <span class="multi-step-checkout-step-title-subheader">Stap 3 van 3</span></a>
                         <div class="accordion-content" data-tab-content>
-                            <hr class="show-for-small-only order-table-divider">
-                            <table class="order-table-content stack">
-                                <thead>
-                                <tr>
-                                    <th width="120">Order</th>
-                                    <th width="350"></th>
-                                    <th width="80">Quantity</th>
-                                    <th width="100">Price Each</th>
-                                    <th width="60">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="order-item">
-                                    <td><img class="order-product-image" src="https://placehold.it/100x100"/></td>
-                                    <td><span class="order-product-title">Product 1</span> <span class="order-product-vendor">Vendor 1</span>
-                                        <ul class="order-product-info">
-                                            <li>In Stock</li>
-                                            <li>Product SKU: 12345</li>
-                                            <li>A great Product</li>
-                                            <li>Details: You won't be sad</li>
-                                        </ul>
-                                    </td>
-                                    <td><span class="show-for-small-only">Qty:</span> 1</td>
-                                    <td><span class="show-for-small-only">Price Each: </span><span class="order-product-price">$25.00</span>
-                                        <span class="show-for-small-only">,</span>
-                                        <br class="hide-for-small-only">
-                                        <span class="order-product-price-saving">
-                  You save:
-                  <br class="hide-for-small-only">
-                  $2.08 (5%)
-                </span>
-                                    </td>
-                                    <td><span class="show-for-small-only">Total: </span><span class="order-product-total">$25.00</span></td>
-                                </tr>
-                                <tr class="order-item">
-                                    <td><img class="order-product-image" src="https://placehold.it/100x100"/></td>
-                                    <td><span class="order-product-title">Product 2</span> <span class="order-product-vendor">Vendor 1</span>
-                                        <ul class="order-product-info">
-                                            <li>In Stock</li>
-                                            <li>Product SKU: 12345</li>
-                                            <li>A great Product</li>
-                                            <li>Details: You won't be sad</li>
-                                        </ul>
-                                    </td>
-                                    <td><span class="show-for-small-only">Qty:</span> 1</td>
-                                    <td><span class="show-for-small-only">Price Each: </span><span class="order-product-price">$25.00</span>
-                                        <span class="show-for-small-only">,</span>
-                                        <br class="hide-for-small-only">
-                                        <span class="order-product-price-saving">
-                  You save:
-                  <br class="hide-for-small-only">
-                  $2.08 (5%)
-                </span>
-                                    </td>
-                                    <td><span class="show-for-small-only">Total: </span><span class="order-product-total">$25.00</span></td>
-                                </tr>
-                                <tr class="order-item">
-                                    <td><img class="order-product-image" src="https://placehold.it/100x100"/></td>
-                                    <td><span class="order-product-title">Product 3</span> <span class="order-product-vendor">Vendor 1</span>
-                                        <ul class="order-product-info">
-                                            <li>In Stock</li>
-                                            <li>Product SKU: 12345</li>
-                                            <li>A great Product</li>
-                                            <li>Details: You won't be sad</li>
-                                        </ul>
-                                    </td>
-                                    <td><span class="show-for-small-only">Qty:</span> 1</td>
-                                    <td><span class="show-for-small-only">Price Each: </span><span class="order-product-price">$25.00</span>
-                                        <span class="show-for-small-only">,</span>
-                                        <br class="hide-for-small-only">
-                                        <span class="order-product-price-saving">
-                  You save:
-                  <br class="hide-for-small-only">
-                  $2.08 (5%)
-                </span>
-                                    </td>
-                                    <td><span class="show-for-small-only">Total: </span><span class="order-product-total">$25.00</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="">
-                                <div class="row">
-                                    <div class="small-12 medium-9 column multi-step-checkout-create-account">
-                                        <h6 class="multi-step-checkout-step-subheader">Create an Account <span>(optional)</span></h6>
-                                        <p class="create-account-desc">Save and review your orders in your account.</p>
-                                        <form>
-                                            <div class="row">
-                                                <div class="small-12 medium-6 column">
-                                                    <input type="text" placeholder="Password">
-                                                </div>
-                                                <div class="small-12 medium-6 column">
-                                                    <input type="text" placeholder="Confirm Password">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div><hr class="multi-step-checkout-form-divider"></div>
-
-                                <form>
-                                    <label for="">Comments
-                                        <textarea name="" id="" cols="30" rows="2"></textarea>
-                                    </label>
-                                    <button class="primary button expanded">Submit Order</button>
-                                </form>
+                            <div class="small-6 medium-3 column">
+                                <input type="text" placeholder="Address" required >
+                            </div>
+                            <div class="small-6 medium-3 column">
+                                <input type="text" placeholder="Address 2">
+                            </div>
+                            <div class="small-6 medium-3 column">
+                                <input type="text" placeholder="Postcode" required >
+                            </div>
+                            <div class="small-6 medium-3 column">
+                                <input type="text" placeholder="Plaats" required >
+                            </div>
+                            <div class="small-6 medium-2 column">
+                                <select required >
+                                    <option value="Afganistan">Afghanistan</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Aruba">Aruba</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                    <option value="Bahamas">Bahamas</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Barbados">Barbados</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Belize">Belize</option>
+                                    <option value="Benin">Benin</option>
+                                    <option value="Bermuda">Bermuda</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="Bolivia">Bolivia</option>
+                                    <option value="Bonaire">Bonaire</option>
+                                    <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
+                                    <option value="Botswana">Botswana</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                                    <option value="Brunei">Brunei</option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                    <option value="Burkina Faso">Burkina Faso</option>
+                                    <option value="Burundi">Burundi</option>
+                                    <option value="Cambodia">Cambodia</option>
+                                    <option value="Cameroon">Cameroon</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Canary Islands">Canary Islands</option>
+                                    <option value="Cape Verde">Cape Verde</option>
+                                    <option value="Cayman Islands">Cayman Islands</option>
+                                    <option value="Central African Republic">Central African Republic</option>
+                                    <option value="Chad">Chad</option>
+                                    <option value="Channel Islands">Channel Islands</option>
+                                    <option value="Chile">Chile</option>
+                                    <option value="China">China</option>
+                                    <option value="Christmas Island">Christmas Island</option>
+                                    <option value="Cocos Island">Cocos Island</option>
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="Comoros">Comoros</option>
+                                    <option value="Congo">Congo</option>
+                                    <option value="Cook Islands">Cook Islands</option>
+                                    <option value="Costa Rica">Costa Rica</option>
+                                    <option value="Cote DIvoire">Cote DIvoire</option>
+                                    <option value="Croatia">Croatia</option>
+                                    <option value="Cuba">Cuba</option>
+                                    <option value="Curaco">Curacao</option>
+                                    <option value="Cyprus">Cyprus</option>
+                                    <option value="Czech Republic">Czech Republic</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Djibouti">Djibouti</option>
+                                    <option value="Dominica">Dominica</option>
+                                    <option value="Dominican Republic">Dominican Republic</option>
+                                    <option value="East Timor">East Timor</option>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="El Salvador">El Salvador</option>
+                                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                    <option value="Eritrea">Eritrea</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Ethiopia">Ethiopia</option>
+                                    <option value="Falkland Islands">Falkland Islands</option>
+                                    <option value="Faroe Islands">Faroe Islands</option>
+                                    <option value="Fiji">Fiji</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="French Guiana">French Guiana</option>
+                                    <option value="French Polynesia">French Polynesia</option>
+                                    <option value="French Southern Ter">French Southern Ter</option>
+                                    <option value="Gabon">Gabon</option>
+                                    <option value="Gambia">Gambia</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Ghana">Ghana</option>
+                                    <option value="Gibraltar">Gibraltar</option>
+                                    <option value="Great Britain">Great Britain</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Greenland">Greenland</option>
+                                    <option value="Grenada">Grenada</option>
+                                    <option value="Guadeloupe">Guadeloupe</option>
+                                    <option value="Guam">Guam</option>
+                                    <option value="Guatemala">Guatemala</option>
+                                    <option value="Guinea">Guinea</option>
+                                    <option value="Guyana">Guyana</option>
+                                    <option value="Haiti">Haiti</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Honduras">Honduras</option>
+                                    <option value="Hong Kong">Hong Kong</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Iceland">Iceland</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="India">India</option>
+                                    <option value="Iran">Iran</option>
+                                    <option value="Iraq">Iraq</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Isle of Man">Isle of Man</option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Jamaica">Jamaica</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Jordan">Jordan</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="Kiribati">Kiribati</option>
+                                    <option value="Korea North">Korea North</option>
+                                    <option value="Korea Sout">Korea South</option>
+                                    <option value="Kuwait">Kuwait</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                    <option value="Laos">Laos</option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lebanon">Lebanon</option>
+                                    <option value="Lesotho">Lesotho</option>
+                                    <option value="Liberia">Liberia</option>
+                                    <option value="Libya">Libya</option>
+                                    <option value="Liechtenstein">Liechtenstein</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Luxembourg">Luxembourg</option>
+                                    <option value="Macau">Macau</option>
+                                    <option value="Macedonia">Macedonia</option>
+                                    <option value="Madagascar">Madagascar</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Malawi">Malawi</option>
+                                    <option value="Maldives">Maldives</option>
+                                    <option value="Mali">Mali</option>
+                                    <option value="Malta">Malta</option>
+                                    <option value="Marshall Islands">Marshall Islands</option>
+                                    <option value="Martinique">Martinique</option>
+                                    <option value="Mauritania">Mauritania</option>
+                                    <option value="Mauritius">Mauritius</option>
+                                    <option value="Mayotte">Mayotte</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Midway Islands">Midway Islands</option>
+                                    <option value="Moldova">Moldova</option>
+                                    <option value="Monaco">Monaco</option>
+                                    <option value="Mongolia">Mongolia</option>
+                                    <option value="Montserrat">Montserrat</option>
+                                    <option value="Morocco">Morocco</option>
+                                    <option value="Mozambique">Mozambique</option>
+                                    <option value="Myanmar">Myanmar</option>
+                                    <option value="Nambia">Nambia</option>
+                                    <option value="Nauru">Nauru</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Netherland Antilles">Netherland Antilles</option>
+                                    <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                                    <option value="Nevis">Nevis</option>
+                                    <option value="New Caledonia">New Caledonia</option>
+                                    <option value="New Zealand">New Zealand</option>
+                                    <option value="Nicaragua">Nicaragua</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="Niue">Niue</option>
+                                    <option value="Norfolk Island">Norfolk Island</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Oman">Oman</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="Palau Island">Palau Island</option>
+                                    <option value="Palestine">Palestine</option>
+                                    <option value="Panama">Panama</option>
+                                    <option value="Papua New Guinea">Papua New Guinea</option>
+                                    <option value="Paraguay">Paraguay</option>
+                                    <option value="Peru">Peru</option>
+                                    <option value="Phillipines">Philippines</option>
+                                    <option value="Pitcairn Island">Pitcairn Island</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Puerto Rico">Puerto Rico</option>
+                                    <option value="Qatar">Qatar</option>
+                                    <option value="Republic of Montenegro">Republic of Montenegro</option>
+                                    <option value="Republic of Serbia">Republic of Serbia</option>
+                                    <option value="Reunion">Reunion</option>
+                                    <option value="Romania">Romania</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Rwanda">Rwanda</option>
+                                    <option value="St Barthelemy">St Barthelemy</option>
+                                    <option value="St Eustatius">St Eustatius</option>
+                                    <option value="St Helena">St Helena</option>
+                                    <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                                    <option value="St Lucia">St Lucia</option>
+                                    <option value="St Maarten">St Maarten</option>
+                                    <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
+                                    <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
+                                    <option value="Saipan">Saipan</option>
+                                    <option value="Samoa">Samoa</option>
+                                    <option value="Samoa American">Samoa American</option>
+                                    <option value="San Marino">San Marino</option>
+                                    <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="Senegal">Senegal</option>
+                                    <option value="Seychelles">Seychelles</option>
+                                    <option value="Sierra Leone">Sierra Leone</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Slovakia">Slovakia</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="Solomon Islands">Solomon Islands</option>
+                                    <option value="Somalia">Somalia</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Sri Lanka">Sri Lanka</option>
+                                    <option value="Sudan">Sudan</option>
+                                    <option value="Suriname">Suriname</option>
+                                    <option value="Swaziland">Swaziland</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="Syria">Syria</option>
+                                    <option value="Tahiti">Tahiti</option>
+                                    <option value="Taiwan">Taiwan</option>
+                                    <option value="Tajikistan">Tajikistan</option>
+                                    <option value="Tanzania">Tanzania</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Togo">Togo</option>
+                                    <option value="Tokelau">Tokelau</option>
+                                    <option value="Tonga">Tonga</option>
+                                    <option value="Trinidad & Tobago">Trinidad & Tobago</option>
+                                    <option value="Tunisia">Tunisia</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Turkmenistan">Turkmenistan</option>
+                                    <option value="Turks & Caicos Is">Turks & Caicos Is</option>
+                                    <option value="Tuvalu">Tuvalu</option>
+                                    <option value="Uganda">Uganda</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Erimates">United Arab Emirates</option>
+                                    <option value="United States of America">United States of America</option>
+                                    <option value="Uraguay">Uruguay</option>
+                                    <option value="Uzbekistan">Uzbekistan</option>
+                                    <option value="Vanuatu">Vanuatu</option>
+                                    <option value="Vatican City State">Vatican City State</option>
+                                    <option value="Venezuela">Venezuela</option>
+                                    <option value="Vietnam">Vietnam</option>
+                                    <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                                    <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                                    <option value="Wake Island">Wake Island</option>
+                                    <option value="Wallis & Futana Is">Wallis & Futana Is</option>
+                                    <option value="Yemen">Yemen</option>
+                                    <option value="Zaire">Zaire</option>
+                                    <option value="Zambia">Zambia</option>
+                                    <option value="Zimbabwe">Zimbabwe</option>
+                                </select>
+                            </div>
+                            <p>* Door een account aan te maken met je e-mailadres, word je een klant van Iconcept en accepteer je onze Gebruiksvoorwaarden en Privacyverklaring. Je zult systeemberichten gerelateerd aan je veilingen en berichten van de klantenservice ontvangen.</p>
+                                    <button class="primary button expanded">Maak account aan</button>
                             </div>
 
                         </div>
@@ -336,57 +405,6 @@ require_once("includes/header.php");
                 </ul>
             </div>
         </div>
-
-
-
-        <form>
-            <div class="register-form">
-                <h4 class="text-center">Registreer hier!</h4>
-                <label for="form-username">Gebruikersnaam
-                    <input type="text" class="form-username" name="username" id="username">
-                </label>
-                <label for="form-email">Email
-                    <input type="text" class="form-email" name="email" id="email">
-                </label>
-                <label for="form-password">Wachtwoord
-                    <input type="text" class="form-password" name="password" id="password">
-                </label>
-                <label for="form-password">Herhaal wachtwoord
-                    <input type="text" class="form-password" name="password-repeat" id="password-repeat">
-                </label>
-                <label for="form-gender">Geslacht
-                    <label for="radio-button">Man
-                        <input type="radio" class="form-gender" name="male" id="male">
-                    </label>
-                    <label for="radio-button">Vrouw
-                        <input type="radio" class="form-gender" name="female" id="female">
-                    </label>
-                </label>
-                <label for="form-phonenumber">Telefoonnummer
-                    <input type="number" class="form-phonenumber" name="phonenumber" id="phonenumber">
-                </label>
-                <label for="form-date">Geboortedatum
-                    <input type="date" class="form-date" name="date" id="date">
-                </label>
-                <label for="form-street">Straatnaam + huisnummer
-                    <input type="text" class="form-street" name="street" id="street">
-                </label>
-                <label for="form-city">Plaats
-                    <input type="text" class="form-city" name="city" id="city">
-                </label>
-                <label for="form-postalcode">Postcode
-                    <input type="text" class="form-postalcode" name="postalcode" id="postalcode">
-                </label>
-
-                <button type="submit" class="form-button">Registreren</button>
-                <p class="text-center"><a href="inlog.php">Toch inloggen?</a></p>
-            </div>
-        </form>
-    </div>
-
-
-
-
 
 <?php
 require_once("includes/foundation_script.php");
