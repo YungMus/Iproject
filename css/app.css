@@ -260,10 +260,6 @@ footer {
     display: flex;
 }
 
-.registerpage{
-display: flex;
-}
-
 .form {
     padding: 1rem 1.5em;
     border-radius: .5rem;
@@ -277,9 +273,11 @@ display: flex;
     padding: 1rem 1.5em;
     border-radius: .5rem;
     background-color: #3d454f;
-    width: 100%;
-    margin-top: 18%;
-    margin-left: 100%;
+    width: 400%;
+    height: 60%;
+    margin-left: -150%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .form h4,
@@ -336,7 +334,7 @@ display: flex;
 }
 
 
-.marketing-site-content-section {
+.marketing-site-content-section{
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -345,7 +343,7 @@ display: flex;
     flex-wrap: wrap;
     width: 40%;
     margin-left: 6%;
-    margin-top: 3%;
+    margin-top: 3%;re
 }
 
 .marketing-site-content-section .button.round {
@@ -416,3 +414,74 @@ display: flex;
     font-size: 13px;
 }
 
+
+.hero-full-screen {
+    height: 150vh;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background: url("https://images.pexels.com/photos/378273/pexels-photo-378273.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") center center no-repeat;
+    background-size: cover;
+}
+
+.hero-full-screen .middle-content-section {
+    text-align: center;
+    color: #fefefe;
+}
+
+.hero-full-screen .top-content-section {
+    width: 100%;
+}
+
+.hero-full-screen .bottom-content-section {
+    padding: 1rem;
+}
+
+.hero-full-screen .bottom-content-section svg {
+    height: 3.75rem;
+    width: 3.75rem;
+    fill: black;
+}
+
+.hero-full-screen .top-bar {
+    background: transparent;
+}
+
+.hero-full-screen .top-bar .menu {
+    background: transparent;
+}
+
+.hero-full-screen .top-bar .menu-text {
+    color: #fefefe;
+}
+
+.hero-full-screen .top-bar .menu li {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.hero-full-screen .top-bar .menu a {
+    color: #fefefe;
+    font-weight: bold;
+}
+
+#main-content-section{
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    text-align: center;
+    margin-left: 20%;
+}
