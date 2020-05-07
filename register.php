@@ -20,7 +20,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 require_once("includes/header.php");
 //require_once("connectingDatabase.php");
 ?>
-<main class="registerpage">
+    <main class="registerpage">
     <div class="marketing-site-content-section">
         <div class="marketing-site-content-section-img">
             <img src="https://images.pexels.com/photos/256046/pexels-photo-256046.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
