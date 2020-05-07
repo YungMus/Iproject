@@ -80,10 +80,10 @@ require_once("includes/header.php");
                                             <p class="multi-step-checkout-step-subdesc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
 
                                             <label>
-                                                <input type="text" placeholder="Gebruikersnaam" required >
-                                                <input type="email" placeholder="Email" required >
-                                                <input type="password" placeholder="Wachtwoord" required >
-                                                <input type="password" placeholder="Herhaling Wachtwoord" required >
+                                                <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9]{5}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam" required >
+                                                <input type="email" name="Email" id="Email" placeholder="Email" required >
+                                                <input type="password" name="Password" id="Password" pattern=".{8,}" placeholder="Wachtwoord" required >
+                                                <input type="password" name="PasswordRepeat" id="PasswordRepeat" placeholder="Herhaling Wachtwoord" required >
                                             </label>
                                         </div>
                                         <button class="primary button expanded">Ga door naar persoonlijke informatie</button>
@@ -102,24 +102,26 @@ require_once("includes/header.php");
                                         <label>
                                             <div class="row">
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="text" placeholder="Voornaam" required >
+                                                    <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z]{3}" placeholder="Voornaam" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="text" placeholder="Achternaam" required >
+                                                    <input type="text" name="Lastname" id="Lastname" pattern="[A-Za-z]{2}" placeholder="Achternaam" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="date" placeholder="Geboortedatum" required >
+                                                    <input type="date" name="Birthday" id="Birthday" placeholder="Geboortedatum" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="number" placeholder="Telefoonnummer" required >
+                                                    <input type="number" name="Phonenumber" id="Phonenumber"  placeholder="Telefoonnummer" required >
                                                 </div>
+                                                <select name="RecoveryQuestion" id="RecoverQuestion" required>
+                                                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                                                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                                                    <option value="What was your first car?">What was your first car?</option>
+                                                    <option value="What elementary school did you attend?">What elementary school did you attend?</option>
+                                                    <option value="What is the name of the town where you were born?">What is the name of the town where you were born?</option>
+                                                </select>
                                                 <div class="small-12 medium-7 column">
-                                                    <label for="radio-button">Man
-                                                        <input type="radio" class="form-gender" name="male" id="male">
-                                                    </label>
-                                                    <label for="radio-button">Vrouw
-                                                        <input type="radio" class="form-gender" name="female" id="female">
-                                                    </label>
+                                                    <input type="text" name="RecoveryQuestionAnswer" id="RecoverQuestionAnswer"  placeholder="Antwoord" required >
                                                 </div>
                                             </div>
                                         </label>
@@ -135,19 +137,19 @@ require_once("includes/header.php");
                         <a href="#" class="accordion-title">3. Address <span class="multi-step-checkout-step-title-subheader">Stap 3 van 3</span></a>
                         <div class="accordion-content" data-tab-content>
                             <div class="small-6 medium-3 column">
-                                <input type="text" placeholder="Address" required >
+                                <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9]{3}" placeholder="Address" required >
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" placeholder="Address 2">
+                                <input type="text" name="Address2" id="Address2" pattern="[A-Za-z0-9]{2}" placeholder="Address 2">
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" placeholder="Postcode" required >
+                                <input type="text" name="Postalcode" id="Postalcode" pattern="[A-Za-z0-9]{4}" placeholder="Postcode" required >
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" placeholder="Plaats" required >
+                                <input type="text" name="City" id="City" pattern="[A-Za-z]{1}" placeholder="Plaats" required >
                             </div>
                             <div class="small-6 medium-2 column">
-                                <select required >
+                                <select name="Country" id="Country" required>
                                     <option value="Afganistan">Afghanistan</option>
                                     <option value="Albania">Albania</option>
                                     <option value="Algeria">Algeria</option>
@@ -397,7 +399,7 @@ require_once("includes/header.php");
                                 </select>
                             </div>
                             <p>* Door een account aan te maken met je e-mailadres, word je een klant van Iconcept en accepteer je onze Gebruiksvoorwaarden en Privacyverklaring. Je zult systeemberichten gerelateerd aan je veilingen en berichten van de klantenservice ontvangen.</p>
-                                    <button class="primary button expanded">Maak account aan</button>
+                                    <button class="primary button expanded" type="submit" name="Aanmelden" value="Aanmelden">Maak account aan</button>
                             </div>
 
                         </div>

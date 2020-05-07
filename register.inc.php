@@ -1,65 +1,66 @@
 <?php
 
-if (isset($_POST['aanmelden'])){
+if (isset($_POST['Register'])){
 
     require 'connectingDatabase.php';
 
-    $gebruikersnaam = htmlspecialchars($_POST['gebruikersnaam']);
-    $wachtwoord = htmlspecialchars(trim($_POST['wachtwoord']));
-    $wachtwoordHerhaling = htmlspecialchars(trim($_POST['wachtwoord-herhaling']));
-    $licentieCode = htmlspecialchars($_POST['licentie_code']);
+    $username = htmlspecialchars($_POST['Username']);
+    $email = htmlspecialchars($_POST['Email']);
+    $password = htmlspecialchars(trim($_POST['Password']));
+    $passwordrepeat = htmlspecialchars(trim($_POST['PasswordRepeat']));
+    $firstname = htmlspecialchars($_POST['Firstname']);
+    $lastname = htmlspecialchars($_POST['Lastname']);
+    $birthday = htmlspecialchars($_POST['Birthday']);
+    $phonenumber = htmlspecialchars($_POST['Phonenumber']);
+    $recoveryquestion = htmlspecialchars($_POST['RecoveryQuestion']);
+    $recoveryquestionanswer = htmlspecialchars($_POST['RecoveryQuestionAnswer']);
+    $address = htmlspecialchars($_POST['Address']);
+    $address2 = htmlspecialchars($_POST['Address2']);
+    $postalcode = htmlspecialchars($_POST['Postalcode']);
+    $city = htmlspecialchars($_POST['City']);
+    $country = htmlspecialchars($_POST['Country']);
 
-    if(empty($gebruikersnaam) || empty($wachtwoord) || empty($wachtwoordHerhaling) || empty($licentieCode)){
-        header("Location: aanmeldpagina.php?error=legevelden&gebruikersnaam=".$gebruikersnaam);
+    if(empty($username) || empty($email) || empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  || empty($address2)  || empty($postalcode)  || empty($city)  || empty($country) ){
+        header("Location: register.php?error=emptyfields&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
 
-    else if(!preg_match("/^[a-zA-Z0-9]*$/", $gebruikersnaam)){
-        header("Location: aanmeldpagina.php?error=foutegebruikersnaam");
-        exit();
-    }
-
-    else if($wachtwoord !== $wachtwoordHerhaling){
-        header("Location: aanmeldpagina.php?error=wachtwoordchecken&gebruikersnaam=".$gebruikersnaam);
-        exit();
-    }
-
-    else if($licentieCode !== "welkom2020"){
-        header("Location: aanmeldpagina.php?error=licentiecodechecken&gebruikersnaam=".$gebruikersnaam);
+    else if($password !== $passwordrepeat){
+        header("Location: register.php?error=passwordcheck&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
 
     else{
 
-        $sql = "SELECT gebruikersnaam FROM inloggegevens WHERE gebruikersnaam=?";
-        $stmt = mysqli_stmt_init($dbh);
+        $sql = "SELECT username FROM User WHERE username=?";
+        $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: aanmeldpagina.php?error=sqlerror");
+            header("Location: register.php?error=sqlerror");
             exit();
         }
         else{
-            mysqli_stmt_bind_param($stmt, "s", $gebruikersnaam);
+            mysqli_stmt_bind_param($stmt, "s", $username);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
-            $resultaatcheck = mysqli_stmt_num_rows($stmt);
-            if($resultaatcheck > 0) {
-                header("Location: aanmeldpagina.php?error=gebruikersnaamalgebruikt&gebruikersnaam=".$gebruikersnaam);
+            $resultcheck = mysqli_stmt_num_rows($stmt);
+            if($resultcheck > 0) {
+                header("Location: register.php?error=usernamealreadyused&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
                 exit();
             }
             else{
-                $sql = "INSERT INTO inloggegevens (gebruikersnaam, wachtwoord, licentieCode) VALUES (?, ?, ?)";
-                $stmt = mysqli_stmt_init($dbh);
+                $sql = "INSERT INTO User (username, \"e-mail\", password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: aanmeldpagina.php?error=sqlerror");
+                    header("Location: register.php?error=sqlerror");
                     exit();
                 }
                 else{
-                    $hashedWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                    mysqli_stmt_bind_param($stmt, "sss", $gebruikersnaam, $hashedWachtwoord, $licentieCode);
+                    mysqli_stmt_bind_param($stmt, "sssssssssssss", $username, $email, $hashedPassword, $firstname, $lastname, $birthday, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country);
                     mysqli_stmt_execute($stmt);
-                    header("Location: aanmeldpagina.php?aanmelden=succes");
+                    header("Location: register.php?register=success");
                     exit();
                 }
             }
@@ -71,6 +72,6 @@ if (isset($_POST['aanmelden'])){
 }
 
 else{
-    header("Location: inlogpagina.php");
+    header("Location: inlog.php");
     exit();
 }
