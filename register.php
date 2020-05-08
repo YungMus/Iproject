@@ -2,21 +2,6 @@
 $title = 'Registeren';
 $link = 'register.php';
 
-if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
-    if (isset($_POST['send'])){
-        $username = htmlspecialchars(trim($_POST['username']));
-        $email = htmlspecialchars(trim($_POST['email']));
-        $password = htmlspecialchars(trim($_POST['password']));
-        $gender = htmlspecialchars(trim($_POST['gender']));
-        $birthdate = htmlspecialchars(trim($_POST['birthdate']));
-        $place = htmlspecialchars(trim($_POST['place']));
-        $postalCode = htmlspecialchars(trim($_POST['postalCode']));
-        $houseNumber = htmlspecialchars(trim($_POST['houseNumber']));
-        $celphoneNumber = htmlspecialchars(trim($_POST['celphoneNumber']));
-        print_r($_POST);
-    }
-}
-
 require_once("includes/header.php");
 ?>
     <div class="hero-full-screen">
@@ -35,10 +20,9 @@ require_once("includes/header.php");
         </div>
 
         <div class="middle-content-section">
-            <article class="registerpage">
                 <div class="marketing-site-content-section">
                     <div class="marketing-site-content-section-img">
-                        <img src="https://images.pexels.com/photos/256046/pexels-photo-256046.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
+                        <img src="" alt="" />
                     </div>
                     <div class="marketing-site-content-section-block">
                         <h3 class="marketing-site-content-section-block-header">Yeti Snowcone Agency</h3>
@@ -54,7 +38,6 @@ require_once("includes/header.php");
                         <img src="https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
                     </div>
                 </div>
-            </article>
         </div>
 
         <div class="bottom-content-section" data-magellan data-threshold="0">

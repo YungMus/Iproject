@@ -442,6 +442,7 @@ footer {
 .hero-full-screen .middle-content-section {
     text-align: center;
     color: #fefefe;
+    margin-left: 33%;
 }
 
 .hero-full-screen .top-content-section {
@@ -489,7 +490,6 @@ footer {
     margin-top: 2%;
     margin-bottom: 5%;
     text-align: center;
-    margin-left: 20%;
 }
 
 
