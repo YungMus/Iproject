@@ -62,9 +62,9 @@ require_once("includes/header.php");
                                             <p class="multi-step-checkout-step-subdesc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
 
                                             <label>
-                                                <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9]{5}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam" required >
+                                                <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9]{5}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required >
                                                 <input type="email" name="Email" id="Email" placeholder="Email" required >
-                                                <input type="password" name="Password" id="Password" pattern=".{8,}" placeholder="Wachtwoord" required >
+                                                <input type="password" name="Password" id="Password" pattern=".{8,}" placeholder="Wachtwoord - Minimaal 8 tekens" required >
                                                 <input type="password" name="PasswordRepeat" id="PasswordRepeat" placeholder="Herhaling Wachtwoord" required >
                                             </label>
                                         </div>
