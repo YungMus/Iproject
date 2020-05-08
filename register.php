@@ -398,7 +398,7 @@ require_once("includes/header.php");
                                 </select>
                             </div>
                             <p>* Door een account aan te maken met je e-mailadres, word je een klant van Iconcept en accepteer je onze Gebruiksvoorwaarden en Privacyverklaring. Je zult systeemberichten gerelateerd aan je veilingen en berichten van de klantenservice ontvangen.</p>
-                                    <button class="primary button expanded" type="submit" name="Aanmelden" value="Aanmelden">Maak account aan</button>
+                                    <button class="primary button expanded" type="submit" name="Register" value="Register">Maak account aan</button>
                             </div>
 
                         </div>
