@@ -1,4 +1,6 @@
 <?php
+require_once("connectingDatabase.php");
+
 $metahttpequiv = "<meta http-equiv=\"x-ua-compatible\" content='ie=edge'>";
 $metaCharset = "<meta charset='utf-8'>";
 $metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";

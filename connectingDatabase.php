@@ -1,10 +1,10 @@
 <?php
 
-$serverName = "(local)";
-$databaseName = "IProject";
+$serverName = "iproject";
+$databaseName = "iproject43";
 
 try {
-    $conn = new PDO("sqlsrv:server=$serverName;Database=$databaseName", "root", "");
+    $conn = new PDO("sqlsrv:server=$serverName;Database=$databaseName", "iproject43", "QK8HfEAR");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     echo "Connected...<br><br>";

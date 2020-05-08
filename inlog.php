@@ -3,7 +3,6 @@ $title = 'Inlogpagina';
 $link = 'inlog.php';
 
 require_once("includes/header.php");
-//require_once("connectingDatabase.php");
 
 if(isset($_GET['error'])){
     if($_GET['error'] == "emptyfields"){
