@@ -6,12 +6,6 @@ $metaCharset = "<meta charset='utf-8'>";
 $metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
 $headTitle = "<title>$title</title>";
 
-if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
-    if (isset($_POST['search'])){
-        $search = htmlspecialchars(trim($_POST['search']));
-        print_r($_POST);
-    }
-}
 ?>
 
 <!doctype html>
@@ -65,7 +59,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <form method="POST" action=<?php echo $link;?>>
+                <form method="POST" action="resultaten.php">
                 <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Search"></li>
                 <li><input type="submit" id="sendHeader" name="sendHeader" value="Search"></li>
                 </form>
