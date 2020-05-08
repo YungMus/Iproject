@@ -4,8 +4,8 @@ if(isset($_POST['login']) || $_POST['login-sending']){
 
     //require 'connectingDatabase.php';
 
-    $username = htmlspecialchars($_POST['gebruikersnaam']);
-    $password = htmlspecialchars($_POST['password']);
+    $email = htmlspecialchars($_POST['Email']);
+    $password = htmlspecialchars($_POST['Password']);
 
     if(empty($username) || empty($password)) {
         header("Location: inlog.php?error=emptyfields");
@@ -20,7 +20,7 @@ if(isset($_POST['login']) || $_POST['login-sending']){
         }
         else{
 
-            mysqli_stmt_bind_param($stmt, "s", $username);
+            mysqli_stmt_bind_param($stmt, "s", $email);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if($row = mysqli_fetch_assoc($result)){
@@ -59,7 +59,7 @@ if(isset($_POST['login']) || $_POST['login-sending']){
         }
     }
 }
-else if(isset($_POST['register'])){
+else if(isset($_POST['Register'])){
     header("Location: register.php");
     exit();
 }

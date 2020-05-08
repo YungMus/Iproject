@@ -24,11 +24,11 @@ if(isset($_GET['error'])){
 <main>
     <form class="form" method="post" action="inlog.inc.php">
         <h4 class="text-center">Log in met je account</h4>
-        <label for="form-email">Gebruikersnaam/Email
-            <input type="email" class="form-email" name="email" id="email">
+        <label for="form-email">Email
+            <input type="email" class="form-email" name="Email" id="Email">
         </label>
         <label for="form-password">Wachtwoord
-            <input type="password" class="form-password" name="password" id="password">
+            <input type="password" class="form-password" name="Password" id="Password">
         </label>
         <input id="show-password" type="checkbox"><label for="show-password">Laat wachtwoord zien</label>
         <p><input type="submit" class="form-button" name="login"  value="Log in"></input></p>
