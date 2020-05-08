@@ -15,21 +15,18 @@ require_once("includes/header.php");
   consequuntur porro temporibus. Nisi, ex?</div>
   
   <div class="cell small-4 flex-container flex-dir-column">
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-        <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-        <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-        <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-shrink">Veiling</div>
-        <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
-    <div class="callout primary flex-child-auto">Veiling</div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
+      <div class="callout primary flex-child-auto"><a href="veiling.php">Veiling</a></div>
   </div>
 </div>
 
