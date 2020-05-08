@@ -1,27 +1,31 @@
 <?php
 
-$serverName = "iproject";
-$databaseName = "iproject43";
+$serverName = "mssql.iproject.icasites.nl";
+$connectionInfo = array( "Database"=>"iproject",  "UID"=>"iproject43", "PWD"=>"QK8HfEAR");
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
 
-try {
-    $conn = new PDO("sqlsrv:server=$serverName;Database=$databaseName", "iproject43", "QK8HfEAR");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if($conn)
+{
+    echo "Connection established.<br />";
 
-    echo "Connected...<br><br>";
+    $tsql = "SELECT tst_Column1, tst_Column2, tst_Column3 FROM test";
+    $result = sqlsrv_query( $conn, $tsql, null);
 
-    $data = $conn->query("SELECT DISTINCT TOP(10) rubric_id, order_nr FROM Rubric");
-    $results = $data->fetchAll(PDO::FETCH_ASSOC);
-
-    print_r($results);
-
-    foreach($results as $row){
-        echo "<p>{$row['rubric_id']} {$row['order_nr']}</p>";
+    if ( $result === false)
+    {
+        die( FormatErrors( sqlsrv_errors() ) );
     }
 
-}
-catch(Exception $e)
+    while( $row = sqlsrv_fetch_array( $result, SQLSRV_FETCH_ASSOC))
+    {
+        echo $row['tst_Column1'].", ".$row['tst_Column2']."<br />";
+    }
+    sqlsrv_free_stmt($result);
+    sqlsrv_close($conn);
+} else
 {
-    die(print_r($e->getMessage()));
+    echo "Connection could not be established.<br />";
+    die( print_r( sqlsrv_errors(), true));
 }
 
 ?>
