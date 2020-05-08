@@ -45,19 +45,19 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
 <!--                <li class="dropdown-menu"><a href="index.php"><img src="../images/logoiconcepts.png" alt="Icon" /></image></a></li>-->
                 <li class="menu-text"><?php echo $title ?></li>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="veiling.php">veiling</a>
-                <li><a href="veilingCategorieOverzicht.php">veiling categorie overzicht</a></li>
+                <li><a href="veiling.php">Veiling</a>
+                <li><a href="veilingCategorieOverzicht.php">Veiling categorie overzicht</a></li>
                 </li>
                 <li><a href="contact.php">Contact</a>
                     <ul class="menu">
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="contact.php">Neem contact met ons op</a></li>
                         <li><a href="voorwaardenCondities.php">Voorwaarden & condities</a></li>
                     </ul>
                 </li>
-                <li><a href="persoonlijkePagina.php">persoonlijke Pagina</a>
+                <li><a href="persoonlijkePagina.php">Persoonlijke Pagina</a>
                     <ul class="menu">
-                        <li><a href="inlog.php">inloggen</a></li>
-                        <li><a href="register.php">registreren</a></li>
+                        <li><a href="inlog.php">Inloggen</a></li>
+                        <li><a href="register.php">Registreren</a></li>
                     </ul>
                 </li>
 
