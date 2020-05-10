@@ -62,13 +62,12 @@ require_once("includes/header.php");
                                             <p class="multi-step-checkout-step-subdesc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
 
                                             <label>
-                                                <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9]{5}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required >
-                                                <input type="email" name="Email" id="Email" placeholder="Email" required >
+                                                <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9].{5,}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required >
+                                                <input type="email" name="Email" id="Email" placeholder="Email" value="<?php if(isset($_GET['Email'])){ echo $_GET['Email'];} ?>" required >
                                                 <input type="password" name="Password" id="Password" pattern=".{8,}" placeholder="Wachtwoord - Minimaal 8 tekens" required >
                                                 <input type="password" name="PasswordRepeat" id="PasswordRepeat" placeholder="Herhaling Wachtwoord" required >
                                             </label>
                                         </div>
-                                        <button class="primary button expanded">Ga door naar persoonlijke informatie</button>
                                     </div>
                                 </div>
                             </form>
@@ -84,30 +83,29 @@ require_once("includes/header.php");
                                         <label>
                                             <div class="row">
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z]{3}" placeholder="Voornaam" required >
+                                                    <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z].{3,}" value="<?php if(isset($_GET['Firstname'])){ echo $_GET['Firstname'];} ?>" placeholder="Voornaam" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="text" name="Lastname" id="Lastname" pattern="[A-Za-z]{2}" placeholder="Achternaam" required >
+                                                    <input type="text" name="Lastname" id="Lastname" pattern="[A-Za-z].{2,}" value="<?php if(isset($_GET['Lastname'])){ echo $_GET['Lastname'];} ?>" placeholder="Achternaam" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="date" name="Birthday" id="Birthday" placeholder="Geboortedatum" required >
+                                                    <input type="date" name="Birthday" id="Birthday" value="<?php if(isset($_GET['Birthday'])){ echo $_GET['Birthday'];} ?>" placeholder="Geboortedatum" required >
                                                 </div>
                                                 <div class="small-12 medium-7 column">
-                                                    <input type="number" name="Phonenumber" id="Phonenumber"  placeholder="Telefoonnummer" required >
+                                                    <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if(isset($_GET['Birthday'])){ echo $_GET['Birthday'];} ?>"  placeholder="Telefoonnummer" required >
                                                 </div>
                                                 <select name="RecoveryQuestion" id="RecoverQuestion" required>
-                                                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
-                                                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
-                                                    <option value="What was your first car?">What was your first car?</option>
-                                                    <option value="What elementary school did you attend?">What elementary school did you attend?</option>
-                                                    <option value="What is the name of the town where you were born?">What is the name of the town where you were born?</option>
+                                                    <option value="Wat is het achternaam van je moeder?">Wat is het achternaam van je moeder?</option>
+                                                    <option value="Wat was het naam van je eerste huisdier?">Wat is het naam van je eerste huisdier?</option>
+                                                    <option value="Wat was je eerste auto?">Wat was je eerste auto?</option>
+                                                    <option value="Op welke basisschool zat je?">Op welke basisschool zat je?</option>
+                                                    <option value="Hoe heet de stad waar je bent geboren?">Hoe heet de stad waar je bent geboren?</option>
                                                 </select>
                                                 <div class="small-12 medium-7 column">
                                                     <input type="text" name="RecoveryQuestionAnswer" id="RecoverQuestionAnswer"  placeholder="Antwoord" required >
                                                 </div>
                                             </div>
                                         </label>
-                                            <button class="primary button expanded">Ga door naar address</button>
                                         </div>
                                     </div>
                                 </div>
@@ -119,16 +117,16 @@ require_once("includes/header.php");
                         <a href="#" class="accordion-title">3. Address <span class="multi-step-checkout-step-title-subheader">Stap 3 van 3</span></a>
                         <div class="accordion-content" data-tab-content>
                             <div class="small-6 medium-3 column">
-                                <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9]{3}" placeholder="Address" required >
+                                <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9].{3,}" value="<?php if(isset($_GET['Address'])){ echo $_GET['Address'];} ?>" placeholder="Straatnaam + huisnummer" required >
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" name="Address2" id="Address2" pattern="[A-Za-z0-9]{2}" placeholder="Address 2">
+                                <input type="text" name="Address2" id="Address2" pattern="[A-Za-z0-9].{2,}" value="<?php if(isset($_GET['Address2'])){ echo $_GET['Address2'];} ?>" placeholder="Appartement, suite, unit etc. optioneel">
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" name="Postalcode" id="Postalcode" pattern="[A-Za-z0-9]{4}" placeholder="Postcode" required >
+                                <input type="text" name="Postalcode" id="Postalcode" pattern="[A-Za-z0-9].{4,}" value="<?php if(isset($_GET['Postalcode'])){ echo $_GET['Postalcode'];} ?>" placeholder="Postcode" required >
                             </div>
                             <div class="small-6 medium-3 column">
-                                <input type="text" name="City" id="City" pattern="[A-Za-z]{1}" placeholder="Plaats" required >
+                                <input type="text" name="City" id="City" pattern="[A-Za-z].{1,}" value="<?php if(isset($_GET['City'])){ echo $_GET['City'];} ?>" placeholder="Plaats" required >
                             </div>
                             <div class="small-6 medium-2 column">
                                 <select name="Country" id="Country" required>
