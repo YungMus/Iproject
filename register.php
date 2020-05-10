@@ -5,37 +5,22 @@ $link = 'register.php';
 require_once("includes/header.php");
 ?>
     <div class="hero-full-screen">
-
-        <div class="top-content-section">
-            <div class="top-bar">
-                <div class="top-bar-left">
-                    <ul class="menu">
-                        <li class="menu-text"><img src="https://placehold.it/75x30" alt="logo"></li>
-                        <li><a href="#">One</a></li>
-                        <li><a href="#">Two</a></li>
-                        <li><a href="#">Three</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <div class="middle-content-section">
                 <div class="marketing-site-content-section">
                     <div class="marketing-site-content-section-img">
                         <img src="" alt="" />
                     </div>
                     <div class="marketing-site-content-section-block">
-                        <h3 class="marketing-site-content-section-block-header">Yeti Snowcone Agency</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!</p>
-                        <a href="#" class="round button small">learn more</a>
+                        <h3 class="marketing-site-content-section-block-header">Stap 1 Vul je accountgegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vul jij je gebruikersnaam, een geldige email, een wachtwoord en de herhaling van het wachtwoord om je account zo veilig mogelijk te maken.</p>
+                    </div>
+                    <div class="marketing-site-content-section-block small-order-2 medium-order-1"
+                        <h3 class="marketing-site-content-section-block-header">Stap 2 Vul je persoonlijke gegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 2 vul jij je persoonlijke gegevens in, zoals je voornaam, achternaam, geboortedatum, telefoonnummer en je geheime vraag om je wachtwoord te kunnen herstellen.</p>
                     </div>
                     <div class="marketing-site-content-section-block small-order-2 medium-order-1">
-                        <h3 class="marketing-site-content-section-block-header">Yeti Snowcone Agency</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!</p>
-                        <a href="#" class="round button small">learn more</a>
-                    </div>
-                    <div class="marketing-site-content-section-img small-order-1 medium-order-2">
-                        <img src="https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
+                        <h3 class="marketing-site-content-section-block-header">Stap 3 Vul je adresgegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 3 vul jij je adresgegevens in om de gewonnen veilingen opgestuurd te krijgen naar je ingevoerde adres.</p>
                     </div>
                 </div>
         </div>
