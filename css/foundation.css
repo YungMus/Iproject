@@ -335,7 +335,7 @@ textarea {
   width: 25%; }
 
 .grid-x > .small-4 {
-  width: 33.33333%; }
+  width: 50%; }
 
 .grid-x > .small-5 {
   width: 41.66667%; }
@@ -594,7 +594,8 @@ textarea {
 
 .grid-padding-x > .cell {
   padding-right: 0.625rem;
-  padding-left: 0.625rem; }
+  padding-left: 0.625rem;
+  margin-left: 24%; }
   @media print, screen and (min-width: 40em) {
     .grid-padding-x > .cell {
       padding-right: 0.9375rem;
@@ -1323,7 +1324,7 @@ textarea {
 
 .grid-padding-y .grid-padding-y {
   margin-top: -0.625rem;
-  margin-bottom: -0.625rem; }
+  margin-bottom: -0.625rem;}
   @media print, screen and (min-width: 40em) {
     .grid-padding-y .grid-padding-y {
       margin-top: -0.9375rem;
