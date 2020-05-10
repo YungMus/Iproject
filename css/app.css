@@ -575,6 +575,15 @@ footer {
     font-size: 0.9rem;
 }
 
+.multi-step-checkout-process input{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.multi-step-checkout-process select {
+    width: 50%;
+}
+
 .multi-step-checkout-shipping-option {
     margin-bottom: 10px;
 }
@@ -684,4 +693,5 @@ footer {
     height: 13px;
     width: 13px;
 }
+
 
