@@ -11,16 +11,20 @@ require_once("includes/header.php");
                         <img src="" alt="" />
                     </div>
                     <div class="marketing-site-content-section-block">
-                        <h3 class="marketing-site-content-section-block-header">Stap 1 Vul je accountgegevens in</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vul jij je gebruikersnaam, een geldige email, een wachtwoord en de herhaling van het wachtwoord om je account zo veilig mogelijk te maken.</p>
+                        <h3 class="marketing-site-content-section-block-header">Stap 1 Vul je emailadres in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vul jij je geldige emailadres in, waarbij je vervolgens een mail van ons krijgt met een code. Die code heb je nodig om jezelf te verifiëren.</p>
+                    </div>
+                    <div class="marketing-site-content-section-block">
+                        <h3 class="marketing-site-content-section-block-header">Stap 2 Vul je accountgegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 2 vul jij je gebruikersnaam, een wachtwoord en de herhaling van het wachtwoord om je account zo veilig mogelijk te maken.</p>
                     </div>
                     <div class="marketing-site-content-section-block small-order-2 medium-order-1"
-                        <h3 class="marketing-site-content-section-block-header">Stap 2 Vul je persoonlijke gegevens in</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 2 vul jij je persoonlijke gegevens in, zoals je voornaam, achternaam, geboortedatum, telefoonnummer en je geheime vraag om je wachtwoord te kunnen herstellen.</p>
+                        <h3 class="marketing-site-content-section-block-header">Stap 3 Vul je persoonlijke gegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 3 vul jij je persoonlijke gegevens in, zoals je voornaam, achternaam, geboortedatum, telefoonnummer en je geheime vraag om je wachtwoord te kunnen herstellen.</p>
                     </div>
                     <div class="marketing-site-content-section-block small-order-2 medium-order-1">
-                        <h3 class="marketing-site-content-section-block-header">Stap 3 Vul je adresgegevens in</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 3 vul jij je adresgegevens in om de gewonnen veilingen opgestuurd te krijgen naar je ingevoerde adres.</p>
+                        <h3 class="marketing-site-content-section-block-header">Stap 4 Vul je adresgegevens in</h3>
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 4 vul jij je adresgegevens in om de gewonnen veilingen opgestuurd te krijgen naar je ingevoerde adres.</p>
                     </div>
                 </div>
         </div>
@@ -37,7 +41,7 @@ require_once("includes/header.php");
             <div class="multi-step-checkout-process-step">
                 <div class="accordion" data-accordion>
                     <li class="accordion-item is-active" data-accordion-item>
-                        <a href="#" class="accordion-title">1. Account info <span class="multi-step-checkout-step-title-subheader">Stap 1 van 3</span></a>
+                        <a href="#" class="accordion-title">1. Account info <span class="multi-step-checkout-step-title-subheader">Stap 2 van 4</span></a>
                         <div class="accordion-content" data-tab-content>
                             <form class="multi-step-checkout-form">
                                 <div class="row">
@@ -48,7 +52,6 @@ require_once("includes/header.php");
 
                                             <label>
                                                 <input type="text" name="Username" id="Username" pattern="[A-Za-z0-9].{5,}" value="<?php if(isset($_GET['Username'])){ echo $_GET['Username'];} ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required >
-                                                <input type="email" name="Email" id="Email" placeholder="Email" value="<?php if(isset($_GET['Email'])){ echo $_GET['Email'];} ?>" required >
                                                 <input type="password" name="Password" id="Password" pattern=".{8,}" placeholder="Wachtwoord - Minimaal 8 tekens" required >
                                                 <input type="password" name="PasswordRepeat" id="PasswordRepeat" placeholder="Herhaling Wachtwoord" required >
                                             </label>
@@ -60,7 +63,7 @@ require_once("includes/header.php");
                     </li>
 
                     <div class="accordion-item" data-accordion-item>
-                        <a href="#" class="accordion-title">2. Persoonlijke informatie <span class="multi-step-checkout-step-title-subheader">Stap 2 van 3</span></a>
+                        <a href="#" class="accordion-title">2. Persoonlijke informatie <span class="multi-step-checkout-step-title-subheader">Stap 3 van 4</span></a>
                         <div class="accordion-content" data-tab-content>
                             <form class="multi-step-checkout-form">
                                 <div class="row">
@@ -99,7 +102,7 @@ require_once("includes/header.php");
                     </li>
 
                     <li class="accordion-item" data-accordion-item>
-                        <a href="#" class="accordion-title">3. Address <span class="multi-step-checkout-step-title-subheader">Stap 3 van 3</span></a>
+                        <a href="#" class="accordion-title">3. Address <span class="multi-step-checkout-step-title-subheader">Stap 4 van 4</span></a>
                         <div class="accordion-content" data-tab-content>
                             <div class="small-6 medium-3 column">
                                 <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9].{3,}" value="<?php if(isset($_GET['Address'])){ echo $_GET['Address'];} ?>" placeholder="Straatnaam + huisnummer" required >
