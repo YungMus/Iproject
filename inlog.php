@@ -31,7 +31,7 @@ require_once("includes/header.php");
         </label>
         <input id="show-password" type="checkbox"><label for="show-password">Laat wachtwoord zien</label>
         <p><input type="submit" class="form-button" name="login"  value="Log in"></input></p>
-        <p><a class="space" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a> <a href="register.php">Geen inloggegevens?</a></p>
+        <p><a class="space" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a> <a href="registerVoorpagina.php">Geen inloggegevens?</a></p>
     </form>
 </main>
 

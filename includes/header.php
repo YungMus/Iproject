@@ -51,7 +51,7 @@ $headTitle = "<title>$title</title>";
                 <li><a href="persoonlijkePagina.php">Persoonlijke Pagina</a>
                     <ul class="menu">
                         <li><a href="inlog.php">Inloggen</a></li>
-                        <li><a href="register.php">Registreren</a></li>
+                        <li><a href="registerVoorpagina.php">Registreren</a></li>
                     </ul>
                 </li>
 

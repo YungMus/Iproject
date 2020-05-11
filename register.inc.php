@@ -5,7 +5,6 @@ if (isset($_POST['Register'])){
     require 'connectingDatabase.php';
 
     $username = htmlspecialchars($_POST['Username']);
-    $email = htmlspecialchars($_POST['Email']);
     $password = htmlspecialchars(trim($_POST['Password']));
     $passwordrepeat = htmlspecialchars(trim($_POST['PasswordRepeat']));
     $firstname = htmlspecialchars($_POST['Firstname']);
@@ -20,13 +19,13 @@ if (isset($_POST['Register'])){
     $city = htmlspecialchars($_POST['City']);
     $country = htmlspecialchars($_POST['Country']);
 
-    if(empty($username) || empty($email) || empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  || empty($address2)  || empty($postalcode)  || empty($city)  || empty($country) ){
-        header("Location: register.php?error=emptyfields&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+    if(empty($username) ||  empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  || empty($address2)  || empty($postalcode)  || empty($city)  || empty($country) ){
+        header("Location: register.php?error=emptyfields&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
 
     else if($password !== $passwordrepeat){
-        header("Location: register.php?error=passwordcheck&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+        header("Location: register.php?error=passwordcheck&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
 
@@ -45,11 +44,11 @@ if (isset($_POST['Register'])){
             mysqli_stmt_store_result($stmt);
             $resultcheck = mysqli_stmt_num_rows($stmt);
             if($resultcheck > 0) {
-                header("Location: register.php?error=usernamealreadyused&Username=".$username."&Email=".$email."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+                header("Location: register.php?error=usernamealreadyused&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
                 exit();
             }
             else{
-                $sql1 = "INSERT INTO User (username, \"e-mail\", password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql1 = "INSERT INTO User (username, password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $sql2 = "INSERT INTO Userphone (phone) VALUES (?)";
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql1)) {
@@ -58,7 +57,7 @@ if (isset($_POST['Register'])){
                 }
                 else {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "sssssssssssss", $username, $email, $hashedPassword, $firstname, $lastname, $birthday, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country);
+                    mysqli_stmt_bind_param($stmt, "ssssssssssss", $username, $hashedPassword, $firstname, $lastname, $birthday, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country);
                     mysqli_stmt_execute($stmt);
                 } if(!mysqli_stmt_prepare($stmt, $sql2)) {
                     header("Location: register.php?error=sqlerror");
