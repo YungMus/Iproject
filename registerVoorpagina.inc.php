@@ -22,8 +22,9 @@ if (isset($_POST['EmailConfirmation'])){
             exit();
         }
         else{
-            $stmt-> bindparam(1, $email);
+            $stmt-> bindParam(1, $email);
             $stmt->execute();
+            print_r($stmt);
             $stmt->store_result($stmt);
             $resultcheck = $stmt->num_rows;
             if($resultcheck > 0) {
