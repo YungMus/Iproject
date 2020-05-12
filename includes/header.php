@@ -6,6 +6,9 @@ $metaCharset = "<meta charset='utf-8'>";
 $metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
 $headTitle = "<title>$title</title>";
 
+if (isset($_POST['sendHeader'])) {
+    $search = htmlspecialchars($_POST['search']);
+}
 ?>
 
 <!doctype html>
@@ -19,11 +22,9 @@ $headTitle = "<title>$title</title>";
 
     if (isset($_POST['sendHeader'])) {
         $sql = "select * from item WHERE title LIKE :searchA OR description like :searchB";
-//        $data = $dbh->prepare($sql);
-//        $data->execute(array(':searchA' => '%' . $search . '%', ':searchB' => '%' . $search . '%'));
+        $data = $conn->prepare($sql);
+        $data->execute(array(':searchA' => '%' . $search . '%', ':searchB' => '%' . $search . '%'));
         }
-
-
     ?>
 
     <link rel="stylesheet" href="css/foundation.css">
@@ -59,7 +60,7 @@ $headTitle = "<title>$title</title>";
         <div class="top-bar-right">
             <ul class="menu">
                 <form method="POST" action="resultaten.php">
-                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Search"></li>
+                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Zoek"></li>
                 <li><input type="submit" id="sendHeader" name="sendHeader" value="Search"></li>
                 </form>
             </ul>
