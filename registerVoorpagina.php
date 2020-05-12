@@ -39,8 +39,8 @@ require_once("includes/header.php");
         <figcaption class="form-registration-img-caption">Vul hier je emailadres in</figcaption>
     </figure>
 
-    <form class="form-registration-group" action="registerVoorpagina.inc.php">
-        <input class="form-registration-input"  type="email" placeholder="Jouw email">
+    <form method="post" class="form-registration-group" action="registerVoorpagina.inc.php">
+        <input class="form-registration-input"  type="email" name="Email" placeholder="Jouw email">
         <input class="form-registration-submit-button" type="submit" name="EmailConfirmation" value="Ga door">
         <p class="form-registration-member-signin">Al een account? <a href="inlog.php">Log in</a></p>
         <p class="form-registration-terms"><a href="voorwaardenCondities.php">Voorwaarden &amp; Condities</a></p>
