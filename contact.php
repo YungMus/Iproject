@@ -22,15 +22,15 @@ require_once("includes/header.php");
                 </ul>
             </div>
             <div class="columns contact-us-section-right">
-                <h1 class="contact-us-header">Mail Us</h1>
+                <h1 class="contact-us-header">Mail Ons</h1>
                 <form class="contact-us-form">
-                    <input type="text" placeholder="Full name">
+                    <input type="text" placeholder="Volledige naam">
                     <input type="email" placeholder="Email">
-                    <textarea name="message" id="" rows="12" placeholder="Type your message here"></textarea>
+                    <textarea name="message" id="" rows="12" placeholder="Typ uw bericht hier"></textarea>
                     <div class="contact-us-form-actions">
-                        <input type="submit" class="button" value="Send it" />
+                        <input type="submit" class="button" value="versturen" />
                         <div>
-                            <label for="FileUpload" class="button contact-us-file-button">Attach Files</label>
+                            <label for="FileUpload" class="button contact-us-file-button">Bestanden toevoegen</label>
                             <input type="file" id="FileUpload" class="show-for-sr">
                         </div>
                     </div>
