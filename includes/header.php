@@ -60,7 +60,7 @@ $headTitle = "<title>$title</title>";
         <div class="top-bar-right">
             <ul class="menu">
                 <form method="POST" action="resultaten.php">
-                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Search"></li>
+                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Zoek"></li>
                 <li><input type="submit" id="sendHeader" name="sendHeader" value="Search"></li>
                 </form>
             </ul>
