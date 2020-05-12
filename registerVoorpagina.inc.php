@@ -14,7 +14,7 @@ if (isset($_POST['EmailConfirmation'])){
     }
     else{
 
-        $sql = "SELECT username FROM User WHERE username=?";
+        $sql = "SELECT email FROM user WHERE email=?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)) {
