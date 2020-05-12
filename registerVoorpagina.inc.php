@@ -8,13 +8,13 @@ if (isset($_POST['EmailConfirmation'])){
     $date = getdate();
     $token = md5(time().$email);
 
-    if( empty($country) ){
+    if( empty($email) ){
         header("Location: registerVoorpagina.php?error=emptyfields&Email=".$email);
         exit();
     }
     else{
 
-        $sql = "SELECT \"e-mail\" FROM User WHERE \"e-mail\"=?";
+        $sql = "SELECT username FROM User WHERE username=?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -27,14 +27,14 @@ if (isset($_POST['EmailConfirmation'])){
             mysqli_stmt_store_result($stmt);
             $resultcheck = mysqli_stmt_num_rows($stmt);
             if($resultcheck > 0) {
-                header("Location: registerVoorpagina.php?error=usernamealreadyused&Email=".$email);
+                header("Location: registerVoorpagina.php?error=emailalreadyused&Email=".$email);
                 exit();
             }
             else{
                 $sql = "INSERT INTO User (\"e-mail\",token_date, token) VALUES (?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: registerVoorpagina.php?error=sqlerror");
+                    header("Location: registerVoorpagina.php?error=inserterror");
                     exit();
                 }
                 else {
