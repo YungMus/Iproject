@@ -28,8 +28,7 @@ $headTitle = "<title>$title</title>";
 
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css"/>
 </head>
 <body>
 <header>

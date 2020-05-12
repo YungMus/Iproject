@@ -14,32 +14,34 @@ if (isset($_POST['EmailConfirmation'])){
     }
     else{
 
-        $sql = "SELECT email FROM user WHERE email=?";
-        $stmt = mysqli_stmt_init($conn);
+        $sql = 'SELECT "e-mail"  FROM "User" WHERE "e-mail"=?';
+        $stmt = $conn->prepare($sql);
 
-        if(!mysqli_stmt_prepare($stmt, $sql)) {
+        if(!$stmt) {
             header("Location: registerVoorpagina.php?error=sqlerror");
             exit();
         }
         else{
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $resultcheck = mysqli_stmt_num_rows($stmt);
+            $stmt-> bindparam(1, $email);
+            $stmt->execute();
+            $stmt->store_result($stmt);
+            $resultcheck = $stmt->num_rows;
             if($resultcheck > 0) {
                 header("Location: registerVoorpagina.php?error=emailalreadyused&Email=".$email);
                 exit();
             }
             else{
-                $sql = "INSERT INTO User (\"e-mail\",token_date, token) VALUES (?, ?, ?)";
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql)) {
+                $sql = 'INSERT INTO "User" (e-mail,token_date, token) VALUES (?, ?, ?)';
+                $stmt = $conn->prepare($sql);
+                if(!$stmt) {
                     header("Location: registerVoorpagina.php?error=inserterror");
                     exit();
                 }
                 else {
-                    mysqli_stmt_bind_param($stmt, "sss",  $email, $date, $token);
-                    mysqli_stmt_execute($stmt);
+                    $stmt-> bindparam(1, $email);
+                    $stmt-> bindparam(2, $date);
+                    $stmt-> bindparam(3, $token);
+                    $stmt->execute();
                 }
                 if($sql){
                     $to = $email;
@@ -56,8 +58,8 @@ if (isset($_POST['EmailConfirmation'])){
             }
         }
     }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+    $stmt->close();
+    $conn->close();
 }
 
 else{

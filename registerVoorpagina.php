@@ -3,6 +3,7 @@ $title = 'Registeren';
 $link = 'registerVoorpagina.php';
 
 require_once("includes/header.php");
+
 ?>
 
     <div class="hero-full-screen">
