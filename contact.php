@@ -9,10 +9,6 @@ require_once("includes/header.php");
         <div class="row medium-unstack">
             <div class="columns contact-us-section-left">
                 <h1 class="contact-us-header">Neem contact op</h1>
-                <div class="responsive-embed">
-                    <img src="images/maps.png" alt="Map of HAN" />
-                </div>
-
                 <ul class="contact-us-list">
                     <li><i class="fi-address-book">100 W Rincon Ave, Campbell CA 95008</i></li>
                     <li><i class="fi-mail"><a href="mailto:">hello@yeticave.com</a></i></li>
@@ -35,6 +31,22 @@ require_once("includes/header.php");
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="responsive-embed">
+                <div id="googleMap" style="width:100%;height:800px;"></div>
+
+                <script>
+                    function myMap() {
+                        var mapProp= {
+                            center:new google.maps.LatLng(51.827221, 5.868610),
+                            zoom:15,
+                        };
+                        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                    }
+                </script>
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpsDf33wGZbYi1tnasVf0oddRZNTJlGU&callback=myMap"></script>
+<!--                <img src="images/maps.png" alt="Map of HAN" />-->
             </div>
         </div>
     </section>

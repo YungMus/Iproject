@@ -1,5 +1,7 @@
 <?php
-$html = '<footer>
+$html = '
+</main>
+<footer>
     <a href="voorwaardenCondities.php">Klik hier voor de voorwaarden</a> 
     <p>&copy; 2020 groep 43 1E </p>
 </footer>
