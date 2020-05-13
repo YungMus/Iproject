@@ -38,9 +38,9 @@ if (isset($_POST['EmailConfirmation'])){
                     exit();
                 }
                 else {
-                    $stmt-> bindparam('s', $email);
-                    $stmt-> bindparam('s', $date);
-                    $stmt-> bindparam('s', $token);
+                    $stmt-> bindparam(1, $email);
+                    $stmt-> bindparam(2, $date);
+                    $stmt-> bindparam(3, $token);
                     $stmt->execute();
                 }
                 if($sql){
