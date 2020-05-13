@@ -5394,7 +5394,7 @@ a.thumbnail {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.5rem;
+  padding: 0rem;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
@@ -5463,7 +5463,7 @@ a.thumbnail {
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  margin: 0.5rem 1rem 0.5rem 0; }
+  margin: 0rem 0rem 0rem 0;}
 
 .top-bar-left,
 .top-bar-right {

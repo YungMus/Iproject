@@ -36,8 +36,8 @@ if (isset($_POST['sendHeader'])) {
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-<!--                <li class="dropdown-menu"><a href="index.php"><img src="../images/logoiconcepts.png" alt="Icon" /></image></a></li>-->
-                <li class="menu-text"><?php echo $title ?></li>
+                <li class="top-bar-title"><a href="index.php"><img  src="images/Eenmaalandermaal.png" alt="Iproject" width="200"></a></li>
+<!--                <li class="menu-text">--><?php //echo $title ?><!--</li>-->
                 <li><a href="index.php">Home</a></li>
                 <li><a href="veiling.php">Veiling</a>
                 <li><a href="veilingCategorieOverzicht.php">Veiling categorie overzicht</a></li>
@@ -54,15 +54,17 @@ if (isset($_POST['sendHeader'])) {
                         <li><a href="registerVoorpagina.php">Registreren</a></li>
                     </ul>
                 </li>
-
             </ul>
         </div>
         <div class="top-bar-right">
             <ul class="menu">
                 <form method="POST" action="resultaten.php">
-                <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Zoek"></li>
-                <li><input type="submit" id="sendHeader" name="sendHeader" value="Search"></li>
+                    <ul class="menu">
+                    <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Zoek"></li>
+                     <li><input class="button" type="submit" id="sendHeader" name="sendHeader" value="Zoek"></li>
+                    </ul>
                 </form>
+                <ul><a href="persoonlijkePagina.php"><img src="images/usericon.png" alt="Iproject" width="20"></a></ul>
             </ul>
         </div>
     </div>
