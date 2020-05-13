@@ -14,7 +14,7 @@ if (isset($_POST['EmailConfirmation'])){
     }
     else{
 
-        $sql = 'SELECT "e-mail"  FROM "User" WHERE "e-mail"=?';
+        $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=?';
         $stmt = $conn->prepare($sql);
 
         if(!$stmt) {
@@ -24,24 +24,23 @@ if (isset($_POST['EmailConfirmation'])){
         else{
             $stmt-> bindParam(1, $email);
             $stmt->execute();
-            print_r($stmt);
-            $stmt->store_result($stmt);
-            $resultcheck = $stmt->num_rows;
+            $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
+            $resultcheck = count($stmt);
             if($resultcheck > 0) {
                 header("Location: registerVoorpagina.php?error=emailalreadyused&Email=".$email);
                 exit();
             }
             else{
-                $sql = 'INSERT INTO "User" (e-mail,token_date, token) VALUES (?, ?, ?)';
+                $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (?, ?, ?)';
                 $stmt = $conn->prepare($sql);
                 if(!$stmt) {
                     header("Location: registerVoorpagina.php?error=inserterror");
                     exit();
                 }
                 else {
-                    $stmt-> bindparam(1, $email);
-                    $stmt-> bindparam(2, $date);
-                    $stmt-> bindparam(3, $token);
+                    $stmt-> bindparam('s', $email);
+                    $stmt-> bindparam('s', $date);
+                    $stmt-> bindparam('s', $token);
                     $stmt->execute();
                 }
                 if($sql){
