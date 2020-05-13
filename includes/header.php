@@ -74,4 +74,6 @@ if (isset($_POST['sendHeader'])) {
     //          }
     //          ?>
 </header>
+<main>
+
 

@@ -757,13 +757,19 @@
 }
 
 footer {
-    text-align: left;
-    position: static;
+    text-align: center;
+    background-color: #3c3057;
+    /*position: static;*/
     bottom: 0;
     width: 100%;
-    height: 1%;
+    position: relative;
+    height: 65px;
+    /*height: 1%;*/
 }
 
+main {
+    min-height: 100vh;
+}
 
 
 .form-registration {
