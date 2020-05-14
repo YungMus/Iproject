@@ -36,7 +36,7 @@ require_once("includes/header.php");
 
         <figure class="form-registration-img">
             <img src="https://images.pexels.com/photos/221205/pexels-photo-221205.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
-            <figcaption class="form-registration-img-caption">Vul hier je emailadres in</figcaption>
+            <figcaption class="form-registration-img-caption">Vul hier je verificatiecode in</figcaption>
         </figure>
 
         <form class="form-registration-group" action="registerTweedepagina.inc.php">

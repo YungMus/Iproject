@@ -1,68 +1,69 @@
 <?php
 
-if (isset($_POST['EmailConfirmation'])){
+if (isset($_POST['EmailConfirmation'])) {
 
     require 'connectingDatabase.php';
 
-    $email = htmlspecialchars($_POST['Email']);
-    $date = getdate();
-    $token = md5(time().$email);
+    $email = trim(htmlspecialchars($_POST['Email']));
+    $date = date("d/m/Y");
+    $token = md5(time() . $email);
 
-    if( empty($email) ){
-        header("Location: registerVoorpagina.php?error=emptyfields&Email=".$email);
+    if (empty($email)) {
+        header("Location: registerVoorpagina.php?error=emptyfields&Email=" . $email);
         exit();
     }
-    else{
 
-        $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=?';
+    if (!checkEmailExists($email, $conn)) {
+        $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (?, ?, ?)';
         $stmt = $conn->prepare($sql);
 
-        if(!$stmt) {
-            header("Location: registerVoorpagina.php?error=sqlerror");
-            exit();
-        }
-        else{
-            $stmt-> bindParam(1, $email);
-            $stmt->execute();
-            $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
-            $resultcheck = count($stmt);
-            if($resultcheck > 0) {
-                header("Location: registerVoorpagina.php?error=emailalreadyused&Email=".$email);
-                exit();
-            }
-            else{
-                $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (?, ?, ?)';
-                $stmt = $conn->prepare($sql);
-                if(!$stmt) {
-                    header("Location: registerVoorpagina.php?error=inserterror");
-                    exit();
-                }
-                else {
-                    $stmt-> bindparam(1, $email);
-                    $stmt-> bindparam(2, $date);
-                    $stmt-> bindparam(3, $token);
-                    $stmt->execute();
-                }
-                if($sql){
-                    $to = $email;
-                    $subject = "Email Verificatie";
-                    $message = "<a href='http://iproject43.icasites.nl/registerTweedepagina.php'>Verifieer e-mail</a><hr><h2> Dit is je verificatiecode <span onClick='ClipBoard()'> $token </span></h2>";
-                    $headers = "From eriknightchina@gmail.com \r\n";
-                    $headers .= "MIME-Version: 1.0" . "\r\n";
-                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $stmt->bindparam(1, $email);
+        $stmt->bindparam(2, $date);
+        $stmt->bindparam(3, $token);
+        $stmt->execute();
 
-                    mail($to,$subject,$message,$headers);
+        if ($sql) {
+            $to = $email;
+            $subject = "Email Verificatie";
+            $message = "<a href='http://iproject43.icasites.nl/registerTweedepagina.php?email=$email'>Verifieer e-mail</a><hr><h2> Dit is je verificatiecode <span onClick='ClipBoard()'> $token </span></h2>";
+            $headers = "<From: The Sender Name <eriknightchina@gmail.com>\r\n";
+            $headers .= "Reply-To: replyto@dragonforjiu.xyz\r\n";
+            $headers .= "Content-type: text/html\r\n";
 
-                    header("Location: registerVoorpagina.php?register=success");
-                }
+          $mail =  mail($to, $subject, $message, $headers);
+            if ($mail) {
+                echo("
+                  Message successfully sent!   
+               ");
+                header('Location: registerTweedepagina.php?email=succesvolverzonden');
+            } else {
+                echo("
+                  Message delivery failed...
+               ");
+                header('Location: registerVoorpagina.php?email=onsuccesvolverzonden');
             }
+
         }
     }
-    $stmt->close();
-    $conn->close();
 }
 
-else{
-    header("Location: inlog.php");
-    exit();
+
+function checkEmailExists($email_to_check, $conn) {
+    $sql = 'SELECT [e-mail]  FROM Email_verification_token WHERE [e-mail]=?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $email_to_check);
+    $stmt->execute();
+    $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
+    $resultcheck = count($stmt);
+    print_r($resultcheck);
+    if ($resultcheck > 0) {
+        header("Location: registerVoorpagina.php?error=emailalreadyused&Email=" . $email_to_check);
+        exit();
+    }
+    if($stmt) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
