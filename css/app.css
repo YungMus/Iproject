@@ -756,6 +756,10 @@
     margin-right: 1rem;
 }
 
+.row select{
+    margin-left: 25%;
+}
+
 footer {
     text-align: center;
     background-color: #3c3057;

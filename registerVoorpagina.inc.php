@@ -25,12 +25,10 @@ if (isset($_POST['EmailConfirmation'])) {
         if ($sql) {
             $to = $email;
             $subject = "Email Verificatie";
-            $message = "<a href='http://iproject43.icasites.nl/registerTweedepagina.php?email=$email'>Verifieer e-mail</a><hr><h2> Dit is je verificatiecode <span onClick='ClipBoard()'> $token </span></h2>";
+            $message = "<a href='localhost/Iproject/registerTweedepagina.php?email=$email&token=$token'>Verifieer e-mail</a><hr><h2> Dit is je verificatiecode <span onClick='ClipBoard()'> $token </span></h2>";
             $headers = "<From: The Sender Name <eriknightchina@gmail.com>\r\n";
             $headers .= "Reply-To: replyto@dragonforjiu.xyz\r\n";
             $headers .= "Content-type: text/html\r\n";
-
-            mail($to, $subject, $message, $headers);
 
             if (mail($to, $subject, $message, $headers)) {
                 echo("
@@ -56,7 +54,6 @@ function checkEmailExists($email_to_check, $conn) {
     $stmt->execute();
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);
-    print_r($resultcheck);
     if ($resultcheck > 0) {
         header("Location: registerVoorpagina.php?error=emailalreadyused&Email=" . $email_to_check);
         exit();

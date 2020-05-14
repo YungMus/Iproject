@@ -4,6 +4,7 @@ if (isset($_POST['Register'])){
 
     require 'connectingDatabase.php';
 
+    $email = $_POST['Email'];
     $username = htmlspecialchars($_POST['Username']);
     $password = htmlspecialchars(trim($_POST['Password']));
     $passwordrepeat = htmlspecialchars(trim($_POST['PasswordRepeat']));
@@ -19,7 +20,7 @@ if (isset($_POST['Register'])){
     $city = htmlspecialchars($_POST['City']);
     $country = htmlspecialchars($_POST['Country']);
 
-    if(empty($username) ||  empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  || empty($address2)  || empty($postalcode)  || empty($city)  || empty($country) ){
+    if(empty($username) ||  empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  ||  empty($postalcode)  || empty($city)  || empty($country) ){
         header("Location: register.php?error=emptyfields&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
@@ -28,54 +29,61 @@ if (isset($_POST['Register'])){
         header("Location: register.php?error=passwordcheck&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
+        else if (!checkUsernameExists($username, $conn)) {
+            $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    else{
-
-        $sql = "SELECT username FROM User WHERE username=?";
-        $stmt = mysqli_stmt_init($conn);
-
-        if(!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: register.php?error=sqlerror");
-            exit();
+            $stmt->bindparam(1, $username);
+            $stmt->bindparam(2, $email);
+            $stmt->bindparam(3, $hashedPassword);
+            $stmt->bindparam(4, $firstname);
+            $stmt->bindparam(5, $lastname);
+            $stmt->bindparam(6, $birthday);
+            $stmt->bindparam(7, $recoveryquestion);
+            $stmt->bindparam(8, $recoveryquestionanswer);
+            $stmt->bindparam(9, $address);
+            $stmt->bindparam(10, $address2);
+            $stmt->bindparam(11, $postalcode);
+            $stmt->bindparam(12, $city);
+            $stmt->bindparam(13, $country);
+            $stmt->execute();
         }
-        else{
-            mysqli_stmt_bind_param($stmt, "s", $username);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $resultcheck = mysqli_stmt_num_rows($stmt);
-            if($resultcheck > 0) {
-                header("Location: register.php?error=usernamealreadyused&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
-                exit();
-            }
-            else{
-                $sql1 = "INSERT INTO User (username, password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            if($sql) {
                 $sql2 = "INSERT INTO Userphone (phone) VALUES (?)";
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql1)) {
-                    header("Location: register.php?error=sqlerror");
-                    exit();
-                }
-                else {
-                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "ssssssssssss", $username, $hashedPassword, $firstname, $lastname, $birthday, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country);
-                    mysqli_stmt_execute($stmt);
-                } if(!mysqli_stmt_prepare($stmt, $sql2)) {
-                    header("Location: register.php?error=sqlerror");
-                    exit();
-                } else {
-                    mysqli_stmt_bind_param($stmt, "s", $phonenumber);
-                    mysqli_stmt_execute($stmt);
-                    header("Location: register.php?register=success");
-                    exit();
-                    }
-                }
+                $stmt = $conn->prepare($sql);
+                $stmt->bindparam(1, $phonenumber);
+                $stmt->execute();
             }
+                else{
+                  echo"Het aanmaken van je account is mislukt!";
+                  exit();
+                }
+                if($sql2){
+                    header("Location: inlog.php?register=success");
+                    exit();
+                }
         }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
-}
-
-else{
+    else{
     header("Location: inlog.php");
     exit();
+}
+
+function checkUsernameExists($username_to_check, $conn) {
+    $sql = 'SELECT username  FROM [User] WHERE [username]=?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $username_to_check);
+    $stmt->execute();
+    $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
+    $resultcheck = count($stmt);
+    if ($resultcheck > 0) {
+        header("Location: registerVoorpagina.php?error=usernamealreadyused&Username=" . $username_to_check);
+        exit();
+    }
+    if($stmt) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
