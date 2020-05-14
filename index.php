@@ -31,84 +31,39 @@ require_once("includes/header.php");
 </div>
 
 <article class="product-cards">
-<div class="product-card">
-    <div class="product-card-thumbnail">
-        <a href="#"><img src="https://placehold.it/180x180"/></a>
-    </div>
-    <h2 class="product-card-title"><a href="#">Titel</a></h2>
-    <span class="product-card-desc">Omschrijving</span>
-    <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
-    <div class="product-card-colors">
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-    </div>
-</div>
-<br>
-<div class="product-card">
-    <div class="product-card-thumbnail">
-        <a href="#"><img src="https://placehold.it/180x180"/></a>
-    </div>
-    <h2 class="product-card-title"><a href="#">Titel</a></h2>
-    <span class="product-card-desc">Omschrijving</span>
-    <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
-    <div class="product-card-colors">
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-    </div>
-</div>
-    <div class="product-card">
-        <div class="product-card-thumbnail">
-            <a href="#"><img src="https://placehold.it/180x180"/></a>
-        </div>
-        <h2 class="product-card-title"><a href="#">Titel</a></h2>
-        <span class="product-card-desc">Omschrijving</span>
-        <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
-        <div class="product-card-colors">
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        </div>
-    </div>
-    <div class="product-card">
-        <div class="product-card-thumbnail">
-            <a href="#"><img src="https://placehold.it/180x180"/></a>
-        </div>
-        <h2 class="product-card-title"><a href="#">Titel</a></h2>
-        <span class="product-card-desc">Omschrijving</span>
-        <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
-        <div class="product-card-colors">
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        </div>
-    </div>
-    <div class="product-card">
-        <div class="product-card-thumbnail">
-            <a href="#"><img src="https://placehold.it/180x180"/></a>
-        </div>
-        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-        <span class="product-card-desc">Omschrijving</span>
-        <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
-        <div class="product-card-colors">
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-            <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
-        </div>
-    </div>
-</article>
-
-
-
-
 
 <?php
+    $sql = "select title, startvalue, description, filename from Item inner join [file] on Item.item_id = [file].item_id";
+    //$sql = "select * from File";
+    $data = $conn->prepare($sql);
+    $data->execute();
+    $html = "";
+
+    $result = $data->fetchAll();
+    for ($i = 0; $i < 3; $i ++) {
+        $html .= '<div class="product-card">
+    <div class="product-card-thumbnail">
+        <a href="#"><img src="';
+        $html .= $result[$i]["filename"];
+        $html .= '"/></a>
+    </div>
+    <h2 class="product-card-title "><a href="#">';
+        $html .= $result[$i]["title"];
+        $html .= '</a></h2>
+    <span class="product-card-desc">';
+        $html .= $result[$i]["description"];
+        $html .= '</span>
+    <span class="product-card-price">';
+        $html .= $result[$i]["startvalue"];
+        $html .= '</span>
+    <div class="product-card-colors">';
+        for ($y = 0; $y < 4; $y ++) {
+            $html .= '<button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>';
+        }
+        $html .= '</div></div> <br>';
+    }
+    echo $html;
+
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>
