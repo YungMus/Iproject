@@ -13,7 +13,7 @@ require_once("includes/header.php");
             <label for="form-email">Vul hier je emailadres in
              <br><input type="email" class="form-email" name="Email" id="Email" placeholder="Email">
             </label>
-            <p><input type="submit" class="form-button" name="Registreer"  value="Registreer"></input></p>
+            <p><input type="submit" class="form-button" name="EmailConfirmation"  value="Registreer"></input></p>
             <p><a class="space" href="inlog.php">Ben je al lid? Inloggen </a></p>
         </form>
     </main>

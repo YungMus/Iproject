@@ -30,12 +30,13 @@ if (isset($_POST['EmailConfirmation'])) {
             $headers .= "Reply-To: replyto@dragonforjiu.xyz\r\n";
             $headers .= "Content-type: text/html\r\n";
 
-          $mail =  mail($to, $subject, $message, $headers);
-            if ($mail) {
+            mail($to, $subject, $message, $headers);
+
+            if (mail($to, $subject, $message, $headers)) {
                 echo("
                   Message successfully sent!   
                ");
-                header('Location: registerTweedepagina.php?email=succesvolverzonden');
+                header('Location: registerVoorpagina.php?email=succesvolverzonden');
             } else {
                 echo("
                   Message delivery failed...

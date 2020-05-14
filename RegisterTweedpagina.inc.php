@@ -1,12 +1,13 @@
 <?php
 
-if (isset($_POST['token'])){
+if (isset($_POST['confirmtoken'])){
 
     require 'connectingDatabase.php';
 
     $token = $_POST['token'];
+    $email = $_POST['email'];
 
-    $checkToken = $conn->query("SELECT token FROM Email_verification_token");
+    $checkToken = $conn->query("SELECT token FROM Email_verification_token WHERE [e-mail] = $email");
 
     if($checkToken === $token) {
 
