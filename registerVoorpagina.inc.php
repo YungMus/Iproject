@@ -5,7 +5,7 @@ if (isset($_POST['EmailConfirmation'])) {
     require 'connectingDatabase.php';
 
     $email = trim(htmlspecialchars($_POST['Email']));
-    $date = date("d/m/Y");
+    $date = date('d/m/Y/h:i:s');
     $token = md5(time() . $email);
 
     if (empty($email)) {
@@ -25,12 +25,29 @@ if (isset($_POST['EmailConfirmation'])) {
         if ($sql) {
             $to = $email;
             $subject = "Email Verificatie";
-            $message = "<a href='localhost/Iproject/registerTweedepagina.php?email=$email&token=$token'>Verifieer e-mail</a><hr><h2> Dit is je verificatiecode <span onClick='ClipBoard()'> $token </span></h2>";
-            $headers = "<From: The Sender Name <eriknightchina@gmail.com>\r\n";
-            $headers .= "Reply-To: replyto@dragonforjiu.xyz\r\n";
-            $headers .= "Content-type: text/html\r\n";
+            $htmlStr = "";
+            $htmlStr .= "Hi " . $email . ",<br /><br />";
 
-            if (mail($to, $subject, $message, $headers)) {
+            $htmlStr .= "Klik hieronder aub op het knop om naar het verifieer pagina te gaan.<br /><br /><br />";
+            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
+
+            $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
+            $htmlStr .= "<p>'$token'</p><br /><br /><br />";
+
+            $htmlStr .= "Met vriendelijke groeten,<br />";
+            $htmlStr .= "<a href='https://iproject43.icasites.nl/' target='_blank'>EenmaalAndermaal</a><br />";
+
+
+            $name = "EenmaalAndermaal";
+            $email_sender = "no-reply@eenmaalandermaal.com";
+
+            $headers  = "MIME-Version: 1.0\r\n";
+            $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+            $headers .= "From: {$name} <{$email_sender}> \n";
+
+            $body = $htmlStr;
+
+            if (mail($to, $subject, $body, $headers)) {
                 echo("
                   Message successfully sent!   
                ");
