@@ -45,7 +45,7 @@ require_once("includes/header.php");
     <div class="product-card-thumbnail">
         <a href="#"><img src="';
         $html .= $result[$i]["filename"];
-        $html .= '"/></a>
+        $html .= '" width=180 /></a>
     </div>
     <h2 class="product-card-title "><a href="#">';
         $html .= $result[$i]["title"];
