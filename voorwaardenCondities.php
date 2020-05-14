@@ -4,13 +4,14 @@ $link = 'voorwaardenCondities.php';
 
 require_once("includes/header.php");
 ?>
-
-    <main>
+    <div class="textlayout">
         <p>
             Lees deze gebruikersvoorwaarden aandachtig door voordat u de website
             gebruikt. Hierin worden de voorwaarden beschreven voor het gebruik
             van deze website.
         </p>
+    </div>
+    <div class="textlayout">
         <h2>Algemeen</h2>
         <p>
             Deze website (exclusief sites die eraan gekoppeld zijn) wordt
@@ -22,6 +23,8 @@ require_once("includes/header.php");
             wenst te gaan, verzoeken wij u deze website verder niet te bezoeken
             of te gebruiken.
         </p>
+    </div>
+    <div  class="textlayout">
         <h2>Intellectuele eigendomsrechten</h2>
         <p>
             Alle intellectuele eigendomsrechten, waaronder mede begrepen de
@@ -49,6 +52,8 @@ require_once("includes/header.php");
             <li>een (kopie) van (een gedeelte van) de website en/of de daarop geplaatste merken te gebruiken voor commerciële doeleinden; en</li>
             <li>(een gedeelte van) de website te wijzigen of op te nemen in enig ander werk (zoals bijvoorbeeld een papieren document, weblog of website van iemand anders).</li>
         </ol>
+    </div>
+    <div class="textlayout">
         <h2>Inhoud</h2>
         <p>
             Wij hebben de inhoud van deze website met de grootst mogelijke zorg
@@ -107,6 +112,8 @@ require_once("includes/header.php");
             deze informatie op elk moment in te korten, te wijzigen of te
             verwijderen.
         </p>
+    </div>
+    <div class="textlayout">
         <h2>Persoonsgegevens</h2>
         <p>
             Indien u op de website persoonsgegevens aan ons verstrekt, zoals uw
@@ -114,12 +121,15 @@ require_once("includes/header.php");
             raden u aan deze privacyverklaring goed te lezen voordat u ons deze
             gegevens verstrekt.
         </p>
+    </div>
+    <div class="textlayout">
         <h2>Contact</h2>
         <p>
             Indien u een vraag of klacht heeft over deze website neem dan
             contact met ons op via het contactformulier
         </p>
-
+    </div>
+    <div class="textlayout">
         <h2>Diversen</h2>
         <p>
             Wij behouden ons het recht voor, zonder voorafgaande kennisgeving op
@@ -133,7 +143,7 @@ require_once("includes/header.php");
             hieruit voortvloeien of anderszins verband houden met deze website
             worden voorgelegd aan de daartoe bevoegde rechter te Rotterdam.
         </p>
-    </main>
+    </div>
 
 <?php
 require_once("includes/foundation_script.php");

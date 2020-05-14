@@ -934,3 +934,11 @@ main {
     padding: 0 8px;
 }
 
+.textlayout{
+    border: #0a0a0a;
+    border-width: 2px;
+    border-bottom-style: dashed;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
