@@ -5,7 +5,7 @@ if (isset($_POST['EmailConfirmation'])) {
     require 'connectingDatabase.php';
 
     $email = trim(htmlspecialchars($_POST['Email']));
-    $date = date('d/m/Y/h:i:s');
+    $date = date('d/m/Y/G:i:s');
     $token = md5(time() . $email);
 
     if (empty($email)) {
