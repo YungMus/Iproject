@@ -32,11 +32,11 @@ if (isset($_POST['Register'])){
         else if (!checkUsernameExists($username, $conn)) {
             $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+//            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt->bindparam(1, $username);
             $stmt->bindparam(2, $email);
-            $stmt->bindparam(3, $hashedPassword);
+            $stmt->bindparam(3, $password);
             $stmt->bindparam(4, $firstname);
             $stmt->bindparam(5, $lastname);
             $stmt->bindparam(6, $birthday);

@@ -15,16 +15,16 @@ if (isset($_POST['confirmtoken'])) {
         if ($resultSet) {
             $update = $conn->query("UPDATE Email_verification_token SET verified = 1 WHERE token = '$token'");
             if ($update) {
-                header("Location: register.php?email=$email");
+                header("Location: register.php?succes=verified&email=$email");
             } else {
                 echo "Er is een probleem met het verbinden met onze server!";
             }
         } else {
-            echo "Dit account is niet geldig of al geverifieerd.";
+            header("Location: registerVoorpagina.php?error=invalid");
         }
 
     } else {
-        die("Je verificatie code komt niet overeen!");
+        header("Location: registerTweedepagina.php?error=nomatch");
     }
 }
 function checkTokenMatch ($email, $conn, $token_to_check) {

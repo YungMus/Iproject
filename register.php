@@ -4,7 +4,7 @@ $link = 'register.php';
 
 require_once("includes/header.php");
 
-if(isset($email)) {
+if($_GET['email']) {
     $email = $_GET['email'];
 
     ?>
@@ -44,8 +44,8 @@ if(isset($email)) {
 
     </div>
 
-    <form method="post" class="multi-step-checkout-form" action="register.inc.php">
-        <h6 class="multi-step-checkout-step-subheader">Account</h6>
+    <form method="post" class="form" action="register.inc.php">
+        <h6 class="multi-step-checkout-step-title-subheader">Account</h6>
         <p class="create-account-desc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
         <label>
             <input type="text" name="Email" id="Email" value="<?php echo $email ?>" readonly>
@@ -61,7 +61,7 @@ if(isset($email)) {
         <div>
             <hr class="multi-step-checkout-form-divider">
         </div>
-        <h6 class="multi-step-checkout-step-subheader">Persoonlijk</h6>
+        <h6 class="multi-step-checkout-step-title-subheader">Persoonlijk</h6>
         <p class="create-account-desc">Vul hier je perssonlijke gegevens in.</p>
         <div class="small-12 medium-7 column">
             <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z].{3,}"
@@ -86,11 +86,11 @@ if(isset($email)) {
             } ?>" placeholder="Telefoonnummer" required>
         </div>
         <select name="RecoveryQuestion" id="RecoverQuestion" required>
-            <option value="Wat is het achternaam van je moeder?">Wat is het achternaam van je moeder?</option>
-            <option value="Wat was het naam van je eerste huisdier?">Wat is het naam van je eerste huisdier?</option>
-            <option value="Wat was je eerste auto?">Wat was je eerste auto?</option>
-            <option value="Op welke basisschool zat je?">Op welke basisschool zat je?</option>
-            <option value="Hoe heet de stad waar je bent geboren?">Hoe heet de stad waar je bent geboren?</option>
+            <option value="1">Wat is het achternaam van je moeder?</option>
+            <option value="2">Wat is het naam van je eerste huisdier?</option>
+            <option value="3">Wat was je eerste auto?</option>
+            <option value="4">Op welke basisschool zat je?</option>
+            <option value="5">Hoe heet de stad waar je bent geboren?</option>
         </select>
         <div class="small-12 medium-7 column">
             <input type="text" name="RecoveryQuestionAnswer" id="RecoverQuestionAnswer" placeholder="Antwoord" required>
@@ -98,7 +98,7 @@ if(isset($email)) {
         <div>
             <hr class="multi-step-checkout-form-divider">
         </div>
-        <h6 class="multi-step-checkout-step-subheader">Adres</h6>
+        <h6 class="multi-step-checkout-step-title-subheader">Adres</h6>
         <p class="create-account-desc">Vul hier je adresgegevens in.</p>
         <div class="small-6 medium-3 column">
             <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9].{3,}"

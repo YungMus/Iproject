@@ -300,7 +300,8 @@
 .form-password,
 .form-username,
 .form-date,
-.form-city{
+.form-city,
+.form-token{
     border-radius: 30px;
     border: none;
     opacity: .3;
@@ -331,6 +332,10 @@
 
 .space{
     margin-right: 10.9%;
+}
+
+.middle{
+    text-align: center;
 }
 
 
@@ -551,7 +556,7 @@
 
 .multi-step-checkout-step-title-subheader {
     color: #a4a4a4;
-    font-size: 0.9rem;
+    font-size: 2rem;
     display: inline-block;
     margin-left: 10px;
     font-family: 'Open sans', serif;

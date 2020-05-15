@@ -32,7 +32,7 @@ if (isset($_POST['EmailConfirmation'])) {
             $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
-            $htmlStr .= "<p>'$token'</p><br /><br /><br />";
+            $htmlStr .= "<p>$token</p><br /><br /><br />";
 
             $htmlStr .= "Met vriendelijke groeten,<br />";
             $htmlStr .= "<a href='https://iproject43.icasites.nl/' target='_blank'>EenmaalAndermaal</a><br />";
