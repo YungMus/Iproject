@@ -1,69 +1,51 @@
 <?php
 
-if(isset($_POST['login']) || $_POST['login-sending']){
+if(isset($_POST['login']) || $_POST['login-sending']) {
 
-    //require 'connectingDatabase.php';
+    require 'connectingDatabase.php';
 
-    $email = htmlspecialchars($_POST['Email']);
-    $password = htmlspecialchars($_POST['Password']);
+    $email = strlen(trim($_POST['Email']));
+    $password = strlen(trim($_POST['Password']));
 
-    if(empty($username) || empty($password)) {
+    if (empty($email) || empty($password)) {
         header("Location: inlog.php?error=emptyfields");
         exit();
     }
-    else{
-        $sql = "SELECT * FROM User WHERE username=? ";
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("Location: inlog.php?error=sqlerror");
-            exit();
+    else {
+        $sql = "SELECT password FROM [User] WHERE username=? AND password=? ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $password);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//        $passwordcheck = password_verify($password, $result[0]);
+
+    }
+//    if ($passwordcheck == false) {
+    if ($password != $result){
+        header("Location: inlog.php?error=wrongpassword&result=$result&result=$password");
+    }
+//    else if ($passwordcheck == true) {
+    else if($password == $result[0] ){
+        if ($result['is_seller'] === 1) {
+            session_start();
+            $_SESSION['IDSeller'] = $result['user_id'];
+
+        } else if ($result['is_admin'] === 1) {
+            session_start();
+            $_SESSION['IDAdmin'] = $result['user_id'];
+        } else {
+            session_start();
+            $_SESSION['IDUser'] = $result['user_id'];
         }
-        else{
-
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-            if($row = mysqli_fetch_assoc($result)){
-                $passwordcheck = password_verify($password, $row['password']);
-                if($passwordcheck == false){
-                    header("Location: inlog.php?error=wrongpassword");
-                    exit();
-                }
-                else if ($passwordcheck == true) {
-                    if ($row['is_seller'] === 1) {
-                        session_start();
-                        $_SESSION['IDSeller'] = $row['user_id'];
-
-                    }
-                    else if($row['is_admin'] === 1) {
-                        session_start();
-                        $_SESSION['IDAdmin'] = $row['user_id'];
-                    }
-                    else{
-                    session_start();
-                    $_SESSION['IDUser'] = $row['user_id'];
-                    }
-                    header("Location: persoonlijkepagina.php?login=success");
-                    exit();
-                }
-                else{
-                    header("Location: inlogpagina.php?error=wrongpassword");
-                    exit();
-                }
-
-            }
-            else{
-                header("Location: inlogpagina.php?error=noUser");
-                exit();
-            }
-        }
+        header("Location: persoonlijkepagina.php?login=success");
+        exit();
+    } else {
+        header("Location: inlogpagina.php?error=wrongpassword");
+        exit();
     }
 }
-else if(isset($_POST['Register'])){
-    header("Location: register.php");
-    exit();
-}
-else{
-    header("Location: inlog.php");
-    exit();
-}
+    else{
+        header("Location: inlogpagina.php?error=noUser");
+        exit();
+    }
