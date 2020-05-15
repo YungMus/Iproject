@@ -51,12 +51,12 @@ if (isset($_POST['EmailConfirmation'])) {
                 echo("
                   Message successfully sent!   
                ");
-                header('Location: registerVoorpagina.php?email=succesvolverzonden');
+                header('Location: registerVoorpagina.php?succes=mailsent');
             } else {
                 echo("
                   Message delivery failed...
                ");
-                header('Location: registerVoorpagina.php?email=onsuccesvolverzonden');
+                header('Location: registerVoorpagina.php?error=mailnotsent');
             }
 
         }

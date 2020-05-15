@@ -946,3 +946,14 @@ main {
     margin-right: 100px;
 }
 
+.error{
+    color: red;
+    text-align: center;
+    font-size: 30px;
+}
+
+.succes{
+    color: forestgreen;
+    text-align: center;
+    font-size: 30px;
+}

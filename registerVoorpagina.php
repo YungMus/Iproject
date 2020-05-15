@@ -4,6 +4,22 @@ $link = 'registerVoorpagina.php';
 
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if($_GET['error'] == "emptyfields"){
+        echo '<p class="error"> Vul al de velden in!</p>';
+    }
+    else if($_GET['error'] == "mailnotsent"){
+        echo '<p class="error"> Je mail is onsuccesvol verzonden!</p>';
+    }
+    else if($_GET['error'] == "emailalreadyused"){
+        echo '<p class="error"> Dit email is al eens gebruikt, gebruik een ander email!</p>';
+    }
+} else if(isset($_GET['succes'])){
+    if($_GET['succes'] == "mailsent"){
+        echo '<p class="succes"> Je hebt succesvol een mail verstuurd!</p>';
+    }
+}
+
 ?>
 
     <main>
