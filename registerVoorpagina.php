@@ -18,6 +18,9 @@ require_once("includes/header.php");
             else if($_GET['error'] == "emailalreadyused"){
                 echo '<p class="error"> Dit email is al eens gebruikt, gebruik een ander email!</p>';
             }
+            else if($_GET['error'] == "noauthorazation"){
+                echo '<p class="error"> Je hebt geen autorisatie voor dat!</p>';
+            }
         } else if(isset($_GET['succes'])){
             if($_GET['succes'] == "mailsent"){
                 echo '<p class="succes"> Je hebt succesvol een mail verstuurd!</p>';

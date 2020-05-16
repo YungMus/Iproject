@@ -1,8 +1,28 @@
 <?php
 $title = 'Persoonlijke Pagina';
 $link = 'persoonlijkePagina.php';
+session_start();
 
 require_once("includes/header.php");
+
+if(isset($_SESSION['IDUser'])){
+    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
+    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
+    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+}
+else if(isset($_SESSION['IDSeller'])){
+    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
+    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
+    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+}
+else if(isset($_SESSION['IDAdmin'])){
+    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
+    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
+    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+}
+else{   header("Location: inlogpagina.php?error=noauthorazation");
+    exit();
+}
 ?>
 
 <div class="row flex-container">

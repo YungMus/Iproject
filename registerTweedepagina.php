@@ -3,6 +3,9 @@ $title = 'Registeren';
 $link = 'registerTweedePagina.php';
 
 require_once("includes/header.php");
+
+if($_GET['email']) {
+    $email = $_GET['email'];
 ?>
 
 
@@ -27,6 +30,11 @@ require_once("includes/header.php");
 </main>
 
 <?php
+}
+else {
+    header("Location: registerVoorpagina.php?error=noauthorazation");
+}
+
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>
