@@ -52,11 +52,13 @@ if (isset($_POST['sendHeader'])) {
                         echo "persoonlijkePagina.php";
                     } ?>">Persoonlijke Pagina</a>
                     <ul class="menu">
-                        <li><a href="inlog.php">Inloggen</a></li>
-                        <li><a href="registerVoorpagina.php">Registreren</a></li>
+
                         <?php
                         if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
                             echo "<li><a href= 'uitgelogd.php'>Uitloggen</a></li>";
+                        } else {
+                            echo "<li><a href='inlog.php'>Inloggen</a></li>";
+                            echo "<li><a href='registerVoorpagina.php'>Registreren</a></li>";
                         }
                         ?>
                     </ul>

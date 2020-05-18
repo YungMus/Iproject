@@ -1,6 +1,7 @@
 <?php
 $title = 'Veiling';
 $link = 'veiling.php';
+session_start();
 require_once("includes/header.php");
 $item = 1;
 if (isset($_GET['item'])) {

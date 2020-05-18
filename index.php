@@ -1,7 +1,7 @@
 <?php
 $title = 'Homepagina';
 $link = 'index.php';
-
+session_start();
 require_once("includes/header.php");
 ?>
 <div class="hero-section">

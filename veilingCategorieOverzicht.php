@@ -1,7 +1,7 @@
 <?php
 $title = 'Inlogpagina';
 $link = 'veilingCategorieOverzicht.php';
-
+session_start();
 require_once("includes/header.php");
 ?>
 

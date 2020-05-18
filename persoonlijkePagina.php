@@ -6,21 +6,15 @@ session_start();
 require_once("includes/header.php");
 
 if(isset($_SESSION['IDUser'])){
-    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
-    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
-    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+    echo '<p>Ik ben een gebruiker</p>';
 }
 else if(isset($_SESSION['IDSeller'])){
-    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
-    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
-    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+    echo '<p>Ik ben een seller</p>';
 }
 else if(isset($_SESSION['IDAdmin'])){
-    echo '<div class="ingelogdknoppen"><a class="ingelogdknop" href="aanmaakblog.php">Blog aanmaken</a>';
-    echo '<a class="ingelogdknop" href="mijnContactBerichten.php">Mijn contactberichten bekijken</a>';
-    echo '<a class="ingelogdknop" href="projectToevoegen.php">Project toevoegen</a></div>';
+    echo '<p>Ik ben een admin</p>';
 }
-else{   header("Location: inlogpagina.php?error=noauthorazation");
+else{   header("Location: inlog.php?error=noauthorazation");
     exit();
 }
 ?>
