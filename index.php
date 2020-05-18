@@ -43,7 +43,7 @@ require_once("includes/header.php");
     for ($i = 0; $i < 3; $i ++) {
         $html .= '<div class="product-card">
     <div class="product-card-thumbnail">
-        <a href="#"><img src="';
+        <a href="veiling.php"><img src="';
         $html .= $result[$i]["filename"];
         $html .= '" width=180 /></a>
     </div>
