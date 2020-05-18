@@ -33,7 +33,7 @@ require_once("includes/header.php");
 <article class="product-cards">
 
 <?php
-    $sql = "select title, startvalue, description, filename from Item inner join [file] on Item.item_id = [file].item_id";
+    $sql = "select title, startvalue, description, filename from Item inner join [file] on Item.item_id = [file].item_id order by Item.item_id";
     //$sql = "select * from File";
     $data = $conn->prepare($sql);
     $data->execute();
@@ -43,7 +43,9 @@ require_once("includes/header.php");
     for ($i = 0; $i < 3; $i ++) {
         $html .= '<div class="product-card">
     <div class="product-card-thumbnail">
-        <a href="veiling.php"><img src="';
+        <a href="veiling.php?item=';
+        $html .= $i + 1;
+        $html .= '"><img src="';
         $html .= $result[$i]["filename"];
         $html .= '" width=180 /></a>
     </div>
