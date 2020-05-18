@@ -2,7 +2,16 @@
 $title = 'Veiling';
 $link = 'veiling.php';
 require_once("includes/header.php");
+$item = $_GET['item'];
 
+$sql = "select title, startvalue, description, filename from Item inner join [file] on Item.item_id = [file].item_id where Item.item_id = $item";
+$data = $conn->prepare($sql);
+$data->execute();
+$html = "";
+
+$result = $data->fetchAll();
+print_r($result);
+echo $html;
 ?>
 
 <div class="grid-x grid-padding-y grid-padding-y">
