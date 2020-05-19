@@ -1,7 +1,7 @@
 <?php
 $title = 'Voorwaarden & Condities';
 $link = 'voorwaardenCondities.php';
-
+session_start();
 require_once("includes/header.php");
 ?>
     <div class="textlayout">

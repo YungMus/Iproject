@@ -1,7 +1,7 @@
 <?php
 $title = 'Contact';
 $link = 'contact.php';
-
+session_start();
 require_once("includes/header.php");
 
 ?>

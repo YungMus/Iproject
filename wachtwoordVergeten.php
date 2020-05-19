@@ -1,7 +1,7 @@
 <?php
 $title = 'Wachtwoord vergeten';
 $link = 'wachtwoordVergeten.php';
-
+session_start();
 if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
     if (isset($_POST['send'])){
         $oldPassword = htmlspecialchars(trim($_POST['oldPassword']));
