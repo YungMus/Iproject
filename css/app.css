@@ -747,6 +747,7 @@
     content: "\f016";
     font-family: FontAwesome;
     margin-right: 1rem;
+    width: 100%;
 }
 
 .multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a::before {
@@ -961,4 +962,11 @@ main {
     color: forestgreen;
     text-align: center;
     font-size: 30px;
+}
+
+.rubriek{
+    max-width: 10%;
+}
+.rubriekeen{
+    max-width: 90%;
 }
