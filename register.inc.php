@@ -30,29 +30,29 @@ if (isset($_POST['Register'])){
         exit();
     }
         else if (!checkUsernameExists($username, $conn)) {
-            $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
             $stmt = $conn->prepare($sql);
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt->bindparam(1, $username);
-            $stmt->bindparam(2, $email);
-            $stmt->bindparam(3, $hashedPassword);
-            $stmt->bindparam(4, $firstname);
-            $stmt->bindparam(5, $lastname);
-            $stmt->bindparam(6, $birthday);
-            $stmt->bindparam(7, $recoveryquestion);
-            $stmt->bindparam(8, $recoveryquestionanswer);
-            $stmt->bindparam(9, $address);
-            $stmt->bindparam(10, $address2);
-            $stmt->bindparam(11, $postalcode);
-            $stmt->bindparam(12, $city);
-            $stmt->bindparam(13, $country);
+            $stmt->bindparam(':username', $username);
+            $stmt->bindparam(':email', $email);
+            $stmt->bindparam(':password', $hashedPassword);
+            $stmt->bindparam(':firstname', $firstname);
+            $stmt->bindparam(':lastname', $lastname);
+            $stmt->bindparam(':birth_day', $birthday);
+            $stmt->bindparam(':recover_question', $recoveryquestion);
+            $stmt->bindparam(':recover_question_answer', $recoveryquestionanswer);
+            $stmt->bindparam(':address', $address);
+            $stmt->bindparam(':address_addition', $address2);
+            $stmt->bindparam(':postal_code', $postalcode);
+            $stmt->bindparam(':place_name', $city);
+            $stmt->bindparam(':country', $country);
             $stmt->execute();
         }
             if($sql) {
-                $sql2 = "INSERT INTO Userphone (phone) VALUES (?)";
+                $sql2 = "INSERT INTO Userphone (phone) VALUES (:userphone)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bindparam(1, $phonenumber);
+                $stmt->bindparam(':userphone', $phonenumber);
                 $stmt->execute();
             }
                 else{
@@ -70,9 +70,9 @@ if (isset($_POST['Register'])){
 }
 
 function checkUsernameExists($username_to_check, $conn) {
-    $sql = 'SELECT username  FROM [User] WHERE [username]=?';
+    $sql = 'SELECT username  FROM [User] WHERE [username]=:username';
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(1, $username_to_check);
+    $stmt->bindParam(':username', $username_to_check);
     $stmt->execute();
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);
