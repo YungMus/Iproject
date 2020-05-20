@@ -48,21 +48,19 @@ if (isset($_POST['sendHeader'])) {
                         <li><a href="voorwaardenCondities.php">Voorwaarden & condities</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php  if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-                        echo "persoonlijkePagina.php";
-                    } ?>">Persoonlijke Pagina</a>
-                    <ul class="menu">
-
-                        <?php
-                        if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-                            echo "<li><a href= 'uitgelogd.php'>Uitloggen</a></li>";
-                        } else {
-                            echo "<li><a href='inlog.php'>Inloggen</a></li>";
-                            echo "<li><a href='registerVoorpagina.php'>Registreren</a></li>";
-                        }
-                        ?>
-                    </ul>
-                </li>
+<!--                <li><a>Persoonlijke Pagina</a>-->
+<!--                    <ul class="menu">-->
+<!---->
+<!--                        --><?php
+//                        if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
+//                            echo "<li><a href= 'uitgelogd.php'>Uitloggen</a></li>";
+//                        } else {
+//                            echo "<li><a href='inlog.php'>Inloggen</a></li>";
+//                            echo "<li><a href='registerVoorpagina.php'>Registreren</a></li>";
+//                        }
+//                        ?>
+<!--                    </ul>-->
+<!--                </li>-->
             </ul>
         </div>
         <div class="top-bar-right">
@@ -73,15 +71,14 @@ if (isset($_POST['sendHeader'])) {
                      <li><input class="button" type="submit" id="sendHeader" name="sendHeader" value="Zoek"></li>
                     </ul>
                 </form>
-                <ul><a href="persoonlijkePagina.php"><img src="images/usericon.png" alt="Iproject" width="20"></a></ul>
+                <ul><a href="<?php  if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
+                        echo "persoonlijkePagina.php";}
+                        else { echo "inlog.php"; }?>
+">
+                        <img src="images/usericon.png" alt="Iproject" width="20"></a></ul>
             </ul>
         </div>
     </div>
-    <!--          --><?php
-    //          if(isset($_SESSION['IDgebruiker'])) {
-    //              echo '<li><a href="ingelogd.php">Admin</a></li>';
-    //          }
-    //          ?>
 </header>
 <main>
 

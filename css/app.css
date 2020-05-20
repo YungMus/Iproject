@@ -744,20 +744,17 @@
 }
 
 .multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a.subitem::before {
-    content: "\f016";
     font-family: FontAwesome;
     margin-right: 1rem;
     width: 100%;
 }
 
 .multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a::before {
-    content: "\f07c";
     font-family: FontAwesome;
     margin-right: 1rem;
 }
 
 .multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="false"] a::before {
-    content: "\f07b";
     font-family: FontAwesome;
     margin-right: 1rem;
 }
@@ -965,8 +962,8 @@ main {
 }
 
 .rubriek{
-    max-width: 10%;
+   width: 10%;
 }
-.rubriekeen{
-    max-width: 90%;
+.subrubriek{
+    max-width: 100%;
 }
