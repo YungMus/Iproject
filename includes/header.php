@@ -1,9 +1,6 @@
 <?php
 require_once("connectingDatabase.php");
 
-$metahttpequiv = "<meta http-equiv=\"x-ua-compatible\" content='ie=edge'>";
-$metaCharset = "<meta charset='utf-8'>";
-$metaViewport = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
 $headTitle = "<title>$title</title>";
 
 if (isset($_POST['sendHeader'])) {
@@ -11,14 +8,15 @@ if (isset($_POST['sendHeader'])) {
 }
 ?>
 
+
 <!doctype html>
 <html class="no-js" lang="nl" dir="ltr">
 <head>
+    <meta http-equiv="x-ua-compatible" content='ie=edge'>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <?php
-    echo $metahttpequiv,
-    $metaCharset,
-    $metaViewport,
-    $headTitle;
+    echo $headTitle;
 
     if (isset($_POST['sendHeader'])) {
         $sql = "select * from item WHERE title LIKE :searchA OR description like :searchB";

@@ -6,24 +6,21 @@ session_start();
 require_once("includes/header.php");
 
 if(isset($_SESSION['IDUser'])){
-    echo '<div data-closable class="alert-box callout success">
-  <i class="fa fa-check"></i> Je bent succesvol ingelogd gebruiker!
+    echo '<div data-closable class="alert-box callout info"> Welkom gebruiker!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
 }
 else if(isset($_SESSION['IDSeller'])){
-    echo '<div data-closable class="alert-box callout success">
-  <i class="fa fa-check"></i> Je bent succesvol ingelogd verkoper!
+    echo '<div data-closable class="alert-box callout info"> Welkom verkoper!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
 }
 else if(isset($_SESSION['IDAdmin'])){
-    echo '<div data-closable class="alert-box callout success">
-  <i class="fa fa-check"></i> Je bent succesvol ingelogd admin!
+    echo '<div data-closable class="alert-box callout info"> Welkom admin!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
