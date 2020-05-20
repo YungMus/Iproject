@@ -9,8 +9,7 @@ if (isset($_GET['item'])) {
 }
 
 $sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, filename from Item inner join [file] on Item.item_id = [file].item_id inner join [user] on Item.seller = [user].user_id where Item.item_id = $item";
-$data = $conn->prepare($sql);
-$data->execute();
+$data = $conn->query($sql);
 $html = "";
 
 $result = $data->fetchAll();
@@ -20,11 +19,9 @@ $html .= '<div class="grid-x grid-padding-y grid-padding-y">
 $html .= $result[0]["filename"];
 $html .= '"/></a>
     </div>  <div class="cell small-4 flex-container flex-dir-column">
-    <div class="callout primary flex-child-auto-veiling">Veiling</div>
-    <div class="callout primary flex-child-auto-veiling">Veiling</div>
 
   <h2>';
-$html .= $result[0]['username'];
+$html .= $result[0]['username'] . ' 50.0' ;//$result[0]['Rating'];
 $html .= '</h2> <p>';
 $html .= $result[0]['running_endday'];
 $html .= '&nbsp;&nbsp;';
