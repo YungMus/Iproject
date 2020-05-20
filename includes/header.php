@@ -48,19 +48,6 @@ if (isset($_POST['sendHeader'])) {
                         <li><a href="voorwaardenCondities.php">Voorwaarden & condities</a></li>
                     </ul>
                 </li>
-<!--                <li><a>Persoonlijke Pagina</a>-->
-<!--                    <ul class="menu">-->
-<!---->
-<!--                        --><?php
-//                        if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-//                            echo "<li><a href= 'uitgelogd.php'>Uitloggen</a></li>";
-//                        } else {
-//                            echo "<li><a href='inlog.php'>Inloggen</a></li>";
-//                            echo "<li><a href='registerVoorpagina.php'>Registreren</a></li>";
-//                        }
-//                        ?>
-<!--                    </ul>-->
-<!--                </li>-->
             </ul>
         </div>
         <div class="top-bar-right">

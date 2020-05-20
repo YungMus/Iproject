@@ -28,18 +28,18 @@ $html .= '&nbsp;&nbsp;';
 $html .= $result[0]['running_endtime'];
 $html .= '</p> <p>';
 $html .= $result[0]['placename'];
-$html .= '</p>
-</div> </div> <h1>';
+$html .= '</p> ';
+$html .= '<div class="row flex-container align-left">
+    </div>
+    <div class="callout text-center align-right"> <p>';
+$html .= $result[0]['description'];
+$html .= '</p>';
+$html .= '</div> </div> <h1>';
 $html .= $result[0]['title'];
 $html .= '&nbsp;&euro;';
 $html .= $result[0]['startvalue'];
-$html .= '</h1><div class="row flex-container align-left">
-    </div>
-    <div class="callout text-center align-right">
-        <p>';
-$html .= $result[0]['description'];
-$html .= '</p>
-    </div>
+$html .= '</h1>
+</div>
 </div>';
 
 echo $html;
