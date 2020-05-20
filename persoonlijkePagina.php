@@ -34,18 +34,12 @@ else{   header("Location: inlog.php?error=noauthorization");
 }
 
 ?>
-
     <div class="row flex-container align-center">
         <div class="callout text-center">
             <p>Dit is de persoonlijke pagina</p>
-            <a class="button large" href="#">So Large</a>
             <?php
             if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-                echo "<li><a href= 'uitgelogd.php'>Uitloggen</a></li>";
-            } else {
-                echo "<li><a href='inlog.php'>Inloggen</a></li>";
-                echo "<li><a href='registerVoorpagina.php'>Registreren</a></li>";
-            }
+                echo "<a class=\"button large\" href= 'uitgelogd.php'>Uitloggen</a>";            }
             ?>
         </div>
     </div>
