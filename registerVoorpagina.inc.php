@@ -69,7 +69,7 @@ if (isset($_POST['EmailConfirmation'])) {
 function checkEmailExists($email_to_check, $conn) {
     $sql = 'SELECT [e-mail]  FROM Email_verification_token WHERE [e-mail]=:email';
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam('email', $email_to_check);
+    $stmt->bindParam(':email', $email_to_check);
     $stmt->execute();
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);
