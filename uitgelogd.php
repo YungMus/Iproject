@@ -3,4 +3,4 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: inlog.php");
+header("Location: inlog.php?succes=logout");

@@ -23,16 +23,24 @@ if(isset($_GET['error'])) {
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
-    } else if (isset($_GET['succes'])) {
+    }
+}
+    else if (isset($_GET['succes'])) {
         if ($_GET['succes'] == "accountmade") {
             echo '<div data-closable class="alert-box callout success"> Je account is succesvol aangemaakt!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
+        } else if ($_GET['succes'] == "logout") {
+            echo '<div data-closable class="alert-box callout success"> Je bent succesvol uitgelogd!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
         }
     }
-}
+
 ?>
 
 <main>
@@ -44,7 +52,6 @@ if(isset($_GET['error'])) {
         <label for="form-password">Wachtwoord
           <input type="password" class="form-password" name="Password" id="password">
         </label>
-        <input type="checkbox" id="show-password"><label for="show-password">Laat wachtwoord zien</label>
         <p><input type="submit" class="form-button" name="login"  value="Log in"></input></p>
         <p><a class="space" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a> <a href="registerVoorpagina.php">Geen inloggegevens?</a></p>
     </form>
