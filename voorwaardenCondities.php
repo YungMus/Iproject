@@ -24,6 +24,24 @@ require_once("includes/header.php");
             of te gebruiken.
         </p>
     </div>
+    <div class="textlayout">
+        <h2>Persoonsgegevens</h2>
+        <p>
+            Door te registreren op onze website gaat u er mee akkoord dat uw persoonsgegevens bewaard en
+            opgeslagen worden in onze database.
+        </p>
+        <br>
+        <p>
+            Deze data wordt alleen gebruikt voor de doeleinden van de site.
+            De data die wij verzamelen wordt gebruikt voor het recommanderen van veilingen op basis van uw geschiedenis
+            op de site. En uw persoonsgegevens worden gebruikt voor het kopen en verkopen van producten op de site .
+        </p>
+        <br>
+        <p>
+            Als u aan ons vraagt om de persoonsgegevens te verwijderen dan zijn wij verplicht dit te doen.
+            Dus zodra u er voor kiest om uw account te sluiten zullen wij uw gegevens uit onze databse verwijderen.
+        </p>
+    </div>
     <div  class="textlayout">
         <h2>Intellectuele eigendomsrechten</h2>
         <p>
@@ -111,15 +129,6 @@ require_once("includes/header.php");
             verantwoordelijk of aansprakelijk. Wij behouden ons het recht voor
             deze informatie op elk moment in te korten, te wijzigen of te
             verwijderen.
-        </p>
-    </div>
-    <div class="textlayout">
-        <h2>Persoonsgegevens</h2>
-        <p>
-            Indien u op de website persoonsgegevens aan ons verstrekt, zoals uw
-            naam en e-mailadres, is onze privacyverklaring van toepassing. Wij
-            raden u aan deze privacyverklaring goed te lezen voordat u ons deze
-            gegevens verstrekt.
         </p>
     </div>
     <div class="textlayout">

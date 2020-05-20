@@ -962,8 +962,8 @@ main {
 }
 
 .rubriek{
-   width: 10%;
+    max-width: 10%;
 }
-.subrubriek{
-    max-width: 100%;
+.rubriekeen{
+    max-width: 90%;
 }

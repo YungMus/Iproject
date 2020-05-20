@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['login']) || $_POST['login-sending']) {
+if(isset($_POST['login'])) {
 
     require 'connectingDatabase.php';
 
@@ -12,10 +12,10 @@ if(isset($_POST['login']) || $_POST['login-sending']) {
         header("Location: inlog.php?error=emptyfields");
         exit();
     } else {
-        $sql = "SELECT username, is_seller, is_admin, user_id FROM [User] WHERE [e-mail]=? AND password=?";
+        $sql = "SELECT username, is_seller, is_admin, user_id FROM [User] WHERE [e-mail]= :email AND password= :password";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(1, $email);
-        $stmt->bindParam(2, $password);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
         $stmt->execute();
         $results = $stmt->fetchAll();
 
@@ -34,9 +34,9 @@ if(isset($_POST['login']) || $_POST['login-sending']) {
                 session_start();
                 $_SESSION['IDUser'] = $results[0]['user_id'];
             }
-            header("Location: persoonlijkepagina.php?login=success");
+            header("Location: persoonlijkepagina.php?succes=login");
         } else {
-        header("Location: inlog.php?login=invalid");
+        header("Location: inlog.php?error=invalid");
         }
     }
 }

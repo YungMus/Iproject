@@ -34,7 +34,6 @@ require_once("includes/header.php");
 
 <?php
     $sql = "select title, startvalue, description, filename from Item inner join [file] on Item.item_id = [file].item_id order by Item.item_id";
-    //$sql = "select * from File";
     $data = $conn->prepare($sql);
     $data->execute();
     $html = "";

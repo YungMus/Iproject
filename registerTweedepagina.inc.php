@@ -7,6 +7,13 @@ if (isset($_POST['confirmtoken'])) {
     $token = $_POST['token'];
     $email = $_POST['email'];
 
+    if (empty($email) || empty($token)) {
+        header("Location: registerVoorpagina.php?error=emptyfields");
+        exit();
+    }  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: registerVoorpagina.php?error=emailinvalid");
+    }
+
 
     if (checkTokenMatch($email, $conn, $token) && !checkDateToken ($conn, $email)) {
 
@@ -20,7 +27,7 @@ if (isset($_POST['confirmtoken'])) {
                 echo "Er is een probleem met het verbinden met onze server!";
             }
         } else {
-            header("Location: registerVoorpagina.php?error=invalid");
+            header("Location: registerTweedepagina.php?error=invalid");
         }
 
     } else {
@@ -28,9 +35,10 @@ if (isset($_POST['confirmtoken'])) {
     }
 }
 function checkTokenMatch ($email, $conn, $token_to_check) {
-    $sql = ("SELECT token FROM Email_verification_token WHERE [e-mail]='$email'");
+    $sql = ("SELECT token FROM Email_verification_token WHERE [e-mail]= :email AND token= :token");
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(1, $token_to_check);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':token', $token_to_check);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     if($result[0] === $token_to_check) {
@@ -42,8 +50,9 @@ function checkTokenMatch ($email, $conn, $token_to_check) {
 }
 
 function checkDateToken ($conn, $email){
-    $sql = ("SELECT token_date FROM Email_verification_token WHERE [e-mail]='$email'");
+    $sql = ("SELECT token_date FROM Email_verification_token WHERE [e-mail]= :email");
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     date_add($result[0], date_interval_create_from_date_string('4 hours'));

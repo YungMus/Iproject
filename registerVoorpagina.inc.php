@@ -9,17 +9,19 @@ if (isset($_POST['EmailConfirmation'])) {
     $token = md5(time() . $email);
 
     if (empty($email)) {
-        header("Location: registerVoorpagina.php?error=emptyfields&Email=" . $email);
+        header("Location: registerVoorpagina.php?error=emptyfields");
         exit();
-    }
+    }  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            header("Location: registerVoorpagina.php?error=emailinvalid");
+        }
 
-    if (!checkEmailExists($email, $conn)) {
-        $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (?, ?, ?)';
+    else if (!checkEmailExists($email, $conn)) {
+        $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (:email, :token_date, :token)';
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindparam(1, $email);
-        $stmt->bindparam(2, $date);
-        $stmt->bindparam(3, $token);
+        $stmt->bindparam(':email', $email);
+        $stmt->bindparam(':token_date', $date);
+        $stmt->bindparam(':token', $token);
         $stmt->execute();
 
         if ($sql) {
@@ -29,7 +31,7 @@ if (isset($_POST['EmailConfirmation'])) {
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
             $htmlStr .= "Klik hieronder aub op het knop om naar het verifieer pagina te gaan.<br /><br /><br />";
-            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
+            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=.$email.' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
@@ -65,9 +67,9 @@ if (isset($_POST['EmailConfirmation'])) {
 
 
 function checkEmailExists($email_to_check, $conn) {
-    $sql = 'SELECT [e-mail]  FROM Email_verification_token WHERE [e-mail]=?';
+    $sql = 'SELECT [e-mail]  FROM Email_verification_token WHERE [e-mail]=:email';
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(1, $email_to_check);
+    $stmt->bindParam('email', $email_to_check);
     $stmt->execute();
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);

@@ -4,15 +4,37 @@ $link = 'inlog.php';
 
 require_once("includes/header.php");
 
-if(isset($_GET['error'])){
-    if($_GET['error'] == "emptyfields"){
-        echo '<p class="error"> Vul al de velden in!</p>';
-    }
-    else if($_GET['error'] == "invalid"){
-        echo '<p class="error"> Jouw wachtwoord klopt niet!</p>';
-    }
-    else if($_GET['error'] == "noauthorazation"){
-        echo '<p class="error">Je hebt geen autorisatie!</p>';
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning">
+  <i class="fa fa-exclamation-triangle"></i> Vul de velden in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "invalid") {
+        echo '<div data-closable class="alert-box callout alert">
+  <i class="fa fa-ban"></i> Je ingevoerde gegevens kloppen niet!
+<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "noauthorization") {
+        echo '\'<div data-closable class="alert-box callout alert">
+  <i class="fa fa-ban"></i> Je hebt geen autorisatie!
+<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if (isset($_GET['succes'])) {
+        if ($_GET['succes'] == "accountmade") {
+            echo '<div data-closable class="alert-box callout success">
+  <i class="fa fa-check"></i> Je account is succesvol aangemaakt!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+        }
     }
 }
 ?>
