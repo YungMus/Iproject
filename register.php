@@ -6,19 +6,22 @@ require_once("includes/header.php");
 
 if(isset($_GET['error'])) {
     if ($_GET['error'] == "emptyfields") {
-        echo '<div data-closable class="alert-box callout warning"> Vul de velden in!
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> Vul de velden in!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if($_GET['error'] == "passwordcheck"){
-        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen!
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> Je wachtwoord komt niet met elkaar overeen!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if($_GET['error'] == "usernamealreadyused"){
-        echo '<div data-closable class="alert-box callout warning"> De gebruikersnaam is al eens gebruikt!
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> De gebruikersnaam is al eens gebruikt!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
