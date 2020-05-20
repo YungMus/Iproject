@@ -21,15 +21,15 @@ if (isset($_POST['Register'])){
     $country = htmlspecialchars($_POST['Country']);
 
     if(empty($username) ||  empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  ||  empty($postalcode)  || empty($city)  || empty($country) ){
-        header("Location: register.php?error=emptyfields&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+        header("Location: register.php?error=emptyfields&email=".$email."&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
 
     else if($password !== $passwordrepeat){
-        header("Location: register.php?error=passwordcheck&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+        header("Location: register.php?error=passwordcheck&email=".$email."&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
         exit();
     }
-        else if (!checkUsernameExists($username, $conn)) {
+        else if (!checkUsernameExists($username, $conn, $email)) {
             $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
             $stmt = $conn->prepare($sql);
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -56,20 +56,20 @@ if (isset($_POST['Register'])){
                 $stmt->execute();
             }
                 else{
-                  echo"Het aanmaken van je account is mislukt!";
+                    header("Location: register.php?error=noauthorization&email=".$email."");
                   exit();
                 }
                 if($sql2){
-                    header("Location: inlog.php?register=success");
+                    header("Location: inlog.php?success=accountmade");
                     exit();
                 }
         }
     else{
-    header("Location: inlog.php");
+        header("Location: registerVoorpagin.php?error=noauthorization");
     exit();
 }
 
-function checkUsernameExists($username_to_check, $conn) {
+function checkUsernameExists($username_to_check, $conn, $email) {
     $sql = 'SELECT username  FROM [User] WHERE [username]=:username';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username_to_check);
@@ -77,7 +77,7 @@ function checkUsernameExists($username_to_check, $conn) {
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);
     if ($resultcheck > 0) {
-        header("Location: registerVoorpagina.php?error=usernamealreadyused&Username=" . $username_to_check);
+        header("Location: registerVoorpagina.php?error=usernamealreadyused&email=".$email."&Username=" . $username_to_check);
         exit();
     }
     if($stmt) {

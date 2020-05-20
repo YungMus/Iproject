@@ -7,6 +7,13 @@ if (isset($_POST['confirmtoken'])) {
     $token = $_POST['token'];
     $email = $_POST['email'];
 
+    if (empty($email) || empty($token)) {
+        header("Location: registerVoorpagina.php?error=emptyfields");
+        exit();
+    }  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: registerVoorpagina.php?error=emailinvalid");
+    }
+
 
     if (checkTokenMatch($email, $conn, $token) && !checkDateToken ($conn, $email)) {
 

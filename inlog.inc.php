@@ -34,7 +34,7 @@ if(isset($_POST['login'])) {
                 session_start();
                 $_SESSION['IDUser'] = $results[0]['user_id'];
             }
-            header("Location: persoonlijkepagina.php?login=success");
+            header("Location: persoonlijkepagina.php?succes=login");
         } else {
         header("Location: inlog.php?error=invalid");
         }

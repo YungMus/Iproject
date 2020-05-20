@@ -4,6 +4,31 @@ $link = 'register.php';
 
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> Vul de velden in!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
+    } else if($_GET['error'] == "passwordcheck"){
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> Je wachtwoord komt niet met elkaar overeen!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
+    } else if($_GET['error'] == "usernamealreadyused"){
+        echo '<div data-closable class="alert-box callout warning">
+                      <i class="fa fa-exclamation-triangle"></i> De gebruikersnaam is al eens gebruikt!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
+    }
+}
+
 if($_GET['email']) {
     $email = $_GET['email'];
     $sql = "SELECT [e-mail] FROM [User] WHERE [e-mail]= :email";
@@ -12,10 +37,11 @@ if($_GET['email']) {
     $stmt->execute();
     $results = $stmt->fetchAll();
     if ($results[0][0] != $email) {
-        header("Location: registerVoorpagina.php?error=noauthorazation");
+        header("Location: registerVoorpagina.php?error=noauthorization");
     } else {
 
         ?>
+        <main>
         <div class="hero-full-screen">
             <div class="middle-content-section">
                 <div class="marketing-site-content-section">
@@ -156,13 +182,12 @@ if($_GET['email']) {
             <button class="primary button expanded" type="submit" name="Register" value='Register'
             ">Maak account aan</button>
         </form>
-
-
+        </main>
         <?php
     }
 }
 else {
-    header("Location: registerVoorpagina.php?error=noauthorazation");
+    header("Location: registerVoorpagina.php?error=noauthorization");
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
