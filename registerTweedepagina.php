@@ -6,29 +6,25 @@ require_once("includes/header.php");
 
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "invalid") {
-        echo '<div data-closable class="alert-box callout warning">
-  <i class="fa fa-exclamation-triangle"></i> Dit account is niet geldig of al geverifieerd!
+        echo '<div data-closable class="alert-box callout warning"> Dit account is niet geldig of al geverifieerd!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "nomatch") {
-        echo '<div data-closable class="alert-box callout warning">
-  <i class="fa fa-exclamation-triangle"></i> Je verificatie code komt niet overeen!
+        echo '<div data-closable class="alert-box callout warning"> Je verificatie code komt niet overeen!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "emptyfields") {
-        echo '<div data-closable class="alert-box callout warning">
-  <i class="fa fa-exclamation-triangle"></i> Vul de velden in!
+        echo '<div data-closable class="alert-box callout warning"> Vul de velden in!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "emailinvalid") {
-        echo '<div data-closable class="alert-box callout warning">
-  <i class="fa fa-exclamation-triangle"></i> Je email is niet geldig!
+        echo '<div data-closable class="alert-box callout warning"> Je email is niet geldig!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
