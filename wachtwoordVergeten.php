@@ -10,7 +10,6 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
         print_r($_POST);
     }
 }
-
 require_once("includes/header.php");
 ?>
 
