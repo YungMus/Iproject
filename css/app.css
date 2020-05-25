@@ -950,10 +950,10 @@ main {
 }
 
 .rubriek{
-    max-width: 10%;
+    width: 10%;
 }
-.rubriekeen{
-    max-width: 90%;
+.subrubriek{
+    max-width: 100%;
 }
 
 

@@ -66,21 +66,21 @@ require_once("includes/header.php");
         <li>
             <a href="#">Bedrag</a>
             <ul class="menu vertical subrubriek">
-                <li>
+                <li><a>
                     <div class="grid-x grid-margin-x">
                         <div class="cell small-8">
-                            <a> Test 123
-                        <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-                            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-                            <span class="slider-fill" data-slider-fill></span>
-                            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-                            <br>
-                            <input class="cell small-2" type="number" id="sliderOutput1">
-                            <input class="cell small-2" type="number" id="sliderOutput2">
+                            <div class="slider" data-slider data-initial-start="0" data-initial-end="100" data-step="1" data-position-value-function="log">
+                                <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+                                <span class="slider-fill" data-slider-fill></span>
+                                <span class="slider-handle" data-slider-handle role="slider" tabindex="2" aria-controls="sliderOutput2"></span>
+                            </div>
                         </div>
-                            </a>
+                        <div class="cell small-3">
+                            <input type="number" id="sliderOutput1">
+                            <input type="number" id="sliderOutput2">
                         </div>
                     </div>
+                    </a>
                 </li>
             </ul>
         </li>
@@ -94,7 +94,7 @@ require_once("includes/header.php");
                                 <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputNonLinear"></span>
                             </div>
                         </div>
-                        <div class="cell small-2">
+                        <div class="cell small-3">
                             <input type="number" id="sliderOutputNonLinear">
                         </div>
                     </div>
