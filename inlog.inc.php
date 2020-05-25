@@ -22,17 +22,17 @@ if(isset($_POST['login'])) {
         if($results != null) {
             $username = $results[0]["username"];
             if ($results[0]["is_seller"] == 1) {
-                $userrank = "Seller";
+                $userrank = " Verkoper ";
                 session_start();
                 $_SESSION['UsernameSeller'] = $results[0]['username'];
                 $_SESSION['Seller'] = $userrank;
             } else if ($results[0]["is_admin"] == 1) {
-                $userrank = "Admin";
+                $userrank = " Admin ";
                 session_start();
                 $_SESSION['UsernameAdmin'] = $results[0]['username'];
                 $_SESSION['Admin'] = $userrank;
             } else {
-                $userrank = "User";
+                $userrank = " Gebruiker ";
                 session_start();
                 $_SESSION['UsernameUser'] = $results[0]['username'];
                 $_SESSION['User'] = $userrank;

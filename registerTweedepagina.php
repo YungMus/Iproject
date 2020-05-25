@@ -6,7 +6,7 @@ require_once("includes/header.php");
 
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "invalid") {
-        echo '<div data-closable class="alert-box callout warning"> Dit account is niet geldig of al geverifieerd!
+        echo '<div data-closable class="alert-box callout warning"> Dit account is niet geldig!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -29,12 +29,24 @@ if (isset($_GET['error'])) {
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
+    } else if ($_GET['error'] == "expired") {
+        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is verlopen!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "alreadyverified") {
+        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is al geverifieerd!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
     }
 }
 
 if($_GET['email']) {
     $email = $_GET['email'];
-    $sql = "SELECT [e-mail] FROM [User] WHERE [e-mail]= :email";
+    $sql = "SELECT [e-mail] FROM Email_verification_token WHERE [e-mail]= :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
@@ -61,7 +73,7 @@ if($_GET['email']) {
     }
 }
 else {
-    header("Location: registerVoorpagina.php?error=noauthorazation");
+//    header("Location: registerVoorpagina.php?error=noauthorazation");
 }
 
 require_once("includes/foundation_script.php");
