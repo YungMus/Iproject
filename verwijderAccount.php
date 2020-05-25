@@ -15,7 +15,7 @@ require_once("includes/header.php");
             <input type="password" class="form-password" name="Password" id="Password">
         </label>
         <p><input id="delete-account" type="checkbox"><label for="show-password">Ja, Ik wil mijn iConcepts account en al zijn data permanent verwijderen.</p></label>
-        <p><input type="submit" class="form-button" name="delete"  value="VERWIJDER ACCOUNT"></input></p>
+        <p><input type="submit" class="form-button" name="delete"  value="VERWIJDER ACCOUNT"></p>
     </form>
 </main>
 
