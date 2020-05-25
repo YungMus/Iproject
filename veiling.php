@@ -8,15 +8,15 @@ if (isset($_GET['item'])) {
     $item = $_GET['item'];
 }
 
-$sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, filename from Item inner join [file] on Item.item_id = [file].item_id inner join [user] on Item.seller = [user].user_id where Item.item_id = $item";
+$sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, [file] from Item inner join Pictures on Item.item_id = Pictures.item_id inner join [user] on Item.seller = [user].user_id where Item.item_id = $item";
 $data = $conn->query($sql);
 $html = "";
 
 $result = $data->fetchAll();
 $html .= '<div class="grid-x grid-padding-y grid-padding-y">
     <div class="product-card-thumbnail padding-r">
-        <a href="#"><img src="';
-$html .= $result[0]["filename"];
+        <a href="#"><img src="/pics/';
+$html .= $result[0]["[file]"];
 $html .= '"/></a>
     </div>  <div class="cell small-4 flex-container flex-dir-column">
 
@@ -44,6 +44,18 @@ $html .= '</h1>
 
 echo $html;
 
+$sql = "SELECT TOP 5 username, offer_amount FROM Offer INNER JOIN  [User] ON Offer.user_id = [User].user_id WHERE item_id = $item ORDER BY offer_amount";
+$data = $conn->query($sql);
+$html = "";
+$result = $data->fetchAll();
+$count = $data->rowCount();
+$index = 0;
+
+while ($index < $count){
+    $html .= '<h3>' . $result[0]['username'] . ' ' . $result[0]['offer_amount'] . '</h3>';
+    $index ++;
+}
+echo $html;
 
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
