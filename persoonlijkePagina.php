@@ -31,7 +31,70 @@ else{   header("Location: inlog.php?error=noauthorization");
 }
 
 ?>
+    <div class="grid-x grid-padding-y grid-padding-x">
+        <ul class="multilevel-accordion-menu vertical menu rubriek" data-accordion-menu>
+            <li>
+                <a href="#">Rubriek 1</a>
+                <ul class="menu vertical subrubriek">
+                    <li>
+                        <a href="#">Subrubriek 1.1</a>
+                        <ul class="menu vertical">
+                            <li><a class="subitem" href="#">Subrubriek 1.1.1</a></li>
+                            <li><a class="subitem" href="#">Subrubriek 1.1.2</a></li>
+                            <li><a class="subitem" href="#">Subrubriek 1.1.3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Subrubriek 1.2</a>
+                        <ul class="menu vertical">
+                            <li>
+                                <a href="#">Subrubriek 1.2.1</a>
+                                <ul class="menu vertical">
+                                    <li><a class="subitem" href="#">Subrubriek 1.2.1.1</a></li>
+                                    <li><a class="subitem" href="#">Subrubriek 1.2.1.2</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="subitem" href="#">Subrubriek 1.2.2</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="subitem" href="#">Subrubriek 1.3</a></li>
+                    <li><a class="subitem" href="#">Subrubriek 1.4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Rubriek 2</a>
+                <ul class="menu vertical subrubriek">
+                    <li><a class="subitem" href="#">Thing 1</a></li>
+                    <li><a class="subitem" href="#">Thing 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Rubriek 3</a>
+                <ul class="menu vertical subrubriek">
+                    <li><a class="subitem" href="#">Thing 1</a></li>
+                    <li><a class="subitem" href="#">Thing 2</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#">Rubriek 4</a>
+                <ul class="menu vertical subrubriek">
+                    <li><a href="#">Sub-item 3</a>
+                        <ul class="menu vertical">
+                            <li><a class="subitem" href="#">Thing 1</a></li>
+                            <li><a class="subitem" href="#">Thing 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="subitem" href="#">Thing 1</a></li>
+                    <li><a class="subitem" href="#">Thing 2</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </div>
     <div class="row flex-container align-center">
+
         <div class="callout text-center">
             <p>Dit is de persoonlijke pagina</p>
             <?php
