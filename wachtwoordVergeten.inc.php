@@ -16,10 +16,16 @@ if (isset($_POST['changepassword'])) {
     }
 
     else if (!checkEmailExists($email, $conn)) {
+        $sql = 'SELECT user_id  FROM [User] WHERE [e-mail]=:email';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
         $sql = 'INSERT INTO Password_lost_token (user_id, token_date, token) VALUES (:userID, :token_date, :token)';
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindparam(':userID', $email);
+        $stmt->bindparam(':userID', $result[0][0]);
         $stmt->bindparam(':token_date', $date);
         $stmt->bindparam(':token', $token);
         $stmt->execute();
@@ -51,7 +57,7 @@ if (isset($_POST['changepassword'])) {
 
             if (mail($to, $subject, $body, $headers)) {
                 echo("
-                  Message successfully sent!   
+                  Message successfully sent!
                ");
                 header('Location: registerVoorpagina.php?succes=mailsent');
             } else {
@@ -63,25 +69,24 @@ if (isset($_POST['changepassword'])) {
 
         }
     }
-}
 
-
-function checkEmailExists($email_to_check, $conn) {
-    $sql = 'SELECT [e-mail]  FROM Email_verification_token WHERE [e-mail]=:email';
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam('email', $email_to_check);
-    $stmt->execute();
-    $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
-    $resultcheck = count($stmt);
-    if ($resultcheck > 0) {
-        header("Location: registerVoorpagina.php?error=emailalreadyused&Email=" . $email_to_check);
-        exit();
-    }
-    if($stmt) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
+//
+//function checkEmailExists($email_to_check, $conn) {
+//    $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=:email';
+//    $stmt = $conn->prepare($sql);
+//    $stmt->bindParam(':email', $email_to_check);
+//    $stmt->execute();
+//    $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
+//    $resultcheck = count($stmt);
+//    if ($resultcheck < 1) {
+//        header("Location: registerVoorpagina.php?error=emailalreadyused&Email=" . $email_to_check);
+//        exit();
+//    }
+//    if($stmt) {
+//        return true;
+//    }
+//    else {
+//        return false;
+//    }
+//}
 }

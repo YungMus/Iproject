@@ -10,10 +10,10 @@ require_once("includes/header.php");
             <div class="columns contact-us-section-left">
                 <h1 class="contact-us-header">Neem contact op</h1>
                 <ul class="contact-us-list">
-                    <li><i class="fi-address-book">100 W Rincon Ave, Campbell CA 95008</i></li>
-                    <li><i class="fi-mail"><a href="mailto:">hello@yeticave.com</a></i></li>
+                    <li><i class="fi-address-book">Heyendaalseweg 98, Nijmegen 6525EE</i></li>
+                    <li><i class="fi-mail"><a href="mailto:">eenmaalandermaal@gmail.com</a></i></li>
                     <li><i class="fi-telephone">
-                        1 (408) 445 9978
+                        024 890 4500
                     </i></li>
                 </ul>
             </div>

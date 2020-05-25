@@ -57,7 +57,7 @@ require_once("includes/header.php");
             harde schijf en verspreiden onder andere personen onder de
             voorwaarde dat u dit alleen doet voor informatieve doeleinden.
             Daarnaast dient u de volgende zogenaamde 'copyright-vermelding' in
-            alle kopieën op te nemen: Copyright Unilever Nederland B.V. Alle
+            alle kopieën op te nemen: Copyright EenmaalAndermaal B.V. Alle
             rechten voorbehouden.
         </p>
         <br>
