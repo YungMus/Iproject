@@ -15,8 +15,8 @@ require_once("includes/header.php");
         <h2>Algemeen</h2>
         <p>
             Deze website (exclusief sites die eraan gekoppeld zijn) wordt
-            beheerd door ons, Unilever Nederland B.V., een bedrijf dat is
-            gevestigd in Nederland ('Unilever'). Deze website is alleen bestemd
+            beheerd door ons, Eenmaal Andermaal B.V., een bedrijf dat is
+            gevestigd in Nederland ('Eenmaal Andermaal'). Deze website is alleen bestemd
             voor personen die zich in Nederland bevinden. Door uzelf toegang te
             verschaffen tot de website gaat u akkoord met deze
             gebruiksvoorwaarden. Als u niet met deze gebruiksvoorwaarden akkoord
@@ -48,7 +48,7 @@ require_once("includes/header.php");
             Alle intellectuele eigendomsrechten, waaronder mede begrepen de
             auteursrechten en merkrechten, op alle teksten, afbeeldingen,
             geluiden, software en andere materialen op deze website zijn
-            eigendom van Unilever, aan haar gelieerde bedrijven, of zijn
+            eigendom van Eenmaal Andermaal, aan haar gelieerde bedrijven, of zijn
             opgenomen met toestemming van de betreffende eigenaar.
         </p>
         <br>
@@ -57,7 +57,7 @@ require_once("includes/header.php");
             harde schijf en verspreiden onder andere personen onder de
             voorwaarde dat u dit alleen doet voor informatieve doeleinden.
             Daarnaast dient u de volgende zogenaamde 'copyright-vermelding' in
-            alle kopieën op te nemen: Copyright EenmaalAndermaal B.V. Alle
+            alle kopieën op te nemen: Copyright Eenmaal Andermaal B.V. Alle
             rechten voorbehouden.
         </p>
         <br>
@@ -76,7 +76,7 @@ require_once("includes/header.php");
         <p>
             Wij hebben de inhoud van deze website met de grootst mogelijke zorg
             samengesteld. De website wordt echter alleen voor informatieve
-            doeleinden aangeboden. Unilever garandeert niet dat de inhoud van de
+            doeleinden aangeboden. Eenmaal Andermaal garandeert niet dat de inhoud van de
             website juist, actueel en volledig is, dat de website ononderbroken
             zal werken en/of vrij zal zijn van fouten.
         </p>
@@ -88,12 +88,12 @@ require_once("includes/header.php");
         </p>
         <br>
         <p>
-            Voor zover wettelijk toegestaan sluit Unilever, waaronder mede
+            Voor zover wettelijk toegestaan sluit Eenmaal Andermaal, waaronder mede
             verstaan de aan ons gelieerde bedrijven, functionarissen en
             werknemers, hierbij iedere aansprakelijkheid uit voor welke schade
             dan ook, direct en/of indirect, op enige wijze ontstaan door en/of
             voortvloeiend uit uw gebruik van de website of een andere aan de
-            website gekoppelde site. Meer in het bijzonder zal Unilever in geen
+            website gekoppelde site. Meer in het bijzonder zal Eenmaal Andermaal in geen
             geval aansprakelijk zijn voor welke schade dan ook, die op enige
             wijze ontstaat door en/of voortvloeit uit:
         </p>
@@ -108,7 +108,7 @@ require_once("includes/header.php");
             De website kan verwijzingen (bijvoorbeeld door middel van een
             hyperlink, banner of button) bevatten naar andere sites die
             betrekking hebben op een specifiek aspect van deze website. Dit
-            betekent niet automatisch dat Unilever verbonden is aan deze andere
+            betekent niet automatisch dat Eenmaal Andermaal verbonden is aan deze andere
             sites of de eigenaren ervan. Wij zijn dan ook niet verantwoordelijk
             voor deze andere sites inclusief de daarin opgenomen informatie.
             Door u verstrekte informatie en materiaal
