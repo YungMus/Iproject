@@ -52,7 +52,7 @@ $count = $data->rowCount();
 $index = 0;
 
 while ($index < $count){
-    $html .= '<h3>' . $result[0]['username'] . ' ' . $result[0]['offer_amount'] . '</h3>';
+    $html .= '<h3>' . $result[$index]['username'] . ' ' . $result[$index]['offer_amount'] . '</h3>';
     $index ++;
 }
 echo $html;
