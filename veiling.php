@@ -56,7 +56,7 @@ $sql = "SELECT TOP 5 username, offer_amount FROM Offer INNER JOIN  [User] ON Off
 $data = $conn->prepare($sql);
 $data ->bindParam(':item', $item);
 $data->execute();
-$html = "";
+$html = "<h1>offers:</h1>";
 $result = $data->fetchAll();
 $count = $data->rowCount();
 $index = 0;
