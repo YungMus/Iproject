@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['Register'])){
+if (isset($_POST['Register'])) {
 
     require 'connectingDatabase.php';
 
@@ -20,56 +20,64 @@ if (isset($_POST['Register'])){
     $city = htmlspecialchars($_POST['City']);
     $country = htmlspecialchars($_POST['Country']);
 
-    if(empty($username) ||  empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday)  || empty($phonenumber)  || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address)  ||  empty($postalcode)  || empty($city)  || empty($country) ){
-        header("Location: register.php?error=emptyfields&email=".$email."&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+    if (empty($username) || empty($password) || empty($passwordrepeat) || empty($firstname) || empty($lastname) || empty($birthday) || empty($phonenumber) || empty($recoveryquestion) || empty($recoveryquestionanswer) || empty($address) || empty($postalcode) || empty($city) || empty($country)) {
+        header("Location: register.php?error=emptyfields&email=" . $email . "&Username=" . $username . "&Firstname=" . $firstname . "&Lastname=" . $lastname . "&Birthday=" . $birthday . "&Phonenumber=" . $phonenumber . "&RecoveryQuestion=" . $recoveryquestion . "&RecoveryQuestionAnswer=" . $recoveryquestionanswer . "&Address=" . $address . "&Address2=" . $address2 . "&Postalcode=" . $postalcode . "&City=" . $city . "&Country=" . $country);
         exit();
-    }
-
-    else if($password !== $passwordrepeat){
-        header("Location: register.php?error=passwordcheck&email=".$email."&Username=".$username."&Firstname=".$firstname."&Lastname=".$lastname."&Birthday=".$birthday."&Phonenumber=".$phonenumber."&RecoveryQuestion=".$recoveryquestion."&RecoveryQuestionAnswer=".$recoveryquestionanswer."&Address=".$address."&Address2=".$address2."&Postalcode=".$postalcode."&City=".$city."&Country=".$country);
+    } else if ($password !== $passwordrepeat) {
+        header("Location: register.php?error=passwordcheck&email=" . $email . "&Username=" . $username . "&Firstname=" . $firstname . "&Lastname=" . $lastname . "&Birthday=" . $birthday . "&Phonenumber=" . $phonenumber . "&RecoveryQuestion=" . $recoveryquestion . "&RecoveryQuestionAnswer=" . $recoveryquestionanswer . "&Address=" . $address . "&Address2=" . $address2 . "&Postalcode=" . $postalcode . "&City=" . $city . "&Country=" . $country);
         exit();
-    }
-        else if (!checkUsernameExists($username, $conn, $email)) {
-            $sql = "INSERT INTO [User] (username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
-            $stmt = $conn->prepare($sql);
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    } else if (!checkUsernameExists($username, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country)) {
+        $sql = "SELECT MAX(user_id) FROM [User] ";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $userID = $stmt->fetchall();
+        $userID = $userID[0][0] + 1;
 
-            $stmt->bindparam(':username', $username);
-            $stmt->bindparam(':email', $email);
-            $stmt->bindparam(':password', $hashedPassword);
-            $stmt->bindparam(':firstname', $firstname);
-            $stmt->bindparam(':lastname', $lastname);
-            $stmt->bindparam(':birth_day', $birthday);
-            $stmt->bindparam(':recover_question', $recoveryquestion);
-            $stmt->bindparam(':recover_question_answer', $recoveryquestionanswer);
-            $stmt->bindparam(':address', $address);
-            $stmt->bindparam(':address_addition', $address2);
-            $stmt->bindparam(':postal_code', $postalcode);
-            $stmt->bindparam(':place_name', $city);
-            $stmt->bindparam(':country', $country);
-            $stmt->execute();
+        $sql2 = "INSERT INTO [User] (user_id, username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:user_id, :username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
+        $stmt2 = $conn->prepare($sql2);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt2->bindparam(':user_id', $userID);
+            $stmt2->bindparam(':username', $username);
+            $stmt2->bindparam(':email', $email);
+            $stmt2->bindparam(':password', $hashedPassword);
+            $stmt2->bindparam(':firstname', $firstname);
+            $stmt2->bindparam(':lastname', $lastname);
+            $stmt2->bindparam(':birth_day', $birthday);
+            $stmt2->bindparam(':recover_question', $recoveryquestion);
+            $stmt2->bindparam(':recover_question_answer', $recoveryquestionanswer);
+            $stmt2->bindparam(':address', $address);
+            $stmt2->bindparam(':address_addition', $address2);
+            $stmt2->bindparam(':postal_code', $postalcode);
+            $stmt2->bindparam(':place_name', $city);
+            $stmt2->bindparam(':country', $country);
+            $stmt2->execute();
         }
-            if($sql) {
-                $sql2 = "INSERT INTO Userphone (phone) VALUES (:userphone)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindparam(':userphone', $phonenumber);
-                $stmt->execute();
+            if($sql2) {
+                $sql3 = "SELECT MAX(order_nr) FROM Userphone ";
+                $stmt3 = $conn->prepare($sql3);
+                $stmt3->execute();
+                $orderNr = $stmt3->fetchall();
+                $orderNr = $orderNr[0][0] + 1;
+
+                $sql4 = "INSERT INTO Userphone (order_nr, phone, user_id) VALUES (:orderNr, :userphone, :userID)";
+                $stmt4 = $conn->prepare($sql4);
+                $stmt4->bindparam(':orderNr', $orderNr);
+                $stmt4->bindparam(':userphone', $phonenumber);
+                $stmt4->bindparam(':userID', $userID);
+                $stmt4->execute();
+
+                header("Location: inlog.php?success=accountmade");
+                exit();
+            } else{
+                header("Location: register.php?error=insertfailed");
             }
-                else{
-                    header("Location: register.php?error=noauthorization&email=".$email."");
-                  exit();
-                }
-                if($sql2){
-                    header("Location: inlog.php?success=accountmade");
-                    exit();
-                }
-        }
-    else{
-        header("Location: registerVoorpagin.php?error=noauthorization");
+}
+else {
+    header("Location: registerVoorpagina.php?error=noauthorization");
     exit();
 }
-
-function checkUsernameExists($username_to_check, $conn, $email) {
+function checkUsernameExists($username_to_check, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) {
     $sql = 'SELECT username  FROM [User] WHERE [username]=:username';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username_to_check);
@@ -77,9 +85,19 @@ function checkUsernameExists($username_to_check, $conn, $email) {
     $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
     $resultcheck = count($stmt);
     if ($resultcheck > 0) {
-        header("Location: registerVoorpagina.php?error=usernamealreadyused&email=".$email."&Username=" . $username_to_check);
+        header("Location: register.php?error=usernamealreadyused&email=" . $email . "&Firstname=" . $firstname . "&Lastname=" . $lastname . "&Birthday=" . $birthday . "&Phonenumber=" . $phonenumber . "&RecoveryQuestion=" . $recoveryquestion . "&RecoveryQuestionAnswer=" . $recoveryquestionanswer . "&Address=" . $address . "&Address2=" . $address2 . "&Postalcode=" . $postalcode . "&City=" . $city . "&Country=" . $country);
         exit();
     }
+    if($stmt) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function getMaxUserID ($conn){
+
     if($stmt) {
         return true;
     }

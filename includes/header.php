@@ -34,7 +34,7 @@ if (isset($_POST['sendHeader'])) {
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li class="top-bar-title"><a href="index.php"><img  src="images/Technovium_Nijmegen.jpg" alt="Iproject" width="200"></a></li>
+                <li class="top-bar-title"><a href="index.php"><img  src="images/Eenmaalandermaal.png" alt="Iproject" width="200"></a></li>
 <!--                <li class="menu-text">--><?php //echo $title ?><!--</li>-->
                 <li><a href="veilingCategorieOverzicht.php">Veiling categorie overzicht</a></li>
                 </li>
