@@ -28,13 +28,13 @@ if(isset($_GET['error'])) {
 
 if($_GET['email']) {
     $email = $_GET['email'];
-    $sql = "SELECT [e-mail] FROM [User] WHERE [e-mail]= :email";
+    $sql = "SELECT [e-mail] FROM Email_verification_token WHERE [e-mail]= :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $results = $stmt->fetchAll();
     if ($results[0][0] != $email) {
-        header("Location: registerVoorpagina.php?error=noauthorization");
+//        header("Location: registerVoorpagina.php?error=noauthorization");
     } else {
 
         ?>
@@ -184,7 +184,7 @@ if($_GET['email']) {
     }
 }
 else {
-    header("Location: registerVoorpagina.php?error=noauthorization");
+//    header("Location: registerVoorpagina.php?error=noauthorization");
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");

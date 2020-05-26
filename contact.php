@@ -45,7 +45,7 @@ require_once("includes/header.php");
                     }
                 </script>
 
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQpsDf33wGZbYi1tnasVf0oddRZNTJlGU&callback=myMap"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTLDS5shXNd_qCUpSDZIeGZdQKIiaRFuY&callback=myMap"></script>
 <!--                <img src="images/maps.png" alt="Map of HAN" />-->
             </div>
         </div>

@@ -22,6 +22,7 @@ if (isset($_POST['EmailConfirmation'])) {
         $stmt->bindparam(':email', $email);
         $stmt->bindparam(':token_date', $date);
         $stmt->bindparam(':token', $token);
+        print_r($date);
         $stmt->execute();
 
         if ($sql) {
@@ -31,7 +32,7 @@ if (isset($_POST['EmailConfirmation'])) {
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
             $htmlStr .= "Klik hieronder aub op het knop om naar het verifieer pagina te gaan.<br /><br /><br />";
-            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=.$email.' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
+            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=$email' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
@@ -50,14 +51,8 @@ if (isset($_POST['EmailConfirmation'])) {
             $body = $htmlStr;
 
             if (mail($to, $subject, $body, $headers)) {
-                echo("
-                  Message successfully sent!   
-               ");
                 header('Location: registerVoorpagina.php?succes=mailsent');
             } else {
-                echo("
-                  Message delivery failed...
-               ");
                 header('Location: registerVoorpagina.php?error=mailnotsent');
             }
 
