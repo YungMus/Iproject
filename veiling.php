@@ -3,12 +3,29 @@ $title = 'Veiling';
 $link = 'veiling.php';
 session_start();
 require_once("includes/header.php");
-$item = 1;
+$item = 131283988452;
 if (isset($_GET['item'])) {
     $item = $_GET['item'];
 }
-if (isset($_post['Bod'])) {
+if (isset($_POST['Bieden'])) {
+    $bod = trim($_POST['Bod']);
 
+    $sql = "SELECT user_id FROM [user] WHERE username = :username";
+    $data = $conn->prepare($sql);
+    $data ->bindParam(':username', $_SESSION['Username']);
+    $data->execute();
+    $results = $data->fetchAll();
+    $user_id = $results[0]['user_id'];
+
+    $date =  date("Y-m-d H:i:s");
+
+    $sql = 'INSERT INTO Offer (item_id, offer_amount, user_id, offer_day) VALUES(:item, :bod, :user_id, :date)';
+    $data = $conn->prepare($sql);
+    $data ->bindParam(':item', $item);
+    $data ->bindParam(':bod', $bod);
+    $data ->bindParam(':user_id', $user_id);
+    $data ->bindParam(':date', $date);
+    $data->execute();
 }
 
 $sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, [file], Rating from Item LEFT join Pictures on Item.item_id = Pictures.item_id inner join [user] on Item.seller = [user].user_id where Item.item_id = :item";
@@ -43,7 +60,7 @@ $html .= '</p> ';
 $html .= '<div class="row flex-container align-left">
     </div>
     <div class="callout text-center align-right"> <p>';
-$html .= htmlspecialchars(trim($result[0]['description']));
+$html .= trim($result[0]['description']);
 $html .= '</p>';
 $html .= '</div> </div> <h1>';
 $html .= $result[0]['title'];
@@ -71,12 +88,12 @@ while ($index < $count){
 echo $html;
 
 if (isset($_SESSION['Username'])){
-    echo '             <form method="post" class="form" action="veiling.php">
+    echo '             <form method="POST" class="form" action="veiling.php">
             <h6 class="multi-step-checkout-step-title-subheader">Bieden</h6>
             <p class="create-account-desc">Vul hier je bod in.</p>
             <label>
                 <input type="int" name="Bod" id="Bod" value="">
-            <button class="primary button expanded" type="submit" name="Bod" value="Bod"
+            <button class="primary button expanded" type="submit" name="Bieden" value="Bieden"
             ">Bied</label></button>
         </form>';
 }
