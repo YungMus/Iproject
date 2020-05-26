@@ -24,18 +24,18 @@ if(isset($_POST['login'])) {
             if ($results[0]["is_seller"] == 1) {
                 $userrank = " Verkoper ";
                 session_start();
-                $_SESSION['UsernameSeller'] = $results[0]['username'];
-                $_SESSION['Seller'] = $userrank;
+                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Rank'] = $userrank;
             } else if ($results[0]["is_admin"] == 1) {
                 $userrank = " Admin ";
                 session_start();
-                $_SESSION['UsernameAdmin'] = $results[0]['username'];
-                $_SESSION['Admin'] = $userrank;
+                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Rank'] = $userrank;
             } else {
                 $userrank = " Gebruiker ";
                 session_start();
-                $_SESSION['UsernameUser'] = $results[0]['username'];
-                $_SESSION['User'] = $userrank;
+                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Rank'] = $userrank;
             }
             header("Location: persoonlijkepagina.php?succes=login");
         } else {

@@ -7,6 +7,9 @@ $item = 1;
 if (isset($_GET['item'])) {
     $item = $_GET['item'];
 }
+if (isset($_post['Bod'])) {
+
+}
 
 $sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, [file], Rating from Item LEFT join Pictures on Item.item_id = Pictures.item_id inner join [user] on Item.seller = [user].user_id where Item.item_id = :item";
 $data = $conn->prepare($sql);
@@ -67,6 +70,20 @@ while ($index < $count){
 }
 echo $html;
 
+if (isset($_SESSION['Username'])){
+    echo '             <form method="post" class="form" action="veiling.php">
+            <h6 class="multi-step-checkout-step-title-subheader">Bieden</h6>
+            <p class="create-account-desc">Vul hier je bod in.</p>
+            <label>
+                <input type="int" name="Bod" id="Bod" value="">
+            <button class="primary button expanded" type="submit" name="Bod" value="Bod"
+            ">Bied</label></button>
+        </form>';
+}
+else {
+    $msg = '<h2>Om te kunnen bieden moet je ingelogd zijn</h2>';
+    echo $msg;
+}
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>
