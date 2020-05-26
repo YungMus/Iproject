@@ -5,22 +5,8 @@ session_start();
 
 require_once("includes/header.php");
 
-if(isset($_SESSION['UsernameUser'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['User'] . $_SESSION['UsernameUser'] .'!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&CircleTimes;</span>
-  </button>
-</div>';
-}
-else if(isset($_SESSION['UsernameSeller'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Seller'] . $_SESSION['UsernameSeller'] .'!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&CircleTimes;</span>
-  </button>
-</div>';
-}
-else if(isset($_SESSION['UsernameAdmin'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Admin'] . $_SESSION['UsernameAdmin'] .'!
+if(isset($_SESSION['Username'])){
+    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Rank'] . $_SESSION['Username'] .'!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -34,7 +20,7 @@ else{   header("Location: inlog.php?error=noauthorization");
     <div class="grid-x grid-padding-y grid-padding-x">
         <ul class="multilevel-accordion-menu vertical menu rubriek" data-accordion-menu>
             <li>
-                <a href="#">profiel en instellingen</a>
+                <a href="#">Profiel en instellingen</a>
                 <ul class="menu vertical subrubriek">
                     <li>
                         <a href="#">sub1</a>
@@ -62,12 +48,12 @@ else{   header("Location: inlog.php?error=noauthorization");
                 </ul>
             </li>
             <li>
-                <a href="#">veilingen</a>
+                <a href="#">Veilingen</a>
                 <ul class="menu vertical subrubriek">
-                    <li><a class="subitem" href="#">gewonnen veilingen</a></li>
-                    <li><a class="subitem" href="#">biedingen</a></li>
-                    <li><a class="subitem" href="#">favorite</a></li>
-                    <li><a class="subitem" href="#">aanbevolen voor jou</a></li>
+                    <li><a class="subitem" href="#">Gewonnen veilingen</a></li>
+                    <li><a class="subitem" href="#">Biedingen</a></li>
+                    <li><a class="subitem" href="#">Favorite</a></li>
+                    <li><a class="subitem" href="#">Aanbevolen voor jou</a></li>
                 </ul>
             </li>
             <li>
@@ -93,7 +79,7 @@ else{   header("Location: inlog.php?error=noauthorization");
             </li>
             <br>
             <?php
-            if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
+            if(isset($_SESSION['Username'])){
                 echo "<ul>
                 <a class=\"button secondary large\" href='uitgelogd.php'>uitloggen</a>
             </ul>";}
