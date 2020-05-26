@@ -5,22 +5,22 @@ session_start();
 
 require_once("includes/header.php");
 
-if(isset($_SESSION['IDUser'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom gebruiker!
+if(isset($_SESSION['UsernameUser'])){
+    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['User'] . $_SESSION['UsernameUser'] .'!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
 }
-else if(isset($_SESSION['IDSeller'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom verkoper!
+else if(isset($_SESSION['UsernameSeller'])){
+    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Seller'] . $_SESSION['UsernameSeller'] .'!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
 }
-else if(isset($_SESSION['IDAdmin'])){
-    echo '<div data-closable class="alert-box callout info"> Welkom admin!
+else if(isset($_SESSION['UsernameAdmin'])){
+    echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Admin'] . $_SESSION['UsernameAdmin'] .'!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>

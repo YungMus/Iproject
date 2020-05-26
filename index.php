@@ -6,8 +6,8 @@ require_once("includes/header.php");
 ?>
 <div class="hero-section">
     <div class="hero-section-text">
-        <h1>Titel</h1>
-        <h5>te vervangen ondertitel</h5>
+        <h1>Eenmaal Andermaal</h1>
+        <h5>Geef je spullen een tweede kans</h5>
     </div>
 </div>
 <br>
