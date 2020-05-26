@@ -34,10 +34,10 @@ else{   header("Location: inlog.php?error=noauthorization");
     <div class="grid-x grid-padding-y grid-padding-x">
         <ul class="multilevel-accordion-menu vertical menu rubriek" data-accordion-menu>
             <li>
-                <a href="#">Rubriek 1</a>
+                <a href="#">profiel en instellingen</a>
                 <ul class="menu vertical subrubriek">
                     <li>
-                        <a href="#">Subrubriek 1.1</a>
+                        <a href="#">sub1</a>
                         <ul class="menu vertical">
                             <li><a class="subitem" href="#">Subrubriek 1.1.1</a></li>
                             <li><a class="subitem" href="#">Subrubriek 1.1.2</a></li>
@@ -45,7 +45,7 @@ else{   header("Location: inlog.php?error=noauthorization");
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Subrubriek 1.2</a>
+                        <a href="#">sub2</a>
                         <ul class="menu vertical">
                             <li>
                                 <a href="#">Subrubriek 1.2.1</a>
@@ -62,10 +62,12 @@ else{   header("Location: inlog.php?error=noauthorization");
                 </ul>
             </li>
             <li>
-                <a href="#">Rubriek 2</a>
+                <a href="#">veilingen</a>
                 <ul class="menu vertical subrubriek">
-                    <li><a class="subitem" href="#">Thing 1</a></li>
-                    <li><a class="subitem" href="#">Thing 2</a></li>
+                    <li><a class="subitem" href="#">gewonnen veilingen</a></li>
+                    <li><a class="subitem" href="#">biedingen</a></li>
+                    <li><a class="subitem" href="#">favorite</a></li>
+                    <li><a class="subitem" href="#">aanbevolen voor jou</a></li>
                 </ul>
             </li>
             <li>
@@ -89,22 +91,30 @@ else{   header("Location: inlog.php?error=noauthorization");
                     <li><a class="subitem" href="#">Thing 2</a></li>
                 </ul>
             </li>
-        </ul>
-
-
-    </div>
-    <div class="row flex-container align-center">
-
-        <div class="callout text-center">
-            <p>Dit is de persoonlijke pagina</p>
+            <br>
             <?php
             if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-                echo "<a class=\"button large\" href= 'uitgelogd.php'>Uitloggen</a>";            }
+                echo "<ul>
+                <a class=\"button secondary large\" href='uitgelogd.php'>uitloggen</a>
+            </ul>";}
             ?>
-        </div>
-    </div>
+        </ul>
 
+        <div class="cell small-4 flex-container flex-dir-column">
+            <div class="callout text-center">
+                <h1>Dit is de persoonlijke pagina</h1>
+                <p>hier komt alle info van het aanpassen van je gegevens</p>
+
+            </div>
+        </div>
+
+    </div>
 <?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>
+
+<!--            --><?php
+//            if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
+//                echo "<a class=\"button large\" href= 'uitgelogd.php'>Uitloggen</a>";            }
+//            ?>
