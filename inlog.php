@@ -23,6 +23,12 @@ if(isset($_GET['error'])) {
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
+    } else if ($_GET['error'] == "alreadyverified") {
+        echo '<div data-closable class="alert-box callout warning"> Je account is al geverifieerd! Probeer in te loggen!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
     }
 }
     else if (isset($_GET['succes'])) {

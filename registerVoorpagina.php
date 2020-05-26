@@ -13,14 +13,14 @@ if(isset($_GET['error'])) {
 </div>';
     }
     else if($_GET['error'] == "mailnotsent"){
-        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verzonden!
+        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verzonden! Check of je mail geldig is!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     }
     else if($_GET['error'] == "emailalreadyused"){
-        echo '<div data-closable class="alert-box callout warning"> Dit email is al eens gebruikt, gebruik een ander email!
+        echo '<div data-closable class="alert-box callout warning"> Dit mail is al eens gebruikt, gebruik een ander mail!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -34,7 +34,7 @@ if(isset($_GET['error'])) {
 </div>';
     }
     else if($_GET['error'] == "emailinvalid"){
-        echo '<div data-closable class="alert-box callout warning"> Jouw email is niet geldig!
+        echo '<div data-closable class="alert-box callout warning"> Jouw mail is niet een geldige mail!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -42,7 +42,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['succes'])){
     if($_GET['succes'] == "mailsent"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd!
+        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd! Check je mailbox!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>

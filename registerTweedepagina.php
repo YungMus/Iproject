@@ -6,7 +6,7 @@ require_once("includes/header.php");
 
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "invalid") {
-        echo '<div data-closable class="alert-box callout warning"> Dit account is niet geldig!
+        echo '<div data-closable class="alert-box callout warning"> Dit mail is niet geldig!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -18,7 +18,7 @@ if (isset($_GET['error'])) {
   </button>
 </div>';
     } else if ($_GET['error'] == "emptyfields") {
-        echo '<div data-closable class="alert-box callout warning"> Vul de velden in!
+        echo '<div data-closable class="alert-box callout warning"> Vul alle velden in!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -30,13 +30,7 @@ if (isset($_GET['error'])) {
   </button>
 </div>';
     } else if ($_GET['error'] == "expired") {
-        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is verlopen!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&CircleTimes;</span>
-  </button>
-</div>';
-    } else if ($_GET['error'] == "alreadyverified") {
-        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is al geverifieerd!
+        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is verlopen! Stuur opnieuw een verificatie code naar je mail!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>

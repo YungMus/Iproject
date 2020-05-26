@@ -32,10 +32,14 @@ if (isset($_POST['confirmtoken'])) {
                 }
             }
             else{
-                header("Location: registerTweedepagina.php?error=alreadyverified");
+                header("Location: login.php?error=alreadyverified");
             }
         }
         else{
+            $sql = "DELETE FROM Email_verification_token WHERE email=:email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
             header("Location: registerTweedepagina.php?error=expired");
         }
     }
