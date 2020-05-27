@@ -193,6 +193,10 @@
     margin-bottom: 1.5rem;
 }
 
+.contact-us-form{
+    margin-bottom: 10%;
+}
+
 .contact-us-form-actions {
     display: -webkit-flex;
     display: -ms-flexbox;

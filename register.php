@@ -122,8 +122,8 @@ if($_GET['email']) {
                 } ?>" placeholder="Geboortedatum" required>
             </div>
             <div class="small-12 medium-7 column">
-                <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Birthday'])) {
-                    echo $_GET['Birthday'];
+                <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Phonenumber'])) {
+                    echo $_GET['Phonenumber'];
                 } ?>" placeholder="Telefoonnummer" required>
             </div>
             <select name="RecoveryQuestion" id="RecoverQuestion" required>

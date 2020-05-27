@@ -50,7 +50,7 @@ if (isset($_POST['EmailConfirmation'])) {
             $body = $htmlStr;
 
             if (mail($to, $subject, $body, $headers)) {
-                header('Location: registerVoorpagina.php?succes=mailsent');
+                header('Location: registerVoorpagina.php?success=mailsent');
             } else {
                 header('Location: registerVoorpagina.php?error=mailnotsent');
             }

@@ -4,6 +4,30 @@ $link = 'contact.php';
 session_start();
 require_once("includes/header.php");
 
+if(isset($_GET['error'])){
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout info"> Vul alle velden in!
+              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&CircleTimes;</span>
+              </button>
+              </div>';
+    } else if($_GET['error'] == "noauthorization"){
+        echo '<div data-closable class="alert-box callout warning"> Je hebt geen autorisatie voor dat!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
+    }
+} else if (isset($_GET['success'])) {
+    if ($_GET['success'] == "messagesent") {
+        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een bericht achter gelaten!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+}
+
 ?>
     <section class="contact-us-section">
         <div class="row medium-unstack">
@@ -19,16 +43,13 @@ require_once("includes/header.php");
             </div>
             <div class="columns contact-us-section-right">
                 <h1 class="contact-us-header">Mail Ons</h1>
-                <form class="contact-us-form">
-                    <input type="text" placeholder="Volledige naam">
-                    <input type="email" placeholder="Email">
-                    <textarea name="message" id="" rows="12" placeholder="Typ uw bericht hier"></textarea>
+                <form class="contact-us-form" method="post" action="contact.inc.php">
+                    <input type="text" name="Fullname" id="Fullname" pattern="[A-Za-z].{3,}" value="<?php if (isset($_GET['Fullname'])) {echo $_GET['Fullname']; }?>" placeholder="Volledige naam">
+                    <input type="email" name="Email" id="Email" value="<?php if (isset($_GET['Email'])) {echo $_GET['Email']; }?>" placeholder="Email">
+                    <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Phonenumber'])) {echo $_GET['Phonenumber']; }?>" placeholder="Telefoonnummer">
+                    <textarea name="Message" id="" rows="12" value="<?php if (isset($_GET['Message'])) {echo $_GET['Message']; }?>" placeholder="Typ uw bericht hier"></textarea>
                     <div class="contact-us-form-actions">
-                        <input type="submit" class="button" value="versturen" />
-                        <div>
-                            <label for="FileUpload" class="button contact-us-file-button">Bestanden toevoegen</label>
-                            <input type="file" id="FileUpload" class="show-for-sr">
-                        </div>
+                        <input type="submit" class="button" name="send">
                     </div>
                 </form>
             </div>

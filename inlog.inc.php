@@ -40,7 +40,7 @@ if(isset($_POST['login'])) {
                 $_SESSION['Username'] = $username;
                 $_SESSION['Rank'] = $userrank;
             }
-            header("Location: persoonlijkepagina.php?succes=login");
+            header("Location: persoonlijkepagina.php?success=login");
             }
             else{
                 header("Location: inlog.php?error=invalid");

@@ -23,7 +23,7 @@ if (isset($_POST['confirmtoken'])) {
                 if ($resultSet) {
                     $update = $conn->query("UPDATE Email_verification_token SET verified = 1 WHERE token = '$token'");
                     if ($update) {
-                        header("Location: register.php?succes=verified&email=$email");
+                        header("Location: register.php?success=verified&email=$email");
                     } else {
                         echo "Er is een probleem met het verbinden met onze server!";
                     }

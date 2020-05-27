@@ -31,14 +31,14 @@ if(isset($_GET['error'])) {
 </div>';
     }
 }
-    else if (isset($_GET['succes'])) {
-        if ($_GET['succes'] == "accountmade") {
+    else if (isset($_GET['success'])) {
+        if ($_GET['success'] == "accountmade") {
             echo '<div data-closable class="alert-box callout success"> Je account is succesvol aangemaakt!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
-        } else if ($_GET['succes'] == "logout") {
+        } else if ($_GET['success'] == "logout") {
             echo '<div data-closable class="alert-box callout success"> Je bent succesvol uitgelogd!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
