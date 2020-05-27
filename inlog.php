@@ -49,7 +49,7 @@ if(isset($_GET['error'])) {
         }
     }
 
-if(isset($_SESSION['Username'])) {
+if(!isset($_SESSION['Username'])) {
     ?>
 
     <main>
