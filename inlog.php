@@ -52,8 +52,8 @@ if(isset($_GET['error'])) {
 <main>
     <form class="form" method="post" action="inlog.inc.php">
         <h4 class="text-center">Log in met je account</h4>
-        <label for="form-email">Email
-            <input type="email" class="form-email" name="Email" id="Email">
+        <label for="form-username">Gebruikersnaam
+            <input type="text" class="form-username" name="Username" id="Username">
         </label>
         <label for="form-password">Wachtwoord
           <input type="password" class="form-password" name="Password" id="password">

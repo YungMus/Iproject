@@ -4,42 +4,49 @@ if(isset($_POST['login'])) {
 
     require 'connectingDatabase.php';
 
-    $email = htmlspecialchars($_POST['Email']);
+    $username = htmlspecialchars($_POST['Username']);
     $password = htmlspecialchars($_POST['Password']);
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if (empty($email) || empty($password)) {
+
+    if (empty($username) || empty($password)) {
         header("Location: inlog.php?error=emptyfields");
         exit();
     } else {
-        $sql = "SELECT username, is_seller, is_admin, user_id FROM [User] WHERE [e-mail]= :email AND password= :password";
+        $sql = "SELECT username, is_seller, is_admin, user_id, password FROM [User] WHERE username=:username";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':username', $username);
         $stmt->execute();
-        $results = $stmt->fetchAll();
+//        print_r($password);
+        $users  = $stmt->fetchAll();
+        $hashedPassword = $users[0]['password'];
+        print_r(password_verify($password, $hashedPassword));
 
-        if($results != null) {
-            $username = $results[0]["username"];
-            if ($results[0]["is_seller"] == 1) {
+        if ($users){
+            if ($hashedPassword === $password) {
+            $username = $users[0]["username"];
+            if ($username[0]["is_seller"] == 1) {
                 $userrank = " Verkoper ";
                 session_start();
-                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Username'] = $username;
                 $_SESSION['Rank'] = $userrank;
-            } else if ($results[0]["is_admin"] == 1) {
+            } else if ($username[0]["is_admin"] == 1) {
                 $userrank = " Admin ";
                 session_start();
-                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Username'] = $username;
                 $_SESSION['Rank'] = $userrank;
-            } else {
+            } else if($username[0]["is_seller"] == 0 && $username[0]["is_admin"] == 0) {
                 $userrank = " Gebruiker ";
                 session_start();
-                $_SESSION['Username'] = $results[0]['username'];
+                $_SESSION['Username'] = $username;
                 $_SESSION['Rank'] = $userrank;
             }
             header("Location: persoonlijkepagina.php?succes=login");
-        } else {
-        header("Location: inlog.php?error=invalid");
+            }
+            else{
+                header("Location: inlog.php?error=invalid");
+            }
+        } else{
+            header("Location: inlog.php?error=invalid");
         }
     }
 }
