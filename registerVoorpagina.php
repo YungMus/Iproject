@@ -1,6 +1,7 @@
 <?php
 $title = 'Registeren';
 $link = 'registerVoorpagina.php';
+session_start();
 
 require_once("includes/header.php");
 

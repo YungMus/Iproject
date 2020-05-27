@@ -9,34 +9,34 @@ if (isset($_POST['changepassword'])) {
     $token = md5(time() . $email);
 
     if (empty($email)) {
-        header("Location: wachtwoordVergeten.php?error=emptyfields");
+        header("Location: wachtwoordVergetenVoorpagina.php?error=emptyfields");
         exit();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: wachtwoordVergeten.php?error=emailinvalid");
+        header("Location: wachtwoordVergetenVoorpagina.php?error=emailinvalid");
     }
 
-    else if (!checkEmailExists($email, $conn)) {
+    else if (checkEmailExists($email, $conn)) {
         $sql = 'SELECT user_id  FROM [User] WHERE [e-mail]=:email';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $result = $stmt->fetchAll();
+        $userID = $stmt->fetchAll();
 
-        $sql = 'INSERT INTO Password_lost_token (user_id, token_date, token) VALUES (:userID, :token_date, :token)';
-        $stmt = $conn->prepare($sql);
+        $sql2 = 'INSERT INTO Password_lost_token (user_id, token_date, token) VALUES (:userID, :token_date, :token)';
+        $stmt2 = $conn->prepare($sql2);
 
-        $stmt->bindparam(':userID', $result[0][0]);
-        $stmt->bindparam(':token_date', $date);
-        $stmt->bindparam(':token', $token);
-        $stmt->execute();
+        $stmt2->bindparam(':userID', $userID[0][0]);
+        $stmt2->bindparam(':token_date', $date);
+        $stmt2->bindparam(':token', $token);
+        $stmt2->execute();
 
         if ($sql) {
             $to = $email;
-            $subject = "Email Verificatie";
+            $subject = "Wachtwoord vergeten";
             $htmlStr = "";
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
-            $htmlStr .= "Klik hieronder aub op het knop om naar het verifieer pagina te gaan.<br /><br /><br />";
+            $htmlStr .= "Klik hieronder aub op het knop om naar het herstelpagina te gaan.<br /><br /><br />";
             $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=.$email.' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
@@ -56,37 +56,25 @@ if (isset($_POST['changepassword'])) {
             $body = $htmlStr;
 
             if (mail($to, $subject, $body, $headers)) {
-                echo("
-                  Message successfully sent!
-               ");
-                header('Location: registerVoorpagina.php?succes=mailsent');
+                header('Location: wachtwoordvergeten.php?success=mailsent');
             } else {
-                echo("
-                  Message delivery failed...
-               ");
-                header('Location: registerVoorpagina.php?error=mailnotsent');
+                header('Location: wachtwoordvergetenVoorpagina.php?error=mailnotsent');
             }
 
         }
     }
 
-//
-//function checkEmailExists($email_to_check, $conn) {
-//    $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=:email';
-//    $stmt = $conn->prepare($sql);
-//    $stmt->bindParam(':email', $email_to_check);
-//    $stmt->execute();
-//    $stmt = $stmt->fetchAll(PDO::FETCH_NUM);
-//    $resultcheck = count($stmt);
-//    if ($resultcheck < 1) {
-//        header("Location: registerVoorpagina.php?error=emailalreadyused&Email=" . $email_to_check);
-//        exit();
-//    }
-//    if($stmt) {
-//        return true;
-//    }
-//    else {
-//        return false;
-//    }
-//}
+
+function checkEmailExists($email_to_check, $conn) {
+    $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=:email';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email_to_check);
+    $stmt->execute();
+    if($stmt) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 }

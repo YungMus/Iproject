@@ -12,9 +12,20 @@ if(isset($_SESSION['Username'])){
   </button>
 </div>';
 }
-else{   header("Location: inlog.php?error=noauthorization");
-    exit();
+else{
+    header("Location: inlog.php?error=noauthorization");
 }
+
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "alreadyloggedin") {
+        echo '<div data-closable class="alert-box callout error"> Je bent al ingelogd!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
+    }
+}
+
 
 ?>
     <div class="grid-x grid-padding-y grid-padding-x">

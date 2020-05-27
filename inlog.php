@@ -2,6 +2,8 @@
 $title = 'Inlogpagina';
 $link = 'inlog.php';
 
+session_start();
+
 require_once("includes/header.php");
 
 if(isset($_GET['error'])) {
@@ -47,23 +49,28 @@ if(isset($_GET['error'])) {
         }
     }
 
-?>
+if(isset($_SESSION['Username'])) {
+    ?>
 
-<main>
-    <form class="form" method="post" action="inlog.inc.php">
-        <h4 class="text-center">Log in met je account</h4>
-        <label for="form-username">Gebruikersnaam
-            <input type="text" class="form-username" name="Username" id="Username">
-        </label>
-        <label for="form-password">Wachtwoord
-          <input type="password" class="form-password" name="Password" id="password">
-        </label>
-        <p><input type="submit" class="form-button" name="login"  value="Log in"></input></p>
-        <p><a class="space" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a> <a href="registerVoorpagina.php">Geen inloggegevens?</a></p>
-    </form>
-</main>
+    <main>
+        <form class="form" method="post" action="inlog.inc.php">
+            <h4 class="text-center">Log in met je account</h4>
+            <label for="form-username">Gebruikersnaam
+                <input type="text" class="form-username" name="Username" id="Username">
+            </label>
+            <label for="form-password">Wachtwoord
+                <input type="password" class="form-password" name="Password" id="password">
+            </label>
+            <p><input type="submit" class="form-button" name="login" value="Log in"></input></p>
+            <p><a class="space" href="wachtwoordVergetenVoorpagina.php">Wachtwoord vergeten?</a> <a
+                    href="registerVoorpagina.php">Geen inloggegevens?</a></p>
+        </form>
+    </main>
 
-<?php
+    <?php
+} else{
+    header("Location: persoonlijkepagina.php?error=alreadyloggedin");
+}
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>

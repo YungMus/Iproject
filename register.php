@@ -1,6 +1,7 @@
 <?php
 $title = 'Registeren';
 $link = 'register.php';
+session_start();
 
 require_once("includes/header.php");
 
