@@ -4,6 +4,7 @@ $link = 'persoonlijkePagina.php';
 session_start();
 
 require_once("includes/header.php");
+require_once("connectingDatabase.php");
 
 if(isset($_SESSION['Username'])){
     echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Rank'] . $_SESSION['Username'] .'!
@@ -104,6 +105,23 @@ if(isset($_GET['error'])) {
 
             </div>
         </div>
+
+<?php
+/*notifications
+
+$html = '';
+
+$sql = "select notification_id, notification, is_seen from Notification where user_id = :username ";
+$data = $conn->prepare($sql);
+$data ->bindParam(':username', $_SESSION['Username']);
+$data->execute();
+$result = $data->fetchAll();
+$count = $data->rowCount();
+$index = 0;
+$html = "";
+
+*/
+?>
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <p>demo melding 1</p>
