@@ -78,9 +78,9 @@
 
 .product-cards{
     display: flex;
-    margin-left: 22%;
-    margin-bottom: 25%;
-    margin-top: 15%;
+    /*margin-left: 22%;*/
+    /*margin-bottom: 25%;*/
+    /*margin-top: 15%;*/
  }
 
 
@@ -88,7 +88,8 @@
     background-color: #3c3057;
     border: 1px solid black;
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    margin: 20px;
+    /*margin-bottom: 1.5rem;*/
 }
 
 .product-card-thumbnail {

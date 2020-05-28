@@ -20,18 +20,7 @@ require_once("includes/header.php");
     </ul>
 </nav>
 <br>
-<div class="grid-x grid-padding-y grid-padding-x">
-    <div class="cell small-4 align-self-top"></div>
-    <div class="cell small-4 flex-container flex-dir-column">
-    <div class="callout primary flex-child-auto">
-    Dit is de site van Iconcepts. Op deze site kunt u gemakkelijk veilingen zetten en op veilingen bieden. Als u wilt bieden moet u eerst een account aanmaken.
-    Dit kan op <a href="register.php">register</a>. Als u dit eenmaal heeft gedaan kunt u volledig gebruik van onze website maken.
-</div>
-</div>
-</div>
-
 <article class="product-cards">
-
 <?php
     $sql = "select TOP 5 title, startvalue, description, thumbnail, item_id from Item";
     $data = $conn->prepare($sql);
@@ -74,11 +63,22 @@ require_once("includes/header.php");
         for ($y = 0; $y < $countA; $y ++) {
             $html .= '<button href="#" class="product-card-color-option"><img src="http://iproject43.icasites.nl/pics/' . $resultA[$y][0]. '"/></button>';
         }
-        $html .= '</div></div> <br>';
+        $html .= '</div></div>';
         $index ++;
     }
     echo $html;
+?>
 
+<!--    <div class="grid-x grid-padding-y grid-padding-x">-->
+<!--        <div class="cell small-4 align-self-top"></div>-->
+<!--        <div class="cell small-4 flex-container flex-dir-column">-->
+<!--            <div class="callout primary flex-child-auto">-->
+<!--                Dit is de site van Iconcepts. Op deze site kunt u gemakkelijk veilingen zetten en op veilingen bieden. Als u wilt bieden moet u eerst een account aanmaken.-->
+<!--                Dit kan op <a href="register.php">register</a>. Als u dit eenmaal heeft gedaan kunt u volledig gebruik van onze website maken.-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
 ?>

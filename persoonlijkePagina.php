@@ -104,6 +104,16 @@ if(isset($_GET['error'])) {
 
             </div>
         </div>
+        <div class="cell small-4 flex-container flex-dir-column">
+            <div class="callout text-center">
+                <p>demo melding 1</p>
+
+            </div>
+            <div class="callout text-center">
+                <p>demo melding 2</p>
+
+            </div>
+        </div>
 
     </div>
 <?php
