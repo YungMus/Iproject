@@ -1,9 +1,5 @@
 <?php
 
-$title = 'Inlogpagina';
-$link = 'veilingCategorieOverzicht.php';
-require_once("includes/header.php");
-
 $sql = "select name, rubric_id FROM hoofd_rubrieken";
 $data = $conn->query($sql);
 $result = $data->fetchAll();
