@@ -34,13 +34,6 @@ if(isset($_GET['error'])) {
   </button>
 </div>';
     }
-    else if($_GET['error'] == "emailinvalid"){
-        echo '<div data-closable class="alert-box callout warning"> Jouw mail is niet een geldige mail!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&CircleTimes;</span>
-  </button>
-</div>';
-    }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "mailsent"){
         echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd! Check je mailbox!

@@ -42,7 +42,7 @@ if($_GET['email']) {
     $stmt->execute();
     $results = $stmt->fetchAll();
     if ($results[0][0] != $email) {
-//        header("Location: registerVoorpagina.php?error=noauthorization");
+        header("Location: registerVoorpagina.php?error=noauthorization");
     } else {
 
         ?>
@@ -192,7 +192,7 @@ if($_GET['email']) {
     }
 }
 else {
-//    header("Location: registerVoorpagina.php?error=noauthorization");
+    header("Location: registerVoorpagina.php?error=noauthorization");
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.php");
