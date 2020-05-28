@@ -34,11 +34,11 @@ if(isset($_GET['error'])) {
                 <a href="#">Profiel en instellingen</a>
                 <ul class="menu vertical subrubriek">
                     <li>
-                        <a href="#">sub1</a>
+                        <a href="#">Mijn account</a>
                         <ul class="menu vertical">
-                            <li><a class="subitem" href="#">Subrubriek 1.1.1</a></li>
-                            <li><a class="subitem" href="#">Subrubriek 1.1.2</a></li>
-                            <li><a class="subitem" href="#">Subrubriek 1.1.3</a></li>
+                            <li><a class="subitem" href="#">Persoonlijke informatie</a></li>
+                            <li><a class="subitem" href="#">Adres informatie</a></li>
+                            <li><a class="subitem" href="#">Betaalopties</a></li>
                         </ul>
                     </li>
                     <li>
@@ -55,7 +55,7 @@ if(isset($_GET['error'])) {
                         </ul>
                     </li>
                     <li><a class="subitem" href="#">Subrubriek 1.3</a></li>
-                    <li><a class="subitem" href="#">Subrubriek 1.4</a></li>
+                    <li><a class="subitem" href="verwijderAccount.php">Verwijder account</a></li>
                 </ul>
             </li>
             <li>
@@ -91,7 +91,7 @@ if(isset($_GET['error'])) {
             <br>
             <?php
             if(isset($_SESSION['Username'])){
-                echo "<ul>
+                echo "<ul>    
                 <a class=\"button secondary large\" href='uitgelogd.php'>uitloggen</a>
             </ul>";}
             ?>

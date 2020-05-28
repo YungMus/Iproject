@@ -3,7 +3,33 @@ $title = 'verwijder account';
 $link = 'verwijderAccount.php';
 session_start();
 require_once("includes/header.php");
+
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning"> Vul de velden in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "invalid") {
+        echo '<div data-closable class="alert-box callout alert">ingevoerde gegevens kloppen niet!
+<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if (isset($_GET['success'])) {
+        if ($_GET['success'] == "verwijdert") {
+            echo '<div data-closable class="alert-box callout success"> Het account is verwijdert!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+        }
+    }
+}
 ?>
+
+
 
 <main>
     <form class="form" method="post" action="verwijderAccount.inc.php">
@@ -12,10 +38,8 @@ require_once("includes/header.php");
             wordt uw account en alle persoonsgegevens die er aan gekoppeld zijn permanent verwijdert uit onze database.
             Dit betekent dat u niet meer kunt inloggen en dat het account niet meer terug te halen is.
             Voor meer informatie klik dan <a href="voorwaardenCondities.php">hier voor de voorwaarde pagina.</a></h6>
-        <label for="form-password">Wachtwoord
-            <input type="password" class="form-password" name="Password" id="Password">
-        </label>
-        <p><input id="delete-account" type="checkbox"><label for="show-password">Ja, Ik wil mijn iConcepts account en al zijn data permanent verwijderen.</p></label>
+        <input type="password" name="password" id="password">
+        <p><input id="delete-account" type="checkbox"><label for="delete-account">Ja, Ik wil mijn iConcepts account en al zijn data permanent verwijderen.</p></label>
         <p><input type="submit" class="form-button" name="delete"  value="VERWIJDER ACCOUNT"></p>
     </form>
 </main>
