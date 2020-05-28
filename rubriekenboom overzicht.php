@@ -46,12 +46,9 @@ for ($i = 0; $i < $count; $i ++) {
 
                         $html .='</ul> </li>';
                     }
-$html.= '   </ul></li>';
+$html.= ' </ul></li>';
 }
 
-$html .= '</div></ul>';
+$html .= '</ul>';
 echo $html;
-
-require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
 ?>
