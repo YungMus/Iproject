@@ -55,7 +55,7 @@ if(isset($_GET['error'])) {
                         </ul>
                     </li>
                     <li><a class="subitem" href="#">Subrubriek 1.3</a></li>
-                    <li><a class="subitem" href="#">Subrubriek 1.4</a></li>
+                    <li><a class="subitem" href="verwijderAccount.php">Verwijder account</a></li>
                 </ul>
             </li>
             <li>
