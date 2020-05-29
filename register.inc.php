@@ -26,7 +26,8 @@ if (isset($_POST['Register'])) {
     } else if ($password !== $passwordrepeat) {
         header("Location: register.php?error=passwordcheck&email=" . $email . "&Username=" . $username . "&Firstname=" . $firstname . "&Lastname=" . $lastname . "&Birthday=" . $birthday . "&Phonenumber=" . $phonenumber . "&RecoveryQuestion=" . $recoveryquestion . "&RecoveryQuestionAnswer=" . $recoveryquestionanswer . "&Address=" . $address . "&Address2=" . $address2 . "&Postalcode=" . $postalcode . "&City=" . $city . "&Country=" . $country);
         exit();
-    } else if (!checkUsernameExists($username, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country)) {
+    } else{
+//    else if (checkUsernameExists($username, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) && checkUserVerified($conn, $email)) {
         $sql = "SELECT MAX(user_id) FROM [User] ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -36,23 +37,24 @@ if (isset($_POST['Register'])) {
         $sql2 = "INSERT INTO [User] (user_id, username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:user_id, :username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
         $stmt2 = $conn->prepare($sql2);
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        print_r($sql2);
 
-            $stmt2->bindparam(':user_id', $userID);
-            $stmt2->bindparam(':username', $username);
-            $stmt2->bindparam(':email', $email);
-            $stmt2->bindparam(':password', $hashedPassword);
-            $stmt2->bindparam(':firstname', $firstname);
-            $stmt2->bindparam(':lastname', $lastname);
-            $stmt2->bindparam(':birth_day', $birthday);
-            $stmt2->bindparam(':recover_question', $recoveryquestion);
-            $stmt2->bindparam(':recover_question_answer', $recoveryquestionanswer);
-            $stmt2->bindparam(':address', $address);
-            $stmt2->bindparam(':address_addition', $address2);
-            $stmt2->bindparam(':postal_code', $postalcode);
-            $stmt2->bindparam(':place_name', $city);
-            $stmt2->bindparam(':country', $country);
-            $stmt2->execute();
-        }
+        $stmt2->bindparam(':user_id', $userID);
+        $stmt2->bindparam(':username', $username);
+        $stmt2->bindparam(':email', $email);
+        $stmt2->bindparam(':password', $hashedPassword);
+        $stmt2->bindparam(':firstname', $firstname);
+        $stmt2->bindparam(':lastname', $lastname);
+        $stmt2->bindparam(':birth_day', $birthday);
+        $stmt2->bindparam(':recover_question', $recoveryquestion);
+        $stmt2->bindparam(':recover_question_answer', $recoveryquestionanswer);
+        $stmt2->bindparam(':address', $address);
+        $stmt2->bindparam(':address_addition', $address2);
+        $stmt2->bindparam(':postal_code', $postalcode);
+        $stmt2->bindparam(':place_name', $city);
+        $stmt2->bindparam(':country', $country);
+        $stmt2->execute();
+    }
             if($sql2) {
                 $sql3 = "SELECT MAX(order_nr) FROM Userphone ";
                 $stmt3 = $conn->prepare($sql3);
@@ -69,14 +71,16 @@ if (isset($_POST['Register'])) {
 
                 header("Location: inlog.php?success=accountmade");
                 exit();
-            } else{
-                header("Location: register.php?error=insertfailed");
+            }
+            else{
+                header("Location: register.php?error=insertfailed&email=$email");
             }
 }
 else {
     header("Location: registerVoorpagina.php?error=noauthorization");
     exit();
 }
+
 function checkUsernameExists($username_to_check, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) {
     $sql = 'SELECT username  FROM [User] WHERE [username]=:username';
     $stmt = $conn->prepare($sql);
@@ -96,8 +100,18 @@ function checkUsernameExists($username_to_check, $conn, $email, $firstname, $las
     }
 }
 
-function getMaxUserID ($conn){
-
+function checkUserVerified ($conn, $email_to_check){
+    $sql = 'SELECT verified  FROM Email_verification_token WHERE [e-mail]= :email';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email_to_check);
+    $stmt->execute();
+    $verified = $stmt->fetchall();
+    print_r('Dit is de statement'.$stmt);
+    print_r('Dit is de check'.$verified);
+    if($verified[0]['verified'] === 0){
+        header("Location: registerTweedepagina.php?error=tokennotverified&email=$email_to_check");
+        exit();
+    }
     if($stmt) {
         return true;
     }

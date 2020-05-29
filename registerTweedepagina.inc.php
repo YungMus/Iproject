@@ -11,11 +11,11 @@ if (isset($_POST['confirmtoken'])) {
         header("Location: registerVoorpagina.php?error=emptyfields");
         exit();
     }  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: registerVoorpagina.php?error=emailinvalid");
+        header("Location: registerTweedepagina.php?error=emailinvalid");
     }
 
-
-    if (checkTokenMatch($email, $conn, $token)) {
+if(checkMailValid($conn, $email)){
+    if (checkTokenMatch($conn, $token)) {
         if (checkDateToken($conn, $email)) {
             if (checkAlreadyVerified($conn, $email)) {
                 $resultSet = $conn->query("SELECT verified,token FROM Email_verification_token WHERE verified = 0 AND token = '$token'");
@@ -28,33 +28,31 @@ if (isset($_POST['confirmtoken'])) {
                         echo "Er is een probleem met het verbinden met onze server!";
                     }
                 } else {
-                    header("Location: registerTweedepagina.php?error=invalid");
+                    header("Location: registerTweedepagina.php?error=invalidemail=$email");
                 }
+            } else {
+//                header("Location: inlog.php?error=alreadyverified");
             }
-            else{
-                header("Location: login.php?error=alreadyverified");
-            }
-        }
-        else{
+        } else {
             $sql = "DELETE FROM Email_verification_token WHERE email=:email";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
-            header("Location: registerTweedepagina.php?error=expired");
+            header("Location: registerTweedepagina.php?error=expired&email=$email");
         }
-    }
-           else {
-        header("Location: registerTweedepagina.php?error=nomatch");
+    } else {
+        header("Location: registerTweedepagina.php?error=nomatch&email=$email");
     }
 }
-function checkTokenMatch ($email, $conn, $token_to_check) {
-    $sql = ("SELECT token FROM Email_verification_token WHERE [e-mail]= :email AND token= :token");
+}
+function checkTokenMatch ($conn, $token_to_check) {
+    $sql = ("SELECT token FROM Email_verification_token WHERE token= :token");
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email);
+
     $stmt->bindParam(':token', $token_to_check);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
-    if($result[0] === $token_to_check) {
+    $result = $stmt->fetchAll();
+    if($result[0]['token'] === $token_to_check) {
         return true;
     }
     else {
@@ -67,9 +65,11 @@ function checkDateToken ($conn, $email){
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
-    date_add($result[0], date_interval_create_from_date_string('4 hours'));
-    if($result[0] < getdate()) {
+    $result = $stmt->fetchAll();
+    $date = $result[0][0];
+    $time = strtotime($date);
+    date_add($time, date_interval_create_from_date_string("4 hours"));
+    if($result[0][0] < getdate()) {
         return true;
     }
     else {
@@ -78,7 +78,7 @@ function checkDateToken ($conn, $email){
 }
 
 function checkAlreadyVerified ($conn, $email){
-    $sql = ("SELECT verified FROM Email_verification_token WHERE [e-mail]= :email AND verified= 1");
+    $sql = ("SELECT verified FROM Email_verification_token WHERE [e-mail]= :email");
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
@@ -87,6 +87,22 @@ function checkAlreadyVerified ($conn, $email){
         return true;
     }
     else {
+        return false;
+    }
+}
+
+function checkMailValid ($conn, $email){
+    $sql = "SELECT [e-mail] FROM Email_verification_token WHERE [e-mail]= :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    if($results[0][0] != $email){
+        header("Location: registerTweedepagina.php?error=emailinvalid&email=$email");
+    }
+    if($stmt){
+        return true;
+    } else{
         return false;
     }
 }
