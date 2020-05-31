@@ -22,11 +22,13 @@ if (isset($_POST['confirmtoken'])) {
                         $update = $conn->query("UPDATE Email_verification_token SET verified = 1 WHERE token = '$token'");
                         if ($update) {
                             header("Location: register.php?success=verified&email=$email");
+                            exit();
                         } else {
                             echo "Er is een probleem met het verbinden met onze server!";
                         }
                     } else {
                         header("Location: registerTweedepagina.php?error=invalid&email=$email");
+                        exit();
                     }
                 }
             }
@@ -42,6 +44,7 @@ function checkTokenMatch ($conn, $token_to_check, $email) {
     $result = $stmt->fetchAll();
     if($result[0]['token'] != $token_to_check) {
         header("Location: registerTweedepagina.php?error=nomatch&email=$email");
+        exit();
     }
     if($stmt){
         return true;
@@ -66,6 +69,7 @@ function checkDateToken ($conn, $email){
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         header("Location: registerTweedepagina.php?error=expired&email=$email");
+        exit();
     }
     if($stmt){
         return true;
@@ -83,6 +87,7 @@ function checkMailValid ($conn, $email){
     $results = $stmt->fetchAll();
     if($results[0][0] != $email){
         header("Location: registerTweedepagina.php?error=emailinvalid&email=$email");
+        exit();
     }
     if($stmt){
         return true;
@@ -99,6 +104,7 @@ function checkAlreadyVerified ($conn, $email){
     $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     if($result[0] === 1) {
         header("Location: inlog.php?error=alreadyverified");
+        exit();
     }
     if($stmt){
         return true;

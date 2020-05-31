@@ -14,8 +14,10 @@ if (isset($_POST['confirmtoken'])) {
         header("Location: wachtwoordVergetenTweedepagina.php?error=emptyfields&email=$email");
     } else if (checkMailValid($conn, $email)) {
         if (checkTokenMatch($conn, $token, $email)) {
-            if (checkDateToken($conn, $userID, $email)) {
-                header("Location: wachtwoordVergeten.php?success=verified&email=$email");
+            if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email)){
+                if (checkDateToken($conn, $userID, $email)) {
+                    header("Location: wachtwoordVergeten.php?success=verified&email=$email");
+                }
             }
         }
     }
@@ -25,13 +27,14 @@ if (isset($_POST['confirmtoken'])) {
 
 
     function checkTokenMatch ($conn, $token_to_check, $email) {
-        $sql = ("SELECT token FROM Password_lost_token WHERE token= :token");
+        $sql = ("SELECT token FROM Password_lost_token WHERE token=:token");
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':token', $token_to_check);
         $stmt->execute();
         $result = $stmt->fetchAll();
         if($result[0]['token'] != $token_to_check) {
             header("Location: wachtwoordVergetenTweedepagina.php?error=nomatch&email=$email");
+            exit();
         }
         if($stmt){
             return true;
@@ -56,6 +59,7 @@ if (isset($_POST['confirmtoken'])) {
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             header("Location: wachtwoordVergetenTweedepagina.php?error=expired&email=$email");
+            exit();
         }
         if($stmt){
             return true;
@@ -73,6 +77,7 @@ if (isset($_POST['confirmtoken'])) {
         $results = $stmt->fetchAll();
         if($results[0][0] != $email){
             header("Location: wachtwoordVergetenTweedepagina.php?error=emailinvalid&email=$email");
+            exit();
         }
         if($stmt){
             return true;
@@ -81,3 +86,19 @@ if (isset($_POST['confirmtoken'])) {
         }
     }
 
+function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email){
+    $sql = "SELECT recover_question_answer FROM [User] WHERE [e-mail]= :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    if($result[0][0] != $question_to_check){
+        header("Location: wachtwoordVergetenTweedepagina.php?error=recoveryquestionanswer&email=$email");
+        exit();
+    }
+    if($stmt){
+        return true;
+    } else{
+        return false;
+    }
+}

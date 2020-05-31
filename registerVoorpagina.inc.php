@@ -48,8 +48,10 @@ if (isset($_POST['EmailConfirmation'])) {
 
             if (mail($to, $subject, $body, $headers)) {
                 header('Location: registerVoorpagina.php?success=mailsent');
+                exit();
             } else {
                 header('Location: registerVoorpagina.php?error=mailnotsent');
+                exit();
             }
 
         }

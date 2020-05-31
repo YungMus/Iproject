@@ -13,6 +13,7 @@ if (isset($_POST['changepassword'])) {
         exit();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header("Location: wachtwoordVergetenVoorpagina.php?error=emailinvalid");
+        exit();
     }
 
     else if (checkEmailExists($email, $conn)) {
@@ -37,7 +38,7 @@ if (isset($_POST['changepassword'])) {
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
             $htmlStr .= "Klik hieronder aub op het knop om naar het herstelpagina te gaan.<br /><br /><br />";
-            $htmlStr .= "<a href='http://localhost/Iproject/wachtwoordVergetenTweedepagina.php?email=.$email.' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
+            $htmlStr .= "<a href='http://localhost/Iproject/wachtwoordVergetenTweedepagina.php?email=$email' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
@@ -59,8 +60,10 @@ if (isset($_POST['changepassword'])) {
                 session_start();
                 $_SESSION['userID'] = $userID[0]['user_id'];
                 header('Location: wachtwoordvergetenVoorpagina.php?success=mailsent');
+                exit();
             } else {
                 header('Location: wachtwoordvergetenVoorpagina.php?error=mailnotsent');
+                exit();
             }
 
         }
