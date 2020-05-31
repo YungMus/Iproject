@@ -30,5 +30,5 @@ if ($isSearched){
   echo $html;
     }
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

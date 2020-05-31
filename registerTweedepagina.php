@@ -57,8 +57,8 @@ if($_GET['email']) {
     <main>
         <form class="form" method="post" action="registerTweedepagina.inc.php">
             <h4 class="text-center">Verifieren</h4>
-            <input class="form-email" type="text" name="email" placeholder="Jouw emailadres">
-            <input class="form-token" type="text" name="token" placeholder="Jouw verificatie code">
+            <input class="form-input" type="text" name="email" placeholder="Jouw emailadres">
+            <input class="form-input" type="text" name="token" placeholder="Jouw verificatie code">
             <input class="form-button" type="submit" name="confirmtoken" value="Ga door">
             <p class="middle">Al een account? <a href="inlog.php">Log in</a></p>
             <p class="middle"><a href="voorwaardenCondities.php">Voorwaarden &amp; Condities</a></p>
@@ -70,5 +70,5 @@ if($_GET['email']) {
 }
 
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

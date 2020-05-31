@@ -56,10 +56,10 @@ if(!isset($_SESSION['Username'])) {
         <form class="form" method="post" action="inlog.inc.php">
             <h4 class="text-center">Log in met je account</h4>
             <label for="form-username">Gebruikersnaam
-                <input type="text" class="form-username" name="Username" id="Username">
+                <input type="text" class="form-input" name="Username" id="Username">
             </label>
             <label for="form-password">Wachtwoord
-                <input type="password" class="form-password" name="Password" id="password">
+                <input type="password" class="form-input" name="Password" id="password">
             </label>
             <p><input type="submit" class="form-button" name="login" value="Log in"></input></p>
             <p><a class="space" href="wachtwoordVergetenVoorpagina.php">Wachtwoord vergeten?</a> <a
@@ -72,5 +72,5 @@ if(!isset($_SESSION['Username'])) {
     header("Location: persoonlijkepagina.php?error=alreadyloggedin");
 }
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

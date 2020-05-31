@@ -16,13 +16,11 @@ if(isset($_POST['login'])) {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
-//        print_r($password);
         $users  = $stmt->fetchAll();
         $hashedPassword = $users[0]['password'];
-        print_r(password_verify($password, $hashedPassword));
 
         if ($users){
-            if ($hashedPassword === $password) {
+            if (password_verify($password, $hashedPassword)) {
             $username = $users[0]["username"];
             if ($username[0]["is_seller"] == 1) {
                 $userrank = " Verkoper ";

@@ -26,8 +26,8 @@ if (isset($_POST['Register'])) {
     } else if ($password !== $passwordrepeat) {
         header("Location: register.php?error=passwordcheck&email=" . $email . "&Username=" . $username . "&Firstname=" . $firstname . "&Lastname=" . $lastname . "&Birthday=" . $birthday . "&Phonenumber=" . $phonenumber . "&RecoveryQuestion=" . $recoveryquestion . "&RecoveryQuestionAnswer=" . $recoveryquestionanswer . "&Address=" . $address . "&Address2=" . $address2 . "&Postalcode=" . $postalcode . "&City=" . $city . "&Country=" . $country);
         exit();
-    } else{
-//    else if (checkUsernameExists($username, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) && checkUserVerified($conn, $email)) {
+    }
+    else if (!checkUsernameExists($username, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) && checkUserVerified($conn, $email)) {
         $sql = "SELECT MAX(user_id) FROM [User] ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -74,6 +74,7 @@ if (isset($_POST['Register'])) {
             }
             else{
                 header("Location: register.php?error=insertfailed&email=$email");
+                exit();
             }
 }
 else {
@@ -82,7 +83,7 @@ else {
 }
 
 function checkUsernameExists($username_to_check, $conn, $email, $firstname, $lastname, $birthday,$phonenumber, $recoveryquestion, $recoveryquestionanswer, $address, $address2, $postalcode, $city, $country) {
-    $sql = 'SELECT username  FROM [User] WHERE [username]=:username';
+    $sql = 'SELECT username  FROM [User] WHERE username=:username';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username_to_check);
     $stmt->execute();
@@ -106,8 +107,6 @@ function checkUserVerified ($conn, $email_to_check){
     $stmt->bindParam(':email', $email_to_check);
     $stmt->execute();
     $verified = $stmt->fetchall();
-    print_r('Dit is de statement'.$stmt);
-    print_r('Dit is de check'.$verified);
     if($verified[0]['verified'] === 0){
         header("Location: registerTweedepagina.php?error=tokennotverified&email=$email_to_check");
         exit();

@@ -11,10 +11,7 @@ if (isset($_POST['EmailConfirmation'])) {
     if (empty($email)) {
         header("Location: registerVoorpagina.php?error=emptyfields");
         exit();
-    }  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("Location: registerVoorpagina.php?error=emailinvalid");
-        }
-
+    }
     else if (!checkEmailExists($email, $conn)) {
         $sql = 'INSERT INTO Email_verification_token ([e-mail], token_date, token) VALUES (:email, :token_date, :token)';
         $stmt = $conn->prepare($sql);

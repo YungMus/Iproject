@@ -301,12 +301,8 @@
     opacity: .9;
 }
 
-.form-email,
-.form-password,
-.form-username,
-.form-date,
-.form-city,
-.form-token{
+
+.form-input{
     border-radius: 30px;
     border: none;
     opacity: .3;
