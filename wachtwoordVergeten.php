@@ -4,6 +4,42 @@ $link = 'wachtwoordVergeten.php';
 
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning"> Vul het veld in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "passwordcheck") {
+        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen! Check of jouw wachtwoord overeen komt!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "passwordcheck") {
+        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen! Check of jouw wachtwoord overeen komt!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if ($_GET['error'] == "oldpasswordcheck") {
+        echo '<div data-closable class="alert-box callout warning"> Je oude wachtwoord klopt niet! Vul de juiste wachtwoord in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+} else if(isset($_GET['success'])){
+    if($_GET['success'] == "confirmed"){
+        echo '<div data-closable class="alert-box callout success"> Je bent succesvol door ons bevestigd! Verander je wachtwoord nu!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+}
+
 if($_GET['email']) {
     $email = $_GET['email'];
     $sql = "SELECT [e-mail] FROM [User] WHERE [e-mail]= :email";

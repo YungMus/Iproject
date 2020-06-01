@@ -6,6 +6,40 @@ $userID = $_SESSION['userID'];
 
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning"> Vul het veld in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if($_GET['error'] == "nomatch"){
+        echo '<div data-closable class="alert-box callout warning"> Je code komt niet overeen! Vul een geldige code in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if($_GET['error'] == "expired"){
+        echo '<div data-closable class="alert-box callout warning"> Je code is niet meer geldig! Vraag een nieuwe code aan!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if($_GET['error'] == "emailinvalid"){
+        echo '<div data-closable class="alert-box callout warning"> Voer een geldige mail in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    } else if($_GET['error'] == "recoveryquestionanswer"){
+        echo '<div data-closable class="alert-box callout warning"> Het antwoord klopt niet. Probeer het opnieuw!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+}
+
 $sql = 'SELECT recover_question  FROM [User] WHERE user_id=:userID';
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':userID', $userID);

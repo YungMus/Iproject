@@ -21,16 +21,12 @@ if (isset($_POST['Changepassword'])) {
             $hashedNewPassword = password_hash($newpassword, PASSWORD_DEFAULT);
             $update = $conn->query("UPDATE [User] SET password ='$hashedNewPassword' WHERE [e-mail] ='$email'");
             if ($update) {
-                header("Location: inlog.php?success=verified");
+                header("Location: inlog.php?success=changed");
                 exit();
             } else {
                 echo "Er is een probleem met het verbinden met onze server!";
             }
-        } else {
-            header("Location: wachtwoordVergetenTweedepagina.php?error=invalid&email=$email");
-            exit();
         }
-
 }
 
 function checkOldPasswordExist($conn, $password_to_check, $email) {

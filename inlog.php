@@ -46,6 +46,12 @@ if(isset($_GET['error'])) {
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
+        } else if ($_GET['success'] == "changed") {
+            echo '<div data-closable class="alert-box callout success"> Je hebt succesvol je wachtwoord veranderd!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
         }
     }
 

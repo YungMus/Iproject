@@ -16,7 +16,7 @@ if (isset($_POST['confirmtoken'])) {
         if (checkTokenMatch($conn, $token, $email)) {
             if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email)){
                 if (checkDateToken($conn, $userID, $email)) {
-                    header("Location: wachtwoordVergeten.php?success=verified&email=$email");
+                    header("Location: wachtwoordVergeten.php?success=confirmed&email=$email");
                 }
             }
         }
