@@ -106,6 +106,12 @@ if(isset($_GET['error'])) {
             </div>
         </div>
 
+                <div>
+                <?php
+                if(($_SESSION['Rank']) === " Gebruiker "){
+                    echo "<a a class=\"button secondary large\" href='verkoopaccount.php?Email=".$_SESSION['Email']."'>Wordt verkoper</a>";}
+                ?>
+                </div>
 <?php
 /*notifications
 

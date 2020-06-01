@@ -69,8 +69,38 @@ if (isset($_POST['Register'])) {
                 $stmt4->bindparam(':userID', $userID);
                 $stmt4->execute();
 
-                header("Location: inlog.php?success=accountmade");
-                exit();
+                $to = $email;
+                $subject = "Welkom gebruiker!";
+                $htmlStr = "";
+                $htmlStr .= "Hi " . $firstname . $lastname . ",<br /><br />";
+
+                $htmlStr .= "Je hebt succesvol een account bij ons aangemaakt! Je bent van harte welkom om bij een kijkje te nemen op onze website en zelfs mee te bieden!<br /><br /><br />";
+
+                $htmlStr .= "Wil je gaan inloggen?<br /><br /><br />";
+
+                $htmlStr .= "Klik hieronder om naar het inlogpagina te gaan<br /><br /><br />";
+                $htmlStr .= "<a href='http://localhost/Iproject/inlog.php?' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
+
+                $htmlStr .= "Met vriendelijke groeten,<br />";
+                $htmlStr .= "<a href='https://iproject43.icasites.nl/' target='_blank'>EenmaalAndermaal</a><br />";
+
+
+                $name = "EenmaalAndermaal";
+                $email_sender = "no-reply@eenmaalandermaal.com";
+
+                $headers  = "MIME-Version: 1.0\r\n";
+                $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+                $headers .= "From: {$name} <{$email_sender}> \n";
+
+                $body = $htmlStr;
+
+                if (mail($to, $subject, $body, $headers)) {
+                    header("Location: inlog.php?success=accountmade");
+                    exit();
+                } else {
+                    header("Location: register.php?error=mailnotsent&email=$email");
+                    exit();
+                }
             }
             else{
                 header("Location: register.php?error=insertfailed&email=$email");
