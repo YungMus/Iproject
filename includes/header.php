@@ -18,11 +18,6 @@ if (isset($_POST['sendHeader'])) {
     <?php
     echo $headTitle;
 
-    if (isset($_POST['sendHeader'])) {
-        $sql = "select * from item WHERE title LIKE :searchA OR description like :searchB";
-        $data = $conn->prepare($sql);
-        $data->execute(array(':searchA' => '%' . $search . '%', ':searchB' => '%' . $search . '%'));
-        }
     ?>
 
     <link rel="stylesheet" href="css/foundation.css">
@@ -48,10 +43,10 @@ if (isset($_POST['sendHeader'])) {
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <form method="POST" action="resultaten.php">
+                <form method="POST" action="veilingCategorieOverzicht.php">
                     <ul class="menu">
-                    <li><label for="search"></label><input type="text" id="search" name="search" placeholder="Zoek"></li>
-                     <li><input class="button" type="submit" id="sendHeader" name="sendHeader" value="Zoek"></li>
+                    <li><label for="search"></label><input type="text" id="categorie" name="categorie" placeholder="Zoek"></li>
+                     <li><input class="button" type="submit" id="SearchKeyword" name="SearchKeyword" value="Zoek"></li>
                     </ul>
                 </form>
                 <ul><a href="<?php  if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){

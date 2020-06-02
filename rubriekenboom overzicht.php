@@ -1,5 +1,7 @@
 <?php
-$isSearched = false;
+$isSearchedRubric = false;
+$isSearchKeyword = false;
+
 if (isset($_POST['Zoek'])) {
     $search = $_POST['categorie'];
 
@@ -10,10 +12,15 @@ if (isset($_POST['Zoek'])) {
     $resultRubric_id = $dataRubric_id->fetchAll();
 
     $rubric_id = $resultRubric_id[0]['rubric_id'];
-    $isSearched = true;
+    $isSearchedRubric = true;
 }
 
-$sql = "select name, rubric_id FROM hoofd_rubrieken";
+else if (isset($_POST['SearchKeyword'])) {
+    $search = htmlspecialchars(trim($_POST['categorie']));
+    $isSearchKeyword = true;
+}
+
+$sql = "select top 3 name, rubric_id FROM hoofd_rubrieken";
 $data = $conn->query($sql);
 $result = $data->fetchAll();
 $count = $data->rowCount();
