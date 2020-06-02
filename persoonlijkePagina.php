@@ -109,15 +109,14 @@ if(isset($_GET['error'])) {
                 <div>
                 <?php
                 if(($_SESSION['Rank']) === " Gebruiker "){
-                    echo "<a a class=\"button secondary large\" href='verkoopaccount.php?Email=".$_SESSION['Email']."'>Wordt verkoper</a>";}
+                    echo "<a a class=\"button secondary large\" href='verkoopaccount.php?Email=".$_SESSION['Email']."'>Word verkoper</a>";}
                 ?>
                 </div>
 <?php
-/*notifications
 
 $html = '';
-
-$sql = "select notification_id, notification, is_seen from Notification where user_id = :username ";
+/*
+$sql = "select notification_id, notification, is_seen from Notification";
 $data = $conn->prepare($sql);
 $data ->bindParam(':username', $_SESSION['Username']);
 $data->execute();
@@ -126,12 +125,19 @@ $count = $data->rowCount();
 $index = 0;
 $html = "";
 
+
+foreach ($count as $notification) {
+    $html .= '<div class="callout text-center">
+                <p>';
+    $html .= $notification['nitification'];
+    $html .= '</p>
+            </div>';
+}
 */
 ?>
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <p>demo melding 1</p>
-
             </div>
             <div class="callout text-center">
                 <p>demo melding 2</p>
