@@ -120,27 +120,25 @@ if(isset($_GET['error'])) {
                 </div>
 <?php
 
-$html = '';
-/*
-$sql = "select notification_id, notification, is_seen from Notification";
+$html = '<div class="cell small-4 flex-container flex-dir-column">';
+
+$sql = "SELECT notification_id, notification, is_seen FROM Notification WHERE user_id = :user_id";
 $data = $conn->prepare($sql);
-$data ->bindParam(':username', $_SESSION['Username']);
+$data ->bindParam(':username', $_SESSION['user_id']);
 $data->execute();
 $result = $data->fetchAll();
-$count = $data->rowCount();
-$index = 0;
-$html = "";
 
+print_r($result);
 
-foreach ($count as $notification) {
+foreach ($result as $notification) {
     $html .= '<div class="callout text-center">
                 <p>';
-    $html .= $notification['nitification'];
+    $html .= $notification['notification'];
     $html .= '</p>
             </div>';
 }
-*/
 ?>
+
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <p>demo melding 1</p>
@@ -150,8 +148,8 @@ foreach ($count as $notification) {
 
             </div>
         </div>
-
     </div>
+
 <?php
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");
