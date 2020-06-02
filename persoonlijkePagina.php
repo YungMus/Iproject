@@ -116,12 +116,13 @@ if(isset($_GET['error'])) {
 
 $html = '<div class="cell small-4 flex-container flex-dir-column">';
 
-$sql = "SELECT notification_id, notification, is_seen FROM Notification INNER JOIN [User] ON Notification.user_id = [User].user_id WHERE username = :username";
+$sql = "SELECT notification_id, notification, is_seen FROM Notification WHERE user_id = :user_id";
 $data = $conn->prepare($sql);
-$data ->bindParam(':username', $_SESSION['username']);
+$data ->bindParam(':username', $_SESSION['user_id']);
 $data->execute();
 $result = $data->fetchAll();
 
+print_r($result);
 
 foreach ($result as $notification) {
     $html .= '<div class="callout text-center">
