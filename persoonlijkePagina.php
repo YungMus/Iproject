@@ -4,6 +4,7 @@ $link = 'persoonlijkePagina.php';
 session_start();
 
 require_once("includes/header.php");
+require_once("connectingDatabase.php");
 
 if(isset($_SESSION['Username'])){
     echo '<div data-closable class="alert-box callout info"> Welkom'. $_SESSION['Rank'] . $_SESSION['Username'] .'!
@@ -104,10 +105,39 @@ if(isset($_GET['error'])) {
 
             </div>
         </div>
+
+                <div>
+                <?php
+                if(($_SESSION['Rank']) === " Gebruiker "){
+                    echo "<a a class=\"button secondary large\" href='verkoopaccount.php?Email=".$_SESSION['Email']."'>Word verkoper</a>";}
+                ?>
+                </div>
+<?php
+
+$html = '';
+/*
+$sql = "select notification_id, notification, is_seen from Notification";
+$data = $conn->prepare($sql);
+$data ->bindParam(':username', $_SESSION['Username']);
+$data->execute();
+$result = $data->fetchAll();
+$count = $data->rowCount();
+$index = 0;
+$html = "";
+
+
+foreach ($count as $notification) {
+    $html .= '<div class="callout text-center">
+                <p>';
+    $html .= $notification['nitification'];
+    $html .= '</p>
+            </div>';
+}
+*/
+?>
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <p>demo melding 1</p>
-
             </div>
             <div class="callout text-center">
                 <p>demo melding 2</p>
@@ -118,7 +148,7 @@ if(isset($_GET['error'])) {
     </div>
 <?php
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>
 
 <!--            --><?php

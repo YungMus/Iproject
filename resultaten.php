@@ -28,5 +28,5 @@ require_once("resultaten.inc.php");
 
 <?php
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

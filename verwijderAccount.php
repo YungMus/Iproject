@@ -4,7 +4,7 @@ $link = 'verwijderAccount.php';
 session_start();
 require_once("includes/header.php");
 
-if(isset($_GET['error'])) {
+/* if(isset($_GET['error'])) {
     if ($_GET['error'] == "emptyfields") {
         echo '<div data-closable class="alert-box callout warning"> Vul de velden in!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -26,7 +26,7 @@ if(isset($_GET['error'])) {
 </div>';
         }
     }
-}
+} */
 ?>
 
 
@@ -38,7 +38,7 @@ if(isset($_GET['error'])) {
             wordt uw account en alle persoonsgegevens die er aan gekoppeld zijn permanent verwijdert uit onze database.
             Dit betekent dat u niet meer kunt inloggen en dat het account niet meer terug te halen is.
             Voor meer informatie klik dan <a href="voorwaardenCondities.php">hier voor de voorwaarde pagina.</a></h6>
-        <input type="password" name="password" id="password">
+        <input type="username" name="username" id="username">
         <p><input id="delete-account" type="checkbox"><label for="delete-account">Ja, Ik wil mijn iConcepts account en al zijn data permanent verwijderen.</p></label>
         <p><input type="submit" class="form-button" name="delete"  value="VERWIJDER ACCOUNT"></p>
     </form>
@@ -46,5 +46,5 @@ if(isset($_GET['error'])) {
 
 <?php
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

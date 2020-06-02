@@ -1,80 +1,49 @@
 <?php
-if (isset($_POST['changepassword'])) {
+
+if (isset($_POST['Changepassword'])) {
+
+
 
     require 'connectingDatabase.php';
 
+    $email = $_POST['Email'];
+    $oldpassword = htmlspecialchars(trim($_POST['OldPassword']));
+    $newpassword = htmlspecialchars(trim($_POST['NewPassword']));
+    $newpasswordrepeat = htmlspecialchars(trim($_POST['NewPassword-repeat']));
 
-    $email = trim(htmlspecialchars($_POST['Email']));
-    $date = date('d/m/Y/G:i:s');
-    $token = md5(time() . $email);
-
-    if (empty($email)) {
-        header("Location: wachtwoordVergetenVoorpagina.php?error=emptyfields");
+    if (empty($oldpassword) || empty($newpassword) || empty($newpasswordrepeat)) {
+        header("Location: wachtwoordVergeten.php?error=emptyfields&email=$email");
         exit();
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: wachtwoordVergetenVoorpagina.php?error=emailinvalid");
-    }
-
-    else if (checkEmailExists($email, $conn)) {
-        $sql = 'SELECT user_id  FROM [User] WHERE [e-mail]=:email';
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $userID = $stmt->fetchAll();
-
-        $sql2 = 'INSERT INTO Password_lost_token (user_id, token_date, token) VALUES (:userID, :token_date, :token)';
-        $stmt2 = $conn->prepare($sql2);
-
-        $stmt2->bindparam(':userID', $userID[0][0]);
-        $stmt2->bindparam(':token_date', $date);
-        $stmt2->bindparam(':token', $token);
-        $stmt2->execute();
-
-        if ($sql) {
-            $to = $email;
-            $subject = "Wachtwoord vergeten";
-            $htmlStr = "";
-            $htmlStr .= "Hi " . $email . ",<br /><br />";
-
-            $htmlStr .= "Klik hieronder aub op het knop om naar het herstelpagina te gaan.<br /><br /><br />";
-            $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=.$email.' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
-
-            $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
-            $htmlStr .= "<p>$token</p><br /><br /><br />";
-
-            $htmlStr .= "Met vriendelijke groeten,<br />";
-            $htmlStr .= "<a href='https://iproject43.icasites.nl/' target='_blank'>EenmaalAndermaal</a><br />";
-
-
-            $name = "EenmaalAndermaal";
-            $email_sender = "no-reply@eenmaalandermaal.com";
-
-            $headers  = "MIME-Version: 1.0\r\n";
-            $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-            $headers .= "From: {$name} <{$email_sender}> \n";
-
-            $body = $htmlStr;
-
-            if (mail($to, $subject, $body, $headers)) {
-                header('Location: wachtwoordvergeten.php?success=mailsent');
+    } else if ($newpassword !== $newpasswordrepeat) {
+        header("Location: wachtwoordVergeten.php?error=passwordcheck&email=$email");
+        exit();
+    } else if(checkOldPasswordExist($conn, $oldpassword, $email)){
+            $hashedNewPassword = password_hash($newpassword, PASSWORD_DEFAULT);
+            $update = $conn->query("UPDATE [User] SET password ='$hashedNewPassword' WHERE [e-mail] ='$email'");
+            if ($update) {
+                header("Location: inlog.php?success=changed");
+                exit();
             } else {
-                header('Location: wachtwoordvergetenVoorpagina.php?error=mailnotsent');
+                echo "Er is een probleem met het verbinden met onze server!";
             }
-
         }
-    }
+}
 
-
-function checkEmailExists($email_to_check, $conn) {
-    $sql = 'SELECT [e-mail]  FROM [User] WHERE [e-mail]=:email';
+function checkOldPasswordExist($conn, $password_to_check, $email) {
+    $sql = 'SELECT password  FROM [User] WHERE [e-mail]=:email';
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email_to_check);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
+    $oldpassword = $stmt->fetchAll();
+    $hashedOldPassword = $oldpassword[0]['password'];
+    if (!password_verify($password_to_check, $hashedOldPassword)) {
+            header("Location: wachtwoordVergeten.php?error=oldpasswordcheck&email=$email");
+            exit();
+    }
     if($stmt) {
         return true;
     }
     else {
         return false;
     }
-}
 }

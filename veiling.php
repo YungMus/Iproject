@@ -107,7 +107,7 @@ if (isset($_SESSION['Username'])){
             <h6 class="multi-step-checkout-step-title-subheader">Bieden</h6>
             <p class="create-account-desc">Vul hier je bod in.</p>
             <label>
-                <input type="int" name="Bod" id="Bod" value="">
+                <input type="int" name="Bod" id="Bod" value="" required>
             <button class="primary button expanded" type="submit" name="Bieden" value="Bieden"
             ">Bied</label></button>
         </form>';
@@ -117,5 +117,5 @@ else {
     echo $msg;
 }
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

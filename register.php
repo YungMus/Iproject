@@ -30,6 +30,12 @@ if(isset($_GET['error'])) {
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
+    } else if($_GET['error'] == "mailnotsent"){
+        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verstuurd, probeer het opnieuw!
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
     }
 
 }
@@ -42,7 +48,7 @@ if($_GET['email']) {
     $stmt->execute();
     $results = $stmt->fetchAll();
     if ($results[0][0] != $email) {
-//        header("Location: registerVoorpagina.php?error=noauthorization");
+        header("Location: registerVoorpagina.php?error=noauthorization");
     } else {
 
         ?>
@@ -95,8 +101,10 @@ if($_GET['email']) {
                        value="<?php if (isset($_GET['Username'])) {
                            echo $_GET['Username'];
                        } ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required>
-                <input type="password" name="Password" id="Password" pattern=".{8,}"
-                       placeholder="Wachtwoord - Minimaal 8 tekens" required>
+                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet die nog 8 tekens lang over langer zijn.
+                <input type="password" name="Password" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                       placeholder="Wachtwoord" required>
+                </label>
                 <input type="password" name="PasswordRepeat" id="PasswordRepeat" placeholder="Herhaling Wachtwoord"
                        required>
             </label>
@@ -192,8 +200,8 @@ if($_GET['email']) {
     }
 }
 else {
-//    header("Location: registerVoorpagina.php?error=noauthorization");
+    header("Location: registerVoorpagina.php?error=noauthorization");
 }
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

@@ -39,8 +39,13 @@ if (isset($_GET['id'])) {
     while($index < $count){
         $html .= '<div class="product-card">
     <div class="product-card-thumbnail">
+<<<<<<< HEAD
     <a href="veiling.php?item='.$result[$index]["item_id"];
      $html .= '"> <img src="';
+=======
+    <a href="veiling.php?item=' . $result[$index]['item_id'] . '">
+           <img src="';
+>>>>>>> f7724908966a53de443fd7618b41432f6454f99e
         if ($result[$index]['thumbnail'] != NULL){
             $html .= 'http://iproject43.icasites.nl/thumbnails/' . $result[$index]['thumbnail'];
         }
@@ -88,5 +93,5 @@ if (isset($_GET['id'])) {
 <!--    </div>-->
 <?php
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>

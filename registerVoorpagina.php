@@ -34,13 +34,6 @@ if(isset($_GET['error'])) {
   </button>
 </div>';
     }
-    else if($_GET['error'] == "emailinvalid"){
-        echo '<div data-closable class="alert-box callout warning"> Jouw mail is niet een geldige mail!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&CircleTimes;</span>
-  </button>
-</div>';
-    }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "mailsent"){
         echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd! Check je mailbox!
@@ -57,7 +50,7 @@ if(isset($_GET['error'])) {
             <h4 class="text-center">Registreren</h4>
             <h6>Om te kunnen registreren vragen wij eerst uw email. Binnen enkelen minuten zult u een verificatiecode op uw mail ontvangen van ons. Vervolgens krijgt u toegang tot de volledige registratie pagina en kunt u beginnen met uw acccount aan te maken.</h6>
             <label for="form-email">Vul hier je emailadres in
-             <br><input type="email" class="form-email" name="Email" id="Email" placeholder="Email">
+             <br><input type="email" class="form-input" name="Email" id="Email" placeholder="Email">
             </label>
             <p><input type="submit" class="form-button" name="EmailConfirmation"  value="Vraag verificatiecode aan"></input></p>
             <p><a class="space" href="inlog.php">Ben je al lid? Inloggen </a></p>
@@ -67,5 +60,5 @@ if(isset($_GET['error'])) {
 
 <?php
 require_once("includes/foundation_script.php");
-require_once("includes/footer.php");
+require_once("includes/footer.html");
 ?>
