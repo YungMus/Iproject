@@ -45,7 +45,7 @@ if (isset($_POST['sendHeader'])) {
             <ul class="menu">
                 <form method="POST" action="veilingCategorieOverzicht.php">
                     <ul class="menu">
-                    <li><label for="search"></label><input type="text" id="categorie" name="categorie" placeholder="Zoek"></li>
+                    <li><label for="search"></label><input type="text" id="categorie" name="categorie" placeholder="Zoek" required></li>
                      <li><input class="button" type="submit" id="SearchKeyword" name="SearchKeyword" value="Zoek"></li>
                     </ul>
                 </form>
