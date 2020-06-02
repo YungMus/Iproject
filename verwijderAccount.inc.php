@@ -1,9 +1,9 @@
 <?php
-if (isset($_POST['Verwijder'])) {
+if (isset($_POST['delete'])) {
 
     require 'connectingDatabase.php';
 
-    $username = htmlspecialchars($_SESSION['Username']);
+    $username = htmlspecialchars($_POST['username']);
 
 
 
@@ -11,5 +11,6 @@ if (isset($_POST['Verwijder'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
+    $users  = $stmt->fetchAll();
 }
 ?>
