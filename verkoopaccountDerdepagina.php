@@ -5,15 +5,15 @@ session_start();
 
 require_once("includes/header.php");
 
-if($_GET['Email']) {
-$email = $_GET['Email'];
-$sql = "SELECT [e-mail] FROM [User] WHERE [e-mail]= :email";
+if(isset($_SESSION['Username'])) {
+$email = $_SESSION['Email'];
+$sql = "SELECT verified FROM Password_lost_token WHERE [e-mail]= :email AND verified = 1";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
 $results = $stmt->fetchAll();
-if ($results[0][0] != $email) {
-    header("Location: registerVoorpagina.php?error=noauthorization");
+if ($results[0]) {
+    header("Location: verkoopaccountTweedepagina.php?error=notverified");
 } else {
 
 ?>
@@ -21,9 +21,9 @@ if ($results[0][0] != $email) {
 <main>
     <form class="form" method="post" action="verkoopaccountDerdepagina.inc.php">
         <h4 class="text-center">Verkoopaccount registeren</h4>
-        <h6>Om te kunnen registreren vragen wij uw bank of creditcard gegevens. Binnen enkelen minuten zult u een verificatiecode op uw mail ontvangen van ons. Vervolgens krijgt u toegang tot als verkoper en kunt u beginnen met het verkopen van je spullen.</h6>
+        <h6>Om te kunnen registreren vragen wij uw bank of creditcard gegevens. Vervolgens krijgt u een overzicht van je gegevens. En na jouw bevestiging kunt u beginnen met het verkopen van je spullen.</h6>
         <label> Kies een bank uit
-        <select class="form-input" name="RecoveryQuestion" id="RecoverQuestion" required>
+        <select class="form-input" name="Bank" id="Bank" required>
             <option value="0">ING</option>
             <option value="1">ABN AMRO</option>
             <option value="2">Rabobank</option>
@@ -38,10 +38,15 @@ if ($results[0][0] != $email) {
         </label>
         <label>
         <div>
-            <input class="form-input" type="text" name="BankNumber" id="BankNumber" pattern="[A-Za-z0-9]{16,16}" placeholder="Banknummer" required>
+            <input class="form-input" type="text" name="BankNumber" id="BankNumber" pattern="[A-Za-z0-9]{16,16}" placeholder="Banknummer">
         </div>
         </label>
-        <p><input type="submit" class="form-button" name="EmailConfirmation"  value="Vraag verificatiecode aan"></input></p>
+        <label>
+            <div>
+                <input class="form-input" type="text" name="CreditcardNumber" id="CreditcardNumber" pattern="[0-9]{16,16}" placeholder="Creditcard nummer">
+            </div>
+        </label>
+        <p><input type="submit" class="form-button" name="Submit"  value="Ga naar het overzicht"></p>
     </form>
 </main>
 
@@ -50,7 +55,7 @@ if ($results[0][0] != $email) {
         }
     }
 else {
-    header("Location: registerVoorpagina.php?error=noauthorization");
+    header("Location: persoonlijkePagina.php?error=noauthorization");
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");

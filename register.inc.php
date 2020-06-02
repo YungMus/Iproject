@@ -37,7 +37,6 @@ if (isset($_POST['Register'])) {
         $sql2 = "INSERT INTO [User] (user_id, username, [e-mail], password, firstname, lastname, birth_day, recover_question, recover_question_answer, address, address_addition, postal_code, place_name, country) VALUES (:user_id, :username, :email, :password, :firstname, :lastname, :birth_day, :recover_question, :recover_question_answer, :address, :address_addition, :postal_code, :place_name, :country)";
         $stmt2 = $conn->prepare($sql2);
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        print_r($sql2);
 
         $stmt2->bindparam(':user_id', $userID);
         $stmt2->bindparam(':username', $username);

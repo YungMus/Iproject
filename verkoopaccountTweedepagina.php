@@ -1,6 +1,6 @@
 <?php
 $title = 'Verkoopaccount registeren';
-$link = 'verkoopaccountVoorpagina.php';
+$link = 'verkoopaccountTweedepagina.php';
 session_start();
 
 require_once("includes/header.php");
@@ -12,14 +12,29 @@ if(isset($_SESSION['Username'])) {
     <main>
         <form class="form" method="post" action="verkoopaccountTweedepagina.inc.php">
             <h4 class="text-center">Verkoopaccount registeren</h4>
-            <label> Kies een manier om jezelf te verifieren
-                <input type="radio" id="RecoveryQuestion" name="Verify" value="RecoveryQuestion" checked>
-                <label for="RecoveryQuestion">Herstelvraag beantwoorden</label><br>
-                <input type="radio" id="Email" name="Verify" value="Email">
-                <label for="Email">Email versturen</label><br>
+            <label> Verifieer jezelf door jouw herstelvraag te beantwoorden
+                <input class="form-input" type="text" name="RecoveryQuestion" id="RecoverQuestion" value="<?php
+                if ($result[0]['recover_question'] == 1) {
+                    echo 'Wat is het achternaam van je moeder?';
+                } else if ($result[0]['recover_question'] == 2) {
+                    echo 'Wat is het naam van je eerste huisdier?';
+                } else if ($result[0]['recover_question'] == 3) {
+                    echo 'Wat was je eerste auto?';
+                } else if ($result[0]['recover_question'] == 4) {
+                    echo 'Op welke basisschool zat je?';
+                } else if ($result[0]['recover_question'] == 5) {
+                    echo 'Hoe heet de stad waar je bent geboren?';
+                }
+                ?>" readonly>
+
+                <div class="small-12 medium-7 column">
+                    <input class="form-input" type="text" name="RecoveryQuestionAnswer" id="RecoverQuestionAnswer"
+                           placeholder="Antwoord"
+                           required>
+                </div>
             </label>
             </label>
-            <p><input type="submit" class="form-button" name="Verify"  value="Ga door"></input></p>
+            <p><input type="submit" class="form-button" name="VerifyRecoverQuestion"  value="Ga door"></p>
         </form>
     </main>
         <?php
@@ -30,14 +45,9 @@ if($_GET['verify'] = 'Email') {
     <main>
         <form class="form" method="post" action="verkoopaccountTweedepagina.inc.php">
             <h4 class="text-center">Verkoopaccount registeren</h4>
-            <label> Kies een manier om jezelf te verifieren
-                <input type="radio" id="RecoveryQuestion" name="Verify" value="RecoveryQuestion" checked>
-                <label for="RecoveryQuestion">Herstelvraag beantwoorden</label><br>
-                <input type="radio" id="Email" name="Verify" value="Email">
-                <label for="Email">Email versturen</label><br>
+            <input class="form-input" type="text" name="Token" placeholder="Jouw verificatie code">
             </label>
-            </label>
-            <p><input type="submit" class="form-button" name="Verify"  value="Ga door"></input></p>
+            <p><input type="submit" class="form-button" name="VerifyEmail"  value="Ga door"></p>
         </form>
     </main>
 
