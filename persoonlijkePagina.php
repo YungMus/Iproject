@@ -115,8 +115,8 @@ if(isset($_GET['error'])) {
 <?php
 
 $html = '';
-/*
-$sql = "select notification_id, notification, is_seen from Notification";
+
+$sql = "select notification_id, notification, is_seen from Notification inner join user where Notification(username) = User(username)";
 $data = $conn->prepare($sql);
 $data ->bindParam(':username', $_SESSION['Username']);
 $data->execute();
@@ -133,7 +133,7 @@ foreach ($count as $notification) {
     $html .= '</p>
             </div>';
 }
-*/
+
 ?>
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
