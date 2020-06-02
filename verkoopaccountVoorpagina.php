@@ -9,7 +9,7 @@ if(isset($_SESSION['Username'])) {
         ?>
 
         <main>
-            <form class="form" method="post" action="verkoopaccount.php.inc.php">
+            <form class="form" method="post" action="verkoopaccountVoorpagina.inc.php">
                 <h4 class="text-center">Verkoopaccount registeren</h4>
                 <label> Kies een manier om jezelf te verifieren
                     <input type="radio" id="RecoveryQuestion" name="Verify" value="RecoveryQuestion" checked>
@@ -18,7 +18,7 @@ if(isset($_SESSION['Username'])) {
                     <label for="Email">Email versturen</label><br>
                 </label>
                 </label>
-                <p><input type="submit" class="form-button" name="Verify"  value="Ga door"></input></p>
+                <p><input type="submit" class="form-button" name="Continue"  value="Ga door"></input></p>
             </form>
         </main>
 

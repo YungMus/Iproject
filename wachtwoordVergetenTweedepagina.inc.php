@@ -21,6 +21,9 @@ if (isset($_POST['confirmtoken'])) {
             }
         }
     }
+} else{
+    header("Location: wachtwoordVergetenVoorpagina.php?error=noauthorization");
+    exit();
 }
 
 

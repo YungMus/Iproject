@@ -12,19 +12,21 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
         header("Location: verkoopaccountTweedepagina.php?error=emptyfields");
     }
             if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email)){
-                $resultSet = $conn->query("SELECT verified FROM Password_lost_token WHERE verified = 0 AND [e-mail] = '$email'");
+                if (checkAlreadyVerified($conn, $email)) {
+                    $resultSet = $conn->query("SELECT verified FROM Seller_Verification_token WHERE verified = 0 AND [e-mail] = '$email'");
 
-                if ($resultSet) {
-                    $update = $conn->query("UPDATE Password_lost_token SET verified = 1 WHERE [e-mail] = '$email'");
-                    if ($update) {
-                        header("Location: verkoopaccountDerdepagina.php?success=confirmed");
-                        exit();
+                    if ($resultSet) {
+                        $update = $conn->query("UPDATE Seller_Verification_token SET verified = 1 WHERE [e-mail] = '$email'");
+                        if ($update) {
+                            header("Location: verkoopaccountDerdepagina.php?success=confirmed");
+                            exit();
+                        } else {
+                            echo "Er is een probleem met het verbinden met onze server!";
+                        }
                     } else {
-                        echo "Er is een probleem met het verbinden met onze server!";
+                        header("Location: verkoopaccountTweedepagina.php?error=invalid");
+                        exit();
                     }
-                } else {
-                    header("Location: verkoopaccountTweedepagina.php?error=invalid");
-                    exit();
                 }
             }
 
@@ -42,22 +44,27 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     }
         if (checkTokenMatch($conn, $token)) {
                 if (checkDateToken($conn, $userID, $email)) {
-                    $resultSet = $conn->query("SELECT verified,token FROM Password_lost_token WHERE verified = 0 AND token = '$token'");
+                    if (checkAlreadyVerified($conn, $email)) {
+                        $resultSet = $conn->query("SELECT verified,token FROM Seller_Verification_token WHERE verified = 0 AND token = '$token'");
 
-                    if ($resultSet) {
-                        $update = $conn->query("UPDATE Password_lost_token SET verified = 1 WHERE token = '$token'");
-                        if ($update) {
-                            header("Location: wachtwoordVergeten.php?success=confirmed");
-                            exit();
+                        if ($resultSet) {
+                            $update = $conn->query("UPDATE Seller_Verification_token SET verified = 1 WHERE token = '$token'");
+                            if ($update) {
+                                header("Location: wachtwoordVergeten.php?success=confirmed");
+                                exit();
+                            } else {
+                                echo "Er is een probleem met het verbinden met onze server!";
+                            }
                         } else {
-                            echo "Er is een probleem met het verbinden met onze server!";
+                            header("Location: verkoopaccountTweedepagina.php?error=invalid");
+                            exit();
                         }
-                    } else {
-                        header("Location: verkoopaccountTweedepagina.php?error=invalid");
-                        exit();
                     }
                 }
             }
+} else{
+    header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
 
 function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email){
@@ -78,7 +85,7 @@ function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email){
 }
 
 function checkDateToken ($conn, $userID_to_check, $email){
-    $sql = ("SELECT token_date FROM Password_lost_token WHERE user_id= :userID");
+    $sql = ("SELECT token_date FROM Seller_Verification_token WHERE user_id= :userID");
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':userID', $userID_to_check);
     $stmt->execute();
@@ -110,6 +117,24 @@ function checkTokenMatch ($conn, $token_to_check) {
     $result = $stmt->fetchAll();
     if($result[0]['token'] != $token_to_check) {
         header("Location: verkoopaccountTweedepagina.php?error=nomatch");
+        exit();
+    }
+    if($stmt){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function checkAlreadyVerified ($conn, $email){
+    $sql = ("SELECT verified FROM Seller_Verification_token WHERE [e-mail]= :email");
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+    if($result[0] === 1) {
+        header("Location: persoonlijkePagina.php?error=alreadyverified");
         exit();
     }
     if($stmt){

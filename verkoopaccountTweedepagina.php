@@ -5,6 +5,13 @@ session_start();
 
 require_once("includes/header.php");
 
+$userID = $_SESSION['user_id'];
+$sql = 'SELECT recover_question  FROM [User] WHERE user_id=:userID';
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':userID', $userID);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
 if(isset($_SESSION['Username'])) {
     if($_GET['verify'] = 'RecoveryQuestion'){
     ?>

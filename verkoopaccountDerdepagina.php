@@ -7,12 +7,12 @@ require_once("includes/header.php");
 
 if(isset($_SESSION['Username'])) {
 $email = $_SESSION['Email'];
-$sql = "SELECT verified FROM Password_lost_token WHERE [e-mail]= :email AND verified = 1";
+$sql = "SELECT verified FROM Seller_Verification_token WHERE [e-mail]= :email AND verified = 1";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
 $results = $stmt->fetchAll();
-if ($results[0]) {
+if (!$results) {
     header("Location: verkoopaccountTweedepagina.php?error=notverified");
 } else {
 

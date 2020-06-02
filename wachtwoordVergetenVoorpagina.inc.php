@@ -68,6 +68,9 @@ if (isset($_POST['changepassword'])) {
 
         }
     }
+} else{
+    header("Location: wachtwoordVergetenVoorpagina.php?error=noauthorization");
+    exit();
 }
 
 function checkEmailExists($email_to_check, $conn) {

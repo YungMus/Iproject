@@ -27,6 +27,9 @@ if (isset($_POST['Changepassword'])) {
                 echo "Er is een probleem met het verbinden met onze server!";
             }
         }
+} else{
+    header("Location: wachtwoordVergetenVoorpagina.php?error=noauthorization");
+    exit();
 }
 
 function checkOldPasswordExist($conn, $password_to_check, $email) {

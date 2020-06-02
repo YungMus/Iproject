@@ -1,16 +1,18 @@
 <?php
-if (isset($_POST['Verify'])) {
+if (isset($_POST['Continue'])) {
 
     require 'connectingDatabase.php';
+    session_start();
 
     $verify = $_POST['Verify'];
     $email = $_SESSION['Email'];
     $date = date('d/m/Y/G:i:s');
     $token = md5(time() . $email);
+    print_r($verify);
 
     if ($verify === 'RecoveryQuestion') {
-        header("Location: verkoopaccountTweedepagina.php&verify=$verify");
-    } else {
+        header("Location: verkoopaccountTweedepagina.php?verify=$verify");
+    } else if($verify === 'Email') {
         $sql = 'INSERT INTO Seller_Verification_token ([e-mail], token_date, token) VALUES (:email, :token_date, :token)';
         $stmt = $conn->prepare($sql);
 
@@ -26,7 +28,7 @@ if (isset($_POST['Verify'])) {
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
             $htmlStr .= "Klik hieronder aub op de knop om naar de verifieer pagina te gaan.<br /><br /><br />";
-            $htmlStr .= "<a href='http://localhost/Iproject/verkoopaccountTweedepagina.php&verify=$verify target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
+            $htmlStr .= "<a href='http://localhost/Iproject/verkoopaccountTweedepagina.php?verify=$verify' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
 
             $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
@@ -45,12 +47,15 @@ if (isset($_POST['Verify'])) {
             $body = $htmlStr;
 
             if (mail($to, $subject, $body, $headers)) {
-                header('Location: registerVoorpagina.php?success=mailsent');
+                header('Location: verkoopaccountVoorpagina.php?success=mailsent');
                 exit();
             } else {
-                header('Location: registerVoorpagina.php?error=mailnotsent');
+                header('Location: verkoopaccountVoorpagina.php?error=mailnotsent');
                 exit();
             }
         }
     }
+} else{
+    header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
