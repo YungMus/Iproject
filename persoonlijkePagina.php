@@ -24,6 +24,12 @@ if(isset($_GET['error'])) {
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
+    } else if ($_GET['error'] == "noauthorization") {
+        echo '<div data-closable class="alert-box callout error"> Je bent al een verkoper
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&CircleTimes;</span>
+                      </button>
+                      </div>';
     }
 }
 
@@ -109,7 +115,7 @@ if(isset($_GET['error'])) {
                 <div>
                 <?php
                 if(($_SESSION['Rank']) === " Gebruiker "){
-                    echo "<a a class=\"button secondary large\" href='verkoopaccount.php?Email=".$_SESSION['Email']."'>Word verkoper</a>";}
+                    echo "<a a class=\"button secondary large\" href='verkoopaccountVoorpagina.php?''>Word verkoper</a>";}
                 ?>
                 </div>
 <?php

@@ -1,6 +1,6 @@
 <?php
 $title = 'Verkoopaccount registeren';
-$link = 'verkoopaccount.php';
+$link = 'verkoopaccountDerdepagina.php';
 session_start();
 
 require_once("includes/header.php");
@@ -19,7 +19,7 @@ if ($results[0][0] != $email) {
 ?>
 
 <main>
-    <form class="form" method="post" action="verkoopaccount.php.inc.php">
+    <form class="form" method="post" action="verkoopaccountDerdepagina.inc.php">
         <h4 class="text-center">Verkoopaccount registeren</h4>
         <h6>Om te kunnen registreren vragen wij uw bank of creditcard gegevens. Binnen enkelen minuten zult u een verificatiecode op uw mail ontvangen van ons. Vervolgens krijgt u toegang tot als verkoper en kunt u beginnen met het verkopen van je spullen.</h6>
         <label> Kies een bank uit
