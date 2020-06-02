@@ -33,6 +33,7 @@ require_once("includes/header.php");
     while($index < $count){
         $html .= '<div class="product-card">
     <div class="product-card-thumbnail">
+    <a href="veiling.php?item=' . $result[$index]['item_id'] . '">
            <img src="';
         if ($result[$index]['thumbnail'] != NULL){
             $html .= 'http://iproject43.icasites.nl/thumbnails/' . $result[$index]['thumbnail'];
