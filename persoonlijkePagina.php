@@ -122,6 +122,7 @@ $data ->bindParam(':username', $_SESSION['username']);
 $data->execute();
 $result = $data->fetchAll();
 
+print_r($result);
 
 foreach ($result as $notification) {
     $html .= '<div class="callout text-center">
@@ -130,7 +131,6 @@ foreach ($result as $notification) {
     $html .= '</p>
             </div>';
 }
-
 ?>
 
         <div class="cell small-4 flex-container flex-dir-column">
@@ -142,7 +142,6 @@ foreach ($result as $notification) {
 
             </div>
         </div>
-
     </div>
 
 <?php
