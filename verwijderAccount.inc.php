@@ -11,6 +11,6 @@ if (isset($_POST['delete'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
-    $users  = $stmt->fetchAll();
+
 }
 ?>
