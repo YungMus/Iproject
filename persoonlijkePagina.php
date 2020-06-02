@@ -131,7 +131,6 @@ foreach ($result as $notification) {
     $html .= '</p>
             </div>';
 }
-
 ?>
 
         <div class="cell small-4 flex-container flex-dir-column">
@@ -143,7 +142,6 @@ foreach ($result as $notification) {
 
             </div>
         </div>
-
     </div>
 
 <?php
