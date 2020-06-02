@@ -1,26 +1,6 @@
 <?php
-$isSearchedRubric = false;
-$isSearchKeyword = false;
 
-if (isset($_POST['Zoek'])) {
-    $search = $_POST['categorie'];
-
-    $sqlRubric_id = "select rubric_id FROM Rubric WHERE name = :search";
-    $dataRubric_id = $conn->prepare($sqlRubric_id);
-    $dataRubric_id->bindParam(':search', $search);
-    $dataRubric_id->execute();
-    $resultRubric_id = $dataRubric_id->fetchAll();
-
-    $rubric_id = $resultRubric_id[0]['rubric_id'];
-    $isSearchedRubric = true;
-}
-
-else if (isset($_POST['SearchKeyword'])) {
-    $search = htmlspecialchars(trim($_POST['categorie']));
-    $isSearchKeyword = true;
-}
-
-$sql = "select top 3 name, rubric_id FROM hoofd_rubrieken";
+$sql = "select top 2 name, rubric_id FROM hoofd_rubrieken";
 $data = $conn->query($sql);
 $result = $data->fetchAll();
 $count = $data->rowCount();
@@ -48,16 +28,6 @@ for ($i = 0; $i < $count; $i ++) {
                         $countB = $dataB->rowCount();
                         for ($iB = 0; $iB < $countB; $iB ++) {
                             $html .= '<li> <a href="#">' . $resultB[$iB]['name'] . '</a> <input type="radio" id="'. $resultB[$iB]['name'] .'" name="categorie" value="'. $resultB[$iB]['name'] .'"> <ul class="menu vertical">';
-
-                            $parent_rubricB = $resultB[$iB]['rubric_id'];
-                            $sqlC = "select TOP 5 name, rubric_id FROM sublevel3_rubrieken WHERE parent_rubric = $parent_rubricB";
-                            $dataC = $conn->query($sqlC);
-                            $resultC = $dataC->fetchAll();
-                            $countC = $dataC->rowCount();
-
-                            for ($iC = 0; $iC < $countC; $iC ++) {
-                                $html .= '<li> <a href="#">' . $resultC[$iC]['name'] . ' </a> <input type="radio" id="'. $resultC[$iC]['name'] .'" name="categorie" value="'. $resultC[$iC]['name'] .'"> </li>';
-                            }
                             $html .='</ul> </li>';
                         }
 
