@@ -10,16 +10,6 @@ require_once("includes/header.php");
         <h5>Geef je spullen een tweede kans</h5>
     </div>
 </div>
-<br>
-<nav class="hover-underline-menu" data-menu-underline-from-center>
-    <ul class="menu align-center">
-        <li><a href="#">Één</a></li>
-        <li><a href="#">Twee</a></li>
-        <li><a href="#">Drie</a></li>
-        <li><a href="#">Vier</a></li>
-    </ul>
-</nav>
-<br>
 <article class="product-cards">
 <?php
     $sql = "select TOP 5 title, startvalue, description, thumbnail, item_id from Item";
