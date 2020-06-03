@@ -24,21 +24,21 @@ if(isset($_POST['login'])) {
             $username = $users[0]["username"];
             $email = $users[0]["e-mail"];
             $user_id = $users[0]["user_id"];
-            if ($username[0]["is_seller"] == 1) {
+            if ($users[0]["is_seller"] == 1) {
                 $userrank = " Verkoper ";
                 session_start();
                 $_SESSION['Username'] = $username;
                 $_SESSION['Email'] = $email;
                 $_SESSION['Rank'] = $userrank;
                 $_SESSION['user_id'] = $user_id;
-            } else if ($username[0]["is_admin"] == 1) {
+            } else if ($users[0]["is_admin"] == 1) {
                 $userrank = " Admin ";
                 session_start();
                 $_SESSION['Username'] = $username;
                 $_SESSION['Rank'] = $userrank;
                 $_SESSION['Email'] = $email;
                 $_SESSION['user_id'] = $user_id;
-            } else if($username[0]["is_seller"] == 0 && $username[0]["is_admin"] == 0) {
+            } else {
                 $userrank = " Gebruiker ";
                 session_start();
                 $_SESSION['Username'] = $username;
