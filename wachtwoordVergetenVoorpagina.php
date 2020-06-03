@@ -19,7 +19,7 @@ if(isset($_GET['error'])) {
   </button>
 </div>';
     } else if($_GET['error'] == "mailnotsent"){
-        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verzonden! Check of je mail geldig is!
+        echo '<div data-closable class="alert-box callout error"> Je mail is onsuccesvol verzonden! Check of je mail geldig is!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>

@@ -5,6 +5,16 @@ session_start();
 
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout warning"> Vul het veld in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+}
+
 if(isset($_SESSION['Username'])) {
 $email = $_SESSION['Email'];
 $sql = "SELECT verified FROM Seller_Verification_token WHERE [e-mail]= :email AND verified = 1";
@@ -38,12 +48,12 @@ if (!$results) {
         </label>
         <label>
         <div>
-            <input class="form-input" type="text" name="BankNumber" id="BankNumber" pattern="[A-Za-z0-9]{16,16}" placeholder="Banknummer">
+            <input class="form-input" type="text" name="BankNumber" id="BankNumber" pattern="[A-Za-z0-9]{16,16}" placeholder="Banknummer - Bestaat uit 16 letters en cijfers">
         </div>
         </label>
         <label>
             <div>
-                <input class="form-input" type="text" name="CreditcardNumber" id="CreditcardNumber" pattern="[0-9]{16,16}" placeholder="Creditcard nummer">
+                <input class="form-input" type="text" name="CreditcardNumber" id="CreditcardNumber" pattern="[0-9]{16,16}" placeholder="Creditcard nummer - Bestaat uit 16 cijfers">
             </div>
         </label>
         <p><input type="submit" class="form-button" name="Submit"  value="Ga naar het overzicht"></p>

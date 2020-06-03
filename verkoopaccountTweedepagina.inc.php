@@ -50,7 +50,7 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
                         if ($resultSet) {
                             $update = $conn->query("UPDATE Seller_Verification_token SET verified = 1 WHERE token = '$token'");
                             if ($update) {
-                                header("Location: wachtwoordVergeten.php?success=confirmed");
+                                header("Location: verkoopaccountDerdepagina.php?success=confirmed");
                                 exit();
                             } else {
                                 echo "Er is een probleem met het verbinden met onze server!";

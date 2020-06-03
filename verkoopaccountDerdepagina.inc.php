@@ -13,10 +13,10 @@ if (isset($_POST['Submit'])) {
     $checkoption = 'NVT';
     $creditcardnumber = htmlspecialchars($_POST['CreditcardNumber']);
     if(empty($creditcardnumber)){
-        $creditcardnumber = 'NVT';
+        $creditcardnumber = 0;
     }
 
-    if (empty($banknumber) || empty($creditcardnumber)) {
+    if (empty($banknumber) && empty($creditcardnumber)) {
         header("Location: verkoopaccountDerdepagina.php?error=emptyfields");
         exit();
     }
@@ -37,7 +37,7 @@ if (isset($_POST['Submit'])) {
         $stmt2->bindParam(':checkoption', $checkoption);
         $stmt2->bindParam(':creditcardNumber', $creditcardnumber);
         $stmt2->execute();
-        header("Location: verkoopaccountOverzicht.php?success=overview&bank=$bank.&banknumber=$banknumber.&creditcardnumber=$creditcardnumber");
+        header("Location: verkoopaccountOverzicht.php?success=overview&bank=$bank&banknumber=$banknumber&creditcardnumber=$creditcardnumber");
     }
 } else{
     header("Location: persoonlijkePagina.php?error=noauthorization");
