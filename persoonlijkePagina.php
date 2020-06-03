@@ -128,27 +128,21 @@ $data ->bindParam(':user_id', $_SESSION['user_id']);
 $data->execute();
 $result = $data->fetchAll();
 
-print_r($result);
-
-foreach ($result as $notification) {
-    $html .= '<div class="callout text-center">
+if(isset($result[0])) {
+    foreach ($result as $notification) {
+        $html .= '<div class="callout text-center">
                 <p>';
-    $html .= $notification['notification'];
-    $html .= '</p>
+        $html .= $notification['notification'];
+        $html .= '</p>
             </div>';
+    }
+} else {
+    $html .= "<div class=\"callout text-center\">
+                <p>U heeft geen meldingen</p>
+            </div>";
 }
+echo $html;
 ?>
-
-        <div class="cell small-4 flex-container flex-dir-column">
-            <div class="callout text-center">
-                <p>demo melding 1</p>
-            </div>
-            <div class="callout text-center">
-                <p>demo melding 2</p>
-
-            </div>
-        </div>
-    </div>
 
 <?php
 require_once("includes/foundation_script.php");
