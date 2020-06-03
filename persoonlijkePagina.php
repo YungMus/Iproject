@@ -130,16 +130,19 @@ $result = $data->fetchAll();
 
 if(isset($result[0])) {
     foreach ($result as $notification) {
-        $html .= '<div class="callout text-center">
-                <p>';
+        $html .= '<div data-closable class="alert-box callout error">';
         $html .= $notification['notification'];
-        $html .= '</p>
-            </div>';
+        $html .= '<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&CircleTimes;</span>
+            </button>
+        </div>>';
     }
 } else {
-    $html .= "<div class=\"callout text-center\">
-                <p>U heeft geen meldingen</p>
-            </div>";
+    $html .= "<div data-closable class=\"alert-box callout error\"> U heeft geen meldingen.
+            <button class=\"close-button\" aria-label=\"Dismiss alert\" type=\"button\" data-close>
+                <span aria-hidden=\"true\">&CircleTimes;</span>
+            </button>
+        </div>";
 }
 echo $html;
 ?>
