@@ -39,25 +39,28 @@ $data ->bindParam(':item', $item);
 $data->execute();
 $html = "";
 
-//$sql = "DELETE FROM [item] where item_id = $item";
-
 $result = $data->fetchAll();
 if (isset($_SESSION['Username'])) {
     if (($_SESSION['Rank']) == " Admin ") {
-        echo '<h2>Veiling verwijderen ?</h2>
-    <button class="button secondary large" onclick="myFunction()">Probeer gratis</button>
+?>
+    <h2>Veiling verwijderen ?</h2>
+    <button class="button secondary large" onclick="myFunction()">Verwijder</button>
     <p id="status_button"></p>
     <script>
     function myFunction() {
     var txt;
     if (confirm("Weet u zeker dat u deze veiling wilt verwijderen!")) {
+        <?php
+//        $sql = "DELETE FROM [item] where item_id = $item";
+        ?>
         txt = "veiling verwijderd";
     } else {
         txt = "veiling niet verwijderd";
     }
     document.getElementById("status_button").innerHTML = txt;
     }
-    </script>';
+    </script>
+<?php
     }
 }
 
