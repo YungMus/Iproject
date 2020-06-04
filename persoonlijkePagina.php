@@ -31,6 +31,14 @@ if(isset($_GET['error'])) {
                       </button>
                       </div>';
     }
+} else if(isset($_GET['success'])){
+    if($_GET['success'] == "auctionmade"){
+        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een veiling opgezet!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
 }
 
 ?>

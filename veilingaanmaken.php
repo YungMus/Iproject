@@ -4,6 +4,24 @@ $link = 'veilingaanmaken.php';
 session_start();
 require_once("includes/header.php");
 
+if(isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyfields") {
+        echo '<div data-closable class="alert-box callout error"> Vul al de velden in!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+} else if(isset($_GET['success'])){
+    if($_GET['success'] == "rubric"){
+        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een rubriek uitgekozen!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
+}
+
 if(($_SESSION['Rank'] = ' Verkoper ')) {
 
 ?>
@@ -48,7 +66,7 @@ if(($_SESSION['Rank'] = ' Verkoper ')) {
         <input type="file" class="form-input" name="file" id="file">
             </div>
         </label>
-        <p><input type="submit" class="form-button" name="Submit"  value="Ga naar het overzicht"></p>
+        <p><input type="submit" class="form-button" name="Submit"  value="Maak veiling aan"></p>
     </form>
 </main>
 

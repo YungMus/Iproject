@@ -56,6 +56,9 @@ if (isset($_POST['EmailConfirmation'])) {
 
         }
     }
+} else{
+    header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
 
 
