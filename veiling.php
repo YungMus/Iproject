@@ -28,7 +28,7 @@ if (isset($_POST['Bieden'])) {
     $data ->bindParam(':date', $date);
     $data->execute();
 } catch (Exception $e) {
-        $msg = 'Je moet een hoger bod uitbrengen dan de vorige biedingen.';
+        $msg = 'U moet hoger bieden dan het vorige bod.';
         echo $msg;
     }
 }
@@ -113,7 +113,7 @@ if (isset($_SESSION['Username'])){
         </form>';
 }
 else {
-    $msg = '<h2>Om te kunnen bieden moet je ingelogd zijn</h2>';
+    $msg = '<h2>Om te kunnen bieden moet u ingelogd zijn</h2>';
     echo $msg;
 }
 require_once("includes/foundation_script.php");
