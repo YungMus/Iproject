@@ -31,7 +31,7 @@ if (!$results) {
 <main>
     <form class="form" method="post" action="verkoopaccountDerdepagina.inc.php">
         <h4 class="text-center">Verkoopaccount registeren</h4>
-        <h6>Om te kunnen registreren vragen wij uw bank of creditcard gegevens. Vervolgens krijgt u een overzicht van je gegevens. En na jouw bevestiging kunt u beginnen met het verkopen van je spullen.</h6>
+        <h6>Om te kunnen registreren vragen wij uw bank of creditcard gegevens. Vervolgens krijgt u een overzicht van uw gegevens. En na uw bevestiging kunt u beginnen met het verkopen van uw spullen.</h6>
         <label> Kies een bank uit
         <select class="form-input" name="Bank" id="Bank" required>
             <option value="0">ING</option>
