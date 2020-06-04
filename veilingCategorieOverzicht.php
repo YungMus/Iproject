@@ -87,7 +87,6 @@ if (isset($_POST['VeilingenPagina'])) {
     }
 }
     if($_SESSION["isSearchedRubric"]) {
-        echo 'rubric';
         $rubric_id = $_SESSION["rubric_id"];
         $sqlVeiling = "select title, startvalue, name, Item.item_id FROM Item INNER JOIN Item_categorie ON Item.item_id = Item_categorie.item_id WHERE name IN (
         SELECT name
@@ -106,9 +105,6 @@ FETCH NEXT $countRows ROWS ONLY";
         $search = '% ' . $search . ' %';
         $searchAfterSpace = $_SESSION["searchAfterSpace"];
         $searchAfterSpace = '% ' . $searchAfterSpace . ' %';
-
-        echo $search;
-        echo $searchAfterSpace;
 
         if ($_SESSION['space']) {
             $sqlKeyword = "SELECT DISTINCT item_id, title, startvalue FROM Item WHERE title LIKE :searchA OR description LIKE :searchB 
@@ -135,8 +131,13 @@ FETCH NEXT $countRows ROWS ONLY";
 if($_SESSION["isSearchedRubric"] || $_SESSION["isSearchedKeyword"]) {
     $html = '  <div class="cell small-4 flex-container flex-dir-column">';
 
+    if ($countVeiling > 0) {
     for ($i = 0; $i < $countVeiling; $i++) {
         $html .= '<div class="callout primary flex-child-auto"><a href="veiling.php?item=' . $resultVeiling[$i]['item_id'] . '">' . $resultVeiling[$i]['title'] . ' &euro;' . $resultVeiling[$i]['startvalue'] . '</a></div>';
+    }
+}
+    else {
+        echo 'Er zijn geen resultaten beschikbaar.';
     }
 
     $html .= '</div>
