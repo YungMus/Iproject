@@ -3,10 +3,14 @@ $title = 'Categorie veilingen';
 $link = 'veilingCategorieOverzicht.php';
 session_start();
 require_once("includes/header.php");
-
+$space = false;
+if(!isset($_SESSION["isSearchedRubric"])) {
+    $_SESSION['space'] = false;
+    $_SESSION["isSearchedRubric"] = false;
+    $_SESSION["isSearchedKeyword"] = false;
+}
 if (isset($_POST['Zoek'])) {
     $search = $_POST['categorie'];
-
     $sqlRubric_id = "select rubric_id FROM Rubric WHERE name = :search";
     $dataRubric_id = $conn->prepare($sqlRubric_id);
     $dataRubric_id->bindParam(':search', $search);
@@ -14,15 +18,30 @@ if (isset($_POST['Zoek'])) {
     $resultRubric_id = $dataRubric_id->fetchAll();
 
     $_SESSION["rubric_id"] = $resultRubric_id[0]['rubric_id'];
+
+    $_SESSION["isSearchedKeyword"] = false;
     $_SESSION["isSearchedRubric"] = true;
 }
 
 else if (isset($_POST['SearchKeyword'])) {
     $_SESSION["search"] = htmlspecialchars(trim($_POST['categorie']));
+
+    if(strpos($_SESSION["search"], ' ')){
+        $_SESSION['space'] = true;
+        $_SESSION["searchAfterSpace"] = substr($_SESSION["search"],strpos($_SESSION["search"], ' ') + 1);
+        $_SESSION["search"] = substr($_SESSION["search"],0,  strpos($_SESSION["search"], ' ') );
+        echo $_SESSION["searchAfterSpace"] . '<br>';
+        echo $_SESSION["search"];
+    } else {
+        $_SESSION['space'] = false;
+    }
+
+    $_SESSION["isSearchedRubric"] = false;
     $_SESSION["isSearchedKeyword"] = true;
+
 }
 
-if(isset($_SESSION["isSearchedRubric"]) || isset($_SESSION["isSearchedKeyword"])) {
+if($_SESSION["isSearchedRubric"] || $_SESSION["isSearchedKeyword"]) {
     $html = '<nav class="hover-underline-menu" data-menu-underline-from-center>
     <ul class="menu align-center">
                 <form method="POST" action="veilingCategorieOverzicht.php">
@@ -67,8 +86,7 @@ if (isset($_POST['VeilingenPagina'])) {
             break;
     }
 }
-if(isset($_SESSION["isSearchedRubric"]) || isset($_SESSION["isSearchedKeyword"])) {
-    if ($_SESSION["isSearchedRubric"]) {
+    if($_SESSION["isSearchedRubric"]) {
         $rubric_id = $_SESSION["rubric_id"];
         $sqlVeiling = "select title, startvalue, name, Item.item_id FROM Item INNER JOIN Item_categorie ON Item.item_id = Item_categorie.item_id WHERE name IN (
         SELECT name
@@ -76,50 +94,56 @@ if(isset($_SESSION["isSearchedRubric"]) || isset($_SESSION["isSearchedKeyword"])
         WHERE rubric_id = $rubric_id OR parent_rubric = $rubric_id OR parent_rubric  IN (SELECT rubric_id FROM sublevel1_rubrieken WHERE parent_rubric = $rubric_id)
         OR parent_rubric IN (SELECT rubric_id FROM sublevel2_rubrieken WHERE parent_rubric IN (SELECT rubric_id FROM sublevel1_rubrieken WHERE parent_rubric = $rubric_id)
         OR parent_rubric IN (SELECT rubric_id FROM sublevel3_rubrieken WHERE parent_rubric IN (SELECT rubric_id FROM sublevel2_rubrieken WHERE parent_rubric IN (SELECT rubric_id FROM sublevel1_rubrieken WHERE parent_rubric = $rubric_id))))
-
 ) ORDER BY item_id OFFSET $start ROWS 
 FETCH NEXT $countRows ROWS ONLY";
         $dataVeiling = $conn->query($sqlVeiling);
         $resultVeiling = $dataVeiling->fetchAll();
         $countVeiling = $dataVeiling->rowCount();
 
-        $html = '  <div class="cell small-4 flex-container flex-dir-column">';
-
-        for ($i = 0; $i < $countVeiling; $i++) {
-            $html .= '<div class="callout primary flex-child-auto"><a href="veiling.php?item=' . $resultVeiling[$i]['item_id'] . '">' . $resultVeiling[$i]['title'] . ' &euro;' . $resultVeiling[$i]['startvalue'] . '</a></div>';
-        }
-
-        $html .= '</div>
-</div>';
-        echo $html;
     } else if ($_SESSION["isSearchedKeyword"]) {
         $search = $_SESSION["search"];
-        $search = '%' . $search . '%';
-        $sqlKeyword = "SELECT item_id, title, startvalue FROM Item WHERE title LIKE :searchA OR description LIKE :searchB ORDER BY item_id OFFSET $start ROWS 
+        $search = '% ' . $search . ' %';
+        $searchAfterSpace = $_SESSION["searchAfterSpace"];
+        $searchAfterSpace = '% ' . $searchAfterSpace . ' %';
+
+        if ($_SESSION['space']) {
+            $sqlKeyword = "SELECT DISTINCT item_id, title, startvalue FROM Item WHERE title LIKE :searchA OR description LIKE :searchB 
+OR title LIKE :searchC OR description LIKE :searchD ORDER BY item_id OFFSET $start ROWS FETCH NEXT $countRows ROWS ONLY";
+            $dataKeyword = $conn->prepare($sqlKeyword);
+            $dataKeyword->bindParam(':searchA', $search);
+            $dataKeyword->bindParam(':searchB', $search);
+            $dataKeyword->bindParam(':searchC', $searchAfterSpace);
+            $dataKeyword->bindParam(':searchD', $searchAfterSpace);
+
+        } else {
+            $sqlKeyword = "SELECT DISTINCT item_id, title, startvalue FROM Item WHERE title LIKE :searchA OR description LIKE :searchB ORDER BY item_id OFFSET $start ROWS 
 FETCH NEXT $countRows ROWS ONLY";
-        $dataKeyword = $conn->prepare($sqlKeyword);
-        $dataKeyword->bindParam(':searchA', $search);
-        $dataKeyword->bindParam(':searchB', $search);
+            $dataKeyword = $conn->prepare($sqlKeyword);
+            $dataKeyword->bindParam(':searchA', $search);
+            $dataKeyword->bindParam(':searchB', $search);
+        }
+
         $dataKeyword->execute();
 
         $resultVeiling = $dataKeyword->fetchAll();
         $countVeiling = $dataKeyword->rowCount();
+    }
+if($_SESSION["isSearchedRubric"] || $_SESSION["isSearchedKeyword"]) {
+    $html = '  <div class="cell small-4 flex-container flex-dir-column">';
 
-
-        $html = '  <div class="cell small-4 flex-container flex-dir-column">';
-
-        for ($i = 0; $i < $countVeiling; $i++) {
-            $html .= '<div class="callout primary flex-child-auto"><a href="veiling.php?item=' . $resultVeiling[$i]['item_id'] . '">' . $resultVeiling[$i]['title'] . ' &euro;' . $resultVeiling[$i]['startvalue'] . '</a></div>';
-        }
-
-        $html .= '</div>
-</div>';
-
-        echo $html;
+    if ($countVeiling > 0) {
+    for ($i = 0; $i < $countVeiling; $i++) {
+        $html .= '<div class="callout primary flex-child-auto"><a href="veiling.php?item=' . $resultVeiling[$i]['item_id'] . '">' . $resultVeiling[$i]['title'] . ' &euro;' . $resultVeiling[$i]['startvalue'] . '</a></div>';
     }
 }
+    else {
+        echo 'Er zijn geen resultaten beschikbaar.';
+    }
 
-$sql = "SELECT notification_id, notification, is_seen  FROM Notification inner join [user] ON Notification.user_id = [user].user_id";
+    $html .= '</div>
+</div>';
+    echo $html;
+}
 
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");

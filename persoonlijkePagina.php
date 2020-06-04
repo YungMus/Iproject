@@ -39,6 +39,14 @@ if(isset($_GET['error'])) {
             <li>
                 <a href="#">Profiel en instellingen</a>
                 <ul class="menu vertical subrubriek">
+                    <?php
+                    if ($_SESSION['Rank'] == " Admin "){
+                        echo'
+                        <li>
+                        <a href="Veiling%20over%20datum.php">Veilingen over datum</a>
+                        </li>';
+                    }
+                    ?>
                     <li>
                         <a href="#">Mijn account</a>
                         <ul class="menu vertical">
