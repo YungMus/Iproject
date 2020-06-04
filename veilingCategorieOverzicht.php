@@ -1,5 +1,5 @@
 <?php
-$title = 'Inlogpagina';
+$title = 'Categorie veilingen';
 $link = 'veilingCategorieOverzicht.php';
 session_start();
 require_once("includes/header.php");

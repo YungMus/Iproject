@@ -33,7 +33,6 @@ if(isset($_GET['error'])) {
     }
 }
 
-
 ?>
     <div class="grid-x grid-padding-y grid-padding-x">
         <ul class="multilevel-accordion-menu vertical menu rubriek" data-accordion-menu>
@@ -70,8 +69,12 @@ if(isset($_GET['error'])) {
                 <ul class="menu vertical subrubriek">
                     <li><a class="subitem" href="#">Gewonnen veilingen</a></li>
                     <li><a class="subitem" href="#">Biedingen</a></li>
-                    <li><a class="subitem" href="#">Favorite</a></li>
+                    <li><a class="subitem" href="#">Favoriet</a></li>
                     <li><a class="subitem" href="#">Aanbevolen voor jou</a></li>
+                    <?php
+                    if(($_SESSION['Rank']) === " Verkoper "){
+                    echo "<li><a class='subitem' href='veilingaanmakenVoorpagina.php'>Mijn veilingen</a></li>";}
+                    ?>
                 </ul>
             </li>
             <li>
@@ -135,7 +138,7 @@ if(isset($result[0])) {
         $html .= '<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&CircleTimes;</span>
             </button>
-        </div>>';
+        </div>';
     }
 } else {
     $html .= "<div data-closable class=\"alert-box callout error\"> U heeft geen meldingen.

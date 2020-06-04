@@ -24,6 +24,7 @@ $stmt->execute();
 $results = $stmt->fetchAll();
 if (!$results) {
     header("Location: verkoopaccountTweedepagina.php?error=notverified");
+    exit();
 } else {
 
 ?>
@@ -66,6 +67,7 @@ if (!$results) {
     }
 else {
     header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");
