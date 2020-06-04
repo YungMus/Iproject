@@ -14,19 +14,19 @@ if(isset($_GET['error'])) {
   </button>
 </div>';
     } else if ($_GET['error'] == "invalid") {
-        echo '<div data-closable class="alert-box callout alert"> Je ingevoerde gegevens kloppen niet!
+        echo '<div data-closable class="alert-box callout alert"> Uw ingevoerde gegevens kloppen niet!
 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "noauthorization") {
-        echo '<div data-closable class="alert-box callout alert"> Je hebt geen autorisatie!
+        echo '<div data-closable class="alert-box callout alert"> U heeft geen autorisatie!
 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "alreadyverified") {
-        echo '<div data-closable class="alert-box callout warning"> Je account is al geverifieerd! Probeer in te loggen!
+        echo '<div data-closable class="alert-box callout warning"> Uw account is al geverifieerd! Probeer in te loggen!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -35,19 +35,19 @@ if(isset($_GET['error'])) {
 }
     else if (isset($_GET['success'])) {
         if ($_GET['success'] == "accountmade") {
-            echo '<div data-closable class="alert-box callout success"> Je account is succesvol aangemaakt!
+            echo '<div data-closable class="alert-box callout success"> Uw account is succesvol aangemaakt!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
         } else if ($_GET['success'] == "logout") {
-            echo '<div data-closable class="alert-box callout success"> Je bent succesvol uitgelogd!
+            echo '<div data-closable class="alert-box callout success"> U bent succesvol uitgelogd!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
         } else if ($_GET['success'] == "changed") {
-            echo '<div data-closable class="alert-box callout success"> Je hebt succesvol je wachtwoord veranderd!
+            echo '<div data-closable class="alert-box callout success"> U heeft succesvol uw wachtwoord veranderd!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -60,7 +60,7 @@ if(!isset($_SESSION['Username'])) {
 
     <main>
         <form class="form" method="post" action="inlog.inc.php">
-            <h4 class="text-center">Log in met je account</h4>
+            <h4 class="text-center">Log in met uw account</h4>
             <label for="form-username">Gebruikersnaam
                 <input type="text" class="form-input" name="Username" id="Username">
             </label>

@@ -12,7 +12,7 @@ if(isset($_GET['error'])){
               </button>
               </div>';
     } else if($_GET['error'] == "noauthorization"){
-        echo '<div data-closable class="alert-box callout warning"> Je hebt geen autorisatie voor dat!
+        echo '<div data-closable class="alert-box callout warning"> U heeft geen autorisatie!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
@@ -20,7 +20,7 @@ if(isset($_GET['error'])){
     }
 } else if (isset($_GET['success'])) {
     if ($_GET['success'] == "messagesent") {
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een bericht achter gelaten!
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol een bericht achter gelaten!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>

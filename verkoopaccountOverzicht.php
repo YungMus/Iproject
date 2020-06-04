@@ -16,7 +16,7 @@ if(isset($_GET['error'])) {
 }
 else if(isset($_GET['success'])){
     if($_GET['success'] == "overview"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol je gegevens doorgegeven! Bekijk nu het overzicht!
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol uw gegevens doorgegeven! Bekijk nu het overzicht!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -46,7 +46,7 @@ if(isset($_SESSION['Username'])) {
         <main>
             <form class="form" method="post" action="verkoopaccountOverzicht.inc.php">
                 <h4 class="text-center">Overzicht</h4>
-                <h6>Kloppen je gegevens? Zo ja klik op bevestigen om je verkoopaccount definitief aan te maken</h6>
+                <h6>Kloppen uw gegevens? Zo ja klik op bevestigen om uw verkoopaccount definitief aan te maken</h6>
                 <label> Bank:
                     <div>
                         <input class="form-input" type="text" name="Bank" id="Bank" value="<?php echo $result[0]['bank_name']; ?>" readonly>
@@ -66,7 +66,7 @@ if(isset($_SESSION['Username'])) {
                         } ?>" readonly>
                     </div>
                 </label>
-                <p><input type="submit" class="form-button" name="Submit"  value="Bevestig je verkoopaccount"></p>
+                <p><input type="submit" class="form-button" name="Submit"  value="Bevestig uw verkoopaccount"></p>
                 <p><input type="submit" class="form-button" name="Goback"  value="Ga terug"></p>
             </form>
         </main>

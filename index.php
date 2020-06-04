@@ -7,7 +7,7 @@ require_once("includes/header.php");
 <div class="hero-section">
     <div class="hero-section-text">
         <h1>Eenmaal Andermaal</h1>
-        <h5>Geef je spullen een tweede kans</h5>
+        <h5>Geef uw spullen een tweede kans</h5>
     </div>
 </div>
 <article class="product-cards">

@@ -7,7 +7,7 @@ require_once("includes/header.php");
 
 if(isset($_GET['error'])) {
     if ($_GET['error'] == "mailnotsent") {
-        echo '<div data-closable class="alert-box callout error"> Je mail is onsuccesvol verzonden! Check of je mail geldig is!
+        echo '<div data-closable class="alert-box callout error"> Uw mail is onsuccesvol verzonden! Check of uw mail geldig is!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -15,7 +15,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "mailsent"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd! Check je mailbox!
+        echo '<div data-closable class="alert-box callout success"> U heeft de mail ontvangen! Check uw inbox!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -29,7 +29,7 @@ if(isset($_SESSION['Username'])) {
         <main>
             <form class="form" method="post" action="verkoopaccountVoorpagina.inc.php">
                 <h4 class="text-center">Verkoopaccount registeren</h4>
-                <label> Kies een manier om jezelf te verifieren
+                <label> Kies een manier om uzelf te verifieren
                     <input type="radio" id="RecoveryQuestion" name="Verify" value="RecoveryQuestion" checked>
                     <label for="RecoveryQuestion">Herstelvraag beantwoorden</label><br>
                     <input type="radio" id="Email" name="Verify" value="Email">

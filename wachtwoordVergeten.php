@@ -12,19 +12,19 @@ if(isset($_GET['error'])) {
   </button>
 </div>';
     } else if ($_GET['error'] == "passwordcheck") {
-        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen! Check of jouw wachtwoord overeen komt!
+        echo '<div data-closable class="alert-box callout warning"> Uw wachtwoord komt niet met elkaar overeen! Check of uw wachtwoord overeen komt!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "passwordcheck") {
-        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen! Check of jouw wachtwoord overeen komt!
+        echo '<div data-closable class="alert-box callout warning"> Uw wachtwoord komt niet met elkaar overeen! Check of uw wachtwoord overeen komt!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "oldpasswordcheck") {
-        echo '<div data-closable class="alert-box callout warning"> Je oude wachtwoord klopt niet! Vul de juiste wachtwoord in!
+        echo '<div data-closable class="alert-box callout warning"> Uw oude wachtwoord klopt niet! Vul het juiste wachtwoord in!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -32,7 +32,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "confirmed"){
-        echo '<div data-closable class="alert-box callout success"> Je bent succesvol door ons bevestigd! Verander je wachtwoord nu!
+        echo '<div data-closable class="alert-box callout success"> U bent succesvol door ons bevestigd! Verander uw wachtwoord nu!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
