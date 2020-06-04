@@ -5,7 +5,7 @@ if (isset($_POST['Choose'])) {
     session_start();
 
     $_SESSION['Rubric'] = $_POST['rubric'];
-    header("Location: veilingaanmakenVoorpagina.php?success=rubric");
+    header("Location: veilingaanmaken.php?success=rubric");
     exit();
 } else{
     header("Location: persoonlijkePagina.php?error=noauthorization");

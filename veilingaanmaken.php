@@ -10,7 +10,7 @@ if(($_SESSION['Rank'] = ' Verkoper ')) {
 
 
 <main>
-    <form class="form" method="post" action="veilingaanmaken.inc.php">
+    <form class="form" method="post" action="veilingaanmaken.inc.php" enctype="multipart/form-data">
         <h4 class="text-center">Veiling aanbieden</h4>
         <label>
         <div>
@@ -44,7 +44,9 @@ if(($_SESSION['Rank'] = ' Verkoper ')) {
             </div>
         </label>
         <label>Afbeelding:
-        <input type="file" class="form-input" name="Image" id="Image"><br>
+            <div>
+        <input type="file" class="form-input" name="file" id="file">
+            </div>
         </label>
         <p><input type="submit" class="form-button" name="Submit"  value="Ga naar het overzicht"></p>
     </form>
