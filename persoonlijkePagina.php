@@ -86,7 +86,7 @@ if(isset($_GET['error'])) {
                     <li><a class="subitem" href="#">Gewonnen veilingen</a></li>
                     <li><a class="subitem" href="#">Biedingen</a></li>
                     <li><a class="subitem" href="#">Favoriet</a></li>
-                    <li><a class="subitem" href="#">Aanbevolen voor jou</a></li>
+                    <li><a class="subitem" href="#">Aanbevolen voor u</a></li>
                     <?php
                     if(($_SESSION['Rank']) === " Verkoper "){
                     echo "<li><a class='subitem' href='veilingaanmakenVoorpagina.php'>Mijn veilingen</a></li>";}

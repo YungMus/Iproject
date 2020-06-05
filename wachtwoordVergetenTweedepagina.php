@@ -61,7 +61,7 @@ if($_GET['email']) {
         ?>
         <main>
             <form class="form" method="post" action="wachtwoordVergetenTweedepagina.inc.php">
-                <h4 class="text-center">Voer je gegevens in</h4>
+                <h4 class="text-center">Voer uw gegevens in</h4>
                 <input class="form-input" type="text" name="Email" value="<?php echo $email ?>" readonly>
                 <input class="form-input" type="text" name="Token" placeholder="Uw verificatie code">
                 <input class="form-input" type="text" name="RecoveryQuestion" id="RecoverQuestion" value="<?php

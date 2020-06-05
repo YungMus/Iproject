@@ -189,7 +189,7 @@ if($_GET['email']) {
                 </select>
             </div>
             <p>* Door een account aan te maken met uw e-mailadres, word u klant van Iconcept en accepteert u onze
-                Gebruiksvoorwaarden en Privacyverklaring. Je zult systeemberichten gerelateerd aan je veilingen en
+                Gebruiksvoorwaarden en Privacyverklaring. U zult systeemberichten gerelateerd aan uw veilingen en
                 berichten
                 van de klantenservice ontvangen.</p>
             <button class="primary button expanded" type="submit" name="Register" value='Register'

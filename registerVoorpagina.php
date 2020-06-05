@@ -49,7 +49,7 @@ if(isset($_GET['error'])) {
         <form class="form" method="post" action="registerVoorpagina.inc.php">
             <h4 class="text-center">Registreren</h4>
             <h6>Om te kunnen registreren vragen wij eerst uw email adres. Binnen enkelen minuten zult u een verificatiecode ontvangen. Vervolgens krijgt u toegang tot de volledige registratie pagina en kunt u beginnen het aanmaken van uw account.</h6>
-            <label for="form-email">Vul hier je emailadres in
+            <label for="form-email">Vul hier uw emailadres in
              <br><input type="email" class="form-input" name="Email" id="Email" placeholder="Email">
             </label>
             <p><input type="submit" class="form-button" name="EmailConfirmation"  value="Vraag verificatiecode aan"></input></p>
