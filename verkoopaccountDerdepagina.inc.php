@@ -4,6 +4,7 @@ if (isset($_POST['Submit'])) {
     require 'connectingDatabase.php';
     session_start();
 
+    $verify = $_GET['verify'];
     $userID = $_SESSION['user_id'];
     $bank = htmlspecialchars($_POST['Bank']);
     $banknumber = htmlspecialchars($_POST['BankNumber']);
@@ -37,7 +38,7 @@ if (isset($_POST['Submit'])) {
         $stmt2->bindParam(':checkoption', $checkoption);
         $stmt2->bindParam(':creditcardNumber', $creditcardnumber);
         $stmt2->execute();
-        header("Location: verkoopaccountOverzicht.php?success=overview&bank=$bank&banknumber=$banknumber&creditcardnumber=$creditcardnumber");
+        header("Location: verkoopaccountOverzicht.php?success=overview&bank=$bank&banknumber=$banknumber&creditcardnumber=$creditcardnumber&verify=$verify");
     }
 } else{
     header("Location: persoonlijkePagina.php?error=noauthorization");

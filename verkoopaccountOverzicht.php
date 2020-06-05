@@ -32,6 +32,7 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 
 if(isset($_SESSION['Username'])) {
+if($_GET['verify'] == 'Email') {
     $email = $_SESSION['Email'];
     $sql = "SELECT verified FROM Seller_Verification_token WHERE [e-mail]= :email AND verified = 1";
     $stmt = $conn->prepare($sql);
@@ -40,7 +41,8 @@ if(isset($_SESSION['Username'])) {
     $results = $stmt->fetchAll();
     if (!$results) {
         header("Location: verkoopaccountTweedepagina.php?error=notverified");
-    } else {
+    }
+}else {
 ?>
 
         <main>
