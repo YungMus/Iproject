@@ -11,7 +11,7 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     if (empty($recoveryQuestion) || empty($recoveryQuestionAnswer)) {
         header("Location: verkoopaccountTweedepagina.php?error=emptyfields");
     }
-            if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email)){
+            if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email, $recoveryQuestionAnswer)){
                 if (checkAlreadyVerified($conn, $email)) {
                     $resultSet = $conn->query("SELECT verified FROM Seller_Verification_token WHERE verified = 0 AND [e-mail] = '$email'");
 
@@ -66,14 +66,14 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     exit();
 }
 
-function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email){
+function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email, $verify){
     $sql = "SELECT recover_question_answer FROM [User] WHERE [e-mail]= :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $result = $stmt->fetchAll();
     if($result[0][0] != $question_to_check){
-        header("Location: verkoopaccountTweedepagina.php?error=recoveryquestionanswer");
+        header("Location: verkoopaccountTweedepagina.php?error=recoveryquestionanswer&verify=$verify");
         exit();
     }
     if($stmt){
