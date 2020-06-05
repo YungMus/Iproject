@@ -30,8 +30,6 @@ else if (isset($_POST['SearchKeyword'])) {
         $_SESSION['space'] = true;
         $_SESSION["searchAfterSpace"] = substr($_SESSION["search"],strpos($_SESSION["search"], ' ') + 1);
         $_SESSION["search"] = substr($_SESSION["search"],0,  strpos($_SESSION["search"], ' ') );
-        echo $_SESSION["searchAfterSpace"] . '<br>';
-        echo $_SESSION["search"];
     } else {
         $_SESSION['space'] = false;
     }
