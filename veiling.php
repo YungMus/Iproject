@@ -118,12 +118,19 @@ if (isset($_POST['Bieden'])) {
         echo $msg;
     }
 
+    $sql = " SELECT Max(notification_id) FROM Notification";
+    $data = $conn->prepare($sql);
+    $data->execute();
+    $max_notification_id = $data->fetchAll();
+    $new_notification_id = $max_notification_id[0] + 1;
+
     $notification = $_POST["username"] . " heeft " . $offer . " geboden op " . $html .= '<a href="veiling.php?item=' . $result[$index]['item_id'] . '">'. $result[$index]["title"] . '</a>';
     $sql = "INSERT INTO Notification (notification_id, user_id, notification_datetime, notification) VALUES(:notification_id, :user_id, GETDATE(), :notification)";
-    $data ->bindParam(':notification_id', $m);
+    $data = $conn->prepare($sql);
+    $data ->bindParam(':notification_id', $new_notification_id);
     $data ->bindParam(':user_id', $user_id);
     $data ->bindParam(':notification', $notification);
-
+    $data->execute();
 }
 
 
