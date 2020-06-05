@@ -76,18 +76,18 @@ $html .= '</h1> </div>';
 echo $html;
 
 $html = "<div class=\"grid-x grid-padding-y grid-padding-y\">";
-$sql = "SELECT TOP 5 username, offer_amount FROM Offer INNER JOIN  [User] ON Offer.user_id = [User].user_id WHERE item_id = :item ORDER BY offer_amount DESC";
-$data = $conn->prepare($sql);
-$data ->bindParam(':item', $item);
-$data->execute();
+$sql1 = "SELECT TOP 5 username, offer_amount FROM Offer INNER JOIN  [User] ON Offer.user_id = [User].user_id WHERE item_id = :item ORDER BY offer_amount DESC";
+$data1 = $conn->prepare($sql1);
+$data1 ->bindParam(':item', $item);
+$data1->execute();
 $html = "<h1>offers:</h1>";
-$result = $data->fetchAll();
-$count = $data->rowCount();
-$index = 0;
+$result1 = $data1->fetchAll();
+$count1 = $data1->rowCount();
+$index1 = 0;
 
-while ($index < $count){
-    $html .= '<h3>' . $result[$index]['username'] . ' &euro; ' . $result[$index]['offer_amount'] . '</h3>';
-    $index ++;
+while ($index1 < $count1){
+    $html .= '<h3>' . $result1[$index1]['username'] . ' &euro; ' . $result1[$index1]['offer_amount'] . '</h3>';
+    $index1 ++;
 }
 
 echo $html;
@@ -96,47 +96,48 @@ echo $html;
 if (isset($_POST['Bieden'])) {
     $offer = trim($_POST['Bod']);
 
-    $sql = "SELECT user_id FROM [user] WHERE username = :username";
-    $data = $conn->prepare($sql);
-    $data ->bindParam(':username', $_SESSION['Username']);
-    $data->execute();
-    $results = $data->fetchAll();
-    $user_id = $results[0]['user_id'];
+    $sql2 = "SELECT user_id FROM [user] WHERE username = :username";
+    $data2 = $conn->prepare($sql2);
+    $data2 ->bindParam(':username', $_SESSION['Username']);
+    $data2 ->execute();
+    $results2 = $data2->fetchAll();
+    $user_id = $results2[0]['user_id'];
 
     $date =  date("Y-m-d H:i:s");
 
     try{
-        $sql = 'INSERT INTO Offer (item_id, offer_amount, user_id, offer_day) VALUES(:item, :bod, :user_id, :date)';
-        $data = $conn->prepare($sql);
-        $data ->bindParam(':item', $item);
-        $data ->bindParam(':bod', $offer);
-        $data ->bindParam(':user_id', $user_id);
-        $data ->bindParam(':date', $date);
-        $data->execute();
+        $sql3 = 'INSERT INTO Offer (item_id, offer_amount, user_id, offer_day) VALUES(:item, :bod, :user_id, :date)';
+        $data3 = $conn->prepare($sql3);
+        $data3 ->bindParam(':item', $item);
+        $data3 ->bindParam(':bod', $offer);
+        $data3 ->bindParam(':user_id', $user_id);
+        $data3 ->bindParam(':date', $date);
+        $data3->execute();
     } catch (Exception $e) {
         $msg = 'U moet hoger bieden dan het vorige bod.';
         echo $msg;
     }
 
-    $sql = " SELECT Max(notification_id) FROM Notification";
-    $data = $conn->prepare($sql);
-    $data->execute();
-    $max_notification_id = $data->fetchAll();
-    $new_notification_id = $max_notification_id[0] + 1;
+    $sql4 = " SELECT Max(notification_id) AS notification_id FROM Notification";
+    $data4 = $conn->prepare($sql4);
+    $data4->execute();
+    $max_notification_id = $data4->fetchAll();
+    $new_notification_id = $max_notification_id[0]['notification_id'] + 1;
 
-    $notification = $_POST["username"] . " heeft " . $offer . " geboden op " . $html .= '<a href="veiling.php?item=' . $result[$index]['item_id'] . '">'. $result[$index]["title"] . '</a>';
-    $sql = "INSERT INTO Notification (notification_id, user_id, notification_datetime, notification) VALUES(:notification_id, :user_id, GETDATE(), :notification)";
+    $notification = $_SESSION['Username'] . " heeft " . $offer . " geboden op " . $result[0]['title'] .= '<a href="veiling.php?item=' . $item . '"></a>';
+    $sql = "INSERT INTO Notification (notification_id, user_id, notification_datetime, notification, is_seen) VALUES(:notification_id, :user_id, (SELECT CONVERT(date, getdate())), :notification, 0)";
     $data = $conn->prepare($sql);
     $data ->bindParam(':notification_id', $new_notification_id);
-    $data ->bindParam(':user_id', $user_id);
+    $data ->bindParam(':user_id', $result[0]['user_id']);
     $data ->bindParam(':notification', $notification);
     $data->execute();
 }
 
 
 if (isset($_SESSION['Username'])){
+    $itemtest = $item . '"';
     echo '   <div class="cell small-4">          
-             <form method="POST" class="form" action="veiling.php">
+             <form method="POST" class="form" action="veiling.php?item='. $itemtest. '>
             <h6 class="multi-step-checkout-step-title-subheader">Bieden</h6>
             <p class="create-account-desc">Vul hier uw bod in.</p>
             <label>
