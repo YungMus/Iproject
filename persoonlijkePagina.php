@@ -64,19 +64,7 @@ if(isset($_GET['error'])) {
                         </ul>
                     </li>
                     <li>
-                        <a href="#">sub2</a>
-                        <ul class="menu vertical">
-                            <li>
-                                <a href="#">Subrubriek 1.2.1</a>
-                                <ul class="menu vertical">
-                                    <li><a class="subitem" href="#">Subrubriek 1.2.1.1</a></li>
-                                    <li><a class="subitem" href="#">Subrubriek 1.2.1.2</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="subitem" href="#">Subrubriek 1.2.2</a></li>
-                        </ul>
                     </li>
-                    <li><a class="subitem" href="#">Subrubriek 1.3</a></li>
                     <li><a class="subitem" href="verwijderAccount.php">Verwijder account</a></li>
                 </ul>
             </li>
@@ -94,25 +82,8 @@ if(isset($_GET['error'])) {
                 </ul>
             </li>
             <li>
-                <a href="#">Rubriek 3</a>
-                <ul class="menu vertical subrubriek">
-                    <li><a class="subitem" href="#">Thing 1</a></li>
-                    <li><a class="subitem" href="#">Thing 2</a></li>
-
-                </ul>
             </li>
             <li>
-                <a href="#">Rubriek 4</a>
-                <ul class="menu vertical subrubriek">
-                    <li><a href="#">Sub-item 3</a>
-                        <ul class="menu vertical">
-                            <li><a class="subitem" href="#">Thing 1</a></li>
-                            <li><a class="subitem" href="#">Thing 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="subitem" href="#">Thing 1</a></li>
-                    <li><a class="subitem" href="#">Thing 2</a></li>
-                </ul>
             </li>
             <br>
             <?php

@@ -14,7 +14,7 @@ for ($i = 0; $i < $count; $i ++) {
             <a href="#">'. $result[$i]['name'] .' </a> 
             <ul class="menu vertical subrubriek">';
     $parent_rubric = $result[$i]['rubric_id'];
-    $sqlA = "select TOP name, rubric_id FROM sublevel1_rubrieken WHERE parent_rubric = $parent_rubric";
+    $sqlA = "select name, rubric_id FROM sublevel1_rubrieken WHERE parent_rubric = $parent_rubric";
     $dataA = $conn->query($sqlA);
     $resultA = $dataA->fetchAll();
     $countA = $dataA->rowCount();
