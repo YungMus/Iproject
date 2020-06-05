@@ -47,7 +47,7 @@ if (isset($_POST['Submit'])) {
             if ($stmt && $stmt2) {
                 $sql3 = 'INSERT INTO Item (item_id, title, description, startvalue, pay_method, pay_instruction, placename, country, starting_day, starting_time, shipment_costs, seller, running_endday, running_endtime, thumbnail) 
                         VALUES (:itemID, :title, :description, :startvalue, :pay_method, :pay_instruction, :placename, :country, :starting_day, :starting_time, :shipment_costs, :seller, :running_endday, :running_endtime, :thumbnail)';
-                $stmt3 = $conn->prepare($sql);
+                $stmt3 = $conn->prepare($sql3);
 
                 $stmt3->bindparam(':itemID', $itemID);
                 $stmt3->bindparam(':title', $title);
@@ -66,7 +66,13 @@ if (isset($_POST['Submit'])) {
                 $stmt3->bindparam(':thumbnail', $thumbnail);
                 $stmt3->execute();
 
-                if ($stmt3) {
+                $sql4 = 'INSERT INTO ItemRubric (item_id, most_specific_rubric) VALUES (:itemID, :rubric)';
+                $stmt4 = $conn->prepare($sql4);
+
+                $stmt4->bindparam(':itemID', $itemID);
+                $stmt4->bindparam(':rubric', $_SESSION['RubricID']);
+                $stmt4->execute();
+                if ($stmt3 && $stmt4) {
                     header("Location: persoonlijkePagina.php?success=auctionmade");
                     exit();
                 } else{
