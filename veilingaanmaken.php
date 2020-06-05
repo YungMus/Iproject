@@ -14,7 +14,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "rubric"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een rubriek uitgekozen!
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol een rubriek uitgekozen!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -35,10 +35,10 @@ if(($_SESSION['Rank'] = ' Verkoper ')) {
             <input class="form-input" type="text" name="Title" id="Title" placeholder="Titel">
         </div>
         </label>
-        <label> Vul hier een uitgebreide beschrijving over je veiling.
+        <label> Vul hier een uitgebreide beschrijving over uw veiling.
         <textarea class="form-input" id="Description" name="Description" placeholder="Beschrijving" style="height:200px"></textarea>
         </label>
-        <label> Voor hoelang wilt u jouw veiling actief hebben?
+        <label> Voor hoelang wilt u de veiling actief hebben?
             <div>
                 <label> 1 Dag
                 <input class="form-input" type="radio" name="Duration" id="Duration" value="+1 day">
@@ -51,12 +51,12 @@ if(($_SESSION['Rank'] = ' Verkoper ')) {
                 </label>
             </div>
         </label>
-        <label> Het startprijs moet minimaal 1€ en maximaal 999999999€
+        <label> De startprijs moet minimaal 1€ en maximaal 999999999€
         <div>
             <input class="form-input" type="text" name="Startprice" id="Startprice" pattern="[0-9]{1,9}" placeholder="Startprijs">
         </div>
         </label>
-        <label> Hoeveel reken je voor de verzendkosten van je veiling?
+        <label> Hoeveel rekent u voor de verzendkosten van uw veiling?
             <div>
                 <input class="form-input" type="text" name="Shippingcost" id="Shippingcost" pattern="[0-9]{1,4}" placeholder="Verzendkosten">
             </div>

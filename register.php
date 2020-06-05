@@ -13,25 +13,25 @@ if(isset($_GET['error'])) {
                       </button>
                       </div>';
     } else if($_GET['error'] == "passwordcheck"){
-        echo '<div data-closable class="alert-box callout warning"> Je wachtwoord komt niet met elkaar overeen! Check of jouw wachtwoord overeen komt!
+        echo '<div data-closable class="alert-box callout warning"> U wachtwoord komt niet overeen! Check of uw wachtwoord overeen komt!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if($_GET['error'] == "usernamealreadyused"){
-        echo '<div data-closable class="alert-box callout warning"> De gebruikersnaam is al eens gebruikt! Gebruik een ander gebruikersnaam.
+        echo '<div data-closable class="alert-box callout warning"> De gebruikersnaam is al eens gebruikt! Gebruik een andere gebruikersnaam.
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if($_GET['error'] == "insertfailed"){
-        echo '<div data-closable class="alert-box callout warning"> Je gegevens is niet succesvol verstuurd! Probeer het opnieuw!
+        echo '<div data-closable class="alert-box callout warning"> Uw gegevens is niet succesvol verstuurd! Probeer het opnieuw!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if($_GET['error'] == "mailnotsent"){
-        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verstuurd, probeer het opnieuw!
+        echo '<div data-closable class="alert-box callout warning"> De mail is onsuccesvol verstuurd, probeer het opnieuw!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
@@ -60,24 +60,24 @@ if($_GET['email']) {
                         <img src="" alt=""/>
                     </div>
                     <div class="marketing-site-content-section-block">
-                        <h3 class="marketing-site-content-section-block-header">Stap 1 Vul je accountgegevens in</h3>
+                        <h3 class="marketing-site-content-section-block-header">Stap 1 Vul uw accountgegevens in</h3>
                         <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vul jij je
                             gebruikersnaam, een wachtwoord en de herhaling van het wachtwoord om je account zo veilig
                             mogelijk te maken.</p>
                     </div>
                     <div class="marketing-site-content-section-block small-order-2 medium-order-1"
-                    <h3 class="marketing-site-content-section-block-header">Stap 2 Vul je persoonlijke gegevens in</h3>
-                    <p class="marketing-site-content-section-block-subheader subheader">Bij stap 2 vul jij je
+                    <h3 class="marketing-site-content-section-block-header">Stap 2 Vul uw persoonlijke gegevens in</h3>
+                    <p class="marketing-site-content-section-block-subheader subheader">Bij stap 2 vult u uw
                         persoonlijke
-                        gegevens in, zoals je voornaam, achternaam, geboortedatum, telefoonnummer en je geheime vraag om
-                        je
+                        gegevens in, zoals uw voornaam, achternaam, geboortedatum, telefoonnummer en uw herstelvraag om
+                        uw
                         wachtwoord te kunnen herstellen.</p>
                 </div>
                 <div class="marketing-site-content-section-block small-order-2 medium-order-1">
-                    <h3 class="marketing-site-content-section-block-header">Stap 3 Vul je adresgegevens in</h3>
-                    <p class="marketing-site-content-section-block-subheader subheader">Bij stap 3 vul jij je
-                        adresgegevens
-                        in om de gewonnen veilingen opgestuurd te krijgen naar je ingevoerde adres.</p>
+                    <h3 class="marketing-site-content-section-block-header">Stap 3 Vul uw adresgegevens in</h3>
+                    <p class="marketing-site-content-section-block-subheader subheader">Bij stap 3 vult u uw
+                        adresgegevens.
+                        Dit zodat wij u de items van de gewonnen veilingen naar u op kunnen sturen.</p>
                 </div>
             </div>
         </div>
@@ -94,14 +94,14 @@ if($_GET['email']) {
 
         <form method="post" class="form" action="register.inc.php">
             <h6 class="multi-step-checkout-step-title-subheader">Account</h6>
-            <p class="create-account-desc">Voer hier je gebruikersnaam, email en wachtwoord in.</p>
+            <p class="create-account-desc">Voer hier uw gebruikersnaam, email en wachtwoord in.</p>
             <label>
                 <input type="text" name="Email" id="Email" value="<?php echo $email ?>" readonly>
                 <input type="text" name="Username" id="Username" maxlength="20" pattern="[A-Za-z0-9].{5,}"
                        value="<?php if (isset($_GET['Username'])) {
                            echo $_GET['Username'];
                        } ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required>
-                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet die nog 8 tekens lang over langer zijn.
+                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet het wachtwoord ook 8 tekens lang over langer zijn.
                 <input type="password" name="Password" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                        placeholder="Wachtwoord" required>
                 </label>
@@ -136,11 +136,11 @@ if($_GET['email']) {
                 } ?>" placeholder="Telefoonnummer" required>
             </div>
             <select name="RecoveryQuestion" id="RecoverQuestion" required>
-                <option value="1">Wat is het achternaam van je moeder?</option>
-                <option value="2">Wat is het naam van je eerste huisdier?</option>
-                <option value="3">Wat was je eerste auto?</option>
-                <option value="4">Op welke basisschool zat je?</option>
-                <option value="5">Hoe heet de stad waar je bent geboren?</option>
+                <option value="1">Wat is de achternaam van uw moeder?</option>
+                <option value="2">Wat is de naam van uw eerste huisdier?</option>
+                <option value="3">Welk merk was u eerste auto?</option>
+                <option value="4">Op welke basisschool heeft u gezeten?</option>
+                <option value="5">Wat is uw geboorteplaats?</option>
             </select>
             <div class="small-12 medium-7 column">
                 <input type="text" name="RecoveryQuestionAnswer" id="RecoverQuestionAnswer" placeholder="Antwoord"
@@ -150,7 +150,7 @@ if($_GET['email']) {
                 <hr class="multi-step-checkout-form-divider">
             </div>
             <h6 class="multi-step-checkout-step-title-subheader">Adres</h6>
-            <p class="create-account-desc">Vul hier je adresgegevens in.</p>
+            <p class="create-account-desc">Vul hier uw adresgegevens in.</p>
             <div class="small-6 medium-3 column">
                 <input type="text" name="Address" id="Address" pattern="[A-Za-z0-9].{3,}"
                        value="<?php if (isset($_GET['Address'])) {
@@ -188,7 +188,7 @@ if($_GET['email']) {
                     ?>
                 </select>
             </div>
-            <p>* Door een account aan te maken met je e-mailadres, word je een klant van Iconcept en accepteer je onze
+            <p>* Door een account aan te maken met uw e-mailadres, word u klant van Iconcept en accepteert u onze
                 Gebruiksvoorwaarden en Privacyverklaring. Je zult systeemberichten gerelateerd aan je veilingen en
                 berichten
                 van de klantenservice ontvangen.</p>

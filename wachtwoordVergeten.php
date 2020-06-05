@@ -50,13 +50,13 @@ if($_GET['email']) {
         ?>
         <main>
             <form class="form" method="post" action="wachtwoordVergeten.inc.php">
-                <h4 class="text-center">Voer je oude en nieuwe wachtwoorden in</h4>
+                <h4 class="text-center">Voer uw oude en nieuwe wachtwoorden in</h4>
                 <input class="form-input" type="text" name="Email" value="<?php echo $email ?>" readonly>
-                <input class="form-input" type="password" name="OldPassword" placeholder="Jouw oude wachtwoord">
-                <input class="form-input" type="password" name="NewPassword" placeholder="Jouw nieuwe wachtwoord">
+                <input class="form-input" type="password" name="OldPassword" placeholder="Uw oude wachtwoord">
+                <input class="form-input" type="password" name="NewPassword" placeholder="Uw nieuwe wachtwoord">
                 <input class="form-input" type="password" name="NewPassword-repeat"
-                       placeholder="Herhaal jouw nieuwe wachtwoord">
-                <input class="form-button" type="submit" name="Changepassword" value="Verander je wachtwoord!">
+                       placeholder="Herhaal uw nieuwe wachtwoord">
+                <input class="form-button" type="submit" name="Changepassword" value="Verander uw wachtwoord!">
             </form>
         </main>
 

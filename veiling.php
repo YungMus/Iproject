@@ -121,7 +121,7 @@ if (isset($_SESSION['Username'])){
     echo '   <div class="cell small-4">          
              <form method="POST" class="form" action="veiling.php">
             <h6 class="multi-step-checkout-step-title-subheader">Bieden</h6>
-            <p class="create-account-desc">Vul hier je bod in.</p>
+            <p class="create-account-desc">Vul hier uw bod in.</p>
             <label>
                 <input type="int" name="Bod" id="Bod" value="" required>
             <button class="primary button expanded" type="submit" name="Bieden" value="Bieden"

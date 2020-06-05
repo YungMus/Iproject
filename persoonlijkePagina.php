@@ -19,13 +19,13 @@ else{
 
 if(isset($_GET['error'])) {
     if ($_GET['error'] == "alreadyloggedin") {
-        echo '<div data-closable class="alert-box callout error"> Je bent al ingelogd!
+        echo '<div data-closable class="alert-box callout error"> U bent al ingelogd!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if ($_GET['error'] == "noauthorization") {
-        echo '<div data-closable class="alert-box callout error"> Je bent al een verkoper
+        echo '<div data-closable class="alert-box callout error"> U bent al een verkoper
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
@@ -33,7 +33,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "auctionmade"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een veiling opgezet!
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol een veiling opgezet!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -126,7 +126,7 @@ if(isset($_GET['error'])) {
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <h1>Dit is de persoonlijke pagina</h1>
-                <p>hier komt alle info van het aanpassen van je gegevens</p>
+                <p>hier komt alle info van het aanpassen van uw gegevens</p>
 
             </div>
         </div>

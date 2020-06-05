@@ -73,11 +73,11 @@ if (isset($_POST['Register'])) {
                 $htmlStr = "";
                 $htmlStr .= "Hi " . $firstname . $lastname . ",<br /><br />";
 
-                $htmlStr .= "Je hebt succesvol een account bij ons aangemaakt! Je bent van harte welkom om bij een kijkje te nemen op onze website en zelfs mee te bieden!<br /><br /><br />";
+                $htmlStr .= "U heeft succesvol een account bij ons aangemaakt! U bent van harte welkom om een kijkje te nemen op onze website en zelfs mee te bieden!<br /><br /><br />";
 
-                $htmlStr .= "Wil je gaan inloggen?<br /><br /><br />";
+                $htmlStr .= "Wilt u gaan inloggen?<br /><br /><br />";
 
-                $htmlStr .= "Klik hieronder om naar het inlogpagina te gaan<br /><br /><br />";
+                $htmlStr .= "Klik hieronder om naar de inlogpagina te gaan<br /><br /><br />";
                 $htmlStr .= "<a href='http://localhost/Iproject/inlog.php?' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
 
                 $htmlStr .= "Met vriendelijke groeten,<br />";

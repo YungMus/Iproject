@@ -37,10 +37,10 @@ if (isset($_POST['changepassword'])) {
             $htmlStr = "";
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
-            $htmlStr .= "Klik hieronder aub op het knop om naar het herstelpagina te gaan.<br /><br /><br />";
+            $htmlStr .= "Klik hieronder om naar de herstelpagina te gaan.<br /><br /><br />";
             $htmlStr .= "<a href='http://localhost/Iproject/wachtwoordVergetenTweedepagina.php?email=$email' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar het website</a><br /><br /><br />";
 
-            $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
+            $htmlStr .= "Kopieer hieronder uw unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
 
             $htmlStr .= "Met vriendelijke groeten,<br />";
