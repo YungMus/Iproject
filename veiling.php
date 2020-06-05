@@ -7,33 +7,9 @@ $item = 131283988452;
 if (isset($_GET['item'])) {
     $item = $_GET['item'];
 }
-if (isset($_POST['Bieden'])) {
-    $bod = trim($_POST['Bod']);
 
-    $sql = "SELECT user_id FROM [user] WHERE username = :username";
-    $data = $conn->prepare($sql);
-    $data ->bindParam(':username', $_SESSION['Username']);
-    $data->execute();
-    $results = $data->fetchAll();
-    $user_id = $results[0]['user_id'];
 
-    $date =  date("Y-m-d H:i:s");
-
-    try{
-    $sql = 'INSERT INTO Offer (item_id, offer_amount, user_id, offer_day) VALUES(:item, :bod, :user_id, :date)';
-    $data = $conn->prepare($sql);
-    $data ->bindParam(':item', $item);
-    $data ->bindParam(':bod', $bod);
-    $data ->bindParam(':user_id', $user_id);
-    $data ->bindParam(':date', $date);
-    $data->execute();
-} catch (Exception $e) {
-        $msg = 'U moet hoger bieden dan het vorige bod.';
-        echo $msg;
-    }
-}
-
-$sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, Rating, thumbnail  from Item inner join [user] on Item.seller = [user].user_id where Item.item_id = :item";
+$sql = "select title, startvalue, description, running_endday, running_endtime, placename, username, user_id, Rating, thumbnail from Item inner join [user] on Item.seller = [user].user_id where Item.item_id = :item";
 $data = $conn->prepare($sql);
 $data ->bindParam(':item', $item);
 $data->execute();
@@ -101,6 +77,39 @@ while ($index < $count){
     $index ++;
 }
 echo $html;
+
+if (isset($_POST['Bieden'])) {
+    $offer = trim($_POST['Bod']);
+
+    $sql = "SELECT user_id FROM [user] WHERE username = :username";
+    $data = $conn->prepare($sql);
+    $data ->bindParam(':username', $_SESSION['Username']);
+    $data->execute();
+    $results = $data->fetchAll();
+    $user_id = $results[0]['user_id'];
+
+    $date =  date("Y-m-d H:i:s");
+
+    try{
+        $sql = 'INSERT INTO Offer (item_id, offer_amount, user_id, offer_day) VALUES(:item, :bod, :user_id, :date)';
+        $data = $conn->prepare($sql);
+        $data ->bindParam(':item', $item);
+        $data ->bindParam(':bod', $offer);
+        $data ->bindParam(':user_id', $user_id);
+        $data ->bindParam(':date', $date);
+        $data->execute();
+    } catch (Exception $e) {
+        $msg = 'U moet hoger bieden dan het vorige bod.';
+        echo $msg;
+    }
+
+    $notification = $_POST["username"] . " heeft " . $offer . " geboden op " . $html .= '<a href="veiling.php?item=' . $result[$index]['item_id'] . '">'. $result[$index]["title"] . '</a>';
+    $sql = "INSERT INTO Notification (notification_id, user_id, notification_datetime, notification) VALUES(:notification_id, :user_id, GETDATE(), :notification)";
+    $data ->bindParam(':notification_id', $m);
+    $data ->bindParam(':user_id', $user_id);
+    $data ->bindParam(':notification', $notification);
+
+}
 
 if (isset($_SESSION['Username'])){
     echo '             <form method="POST" class="form" action="veiling.php">
