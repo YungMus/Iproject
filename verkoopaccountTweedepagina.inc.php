@@ -5,7 +5,7 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     session_start();
 
     $email = $_SESSION['Email'];
-    $verify = $_GET['RecoveryQuestion'];
+    $verify = "RecoveryQuestion";
     $recoveryQuestion = htmlspecialchars($_POST['RecoveryQuestion']);
     $recoveryQuestionAnswer = htmlspecialchars($_POST['RecoveryQuestionAnswer']);
 
