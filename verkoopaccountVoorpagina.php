@@ -12,6 +12,12 @@ if(isset($_GET['error'])) {
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
+    } else if ($_GET['error'] == "invalid") {
+        echo '<div data-closable class="alert-box callout error"> Uw verificatie code komt niet overeen!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "mailsent"){

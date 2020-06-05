@@ -35,7 +35,6 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     require 'connectingDatabase.php';
     session_start();
 
-    $userID = $_SESSION['userID'];
     $email = $_SESSION['Email'];
     $token = trim(htmlspecialchars($_POST['Token']));
 
@@ -43,7 +42,7 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
         header("Location: verkoopaccountTweedepagina.php?error=emptyfields");
     }
         if (checkTokenMatch($conn, $token)) {
-                if (checkDateToken($conn, $userID, $email)) {
+                if (checkDateToken($conn, $email, $email)) {
                     if (checkAlreadyVerified($conn, $email)) {
                         $resultSet = $conn->query("SELECT verified,token FROM Seller_Verification_token WHERE verified = 0 AND token = '$token'");
 
@@ -84,10 +83,10 @@ function checkRecoveyQuestionAnswer ($conn, $question_to_check, $email){
     }
 }
 
-function checkDateToken ($conn, $userID_to_check, $email){
-    $sql = ("SELECT token_date FROM Seller_Verification_token WHERE user_id= :userID");
+function checkDateToken ($conn, $email_to_check, $email){
+    $sql = ("SELECT token_date FROM Seller_Verification_token WHERE [e-mail]= :email");
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':userID', $userID_to_check);
+    $stmt->bindParam(':email', $email_to_check);
     $stmt->execute();
     $result = $stmt->fetchAll();
     $date = $result[0][0];
