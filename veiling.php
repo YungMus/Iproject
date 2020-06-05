@@ -18,25 +18,34 @@ $html = "";
 $result = $data->fetchAll();
 if (isset($_SESSION['Username'])) {
     if (($_SESSION['Rank']) == " Admin ") {
-?>  <div class="alert-box callout info">
-    <h2>Veiling verwijderen ?</h2>
-    <button class="button secondary large" onclick="myFunction()">Verwijder</button>
-    <p id="status_button"></p>
-    <script>
-    function myFunction() {
-    var txt;
-    if (confirm("Weet u zeker dat u deze veiling wilt verwijderen!")) {
-        <?php
+?>
+<!--        <div class="alert-box callout info">-->
+<!--    <h2>Veiling verwijderen ?</h2>-->
+<!--    <button class="button secondary large" onclick="myFunction()">Verwijder</button>-->
+<!--    <p id="status_button"></p>-->
+<!--    <script>-->
+<!--    function myFunction() {-->
+<!--    var txt;-->
+<!--    if (confirm("Weet u zeker dat u deze veiling wilt verwijderen!")) {-->
+<!--        --><?php
 //        $sql = "DELETE FROM [item] where item_id = $item";
-        ?>
-        txt = "veiling verwijderd";
-    } else {
-        txt = "veiling niet verwijderd";
-    }
-    document.getElementById("status_button").innerHTML = txt;
-    }
-    </script>
-        </div>
+//         $sql = "DELETE FROM [ItemRubric] where item_id = $item";
+//        $sql = "DELETE FROM [Illustraties] where item_id = $item";
+//        $sql = "DELETE FROM [item] where item_id = $item";
+//        $stmt = $conn->prepare($sql);
+//        $stmt->bindParam(':item', $item);
+//        $stmt->execute();
+//        session_unset();
+//        session_destroy();
+//        ?>
+<!--//        txt = "veiling verwijderd";-->
+<!--//    } else {-->
+<!--//        txt = "veiling niet verwijderd";-->
+<!--//    }-->
+<!--//    document.getElementById("status_button").innerHTML = txt;-->
+<!--//    }-->
+<!--//    </script>-->
+<!--//        </div>-->
 <?php
     }
 }
