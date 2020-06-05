@@ -55,7 +55,7 @@ if($_SESSION["isSearchedRubric"] || $_SESSION["isSearchedKeyword"]) {
 </nav>';
     echo $html;
 }
-require_once("rubriekenboom overzicht.php");
+require_once("rubriekenboom.inc.php");
 
 $start = 0;
 $countRows = 25;

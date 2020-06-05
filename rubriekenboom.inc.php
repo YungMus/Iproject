@@ -20,9 +20,9 @@ for ($i = 0; $i < $count; $i ++) {
                    $countA = $dataA->rowCount();
                     for ($iA = 0; $iA < $countA; $iA ++) {
                         $html .= '<li> <a href="#">' . $resultA[$iA]['name'] . '</a> <input type="radio" id="'. $resultA[$iA]['name'] .'" name="categorie" value="'. $resultA[$iA]['name'] .'"><ul class="menu vertical">';
-
+// Alle rubrieken weergeven de pagina word langzamer.
 //                        $parent_rubricA = $resultA[$iA]['rubric_id'];
-//                        $sqlB = "select TOP 5 name, rubric_id FROM sublevel2_rubrieken WHERE parent_rubric = $parent_rubricA";
+//                        $sqlB = "select name, rubric_id FROM sublevel2_rubrieken WHERE parent_rubric = $parent_rubricA";
 //                        $dataB = $conn->query($sqlB);
 //                        $resultB = $dataB->fetchAll();
 //                        $countB = $dataB->rowCount();
