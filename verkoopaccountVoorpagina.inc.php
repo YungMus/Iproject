@@ -11,7 +11,7 @@ if (isset($_POST['Continue'])) {
     print_r($verify);
 
     if ($verify === 'RecoveryQuestion') {
-        header("Location: verkoopaccountVoorpagina.php?error=invalid&verify=$verify");
+        header("Location: verkoopaccountTweedepagina.php?verify=$verify");
     } else if($verify === 'Email') {
         $sql = 'INSERT INTO Seller_Verification_token ([e-mail], token_date, token) VALUES (:email, :token_date, :token)';
         $stmt = $conn->prepare($sql);
