@@ -30,7 +30,7 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
                 }
             }
 
-} else if($_POST['VerifyEmail']){
+} else if(isset($_POST['VerifyEmail'])){
 
     require 'connectingDatabase.php';
     session_start();
