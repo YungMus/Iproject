@@ -5,13 +5,14 @@ if (isset($_POST['VerifyRecoverQuestion'])) {
     session_start();
 
     $email = $_SESSION['Email'];
+    $verify = $_GET['RecoveryQuestion'];
     $recoveryQuestion = htmlspecialchars($_POST['RecoveryQuestion']);
     $recoveryQuestionAnswer = htmlspecialchars($_POST['RecoveryQuestionAnswer']);
 
     if (empty($recoveryQuestion) || empty($recoveryQuestionAnswer)) {
         header("Location: verkoopaccountTweedepagina.php?error=emptyfields");
     }
-            if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email, $recoveryQuestionAnswer)){
+            if(checkRecoveyQuestionAnswer($conn, $recoveryQuestionAnswer, $email, $verify)){
                 if (checkAlreadyVerified($conn, $email)) {
                     $resultSet = $conn->query("SELECT verified FROM Seller_Verification_token WHERE verified = 0 AND [e-mail] = '$email'");
 
