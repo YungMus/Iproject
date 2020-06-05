@@ -52,7 +52,9 @@ if($_GET['email']) {
             <form class="form" method="post" action="wachtwoordVergeten.inc.php">
                 <h4 class="text-center">Voer uw oude en nieuwe wachtwoorden in</h4>
                 <input class="form-input" type="text" name="Email" value="<?php echo $email ?>" readonly>
-                <input class="form-input" type="password" name="NewPassword" placeholder="Uw nieuwe wachtwoord">
+                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet het wachtwoord ook 8 tekens lang of langer zijn.
+                <input class="form-input" type="password" name="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Uw nieuwe wachtwoord">
+                </label>
                 <input class="form-input" type="password" name="NewPassword-repeat"
                        placeholder="Herhaal uw nieuwe wachtwoord">
                 <input class="form-button" type="submit" name="Changepassword" value="Verander uw wachtwoord!">

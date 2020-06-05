@@ -53,7 +53,7 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 
 if(isset($_SESSION['Username'])) {
-    if($_GET['verify'] = 'RecoveryQuestion'){
+    if($_GET['verify'] == 'RecoveryQuestion'){
     ?>
 
     <main>
@@ -86,7 +86,7 @@ if(isset($_SESSION['Username'])) {
     </main>
         <?php
         }
-if($_GET['verify'] = 'Email') {
+else if($_GET['verify'] == 'Email') {
     ?>
 
     <main>
