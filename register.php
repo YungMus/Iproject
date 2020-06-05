@@ -101,7 +101,7 @@ if($_GET['email']) {
                        value="<?php if (isset($_GET['Username'])) {
                            echo $_GET['Username'];
                        } ?>" placeholder="Gebruikersnaam - Minimaal 5 tekens" required>
-                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet het wachtwoord ook 8 tekens lang over langer zijn.
+                <label> Moet minimaal bestaan uit een cijfer, een kleine letter en een hoofdletter. Daarnaast moet het wachtwoord ook 8 tekens lang of langer zijn.
                 <input type="password" name="Password" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                        placeholder="Wachtwoord" required>
                 </label>
@@ -112,7 +112,7 @@ if($_GET['email']) {
                 <hr class="multi-step-checkout-form-divider">
             </div>
             <h6 class="multi-step-checkout-step-title-subheader">Persoonlijk</h6>
-            <p class="create-account-desc">Vul hier je perssonlijke gegevens in.</p>
+            <p class="create-account-desc">Vul hier je persoonlijke gegevens in.</p>
             <div class="small-12 medium-7 column">
                 <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z].{3,}"
                        value="<?php if (isset($_GET['Firstname'])) {
@@ -131,7 +131,7 @@ if($_GET['email']) {
                 } ?>" placeholder="Geboortedatum" required>
             </div>
             <div class="small-12 medium-7 column">
-                <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Phonenumber'])) {
+                <input type="number" name="Phonenumber" id="Phonenumber" pattern="[0-9].{10,12} value="<?php if (isset($_GET['Phonenumber'])) {
                     echo $_GET['Phonenumber'];
                 } ?>" placeholder="Telefoonnummer" required>
             </div>
