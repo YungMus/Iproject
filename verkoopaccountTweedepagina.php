@@ -103,6 +103,7 @@ if($_GET['verify'] = 'Email') {
 }
 else {
     header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");

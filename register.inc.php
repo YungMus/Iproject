@@ -78,7 +78,7 @@ if (isset($_POST['Register'])) {
                 $htmlStr .= "Wilt u gaan inloggen?<br /><br /><br />";
 
                 $htmlStr .= "Klik hieronder om naar de inlogpagina te gaan<br /><br /><br />";
-                $htmlStr .= "<a href='http://localhost/Iproject/inlog.php?' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
+                $htmlStr .= "<a href='http://iproject43.icasites.nl/inlog.php?' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
 
                 $htmlStr .= "Met vriendelijke groeten,<br />";
                 $htmlStr .= "<a href='https://iproject43.icasites.nl/' target='_blank'>EenmaalAndermaal</a><br />";

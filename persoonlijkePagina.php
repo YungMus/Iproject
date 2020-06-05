@@ -141,8 +141,3 @@ echo $html;
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");
 ?>
-
-<!--            --><?php
-//            if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
-//                echo "<a class=\"button large\" href= 'uitgelogd.php'>Uitloggen</a>";            }
-//            ?>

@@ -26,5 +26,5 @@ else {
     header("Location: contact.php?success=messagesent");
 }
 } else{
-//    header("Location: contact.php?error=noauthorization");
+    header("Location: contact.php?error=noauthorization");
 }
