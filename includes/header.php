@@ -49,7 +49,7 @@ if (isset($_POST['sendHeader'])) {
                      <li><input class="button" type="submit" id="SearchKeyword" name="SearchKeyword" value="Zoek"></li>
                     </ul>
                 </form>
-                <ul><a href="<?php  if(isset($_SESSION['IDUser']) || isset($_SESSION['IDSeller']) || isset($_SESSION['IDAdmin'])){
+                <ul><a href="<?php  if(isset($_SESSION['user_id'])){
                         echo "persoonlijkePagina.php";}
                         else { echo "inlog.php"; }?>
 ">

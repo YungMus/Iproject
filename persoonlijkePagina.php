@@ -19,20 +19,27 @@ else{
 
 if(isset($_GET['error'])) {
     if ($_GET['error'] == "alreadyloggedin") {
-        echo '<div data-closable class="alert-box callout error"> Je bent al ingelogd!
+        echo '<div data-closable class="alert-box callout error"> U bent al ingelogd!
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     } else if ($_GET['error'] == "noauthorization") {
-        echo '<div data-closable class="alert-box callout error"> Je bent al een verkoper
+        echo '<div data-closable class="alert-box callout error"> U bent al een verkoper
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                       <span aria-hidden="true">&CircleTimes;</span>
                       </button>
                       </div>';
     }
+} else if(isset($_GET['success'])){
+    if($_GET['success'] == "auctionmade"){
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol een veiling opgezet!
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&CircleTimes;</span>
+  </button>
+</div>';
+    }
 }
-
 
 ?>
     <div class="grid-x grid-padding-y grid-padding-x">
@@ -40,6 +47,14 @@ if(isset($_GET['error'])) {
             <li>
                 <a href="#">Profiel en instellingen</a>
                 <ul class="menu vertical subrubriek">
+                    <?php
+                    if ($_SESSION['Rank'] == " Admin "){
+                        echo'
+                        <li>
+                        <a href="Veiling%20over%20datum.php">Veilingen over datum</a>
+                        </li>';
+                    }
+                    ?>
                     <li>
                         <a href="#">Mijn account</a>
                         <ul class="menu vertical">
@@ -70,8 +85,12 @@ if(isset($_GET['error'])) {
                 <ul class="menu vertical subrubriek">
                     <li><a class="subitem" href="#">Gewonnen veilingen</a></li>
                     <li><a class="subitem" href="#">Biedingen</a></li>
-                    <li><a class="subitem" href="#">Favorite</a></li>
-                    <li><a class="subitem" href="#">Aanbevolen voor jou</a></li>
+                    <li><a class="subitem" href="#">Favoriet</a></li>
+                    <li><a class="subitem" href="#">Aanbevolen voor u</a></li>
+                    <?php
+                    if(($_SESSION['Rank']) === " Verkoper "){
+                    echo "<li><a class='subitem' href='veilingaanmakenVoorpagina.php'>Mijn veilingen</a></li>";}
+                    ?>
                 </ul>
             </li>
             <li>
@@ -107,7 +126,7 @@ if(isset($_GET['error'])) {
         <div class="cell small-4 flex-container flex-dir-column">
             <div class="callout text-center">
                 <h1>Dit is de persoonlijke pagina</h1>
-                <p>hier komt alle info van het aanpassen van je gegevens</p>
+                <p>hier komt alle info van het aanpassen van uw gegevens</p>
 
             </div>
         </div>
@@ -135,7 +154,7 @@ if(isset($result[0])) {
         $html .= '<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&CircleTimes;</span>
             </button>
-        </div>>';
+        </div>';
     }
 } else {
     $html .= "<div data-closable class=\"alert-box callout error\"> U heeft geen meldingen.

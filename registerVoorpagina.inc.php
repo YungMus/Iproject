@@ -30,7 +30,7 @@ if (isset($_POST['EmailConfirmation'])) {
             $htmlStr .= "Klik hieronder aub op de knop om naar de verifieer pagina te gaan.<br /><br /><br />";
             $htmlStr .= "<a href='http://localhost/Iproject/registerTweedepagina.php?email=$email' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
 
-            $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
+            $htmlStr .= "Kopieer hieronder uw unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
 
             $htmlStr .= "Met vriendelijke groeten,<br />";
@@ -56,6 +56,9 @@ if (isset($_POST['EmailConfirmation'])) {
 
         }
     }
+} else{
+    header("Location: persoonlijkePagina.php?error=noauthorization");
+    exit();
 }
 
 

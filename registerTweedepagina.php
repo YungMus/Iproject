@@ -7,13 +7,13 @@ require_once("includes/header.php");
 
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "invalid") {
-        echo '<div data-closable class="alert-box callout warning"> Dit mail is niet geldig!
+        echo '<div data-closable class="alert-box callout warning"> Deze mail is niet geldig!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "nomatch") {
-        echo '<div data-closable class="alert-box callout warning"> Je verificatie code komt niet overeen!
+        echo '<div data-closable class="alert-box callout warning"> Uw verificatie code komt niet overeen!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -25,26 +25,26 @@ if (isset($_GET['error'])) {
   </button>
 </div>';
     } else if ($_GET['error'] == "emailinvalid") {
-        echo '<div data-closable class="alert-box callout warning"> Je email is niet geldig!
+        echo '<div data-closable class="alert-box callout warning"> Uw email is niet geldig!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "expired") {
-        echo '<div data-closable class="alert-box callout warning"> Je verificatie code is verlopen! Stuur opnieuw een verificatie code naar je mail!
+        echo '<div data-closable class="alert-box callout warning"> Uw verificatie code is verlopen! Stuur opnieuw een verificatie code naar uw mail!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     } else if ($_GET['error'] == "tokennotverified") {
-        echo '<div data-closable class="alert-box callout warning"> Je mail is nog niet geverifieerd, verifieer het nogmaals aub!
+        echo '<div data-closable class="alert-box callout warning"> Uw mail is nog niet geverifieerd, verifieer het nogmaals aub!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     }
     else if($_GET['error'] == "emailinvalid"){
-        echo '<div data-closable class="alert-box callout warning"> Jouw mail is niet bekend bij ons! Probeer het opnieuw!
+        echo '<div data-closable class="alert-box callout warning"> Uw mail is niet bekend bij ons! Probeer het opnieuw!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -57,8 +57,8 @@ if($_GET['email']) {
     <main>
         <form class="form" method="post" action="registerTweedepagina.inc.php">
             <h4 class="text-center">Verifieren</h4>
-            <input class="form-input" type="text" name="email" placeholder="Jouw emailadres">
-            <input class="form-input" type="text" name="token" placeholder="Jouw verificatie code">
+            <input class="form-input" type="text" name="email" placeholder="Uw emailadres">
+            <input class="form-input" type="text" name="token" placeholder="Uw verificatie code">
             <input class="form-button" type="submit" name="confirmtoken" value="Ga door">
             <p class="middle">Al een account? <a href="inlog.php">Log in</a></p>
             <p class="middle"><a href="voorwaardenCondities.php">Voorwaarden &amp; Condities</a></p>

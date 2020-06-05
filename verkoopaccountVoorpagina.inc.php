@@ -27,10 +27,10 @@ if (isset($_POST['Continue'])) {
             $htmlStr = "";
             $htmlStr .= "Hi " . $email . ",<br /><br />";
 
-            $htmlStr .= "Klik hieronder aub op de knop om naar de verifieer pagina te gaan.<br /><br /><br />";
+            $htmlStr .= "Klik hieronder aub op de knop om naar de verificatie pagina te gaan.<br /><br /><br />";
             $htmlStr .= "<a href='http://localhost/Iproject/verkoopaccountTweedepagina.php?verify=$verify' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>Ga naar de website</a><br /><br /><br />";
 
-            $htmlStr .= "Kopieer hieronder je unieke verificatie code.<br /><br /><br />";
+            $htmlStr .= "Kopieer hieronder uw unieke verificatie code.<br /><br /><br />";
             $htmlStr .= "<p>$token</p><br /><br /><br />";
 
             $htmlStr .= "Met vriendelijke groeten,<br />";

@@ -14,21 +14,21 @@ if(isset($_GET['error'])) {
 </div>';
     }
     else if($_GET['error'] == "mailnotsent"){
-        echo '<div data-closable class="alert-box callout warning"> Je mail is onsuccesvol verzonden! Check of je mail geldig is!
+        echo '<div data-closable class="alert-box callout warning"> Uw mail is onsuccesvol verzonden! Check of uw mail geldig is!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     }
     else if($_GET['error'] == "emailalreadyused"){
-        echo '<div data-closable class="alert-box callout warning"> Dit mail is al eens gebruikt, gebruik een ander mail!
+        echo '<div data-closable class="alert-box callout warning"> Deze mail is al eens gebruikt, gebruik een ander mail!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
 </div>';
     }
     else if($_GET['error'] == "noauthorization"){
-        echo '<div data-closable class="alert-box callout warning"> Je hebt geen autorisatie voor dat!
+        echo '<div data-closable class="alert-box callout warning"> U heeft geen autorisatie voor dat!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -36,7 +36,7 @@ if(isset($_GET['error'])) {
     }
 } else if(isset($_GET['success'])){
     if($_GET['success'] == "mailsent"){
-        echo '<div data-closable class="alert-box callout success"> Je hebt succesvol een mail verstuurd! Check je mailbox!
+        echo '<div data-closable class="alert-box callout success"> U heeft succesvol een mail verstuurd! Check uw inbox!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&CircleTimes;</span>
   </button>
@@ -49,7 +49,7 @@ if(isset($_GET['error'])) {
         <form class="form" method="post" action="registerVoorpagina.inc.php">
             <h4 class="text-center">Registreren</h4>
             <h6>Om te kunnen registreren vragen wij eerst uw email adres. Binnen enkelen minuten zult u een verificatiecode ontvangen. Vervolgens krijgt u toegang tot de volledige registratie pagina en kunt u beginnen het aanmaken van uw account.</h6>
-            <label for="form-email">Vul hier je emailadres in
+            <label for="form-email">Vul hier uw emailadres in
              <br><input type="email" class="form-input" name="Email" id="Email" placeholder="Email">
             </label>
             <p><input type="submit" class="form-button" name="EmailConfirmation"  value="Vraag verificatiecode aan"></input></p>
