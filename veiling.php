@@ -82,6 +82,19 @@ $html .= '&nbsp;&euro;';
 $html .= $result[0]['startvalue'];
 $html .= '</h1> </div>';
 
+
+$sqlA = "select [file] from Pictures WHERE item_id = :item_id";
+$dataA = $conn->prepare($sqlA);
+$dataA->bindParam(':item_id',  $item);
+$dataA->execute();
+$resultA = $dataA->fetchAll();
+$countA = $dataA->rowCount();
+for ($y = 0; $y < $countA; $y ++) {
+    $html .= '<img src="http://iproject43.icasites.nl/pics/' . $resultA[$y][0]. '"/>';
+    echo "test";
+    echo $resultA[$y][0];
+}
+
 echo $html;
 
 $html = "<div class=\"grid-x grid-padding-y grid-padding-y\">";
@@ -93,6 +106,8 @@ $html = "<h1>offers:</h1>";
 $result1 = $data1->fetchAll();
 $count1 = $data1->rowCount();
 $index1 = 0;
+
+
 
 while ($index1 < $count1){
     $html .= '<h3>' . $result1[$index1]['username'] . ' &euro; ' . $result1[$index1]['offer_amount'] . '</h3>';
@@ -161,18 +176,7 @@ else {
     echo $msg;
 }
 
-$sqlA = "select [file] from Pictures WHERE item_id = :item_id";
-$dataA = $conn->prepare($sqlA);
-$dataA->bindParam(':item_id',  $item);
-$dataA->execute();
-$resultA = $dataA->fetchAll();
-$countA = $dataA->rowCount();
-for ($y = 0; $y < $countA; $y ++) {
-    $html .= '<img src="http://iproject43.icasites.nl/pics/' . $resultA[$y][0]. '"/>';
-}
-
 $html .= '</div></div>';
-
 
 require_once("includes/foundation_script.php");
 require_once("includes/footer.html");
