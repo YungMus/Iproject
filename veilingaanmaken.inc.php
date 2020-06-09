@@ -27,7 +27,7 @@ if (isset($_POST['Submit'])) {
     if (empty($title) || empty($description) || empty($startprice) || empty($shippingcosts) || empty($duration) || empty($image)) {
         header("Location: veilingaanmaken.php?error=emptyfields");
     } else {
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $filedestination)) {
+        if (move_uploaded_file($image, $filedestination)) {
             $sql = "SELECT MAX(item_id) FROM Item ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -82,7 +82,7 @@ if (isset($_POST['Submit'])) {
                 echo "Er kan geen verbinding met het database gemaakt worden!";
             }
         } else{
-            echo "Ik kan niks uploaden";
+            echo "Ik kan niks uploaden" .$image;
         }
     }
 }
