@@ -81,6 +81,8 @@ if (isset($_POST['Submit'])) {
             } else {
                 echo "Er kan geen verbinding met het database gemaakt worden!";
             }
+        } else{
+            echo "Ik kan niks uploaden";
         }
     }
 }
