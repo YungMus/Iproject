@@ -6,9 +6,10 @@ if (isset($_POST['Submit'])) {
     session_start();
 
     $image = $_FILES['file']['name'];
-    $filedestination = 'http://iproject43.icasites.nl/upload/ ';
+    $filedestination = 'http://iproject43.icasites.nl/upload/' . basename($_FILES['file']['name']);
 echo $image.'<br>';
 echo $filedestination. '<br>';
+echo basename($_FILES['file']['name']). '<br>';
 print_r($_FILES);
     $sellerID = $_SESSION['user_id'];
     $title = $_POST['Title'];
