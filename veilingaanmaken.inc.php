@@ -10,7 +10,7 @@ if (isset($_POST['Submit'])) {
 echo $image.'<br>';
 echo $filedestination. '<br>';
 echo basename($_FILES['file']['name']). '<br>';
-print_r($_FILES);
+print_r($_FILES.'<br>');
     $sellerID = $_SESSION['user_id'];
     $title = $_POST['Title'];
     $description = $_POST['Description'];
