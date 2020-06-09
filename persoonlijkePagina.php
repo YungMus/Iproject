@@ -112,7 +112,7 @@ if(isset($_GET['error'])) {
 
 $html = '<div class="cell small-4 flex-container flex-dir-column">';
 
-$sql = "SELECT notification_id, notification, is_seen FROM Notification WHERE user_id = :user_id";
+$sql = "SELECT notification_id, notification, is_seen FROM Notification WHERE user_id = :user_id ORDER BY notification_id DESC";
 $data = $conn->prepare($sql);
 $data ->bindParam(':user_id', $_SESSION['user_id']);
 $data->execute();

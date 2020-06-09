@@ -44,9 +44,9 @@ if(isset($_GET['error'])){
             <div class="columns contact-us-section-right">
                 <h1 class="contact-us-header">Mail Ons</h1>
                 <form class="contact-us-form" method="post" action="contact.inc.php">
-                    <input type="text" name="Fullname" id="Fullname" pattern="[A-Za-z].{3,}" value="<?php if (isset($_GET['Fullname'])) {echo $_GET['Fullname']; }?>" placeholder="Volledige naam">
-                    <input type="email" name="Email" id="Email" value="<?php if (isset($_GET['Email'])) {echo $_GET['Email']; }?>" placeholder="Email">
-                    <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Phonenumber'])) {echo $_GET['Phonenumber']; }?>" placeholder="Telefoonnummer">
+                    <input type="text" name="Fullname" id="Fullname" pattern="[A-Za-z].{3,}" value="<?php if (isset($_GET['Fullname'])) {echo $_GET['Fullname']; }?>" placeholder="Volledige naam" maxlength="50">
+                    <input type="email" name="Email" id="Email" value="<?php if (isset($_GET['Email'])) {echo $_GET['Email']; }?>" placeholder="Email"maxlength="255">
+                    <input type="number" name="Phonenumber" id="Phonenumber" value="<?php if (isset($_GET['Phonenumber'])) {echo $_GET['Phonenumber']; }?>" placeholder="Telefoonnummer" maxlength="20">
                     <textarea name="Message" id="" rows="12" value="<?php if (isset($_GET['Message'])) {echo $_GET['Message']; }?>" placeholder="Typ uw bericht hier"></textarea>
                     <div class="contact-us-form-actions">
                         <input type="submit" class="button" name="send">

@@ -61,8 +61,8 @@ if($_GET['email']) {
                     </div>
                     <div class="marketing-site-content-section-block">
                         <h3 class="marketing-site-content-section-block-header">Stap 1 Vul uw accountgegevens in</h3>
-                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vul jij je
-                            gebruikersnaam, een wachtwoord en de herhaling van het wachtwoord om je account zo veilig
+                        <p class="marketing-site-content-section-block-subheader subheader">Bij stap 1 vult u uw
+                            gebruikersnaam, een wachtwoord en de herhaling van het wachtwoord om uw account zo veilig
                             mogelijk te maken.</p>
                     </div>
                     <div class="marketing-site-content-section-block small-order-2 medium-order-1"
@@ -112,7 +112,7 @@ if($_GET['email']) {
                 <hr class="multi-step-checkout-form-divider">
             </div>
             <h6 class="multi-step-checkout-step-title-subheader">Persoonlijk</h6>
-            <p class="create-account-desc">Vul hier je persoonlijke gegevens in.</p>
+            <p class="create-account-desc">Vul hier uw persoonlijke gegevens in.</p>
             <div class="small-12 medium-7 column">
                 <input type="text" name="Firstname" id="Firstname" pattern="[A-Za-z].{3,}"
                        value="<?php if (isset($_GET['Firstname'])) {
