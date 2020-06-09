@@ -6,8 +6,10 @@ if (isset($_POST['Submit'])) {
     session_start();
 
     $image = $_FILES['file']['name'];
-    $filedestination = 'http://iproject43.icasites.nl/upload/';
-
+    $filedestination = 'http://iproject43.icasites.nl/upload/ ';
+echo $image.'<br>';
+echo $filedestination. '<br>';
+print_r($_FILES);
     $sellerID = $_SESSION['user_id'];
     $title = $_POST['Title'];
     $description = $_POST['Description'];
@@ -27,7 +29,7 @@ if (isset($_POST['Submit'])) {
     if (empty($title) || empty($description) || empty($startprice) || empty($shippingcosts) || empty($duration) || empty($image)) {
         header("Location: veilingaanmaken.php?error=emptyfields");
     } else {
-        if (move_uploaded_file($image, $filedestination)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $filedestination)) {
             $sql = "SELECT MAX(item_id) FROM Item ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
