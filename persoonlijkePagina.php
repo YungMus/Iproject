@@ -51,7 +51,7 @@ if(isset($_GET['error'])) {
                     if ($_SESSION['Rank'] == " Admin "){
                         echo'
                         <li>
-                        <a href="Veiling%20over%20datum.php">Veilingen over datum</a>
+                        <a href="VeilingOverDatum.php">Veilingen over datum</a>
                         </li>';
                     }
                     ?>
