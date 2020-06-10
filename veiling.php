@@ -91,8 +91,6 @@ $resultA = $dataA->fetchAll();
 $countA = $dataA->rowCount();
 for ($y = 0; $y < $countA; $y ++) {
     $html .= '<img src="http://iproject43.icasites.nl/pics/' . $resultA[$y][0]. '"/>';
-    echo "test";
-    echo $resultA[$y][0];
 }
 
 echo $html;
